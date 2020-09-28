@@ -1,1 +1,0 @@
-# medium-clone-project
