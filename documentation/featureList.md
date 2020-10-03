@@ -32,7 +32,8 @@
    * Right sidebar
    * Footer
      * Includes creators
-5. Bonus Features
+5. Stretch Goals
    * Ability to bookmark a story
    * Media Queries (small, mid, large screens)
    * Limit the amount of articles a non-user can read
+   * Dark Mode
