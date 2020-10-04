@@ -11,15 +11,15 @@
      * Creators can delete their own stories
    * Ability to post, and like stories
 2. Stories
-   * Displays comments and number of claps (likes)
+   * Display responses and number of claps (likes)
    * Option to edit and delete stories by creator
    * Displays creator/follow button
    * Date of creation
    * Tags
 3. Responses
-   * Ability to comment on people's stories.
+   * Ability to respond on people's stories.
    * Ability to delete your own responses.
-   * Ability to view comments on all stories.
+   * Ability to view responses on all stories.
 4. Follows and Feed
    * Displays trending stories/snippet of article summary
    * Suggested creators to follow
