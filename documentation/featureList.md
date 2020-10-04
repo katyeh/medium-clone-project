@@ -16,8 +16,10 @@
    * Displays creator/follow button
    * Date of creation
    * Tags
-3. Comments
-
+3. Responses
+   * Ability to comment on people's stories.
+   * Ability to delete your own responses.
+   * Ability to view comments on all stories.
 4. Follows and Feed
    * Displays trending stories/snippet of article summary
    * Suggested creators to follow
