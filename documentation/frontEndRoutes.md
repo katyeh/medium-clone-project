@@ -26,7 +26,7 @@
 * /users/:id/following (following.pug)
   * List of users currently following
   * Link to Profile, Claps, Following
-* /stories/create (new-story.pug)
+* /stories/create (stories-create.pug)
   * Story form (title, story, submit)
   * Genre selection
 * /users/:id/stories (users-stories.pug)
