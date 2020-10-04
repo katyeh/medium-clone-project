@@ -6,10 +6,10 @@
 | attribute name | data type | details |
 | - | - | - |
 | id | integer | not null, primary key |
-| fullName | string | not null |
-| username | string | not null, unique |
-| email | string | not null, unique |
-| hashedPassword | string | not null (binary) |
+| fullName | VARCHAR(55) | not null |
+| username | VARCHAR(40)| not null, unique |
+| email | VARCHAR(55) | not null, unique |
+| hashedPassword | VARCHAR | not null (binary) |
 | createdAt | timestamp | not null |
 | updatedAt | timestamp | not null |
 
@@ -18,7 +18,7 @@
 
 | attribute name | data type | details |
 | - | - | - |
-| userId | integer | foreign key |
+| followeeId | integer | foreign key |
 | followerId | integer | foreign key |
 
 ## stories
@@ -27,33 +27,50 @@
 | attribute name | data type | details |
 | - | - | - |
 | id | integer | not null, primary key |
-| title | string | not null |
-| body | string | not null |
-|   |   |   |
-| genreId | integer | not null, foreign key |
+| title | VARCHAR(255) | not null |
+| body | TEXT | not null |
 | userId | integer | not null, foreign key |
 | createdAt | timestamp | not null |
 | updatedAt | timestamp | not null |
 
-## comments
+## responses
 
 
 | attribute name | data type | details |
 | - | - | - |
 | id | integer | not null, primary key |
-| body | string | not null |
+| body | VARCHAR(255) | not null |
 | storyId | integer | not null, foreign key |
 | userId | integer | not null, foreign key |
 | createdAt | timestamp | not null |
 | updatedAt | timestamp | not null |
 
-## likes
+## claps
 
 
 | attribute name | data type | details |
 | - | - | - |
 | id | integer | not null, primary key |
 | userId | integer | not null, foreign key |
+| storyId | integer | not null, foreign key |
+
+## genres
+
+
+| attribute name | data type | details |
+| - | - | - |
+| id | integer | not null, primary key |
+| title | VARCHAR(100) | not null, unique |
+| createdAt | timestamp | not null |
+| updatedAt | timestamp | not null |
+
+## storyGenres
+
+
+| attribute name | data type | details |
+| - | - | - |
+| id | integer | not null, primary key |
+| genreId | integer | not null, foreign key |
 | storyId | integer | not null, foreign key |
 
 ## bookmarks
@@ -62,18 +79,7 @@
 | attribute name | data type | details |
 | - | - | - |
 | id | integer | not null, primary key |
-|   |   |   |
 | storyId | integer | not null, foreign key |
 | userId | integer | not null, foreign key |
-| createdAt | timestamp | not null |
-| updatedAt | timestamp | not null |
-
-## genres
-
-
-| attribute name | data type | details |
-| - | - | - |
-| id | integer | not null, primary key |
-| title | string | not null, unique |
 | createdAt | timestamp | not null |
 | updatedAt | timestamp | not null |
