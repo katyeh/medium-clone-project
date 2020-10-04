@@ -22,6 +22,7 @@
 |                    | layout/               | - To hold all of our sass files related to sections of the page (i.e. *_grid.sass, _navbar.sass, _footer.sass, _sidebar.sass, _forms.sass*).
 |                    | pages/                | - To hold all of our sass files relevant to each pages we'll create (i.e. *_splash.sass, _profile.sass*).
 | views/             | splash.pug            |
+|                    | utilities/            | - Includes all mixins, include.<br> - Contains error.pug that displays error pages.
 |                    | log-in.pug            |
 |                    | sign-up.pug           |
 |                    | main.pug              |
@@ -30,9 +31,7 @@
 |                    | following.pug         |
 |                    | edit-story.pug        |
 |                    | users-stories.pug     |
-|                    | error.pug             | - To display error message if the requested page isn't found.
 |                    | layout.pug            | - To hold basic HTML structure and navbar that will be extended on other pages.
-|                    | utils.pug             | - To hold any mixins or reusable components that can be included in other files (i.e. *validationErrorSumamry, field*).
 | .env               |                       | - Define all of our environment variables (PORT, DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_HOST, SESSION_SECRET, JWT_SECRET, JWT_EXPIRES_IN).
 | .env.example       |                       | - Example of how *.env* should look like.
 | .gitignore         |                       | - Include *.env* and *node_modules*.
