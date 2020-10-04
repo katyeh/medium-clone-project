@@ -52,7 +52,8 @@
 | - | - | - |
 | id | integer | not null, primary key |
 | userId | integer | not null, foreign key |
-| storyId | integer | not null, foreign key |
+| storyId | integer |  foreign key |
+| responseId | integer | foreign key |
 
 ## genres
 

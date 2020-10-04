@@ -19,6 +19,7 @@
   * Latest Story
   * Following
   * Followers
+  * Responses
 * /users/:id/followers (followers.pug, Use Mixin)
   * List of current followers
   * Link to Profile, Claps, Following

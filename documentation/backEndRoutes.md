@@ -10,8 +10,12 @@
   * POST /stories => create a new story
   * PUT /users/:id => update a users info (returns full user info)
   * DELETE /stories/:id => delete a story
-* comments
-  * GET /stories/:id/comments => gets all comments for a single story
-  * POST /stories/:id/comments => create a new comment
-  * DELETE /comments/:id => delete a comment
-* likes
+* responses
+  * GET /stories/:id/responses => gets all responses for a single story
+  * POST /stories/:id/responses => create a new comment
+  * DELETE /responses/:id => delete a response
+* claps
+  * GET /stories/:id/claps => gets all claps for a single story
+  * GET /stories/:id/responses/:id/claps => gets all claps for a single response
+  * POST /stories/:id/claps => adds a clap to a single story
+  * POST /stories/:id/responses/:id/claps => adds a clap to a single response
