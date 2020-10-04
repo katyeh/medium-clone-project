@@ -7,19 +7,21 @@
    * Guest User (for demonstration)
    * Login/Logout functionality
    * Profile/Profile photo that appears in top right when logged in
-   * Roles(creator/normal) You are the creator if you created the story
+   * Only creators can edit their own stories
      * Creators can delete their own stories
    * Ability to post, and like stories
 2. Stories
    * Displays comments and number of claps (likes)
-   * Option to edit and delete drafts
+   * Option to edit and delete stories by creator
    * Displays creator/follow button
    * Date of creation
    * Tags
-3. Follows and Feed
+3. Comments
+
+4. Follows and Feed
    * Displays trending stories/snippet of article summary
    * Suggested creators to follow
-4. UI Design
+5. UI Design
    * Landing Page
      * User login/registration
    * Homepage/Main Page
