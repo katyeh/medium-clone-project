@@ -20,10 +20,10 @@ Check out the app: [Live Demo](https://)
 ### Documentation
 
 
-* [Feature List](https://)
-* [MVP](https://)
-* [Front End Routes](https://)
+* [Feature List](/documentation/featureList.md)
+* [MVP](/documentation/MVP.md)
+* [Front End Routes](/documentation/frontEndRoutes.md)
 * [Back End Routes](/documentation/backEndRoutes.md)
-* [Schema](https://)
-* [Schema Image](https://)
-* [Templates List](https://)
+* [Schema](/documentation/schema.md)
+* [Schema Image](/documentation/schema-diagram.png)
+* [Templates List](/documentation/templatesList.md)
