@@ -1,10 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Clap = sequelize.define('Clap', {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false

@@ -1,10 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Response = sequelize.define('Response', {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     body: {
       type: DataTypes.STRING(255),
       allowNull: false
