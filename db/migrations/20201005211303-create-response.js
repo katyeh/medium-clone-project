@@ -15,12 +15,12 @@ module.exports = {
       storyId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Story' }
+        references: { model: 'Stories' }
       },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'User' }
+        references: { model: 'Users' }
       },
       createdAt: {
         allowNull: false,
