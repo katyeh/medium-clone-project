@@ -6,7 +6,7 @@
 - express-validator
 - jsonwebtoken
 - express-bearer-token
-
+- per-env
 - sequelize@^5
 - pg
 - pug@^2
@@ -14,7 +14,6 @@
 ## Dev-dependencies
 - nodemon
 - morgan
-- cors
 - sass
 - dotenv
 - dotenv-cli
