@@ -27,12 +27,14 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Response, {foreignKey: "userId"});
     const columnMappingFollowee = {
         through: "Followers",
+        as: "followers",
         otherKey: "followerId",
         foreignKey: "followeeId"
     }
     User.belongsToMany(models.User, columnMappingFollowee);
     const columnMappingFollower = {
         through: "Followers",
+        as: "followees",
         otherKey: "followeeId",
         foreignKey: "followerId"
     }
