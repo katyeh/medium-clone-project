@@ -1,0 +1,19 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,CAAC;AACD,CAAC,AAAA,QAAQ;AACT,CAAC,AAAA,OAAO,CAAC;EACP,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,OAAO;CAAG;;AAExB,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,UAAU;EACtB,SAAS,EAAE,KAAK;CAAG",
+    "sources": [
+        "main.sass",
+        "base/_reset.sass",
+        "abstracts/_mixins.sass",
+        "abstracts/_variables.sass",
+        "base/_typography.sass",
+        "components/_buttons.sass",
+        "layout/_footer.sass",
+        "layout/_forms.sass",
+        "layout/_grid.sass",
+        "layout/_navbar.sass",
+        "layout/_sidebar.sass"
+    ],
+    "names": [],
+    "file": "main.css"
+}
