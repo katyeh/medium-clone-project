@@ -1,0 +1,34 @@
+{
+  "name": "medium-clone-project",
+  "version": "1.0.0",
+  "description": "Readium is an online publishing platform pertaining to books, inspired by Medium. Users can create, comment, and like each other's articles about their favorite books.",
+  "main": "index.js",
+  "scripts": {
+    "start": "per-env",
+    "start:development": "nodemon -r dotenv/config ./bin/www",
+    "start:production": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katyeh/medium-clone-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katyeh/medium-clone-project/issues"
+  },
+  "homepage": "https://github.com/katyeh/medium-clone-project#readme",
+  "dependencies": {
+    "per-env": "^1.0.2",
+    "pg": "^8.4.0",
+    "pug": "^2.0.4",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "dotenv-cli": "^4.0.0",
+    "nodemon": "^2.0.4"
+  }
+}
