@@ -6,7 +6,8 @@ const { asyncHandler, hashPassword, handleValidationErrors } = require("../../ut
 
 const router = express();
 
-// TODO: strings only
+// TODO: strings only?
+// TODO: capitalize first characters
 const userValidation = [
   check('fullName')
     .exists({ checkFalsy: true })
@@ -34,40 +35,40 @@ const usernameValidation = [
 
 // TODO: minlength, special characters
 const emailAndPasswordValidation = [
-  check('email')
+  check("email")
     .exists({ checkFalsy: true })
     .isEmail()
-    .withMessage('Please enter a valid email.')
+    .withMessage("Please enter a valid email.")
     .isLength({ max: 55 })
-    .withMessage('Email address cannot be over 55 characters long.'),
-    // ** Not working so need to fix the below codes.
-    // .custom(value => {
-    //   if (value.split(' ').length > 1) {
-    //     throw new Error('Password cannot have spaces.');
-    //   }
-    //   return true;
-    // }),
-    // .custom(value => {
-    //   return User.findOne({ where: { email: value }})
-    //     .then(user => {
-    //       if (user) {
-    //         throw new Error('The provided email address is already used by another account.');
-    //       }
-    //       return true;
-    //     });
-    // }),
-  check('password')
+    .withMessage("Email address cannot be over 55 characters long.")
+  // ** Not working so need to fix the below codes.
+    .custom(value => {
+      return User.findOne({ where: { email: value }})
+        .then(user => {
+          if (user) {
+            throw new Error('The provided email address is already used by another account.');
+          }
+          return true;
+       });
+    }),
+  check("password")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a valid password.'),
-  check('confirmPassword')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a value to confirm password.')
-    .custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error('The password fields must match.');
+    .withMessage("Please enter a valid password.")
+    .custom((value) => {
+      if (value.split(" ").length > 1) {
+        throw new Error("Password cannot have spaces.");
       }
       return true;
-    })
+    }),
+  check("confirmPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value to confirm password.")
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error("The password fields must match.");
+      }
+      return true;
+    }),
 ];
 
 const userNotFoundError = id => {
