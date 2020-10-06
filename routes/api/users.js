@@ -2,7 +2,7 @@ const express = require("express");
 const { check } = require('express-validator');
 
 const { User } = require("../../db/models");
-const { asyncHandler, hashPassword } = require("../../utils");
+const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
 
 const router = express();
 
@@ -64,6 +64,7 @@ router.post("/",
   userValidation,
   usernameValidation,
   emailAndPasswordValidation,
+  handleValidationErrors,
   asyncHandler(async (req, res, next) => {
   const { fullName, username, email, password } = req.body;
 
