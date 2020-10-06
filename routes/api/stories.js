@@ -35,20 +35,24 @@ const validateResponse = [
         .withMessage("Response can't be longer than 255 characters.")
 ];
 
-router.get('/', asyncHandler(async (req, res) => {
-    const responses = await Response.findAll({
-        include: [{ model: User, as: "user", attributes: ["username"] }],
-        order: [["createdAt", "DESC"]],
-        attributes: ["body"],
-    });
-    res.json({ responses });
+router.get('/:id/responses', asyncHandler(async (req, res, next) => {
+  const { storyId } = req.body;
+  const responses = await Response.findAll({
+    where: { storyId },
+    include: [{ model: User, as: "user", attributes: ["username"] }],
+    order: [["createdAt", "DESC"]]
+  })
+  res.json({ responses });
 }));
 
-
-
-
-
-
-
+router.post(
+  '/:id/responses',
+  validateResponse,
+  handleValidationErrors,
+  asyncHandler(async (req, res) => {
+    const { body } = req.body;
+    const response = await response.create({ body, userId: req.user.id });
+    res.status(201).json({ tweet });
+  }));
 
 module.exports = router;
