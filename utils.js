@@ -30,5 +30,6 @@ const handleValidationErrors = (req, res, next) => {
 
 module.exports = {
   asyncHandler,
-  hashPassword
-}
+  hashPassword,
+  handleValidationErrors
+};
