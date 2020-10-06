@@ -14,6 +14,7 @@ const storiesRouter = require('./routes/api/stories');
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(indexRouter);
 app.use('/stories', storiesRouter);
 app.use('/users', usersRouter);
 app.use('/responses', responsesRouter);
