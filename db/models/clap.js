@@ -7,11 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     storyId: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
     responseId: {
       type: DataTypes.INTEGER,
-      allowNull: false
     }
   }, {});
   Clap.associate = function(models) {

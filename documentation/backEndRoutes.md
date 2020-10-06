@@ -7,10 +7,12 @@
   * DELETE /users/:id => delete a user
 * stories
   * GET /stories/:id => gets a single story (returns title, body, creator, and createdAt)
+  * GET /stories => gets all the stories from a specific user
   * POST /stories => create a new story
   * PUT /users/:id => update a users info (returns full user info)
   * DELETE /stories/:id => delete a story
 * responses
+  * GET /responses => gets all responses from a single user
   * GET /stories/:id/responses => gets all responses for a single story
   * POST /stories/:id/responses => create a new comment
   * DELETE /responses/:id => delete a response

@@ -6,68 +6,79 @@ const { asyncHandler, hashPassword, handleValidationErrors } = require("../../ut
 
 const router = express();
 
-// TODO: strings only
 const userValidation = [
-  check('fullName')
+  check("fullName")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a valid name.')
+    .withMessage("Please enter a valid name.")
     .isLength({ max: 55 })
-    .withMessage('Name cannot be over 55 characters long.')
-    .custom(value => {
-      if (value.split(' ').length < 2) {
-        throw new Error('You must enter both first name and last name, separated by a space.');
+    .withMessage("Name cannot be over 55 characters long.")
+    .custom((value) => {
+      if (value.split(" ").length < 2) {
+        throw new Error(
+          "You must enter both first name and last name, separated by a space."
+        );
       }
       return true;
     })
+    .matches(/^[a-zA-Z\s]+$/)
+    .withMessage("Name must only contain alphabets."),
 ];
 
-// TODO: only some characters allowed
 const usernameValidation = [
-  check('username')
+  check("username")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a valid username.')
+    .withMessage("Please enter a valid username.")
     .isLength({ min: 5 })
-    .withMessage('Username must be longer than 5 characters.')
+    .withMessage("Username must be longer than 5 characters.")
     .isLength({ max: 40 })
-    .withMessage('Username cannot be over 40 characters long.')
+    .withMessage("Username cannot be over 40 characters long.")
+    .matches(/^\w+$/)
+    .withMessage(
+      "Username must only contain alphabets, numbers, and _(underscores)."
+    ),
 ];
 
-// TODO: minlength, special characters
 const emailAndPasswordValidation = [
-  check('email')
+  check("email")
     .exists({ checkFalsy: true })
     .isEmail()
-    .withMessage('Please enter a valid email.')
+    .withMessage("Please enter a valid email.")
     .isLength({ max: 55 })
-    .withMessage('Email address cannot be over 55 characters long.'),
-    // ** Not working so need to fix the below codes.
-    // .custom(value => {
-    //   if (value.split(' ').length > 1) {
-    //     throw new Error('Password cannot have spaces.');
-    //   }
-    //   return true;
-    // }),
-    // .custom(value => {
-    //   return User.findOne({ where: { email: value }})
-    //     .then(user => {
-    //       if (user) {
-    //         throw new Error('The provided email address is already used by another account.');
-    //       }
-    //       return true;
-    //     });
-    // }),
-  check('password')
+    .withMessage("Email address cannot be over 55 characters long.")
+    .custom((value) => {
+      return User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          throw new Error(
+            "The provided email address is already used by another account."
+          );
+        }
+        return true;
+      });
+    }),
+  check("password")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a valid password.'),
-  check('confirmPassword')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a value to confirm password.')
-    .custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error('The password fields must match.');
+    .withMessage("Please enter a valid password.")
+    .isLength({ min: 8 })
+    .withMessage("Password must be longer than 8 characters.")
+    .custom((value) => {
+      if (value.split(" ").length > 1) {
+        throw new Error("Password cannot have spaces.");
       }
       return true;
     })
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
+    .withMessage(
+      "Password must have at least one lower-case letter, upper-case letter, number, and special character(!@#$%^&*)."
+    ),
+  check("confirmPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value to confirm password.")
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error("The password fields must match.");
+      }
+      return true;
+    }),
 ];
 
 const userNotFoundError = id => {
@@ -85,19 +96,21 @@ router.post("/",
   emailAndPasswordValidation,
   handleValidationErrors,
   asyncHandler(async (req, res, next) => {
-  const { fullName, username, email, password } = req.body;
+  let { fullName, username, email, password } = req.body;
 
   const hashedPassword = await hashPassword(password.trim());
+
+  fullName = fullName.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+
   const user = await User.create({
     fullName: fullName.trim(),
     username: username.trim(),
-    email: email.trim(),
+    email: email.toLowerCase().trim(),
     hashedPassword
   });
 
   // TODO: create user token with jwt and include that token in response json.
   res.status(201).json({ user: { id: user.id } });
-  res.redirect('/');
 }));
 
 router.get(

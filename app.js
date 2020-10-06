@@ -7,19 +7,26 @@ const { environment } = require('./config');
 
 const indexRouter = require('./routes/api/index');
 const usersRouter = require('./routes/api/users');
+<<<<<<< HEAD
+=======
+const responsesRouter = require('./routes/responses');
+>>>>>>> 58d97f1cae0c6850f1705f303d9da896f8b595b2
 
 const app = express();
 const storiesRouter = require('./routes/api/stories');
 
 app.use(morgan('dev'));
 app.use(express.json());
+<<<<<<< HEAD
 app.use(express.static(path.join(__dirname, 'public', 'styles')));
 app.set('view engine', 'pug');
 
 app.use(indexRouter);
+=======
+>>>>>>> 58d97f1cae0c6850f1705f303d9da896f8b595b2
 app.use('/stories', storiesRouter);
 app.use('/users', usersRouter);
-
+app.use('/responses', responsesRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested resource couldn\'t be found.');
@@ -60,4 +67,3 @@ app.use((err, req, res, next) => {
 
 
 module.exports = app;
-
