@@ -3,6 +3,9 @@ const router = express.Router();
 const db = require('../db/models');
 const { Response, User } = db;
 const { asyncHandler } = require('../utils');
+const { requireAuth } = require("../auth");
+
+router.use(requireAuth);
 
 router.get('/', asyncHandler(async (req, res) => {
     const responses = await Response.findAll({
