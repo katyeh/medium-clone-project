@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { asyncHandler, handleValidationErrors } = require("../utils");
+const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check } = require('express-validator');
-const {User, Story} = require("../db/models");
+const {User, Story} = require("../../db/models");
 
 
 
