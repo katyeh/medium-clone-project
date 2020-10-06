@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 
+const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
 
 const usersRouter = require('./routes/api/users');
@@ -28,6 +29,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  console.log(err);
   res.status(err.status || 500);
   const acceptHeader = req.get('Accept');
 
