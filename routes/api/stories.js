@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const db = require('../db/models');
+const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
 const {User, Story, Response } = db;
-const express = require('express');
-const router = express.Router();
-const { requireAuth } = require('../auth');
+// const { requireAuth } = require('../auth');
 
-router.use(requireAuth);
+// router.use(requireAuth);
 
 const storyValidator = [
   check('body')
@@ -36,10 +34,10 @@ const validateResponse = [
 ];
 
 router.get('/:id/responses', asyncHandler(async (req, res, next) => {
-  const { storyId } = req.body;
+  const storyId = req.params.id;
   const responses = await Response.findAll({
     where: { storyId },
-    include: [{ model: User, as: "user", attributes: ["username"] }],
+    include: [{ model: User, attributes: ["username"] }],
     order: [["createdAt", "DESC"]]
   })
   res.json({ responses });
