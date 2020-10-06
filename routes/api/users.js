@@ -39,14 +39,23 @@ const emailAndPasswordValidation = [
     .isEmail()
     .withMessage('Please enter a valid email.')
     .isLength({ max: 55 })
-    .withMessage('Email address cannot be over 55 characters long.')
-    .custom(value => {
-      return User.findOne({ where: { email: value }})
-        .then(user => {
-          if (user) throw new Error('The provided email address is already used by another account.');
-          else return true;
-        });
-    }),
+    .withMessage('Email address cannot be over 55 characters long.'),
+    // ** Not working so need to fix the below codes.
+    // .custom(value => {
+    //   if (value.split(' ').length > 1) {
+    //     throw new Error('Password cannot have spaces.');
+    //   }
+    //   return true;
+    // }),
+    // .custom(value => {
+    //   return User.findOne({ where: { email: value }})
+    //     .then(user => {
+    //       if (user) {
+    //         throw new Error('The provided email address is already used by another account.');
+    //       }
+    //       return true;
+    //     });
+    // }),
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a valid password.'),
@@ -61,7 +70,7 @@ const emailAndPasswordValidation = [
     })
 ];
 
-router.get("/:id", asyncHandler(async (req, res, next) => {
+router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
 
 }));
 
@@ -74,21 +83,39 @@ router.post("/",
   asyncHandler(async (req, res, next) => {
   const { fullName, username, email, password } = req.body;
 
-  const hashedPassword = await hashPassword(password);
+  const hashedPassword = await hashPassword(password.trim());
   const user = await User.create({
-    fullName,
-    username,
-    email,
+    fullName: fullName.trim(),
+    username: username.trim(),
+    email: email.trim(),
     hashedPassword
   });
-  res.json({
-    user
-  });
+
+  const { id } = user;
+
+  // TODO: create user token with jwt and include that token in response json.
+  res.status(201).json({ id });
   res.redirect('/');
 }));
 
-router.get("/token", asyncHandler(async (req, res, next) => {
-
+router.post("/token", 
+  check('email')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a valid email address.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a valid password.'),
+  asyncHandler(async (req, res, next) => {
+    const { email, password } = req.body;
+    const user = await User.findAll();
+    console.log(user)
+    // console.log(User.toString())
+    // const user = await User.findOne({
+    //   where: { email }
+    // });
+    // console.log('!!!', user)
+    console.log('HIHIHIHIHI')
+    // console.log('!!!!', user.validatePassword(password));
 }));
 
 module.exports = router;
