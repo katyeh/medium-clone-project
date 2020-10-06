@@ -3,6 +3,7 @@ const { check } = require('express-validator');
 
 const { User, Follow } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
+const { requireAuth } = require('../../auth');
 
 const router = express();
 

@@ -3,14 +3,14 @@ const router = express.Router();
 const db = require('../db/models');
 const { Response, User } = db;
 const { asyncHandler } = require('../utils');
+const { requireAuth } = require('../auth');
 
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/', requireAuth, asyncHandler(async (req, res) => {
+    const { userId } = req.body;
     const responses = await Response.findAll({
-        include: [{ model: User, attributes: ["username"] }],
-        order: [["createdAt", "DESC"]],
-        attributes: ["body"],
+      where: { userId }
     });
-    res.json({ responses });
+    res.json({ 'Success': "successful" });
 }));
 
 const responseNotFound = (id) => {

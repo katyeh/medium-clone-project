@@ -4,10 +4,10 @@ const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap } = db;
-// const { requireAuth } = require('../auth');
+const { requireAuth } = require('../../auth');
 
 
-// router.use(requireAuth);
+router.use(requireAuth);
 
 const storyValidator = [
   check('body')
