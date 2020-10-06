@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     fullName: {
@@ -40,5 +42,8 @@ module.exports = (sequelize, DataTypes) => {
     }
     User.belongsToMany(models.User, columnMappingFollower)
   };
+  User.prototype.validatePassword = function(password) {
+    return bcrypt.compareSync(password, this.hashedPassword.toString());
+  }
   return User;
 };
