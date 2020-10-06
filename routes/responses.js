@@ -10,7 +10,10 @@ router.use(requireAuth);
 router.get('/', asyncHandler(async (req, res) => {
     const { userId } = req.body;
     const responses = await Response.findAll({
-        where: { userId }
+        where: { userId },
+        include: [{ model: User, attributes: ["username"] }],
+        order: [["createdAt", "DESC"]],
+        attributes: ["body"],
     });
     res.json({ responses });
 }));
