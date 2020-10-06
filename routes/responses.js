@@ -25,4 +25,4 @@ router.get('/', asyncHandler(async (req, res) => {
     res.json({ responses });
 }));
 
-router.get('/:id')
+module.exports = router;
