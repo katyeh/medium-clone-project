@@ -60,7 +60,8 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
         userId,
         storyId
     })
-    res.json({ clap });
+    const clapAmount = await Clap.count({ where: { storyId }});
+    res.json({ clapAmount });
 }));
 
 router.post("/:storyId/responses/:responseId/claps", asyncHandler(async(req, res) => {
@@ -70,7 +71,8 @@ router.post("/:storyId/responses/:responseId/claps", asyncHandler(async(req, res
         userId,
         responseId
     })
-    res.json({  })
+    const clapAmount = await Clap.count({ where: { responseId }});
+    res.json({ clapAmount });
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
