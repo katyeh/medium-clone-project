@@ -41,14 +41,14 @@ const emailAndPasswordValidation = [
         .then(user => {
           if (user) throw new Error('The provided email address is already used by another account.')
         });
-    })
+    }),
   check('password')
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a valid password.')
+    .withMessage('Please enter a valid password.'),
   check('confirmPassword')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value to confirm password.')
-    .custom(value, { req } => {
+    .custom((value, { req }) => {
       if (value !== req.body.password) {
         throw new Error('The password fields must match.');
       }
@@ -77,6 +77,7 @@ router.post("/",
   res.json({
     user
   });
+  res.redirect('/');
 }));
 
 router.get("/token", asyncHandler(async (req, res, next) => {

@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { validationResult } = require('express-validator');
 
 const asyncHandler = handler => {
   return (req, res, next) => {
@@ -12,7 +13,20 @@ const hashPassword = async (password) => {
   return hashedPassword;
 }
 
-// handleValidationErrors middleware for express-validator
+const handleValidationErrors = (req, res, next) => {
+  const validatorErrors = validationResult(req);
+
+  if (!validatorErrors.isEmpty()) {
+    const errors = validationErrors.array().map(error => error.msg);
+
+    const err = new Error('Bad request.');
+    err.status = 400; 
+    err.title = 'Bad Request.';
+    err.errors = errors;
+    return next(err);
+  }
+  next();
+};
 
 module.exports = {
   asyncHandler,
