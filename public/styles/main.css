@@ -13,7 +13,11 @@ html {
   font-size: 62.5%;
 }
 
+#footer {
+  background-color: gray;
+}
+
 #navbar {
-  background-color: red;
+  background-color: gray;
 }
 /*# sourceMappingURL=main.css.map */

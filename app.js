@@ -12,8 +12,11 @@ const responsesRouter = require('./routes/responses');
 const app = express();
 const storiesRouter = require('./routes/api/stories');
 
+app.set('view engine', 'pug');
+app.use(express.static(path.join(__dirname, 'public/styles')));
 app.use(morgan('dev'));
 app.use(express.json());
+
 app.use(indexRouter);
 app.use('/stories', storiesRouter);
 app.use('/users', usersRouter);
@@ -24,7 +27,7 @@ app.use((req, res, next) => {
   err.errors = ['The requested resource couldn\'t be found.'];
   err.status = 404;
   next(err);
-})
+});
 
 app.use((err, req, res, next) => {
   if (err instanceof ValidationError) {

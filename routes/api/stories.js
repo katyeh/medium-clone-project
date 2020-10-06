@@ -61,6 +61,7 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
         storyId
     })
     res.json({ clap });
+}));
 
 router.get('/', asyncHandler(async (req, res, next) => {
   const { userId } = req.body;
@@ -101,4 +102,5 @@ router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(as
     next(storyNotFoundError(storyId))
   }
 } ))
+
 module.exports = router;
