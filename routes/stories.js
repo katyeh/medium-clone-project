@@ -18,11 +18,11 @@ const storyValidator = [
 ]
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { title, body } = req.body;
+  const { title, body, userId } = req.body;
   const story = await Story.create({
     title,
     body,
-    userId: req.user.id
+    userId
   });
   res.redirect('/stories')
 }))
