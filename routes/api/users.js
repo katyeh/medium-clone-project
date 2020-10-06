@@ -1,17 +1,28 @@
 const express = require("express");
-const bcrypt = require('bcrypt');
 const { User } = require("../../db/models");
+const { asyncHandler, hashPassword } = require("../../utils");
 
 const router = express();
 
-router.get("/:id", async (req, res) => {});
+router.get("/:id", asyncHandler(async (req, res, next) => {
 
-router.post("/", async (req, res) => {
+}));
+
+router.post("/", asyncHandler(async (req, res, next) => {
   const { fullName, username, email, password } = req.body;
+  console.log('hi')
 
-  console.log(req.body);
-  // const user = await User.create({});
-});
-router.get("/token", async (req, res) => {});
+  const hashedPassword = await hashPassword(password);
+  const user = await User.create({
+    fullName,
+    username,
+    email,
+    hashedPassword
+  });
+}));
+
+router.get("/token", asyncHandler(async (req, res, next) => {
+
+}));
 
 module.exports = router;

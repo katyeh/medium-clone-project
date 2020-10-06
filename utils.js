@@ -6,6 +6,7 @@ const asyncHandler = handler => {
   }
 }
 
+// Need to AWAIT when calling hashPassword!!
 const hashPassword = async (password) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   return hashedPassword;
@@ -14,5 +15,6 @@ const hashPassword = async (password) => {
 // handleValidationErrors middleware for express-validator
 
 module.exports = {
-  asyncHandler
+  asyncHandler,
+  hashPassword
 }
