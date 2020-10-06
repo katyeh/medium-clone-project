@@ -54,13 +54,14 @@ router.post(
   }));
 
 router.post("/:id/clap", asyncHandler(async (req, res) => {
-    const { userId } = req.body;
-    const storyId = req.params.id;
-    const clap = await Clap.create({
-        userId,
-        storyId
-    })
-    res.json({ clap });
+  const { userId } = req.body;
+  const storyId = req.params.id;
+  const clap = await Clap.create({
+    userId,
+    storyId
+  })
+  res.json({ clap });
+}))
 
 router.get('/', asyncHandler(async (req, res, next) => {
   const { userId } = req.body;
@@ -100,7 +101,26 @@ router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(as
   } else {
     next(storyNotFoundError(storyId))
   }
-} ))
+}))
+
+router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const storyId = parseInt(req.params.id);
+  const responseClaps = await Clap.findAll({
+    where: { storyId }
+  })
+  const responses = await Response.findAll({
+    where:{storyId}
+  })
+  const story = await Story.findByPk(storyId);
+  if (story) {
+    await responseClaps.forEach(async (clap) => await clap.destroy());
+    await responses.forEach(async (response) => await response.destroy());
+    await story.destroy();
+  } else {
+    next(storyNotFoundError(storyId));
+  }
+  res.status(204).end()
+}))
 
 
 
