@@ -61,6 +61,17 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
         storyId
     })
     res.json({ clap });
+}));
+
+router.post("/:storyId/responses/:responseId/claps", asyncHandler(async(req, res) => {
+    const { userId } = req.body;
+    const responseId = req.params.responseId;
+    const clap = await Clap.create({
+        userId,
+        responseId
+    })
+    res.json({  })
+}));
 
 router.get('/', asyncHandler(async (req, res, next) => {
   const { userId } = req.body;
