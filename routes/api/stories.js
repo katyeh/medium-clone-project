@@ -38,6 +38,12 @@ router.get('/', asyncHandler(async (req, res, next) => {
   res.json({stories})
 }))
 
+const storyNotFoundError = (id) => {
+  const err = new Error('Story not found!');
+  err.title = [`Story with id of ${id} not found!`];
+  err.status = 404;
+  return (err)
+}
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const story = await Story.findByPk(req.params.id);
   if (story) {
@@ -47,14 +53,20 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   }
 }))
 
-const storyNotFoundError = (id) => {
-  const err = new Error('Story not found!');
-  err.title = [`Story with id of ${id} not found!`];
-  err.status = 404;
-  return (err)
-}
 
-
+router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
+  const storyId = parseInt(req.params.id);
+  const story = await Story.findByPk(storyId);
+  if (story) {
+    await story.update({
+      body: req.body.body,
+      title: req.body.title
+    })
+    res.json({story})
+  } else {
+    next(storyNotFoundError(storyId))
+  }
+} ))
 
 
 
