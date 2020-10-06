@@ -101,8 +101,4 @@ router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(as
     next(storyNotFoundError(storyId))
   }
 } ))
-
-
-
-
 module.exports = router;
