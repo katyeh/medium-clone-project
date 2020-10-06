@@ -61,6 +61,7 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
         storyId
     })
     res.json({ clap });
+}));
 
 router.get('/', asyncHandler(async (req, res, next) => {
   const { userId } = req.body;
