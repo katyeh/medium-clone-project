@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check } = require('express-validator');
-const {User, Story} = require("../../db/models");
+const {User, Story, Clap} = require("../../db/models");
 
 
 
@@ -14,7 +14,6 @@ const storyValidator = [
   check('body')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a valid story')
-
 ]
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
@@ -27,7 +26,15 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
   res.redirect('/stories')
 }))
 
-
+router.post("/:id/clap", asyncHandler(async (req, res) => {
+    const { userId } = req.body;
+    const storyId = req.params.id;
+    const clap = await Clap.create({
+        userId,
+        storyId
+    })
+    res.json({ clap });
+}))
 
 
 

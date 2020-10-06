@@ -9,22 +9,11 @@ const usersRouter = require('./routes/api/users');
 
 
 const app = express();
-const storiesRouter = require('./routes/stories');
+const storiesRouter = require('./routes/api/stories');
 
 app.use(morgan('dev'));
 app.use(express.json());
 app.use('/stories', storiesRouter);
-
-
-
-
-
-
-
-
-
-
-
 app.use('/users', usersRouter);
 
 
@@ -67,4 +56,3 @@ app.use((err, req, res, next) => {
 
 
 module.exports = app;
-
