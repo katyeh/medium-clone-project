@@ -25,6 +25,4 @@ router.get('/', asyncHandler(async (req, res) => {
     res.json({ responses });
 }));
 
-const responseNotFound = (id) => {
-    const err = Error(`Response with the `)
-}
+router.get('/:id')
