@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Clap.associate = function(models) {
+    Clap.belongsTo(models.User, { foreignKey: 'userId' });
     Clap.belongsTo(models.Story, { foreignKey: 'storyId' });
     Clap.belongsTo(models.Response, { foreignKey: 'responseId' });
   };

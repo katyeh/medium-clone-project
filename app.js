@@ -9,9 +9,20 @@ const usersRouter = require('./routes/api/users');
 const responsesRouter = require('./routes/responses');
 
 const app = express();
+const storiesRouter = require('./routes/stories');
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use('/stories', storiesRouter);
+
+
+
+
+
+
+
+
+
 
 
 app.use('/users', usersRouter);
