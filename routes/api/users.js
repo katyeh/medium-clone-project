@@ -70,9 +70,13 @@ const emailAndPasswordValidation = [
     })
 ];
 
-router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
-
-}));
+const userNotFoundError = id => {
+  const err = new Error('User not found.');
+  err.errors = [`User with id of ${id} could not be found.`];
+  err.title = 'User not found';
+  err.status = 404;
+  return err;
+};
 
 // TODO: save fullname Uppercase
 router.post("/", 
@@ -91,11 +95,41 @@ router.post("/",
     hashedPassword
   });
 
-  const { id } = user;
-
   // TODO: create user token with jwt and include that token in response json.
   res.status(201).json({ user: { id: user.id } });
   res.redirect('/');
+}));
+
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    // TODO: Must validate token to check if the user has authority to view the info!
+
+    const user = await User.findOne({
+      where: { id: req.params.id },
+    });
+
+    if (user) {
+      res.json({ user: { fullName: user.fullName, email: user.email } });
+    } else {
+      next(userNotFoundError(req.params.id));
+    }
+  })
+);
+
+router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  // TODO: Must validate token to check if the user has authority to delete the user info!!
+
+  const user = await User.findOne({
+    where: { id: req.params.id },
+  });
+
+  if (user) {
+    await user.destroy();
+    res.json({ message: `Deleted user with username of ${user.username}.` });
+  } else {
+    next(userNotFoundError(req.params.id));
+  }
 }));
 
 router.post("/token", 
@@ -121,6 +155,6 @@ router.post("/token",
 
     // TODO: create user token with jwt and include that token in response json.
     res.json({ user: { id: user.id } });
-  }));
+}));
 
 module.exports = router;
