@@ -12,6 +12,7 @@
   * PUT /users/:id => update a users info (returns full user info)
   * DELETE /stories/:id => delete a story
 * responses
+  * GET /responses => gets all responses from a single user
   * GET /stories/:id/responses => gets all responses for a single story
   * POST /stories/:id/responses => create a new comment
   * DELETE /responses/:id => delete a response
