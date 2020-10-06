@@ -39,14 +39,23 @@ const emailAndPasswordValidation = [
     .isEmail()
     .withMessage('Please enter a valid email.')
     .isLength({ max: 55 })
-    .withMessage('Email address cannot be over 55 characters long.')
-    .custom(value => {
-      return User.findOne({ where: { email: value }})
-        .then(user => {
-          if (user) throw new Error('The provided email address is already used by another account.');
-          else return true;
-        });
-    }),
+    .withMessage('Email address cannot be over 55 characters long.'),
+    // ** Not working so need to fix the below codes.
+    // .custom(value => {
+    //   if (value.split(' ').length > 1) {
+    //     throw new Error('Password cannot have spaces.');
+    //   }
+    //   return true;
+    // }),
+    // .custom(value => {
+    //   return User.findOne({ where: { email: value }})
+    //     .then(user => {
+    //       if (user) {
+    //         throw new Error('The provided email address is already used by another account.');
+    //       }
+    //       return true;
+    //     });
+    // }),
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a valid password.'),
@@ -61,9 +70,13 @@ const emailAndPasswordValidation = [
     })
 ];
 
-router.get("/:id", asyncHandler(async (req, res, next) => {
-
-}));
+const userNotFoundError = id => {
+  const err = new Error('User not found.');
+  err.errors = [`User with id of ${id} could not be found.`];
+  err.title = 'User not found';
+  err.status = 404;
+  return err;
+};
 
 // TODO: save fullname Uppercase
 router.post("/", 
@@ -74,21 +87,74 @@ router.post("/",
   asyncHandler(async (req, res, next) => {
   const { fullName, username, email, password } = req.body;
 
-  const hashedPassword = await hashPassword(password);
+  const hashedPassword = await hashPassword(password.trim());
   const user = await User.create({
-    fullName,
-    username,
-    email,
+    fullName: fullName.trim(),
+    username: username.trim(),
+    email: email.trim(),
     hashedPassword
   });
-  res.json({
-    user
-  });
+
+  // TODO: create user token with jwt and include that token in response json.
+  res.status(201).json({ user: { id: user.id } });
   res.redirect('/');
 }));
 
-router.get("/token", asyncHandler(async (req, res, next) => {
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    // TODO: Must validate token to check if the user has authority to view the info!
 
+    const user = await User.findOne({
+      where: { id: req.params.id },
+    });
+
+    if (user) {
+      res.json({ user: { fullName: user.fullName, email: user.email } });
+    } else {
+      next(userNotFoundError(req.params.id));
+    }
+  })
+);
+
+router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  // TODO: Must validate token to check if the user has authority to delete the user info!!
+
+  const user = await User.findOne({
+    where: { id: req.params.id },
+  });
+
+  if (user) {
+    await user.destroy();
+    res.json({ message: `Deleted user with username of ${user.username}.` });
+  } else {
+    next(userNotFoundError(req.params.id));
+  }
+}));
+
+router.post("/token", 
+  check('email')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a valid email address.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a valid password.'),
+  asyncHandler(async (req, res, next) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({
+      where: { email },
+    });
+
+    if (!user || !user.validatePassword(password)) {
+      const err = new Error("Login failed.");
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+      return next(err);
+    }
+
+    // TODO: create user token with jwt and include that token in response json.
+    res.json({ user: { id: user.id } });
 }));
 
 module.exports = router;
