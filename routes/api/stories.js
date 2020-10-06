@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
-const { check } = require('express-validator');
-const {User, Story, Clap} = require("../../db/models");
+const { check, validationResult } = require('express-validator');
+const {User, Story, Response, Clap } = db;
+// const { requireAuth } = require('../auth');
 
 
-
-
-
-
+// router.use(requireAuth);
 
 const storyValidator = [
   check('body')
@@ -26,6 +25,33 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
   res.redirect('/stories')
 }))
 
+const validateResponse = [
+    check('body')
+        .exists({ checkFalsy: true })
+        .withMessage("Response can't be empty.")
+        .isLength({ max: 255 })
+        .withMessage("Response can't be longer than 255 characters.")
+];
+
+router.get('/:id/responses', asyncHandler(async (req, res, next) => {
+  const storyId = req.params.id;
+  const responses = await Response.findAll({
+    where: { storyId },
+    include: [{ model: User, attributes: ["username"] }],
+    order: [["createdAt", "DESC"]]
+  })
+  res.json({ responses });
+}));
+
+router.post(
+  '/:id/responses',
+  validateResponse,
+  handleValidationErrors,
+  asyncHandler(async (req, res) => {
+    const { body } = req.body;
+    const response = await response.create({ body, userId: req.user.id });
+    res.status(201).json({ tweet });
+  }));
 
 router.post("/:id/clap", asyncHandler(async (req, res) => {
     const { userId } = req.body;
