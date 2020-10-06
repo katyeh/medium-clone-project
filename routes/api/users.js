@@ -94,7 +94,7 @@ router.post("/",
   const { id } = user;
 
   // TODO: create user token with jwt and include that token in response json.
-  res.status(201).json({ id });
+  res.status(201).json({ user: { id: user.id } });
   res.redirect('/');
 }));
 
@@ -107,15 +107,20 @@ router.post("/token",
     .withMessage('Please enter a valid password.'),
   asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
-    const user = await User.findAll();
-    console.log(user)
-    // console.log(User.toString())
-    // const user = await User.findOne({
-    //   where: { email }
-    // });
-    // console.log('!!!', user)
-    console.log('HIHIHIHIHI')
-    // console.log('!!!!', user.validatePassword(password));
-}));
+    const user = await User.findOne({
+      where: { email },
+    });
+
+    if (!user || !user.validatePassword(password)) {
+      const err = new Error("Login failed.");
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+      return next(err);
+    }
+
+    // TODO: create user token with jwt and include that token in response json.
+    res.json({ user: { id: user.id } });
+  }));
 
 module.exports = router;
