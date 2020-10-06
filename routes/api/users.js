@@ -6,6 +6,7 @@ const { asyncHandler, hashPassword, handleValidationErrors } = require("../../ut
 
 const router = express();
 
+// TODO: strings only
 const userValidation = [
   check('fullName')
     .exists({ checkFalsy: true })
@@ -14,11 +15,13 @@ const userValidation = [
     .withMessage('Name cannot be over 55 characters long.')
     .custom(value => {
       if (value.split(' ').length < 2) {
-        throw new Error('You must enter both first name and last name.');
+        throw new Error('You must enter both first name and last name, separated by a space.');
       }
+      return true;
     })
 ];
 
+// TODO: only some characters allowed
 const usernameValidation = [
   check('username')
     .exists({ checkFalsy: true })
@@ -29,6 +32,7 @@ const usernameValidation = [
     .withMessage('Username cannot be over 40 characters long.')
 ];
 
+// TODO: minlength, special characters
 const emailAndPasswordValidation = [
   check('email')
     .exists({ checkFalsy: true })
@@ -39,7 +43,8 @@ const emailAndPasswordValidation = [
     .custom(value => {
       return User.findOne({ where: { email: value }})
         .then(user => {
-          if (user) throw new Error('The provided email address is already used by another account.')
+          if (user) throw new Error('The provided email address is already used by another account.');
+          else return true;
         });
     }),
   check('password')
@@ -60,6 +65,7 @@ router.get("/:id", asyncHandler(async (req, res, next) => {
 
 }));
 
+// TODO: save fullname Uppercase
 router.post("/", 
   userValidation,
   usernameValidation,
