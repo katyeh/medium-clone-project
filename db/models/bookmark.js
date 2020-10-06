@@ -11,10 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Bookmark.associate = function(models) {
-    // associations can be defined here
-    Bookmark.hasMany(models.User, {
+    Bookmark.belongsTo(models.User, {
       as: "users",
-      foreignKey:"userId"
+      foreignKey: "userId"
     })
     Bookmark.belongsTo(models.Story, {
       as: "stories",
