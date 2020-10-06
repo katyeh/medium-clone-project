@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/models');
-const { Response } = db;
+const { Response, User } = db;
 const { asyncHandler } = require('../utils');
 
 router.get('/', asyncHandler(async (req, res) => {
     const responses = await Response.findAll({
-        include: [{ model: User, as: "user", attributes: ["username"] }],
+        include: [{ model: User, attributes: ["username"] }],
         order: [["createdAt", "DESC"]],
         attributes: ["body"],
     });
