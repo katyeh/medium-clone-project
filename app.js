@@ -16,6 +16,8 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public/styles')));
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public', 'styles')));
+app.set('view engine', 'pug');
 
 app.use(indexRouter);
 app.use('/stories', storiesRouter);
