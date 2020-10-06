@@ -1,7 +1,7 @@
 const express = require("express");
 const { check } = require('express-validator');
 
-const { User } = require("../../db/models");
+const { User, Follow } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
 
 const router = express();
@@ -80,7 +80,7 @@ const userNotFoundError = id => {
 };
 
 // TODO: save fullname Uppercase
-router.post("/", 
+router.post("/",
   userValidation,
   usernameValidation,
   emailAndPasswordValidation,
@@ -133,7 +133,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   }
 }));
 
-router.post("/token", 
+router.post("/token",
   check('email')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a valid email address.'),
@@ -156,6 +156,15 @@ router.post("/token",
 
     // TODO: create user token with jwt and include that token in response json.
     res.json({ user: { id: user.id } });
+}));
+
+router.post("/follow", asyncHandler(async(req, res) => {
+    const { followerId, followeeId } = req.body;
+    await Follower.create({
+        followeeId,
+        followerId
+    });
+    res.end();
 }));
 
 module.exports = router;

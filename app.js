@@ -1,16 +1,21 @@
 const express = require('express');
 const morgan = require('morgan');
 
+
+const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
 
 const usersRouter = require('./routes/api/users');
+
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
 
+
 app.use('/users', usersRouter);
+
 
 app.use((req, res, next) => {
   const err = new Error('The requested resource couldn\'t be found.');
@@ -28,6 +33,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  console.log(err);
   res.status(err.status || 500);
   const acceptHeader = req.get('Accept');
 
