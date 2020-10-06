@@ -1,30 +1,23 @@
 const express = require('express');
 const morgan = require('morgan');
-
+const path = require('path');
 
 const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
 
+const indexRouter = require('./routes/api/index');
 const usersRouter = require('./routes/api/users');
 
-
 const app = express();
-const storiesRouter = require('./routes/stories');
+const storiesRouter = require('./routes/api/stories');
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public', 'styles')));
+app.set('view engine', 'pug');
+
+app.use(indexRouter);
 app.use('/stories', storiesRouter);
-
-
-
-
-
-
-
-
-
-
-
 app.use('/users', usersRouter);
 
 

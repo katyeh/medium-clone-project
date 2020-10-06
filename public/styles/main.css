@@ -12,4 +12,8 @@ html {
           box-sizing: border-box;
   font-size: 62.5%;
 }
+
+#navbar {
+  background-color: red;
+}
 /*# sourceMappingURL=main.css.map */
