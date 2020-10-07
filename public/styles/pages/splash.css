@@ -1,0 +1,9 @@
+#splash * {
+  border: 1px solid black;
+}
+
+#splash *__header {
+  height: 10vh;
+  background-color: red;
+}
+/*# sourceMappingURL=splash.css.map */

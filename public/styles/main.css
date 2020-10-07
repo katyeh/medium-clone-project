@@ -96,6 +96,13 @@ html {
       grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
 }
 
+#splash {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
+      grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
+}
+
 #navbar {
   display: -ms-grid;
   display: grid;
