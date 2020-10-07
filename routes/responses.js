@@ -3,9 +3,14 @@ const router = express.Router();
 const db = require('../db/models');
 const { Response, User } = db;
 const { asyncHandler } = require('../utils');
+const { requireAuth } = require("../auth");
+
+router.use(requireAuth);
 
 router.get('/', asyncHandler(async (req, res) => {
+    const { userId } = req.body;
     const responses = await Response.findAll({
+        where: { userId },
         include: [{ model: User, attributes: ["username"] }],
         order: [["createdAt", "DESC"]],
         attributes: ["body"],
