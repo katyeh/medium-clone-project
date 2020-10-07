@@ -15,8 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Response.associate = function(models) {
-    Response.belongsTo(models.Story, { foreignKey: 'storyId' });
+    Response.belongsTo(models.Story, {
+      foreignKey: "storyId"
+    });
     Response.belongsTo(models.User, { foreignKey: 'userId' });
+    Response.hasMany(models.Clap, {
+      foreignKey: "responseId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
   };
   return Response;
 };

@@ -10,26 +10,24 @@ const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 // router.use(requireAuth);
 
 const storyValidator = [
+  check('subtitle')
+    .isLength({ max: 140 })
+    .withMessage('Subtitle can only be 140 characters long.'),
   check('body')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a valid story')
 ]
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { title, body, userId, genreIds, storyId, } = req.body;
+  const { title, subtitle, body, userId } = req.body;
   const story = await Story.create({
     title,
+    subtitle,
     body,
     userId
   });
-  // genreIds.forEach(async (genreId) => {
-  //  await StoryGenre.create({
-  //     storyId,
-  //     genreId
-  //   })
-  // })
-  res.redirect('/stories')
-}))
+  res.redirect('/stories');
+}));
 
 const validateResponse = [
     check('body')
@@ -55,28 +53,56 @@ router.post(
   handleValidationErrors,
   asyncHandler(async (req, res) => {
     const { body } = req.body;
-    const response = await response.create({ body, userId: req.user.id });
-    res.status(201).json({ tweet });
+    const response = await Response.create({
+      body,
+      storyId: req.params.id,
+      userId: req.user.id,
+    });
+    res.status(201).json({ response });
   }));
 
+router.get("/:id/claps", asyncHandler(async(req, res) => {
+    const storyId = req.params.id;
+    const clapAmount = await Clap.count({ where: { storyId }});
+    res.json({ clapAmount });
+}));
+
+router.get("/:storyId/responses/:responseId/claps", asyncHandler(async(req, res) => {
+    const responseId = req.params.id;
+    const clapAmount = await Clap.count({ where: { responseId }});
+    res.json({ clapAmount });
+}))
+
 router.post("/:id/clap", asyncHandler(async (req, res) => {
-    const { userId } = req.body;
+    const userId = req.user.id;
     const storyId = req.params.id;
     const clap = await Clap.create({
-        userId,
-        storyId
+      userId,
+      storyId
     })
-    res.json({ clap });
+    const clapAmount = await Clap.count({ where: { storyId }});
+    res.json({ clapAmount });
+  }));
+
+  router.post("/:storyId/responses/:responseId/clap", asyncHandler(async(req, res) => {
+    const userId = req.user.id;
+    const responseId = req.params.responseId;
+    const clap = await Clap.create({
+        userId,
+        responseId
+    })
+    const clapAmount = await Clap.count({ where: { responseId }});
+    res.json({ clapAmount });
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const { userId }  = req.body;
+  const userId  = 2;
   const stories = await Story.findAll({
     where: { userId },
     include: [{ model: User, as: "user", attributes: ["username"] }],
     order: [["createdAt", "DESC"]]
   })
-  res.json({stories})
+  res.json({ stories })
 }))
 
 const storyNotFoundError = (id) => {
@@ -85,6 +111,7 @@ const storyNotFoundError = (id) => {
   err.status = 404;
   return (err)
 }
+
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const story = await Story.findByPk(req.params.id);
   if (story) {
@@ -107,28 +134,17 @@ router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(as
   } else {
     next(storyNotFoundError(storyId))
   }
-}))
+  }))
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const storyId = parseInt(req.params.id);
-  const responseClaps = await Clap.findAll({
-    where: { storyId }
-  })
-  const responses = await Response.findAll({
-    where:{storyId}
-  })
   const story = await Story.findByPk(storyId);
   if (story) {
-    await responseClaps.forEach(async (clap) => await clap.destroy());
-    await responses.forEach(async (response) => await response.destroy());
     await story.destroy();
   } else {
     next(storyNotFoundError(storyId));
   }
   res.status(204).end()
 }))
-
-
-
 
 module.exports = router;
