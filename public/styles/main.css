@@ -12,4 +12,12 @@ html {
           box-sizing: border-box;
   font-size: 62.5%;
 }
+
+#footer {
+  background-color: gray;
+}
+
+#navbar {
+  background-color: gray;
+}
 /*# sourceMappingURL=main.css.map */
