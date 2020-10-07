@@ -42,9 +42,12 @@ html {
 .story__section-title {
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   font-size: 22.5rem;
+
+#footer {
+  background-color: gray;
 }
 
 #navbar {
-  background-color: red;
+  background-color: gray;
 }
 /*# sourceMappingURL=main.css.map */
