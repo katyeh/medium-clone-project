@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    subtitle: {
+      type: DataTypes.STRING(140),
+    },
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -15,11 +18,25 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Story.associate = function(models) {
-    // associations can be defined here
+    Story.hasMany(models.Response, {
+      foreignKey: "storyId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
+    Story.hasMany(models.Clap, {
+      foreignKey: "storyId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
+    Story.hasMany(models.StoryGenre, {
+      foreignKey: 'storyId',
+      onDelete: "CASCADE",
+      hooks: true,
+    })
     Story.belongsTo(models.User, {
       as: "user",
       foreignKey: "userId"
-    })
+    });
   };
   return Story;
 };

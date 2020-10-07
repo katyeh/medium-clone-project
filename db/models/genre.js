@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Genre.associate = function(models) {
     Genre.hasMany(models.StoryGenre, {
-      foreignKey: 'genreId'
+      foreignKey: "genreId",
+      onDelete: "CASCADE",
+      hooks: true,
     });
   };
   return Genre;

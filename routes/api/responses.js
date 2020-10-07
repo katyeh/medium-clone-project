@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db/models');
+const db = require('../../db/models');
 const { Response, User } = db;
-const { asyncHandler } = require('../utils');
-const { requireAuth } = require('../auth');
+const { asyncHandler } = require('../../utils');
+const { requireAuth } = require('../../auth');
 
 router.use(requireAuth);
 router.get('/', requireAuth, asyncHandler(async (req, res) => {

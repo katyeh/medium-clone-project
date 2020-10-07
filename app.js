@@ -7,7 +7,7 @@ const { environment } = require('./config');
 
 const indexRouter = require('./routes/api/index');
 const usersRouter = require('./routes/api/users');
-const responsesRouter = require('./routes/responses');
+const responsesRouter = require('./routes/api/responses');
 
 const app = express();
 const storiesRouter = require('./routes/api/stories');
@@ -53,7 +53,6 @@ app.use((err, req, res, next) => {
   };
 
   if (acceptHeader.includes('text/html')) {
-    console.log('!!!!', errorData);
     res.render('errors', errorData);
   } else if (acceptHeader === 'application/json') {
     res.json(errorData);
