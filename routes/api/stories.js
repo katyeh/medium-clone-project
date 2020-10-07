@@ -22,8 +22,8 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
     body,
     userId
   });
-  res.redirect('/stories')
-}))
+  res.redirect('/stories');
+}));
 
 const validateResponse = [
     check('body')
@@ -70,7 +70,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
     include: [{ model: User, as: "user", attributes: ["username"] }],
     order: [["createdAt", "DESC"]]
   })
-  res.json({stories})
+  res.json({ stories })
 }))
 
 const storyNotFoundError = (id) => {
@@ -101,7 +101,7 @@ router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(as
   } else {
     next(storyNotFoundError(storyId))
   }
-}))
+  }))
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const storyId = parseInt(req.params.id);
@@ -121,5 +121,6 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   }
   res.status(204).end()
 }))
+} ))
 
 module.exports = router;

@@ -13,6 +13,36 @@ html {
   font-size: 62.5%;
 }
 
+*,
+*::before,
+*::after {
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+}
+
+.story {
+  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 13rem;
+  font-style: normal;
+  font-weight: 400;
+  color: #292929;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.story__title {
+  font-family: medium-content-title-font;
+  font-size: 30rem;
+}
+
+.story__subtitle {
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-size: 15rem;
+}
+
+.story__section-title {
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-size: 22.5rem;
+
 #footer {
   background-color: gray;
 }
