@@ -145,6 +145,5 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   }
   res.status(204).end()
 }))
-} ))
 
 module.exports = router;
