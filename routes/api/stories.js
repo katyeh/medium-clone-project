@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
-const {User, Story, Response, Clap } = db;
+const {User, Story, Response, Clap, StoryGenre } = db;
 // const { requireAuth } = require('../auth');
 
 
@@ -64,7 +64,7 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const { userId } = req.body;
+  const  userId  = req.user.id;
   const stories = await Story.findAll({
     where: { userId },
     include: [{ model: User, as: "user", attributes: ["username"] }],
