@@ -24,7 +24,12 @@ signUpForm.addEventListener("submit", async (event) => {
         }
         const {
             token,
-
-        }
+            user: { id }
+        } = await res.json();
+        localStorage.setItem("READIUM_ACCESS_TOKEN", token);
+        localStorage.setItem("READIUM_CURRENT_USER_ID", id);
+    } catch (err) {
+        // TODO Add error handling
+        console.log(err);
     }
 })
