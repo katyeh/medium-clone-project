@@ -45,13 +45,6 @@ html {
   font-size: 22.5rem;
 }
 
-#main {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
-      grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
-}
-
 #main * {
   border: 1px solid black;
 }
@@ -79,7 +72,13 @@ html {
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-column: 2/ span 2;
-  height: 100vh;
+  height: 150vh;
+}
+
+#main__sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 #main__readinglist {
@@ -90,9 +89,36 @@ html {
   height: 10rem;
 }
 
+#main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
+      grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
+}
+
 #navbar {
-  grid-column: 1 / -1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
+      grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#navbar {
   border: 1px solid black;
   height: 6.5rem;
+}
+
+#navbar h1 {
+  -ms-grid-column: 2;
+  grid-column: 2;
+}
+
+#navbar__icons {
+  -ms-grid-column: 4;
+  grid-column: 4;
+  height: 100%;
 }
 /*# sourceMappingURL=main.css.map */

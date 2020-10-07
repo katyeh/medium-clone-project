@@ -1,12 +1,8 @@
 #main
-  display: grid
-  grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr
   & *
     border: 1px solid black
   &__articles
     grid-column: 2 / span 2
-    // grid-column: 2
-    // grid-row: 1 / span 1
   &__from-following
     grid-column: 4
     height: 60vh
@@ -15,8 +11,10 @@
     height: 30rem
   &__feeds
     grid-column: 2/ span 2
-    height: 100vh
+    height: 150vh
   &__sidebar
+    position: sticky
+    top: 0
   &__readinglist
     height: 55rem
   &__footer 
