@@ -1,3 +1,5 @@
+@import '../abstracts/_variables'
+
 #main
   & *
     border: 1px solid black
@@ -19,3 +21,21 @@
     height: 55rem
   &__footer 
     height: 10rem
+
+  &__prof-icon
+    border: 1px solid black
+    height: 5rem
+    width: 5rem
+    &--expanded
+      border: 1px solid black
+      position: absolute
+      top: 10rem
+      height: 60rem
+      width: 20rem
+      transform: translateX(38%)
+      background-color: $color-background-light
+
+#modal
+  & > *
+    width: 100%
+    border-bottom: 1px solid black

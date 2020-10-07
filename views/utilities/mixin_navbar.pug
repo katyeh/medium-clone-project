@@ -2,9 +2,14 @@ mixin navbar(pageName)
   nav#navbar
     h1 Readium | Greeting
     #navbar__icons
-      if pageName === 'splash'
+      if pageName == 'splash'
         form(action="/sign-up"): input(type="submit" value="Get started")
-      else if pageName === 'main'
-        p prof pic here
+      else if pageName == 'main'
+        #main__prof-icon P
+        #main__prof-icon--expanded#modal
+          .modal__header
+            div P
+          .modal__content
+            
       else
         p stuff here

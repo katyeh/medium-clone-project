@@ -89,6 +89,23 @@ html {
   height: 10rem;
 }
 
+#main__prof-icon {
+  border: 1px solid black;
+  height: 5rem;
+  width: 5rem;
+}
+
+#main__prof-icon--expanded {
+  border: 1px solid black;
+  position: absolute;
+  top: 10rem;
+  height: 60rem;
+  width: 20rem;
+  -webkit-transform: translateX(38%);
+          transform: translateX(38%);
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
 #splash * {
   border: 1px solid black;
 }
