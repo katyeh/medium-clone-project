@@ -2,8 +2,8 @@
   border: 1px solid black;
 }
 
-#splash *__header {
-  height: 10vh;
-  background-color: red;
+#splash__header {
+  backgroud-color: red;
+  height: 100px;
 }
 /*# sourceMappingURL=splash.css.map */

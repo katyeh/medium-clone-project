@@ -2,12 +2,9 @@ extends layout.pug
 
 block content
   #splash
-    header#splash__header #splash__header
+    header#splash__header
+      h1 Some slogan here
+      h2 Some sub-slogan here
+      button(type="submit" action="/sign-up") Get Started
     main#splash__main #splash__main
-    //- #splash__from-following #splash__from-following
-    //- #splash__trends #splash__trends
-    //- splash#splash__feeds splash(#splash__feeds)
-    //- aside
-    //-   #splash__sidebar
-    //-     #splash__readinglist #splash__readinglist
-    //-     footer#splash__footer footer(#splash__footer)
+    footer#splash__footer This is footer

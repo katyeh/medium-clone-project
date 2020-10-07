@@ -89,6 +89,39 @@ html {
   height: 10rem;
 }
 
+#splash * {
+  border: 1px solid black;
+}
+
+#splash__header {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / span 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60vh;
+}
+
+#splash__main {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / span 3;
+  height: 100vh;
+}
+
+#splash__footer {
+  grid-column: 1 / -1;
+  height: 40vh;
+}
+
 #main {
   display: -ms-grid;
   display: grid;
