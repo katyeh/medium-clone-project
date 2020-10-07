@@ -101,6 +101,26 @@ router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(as
   } else {
     next(storyNotFoundError(storyId))
   }
+  }))
+
+router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const storyId = parseInt(req.params.id);
+  const responseClaps = await Clap.findAll({
+    where: { storyId }
+  })
+  const responses = await Response.findAll({
+    where:{storyId}
+  })
+  const story = await Story.findByPk(storyId);
+  if (story) {
+    await responseClaps.forEach(async (clap) => await clap.destroy());
+    await responses.forEach(async (response) => await response.destroy());
+    await story.destroy();
+  } else {
+    next(storyNotFoundError(storyId));
+  }
+  res.status(204).end()
+}))
 } ))
 
 module.exports = router;
