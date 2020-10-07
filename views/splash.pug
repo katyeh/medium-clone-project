@@ -1,10 +1,15 @@
 extends layout.pug
+include ./utilities/navbar.pug
 
 block content
+  +navbar('splash')
   #splash
     header#splash__header
       h1 Some slogan here
       h2 Some sub-slogan here
-      button(type="submit" action="/sign-up") Get Started
+      #splash__contents Stuff
+      form(action="/sign-up"): input(type="submit" value="Get started")
+      p Already have an account?
+        a(href="/login") Sign in.
     main#splash__main #splash__main
     footer#splash__footer This is footer
