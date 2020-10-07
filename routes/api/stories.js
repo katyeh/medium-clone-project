@@ -53,6 +53,18 @@ router.post(
     res.status(201).json({ tweet });
   }));
 
+router.get("/:id/claps", asyncHandler(async(req, res) => {
+    const storyId = req.params.id;
+    const clapAmount = await Clap.count({ where: { storyId }});
+    res.json({ clapAmount });
+}));
+
+router.get("/:storyId/responses/:responseId/claps", asyncHandler(async(req, res) => {
+    const responseId = req.params.id;
+    const clapAmount = await Clap.count({ where: { responseId }});
+    res.json({ clapAmount });
+}))
+
 router.post("/:id/clap", asyncHandler(async (req, res) => {
     const { userId } = req.body;
     const storyId = req.params.id;
