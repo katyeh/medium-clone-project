@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
-const {User, Story, Response, Clap, StoryGenre } = db;
+const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 // const { requireAuth } = require('../auth');
 
 
@@ -16,7 +16,7 @@ const storyValidator = [
 ]
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { title, body, userId } = req.body;
+  const { title, body, userId, genreIds, storyId, } = req.body;
   const story = await Story.create({
     title,
     body,
