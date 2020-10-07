@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('main');
+router.get('/stories/create', (req, res) => {
+  res.render('stories-create');
 });
 
 module.exports = router;

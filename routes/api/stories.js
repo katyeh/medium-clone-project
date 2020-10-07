@@ -7,7 +7,7 @@ const {User, Story, Response, Clap } = db;
 const { requireAuth } = require('../../auth');
 
 
-router.use(requireAuth);
+// router.use(requireAuth);
 
 const storyValidator = [
   check('subtitle')
@@ -83,7 +83,7 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
     const clapAmount = await Clap.count({ where: { storyId }});
     res.json({ clapAmount });
   }));
-  
+
   router.post("/:storyId/responses/:responseId/clap", asyncHandler(async(req, res) => {
     const userId = req.user.id;
     const responseId = req.params.responseId;
