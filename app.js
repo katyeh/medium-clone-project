@@ -53,7 +53,6 @@ app.use((err, req, res, next) => {
   };
 
   if (acceptHeader.includes('text/html')) {
-    console.log('!!!!', errorData);
     res.render('errors', errorData);
   } else if (acceptHeader === 'application/json') {
     res.json(errorData);
