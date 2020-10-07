@@ -19,13 +19,19 @@ const storyValidator = [
 ]
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { title, subtitle, body, userId } = req.body;
+  const { title, subtitle, body, genreIds } = req.body;
   const story = await Story.create({
     title,
     subtitle,
     body,
-    userId
+    userId: req.user.id
   });
+  genreIds.forEach(async (genreId) => {
+    await StoryGenre.create({
+      storyId: story.id,
+      genreId
+    })
+  })
   res.redirect('/stories');
 }));
 
@@ -99,7 +105,13 @@ router.get('/', asyncHandler(async (req, res, next) => {
   const userId  = 2;
   const stories = await Story.findAll({
     where: { userId },
-    include: [{ model: User, as: "user", attributes: ["username"] }],
+    include: [
+      { model: User, as: "user", attributes: ["username"] },
+      {
+        model: StoryGenre,
+        include: Genre,
+      }
+    ],
     order: [["createdAt", "DESC"]]
   })
   res.json({ stories })
