@@ -22,6 +22,12 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
     body,
     userId
   });
+  // genreIds.forEach(async (genreId) => {
+  //  await StoryGenre.create({
+  //     storyId,
+  //     genreId
+  //   })
+  // })
   res.redirect('/stories')
 }))
 
@@ -64,7 +70,7 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const  userId  = req.user.id;
+  const { userId }  = req.body;
   const stories = await Story.findAll({
     where: { userId },
     include: [{ model: User, as: "user", attributes: ["username"] }],
