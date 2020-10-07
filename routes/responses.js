@@ -5,13 +5,15 @@ const { Response, User } = db;
 const { asyncHandler } = require('../utils');
 const { requireAuth } = require('../auth');
 
+router.use(requireAuth);
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
-    const { userId } = req.body;
+    const userId = req.user.id;
     const responses = await Response.findAll({
       where: { userId },
       include: [{ model: User, attributes: ["username"] }],
       order: [["createdAt", "DESC"]],
       attributes: ["body"],
+
     });
     res.json({ 'Success': "successful" });
 }));

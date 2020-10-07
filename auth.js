@@ -47,6 +47,7 @@ const getUserToken = (user) => {
     );
 
     return token;
+
 };
 
 const requireAuth = [bearerToken(), restoreUser];

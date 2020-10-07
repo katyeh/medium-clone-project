@@ -1,9 +1,8 @@
 const express = require("express");
 const { check } = require('express-validator');
-
 const { User, Follow } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
-const { requireAuth } = require('../../auth');
+const { getUserToken, requireAuth } = require('../../auth')
 
 const router = express();
 
@@ -111,7 +110,11 @@ router.post("/",
   });
 
   // TODO: create user token with jwt and include that token in response json.
-  res.status(201).json({ user: { id: user.id } });
+  const token = getUserToken(user);
+  res.status(201).json({
+    user: { id: user.id },
+    token,
+  });
 }));
 
 router.get(
