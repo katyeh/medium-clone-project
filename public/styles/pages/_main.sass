@@ -26,31 +26,27 @@
     border: 1px solid black
     height: 5rem
     width: 5rem
-    &--expanded
+  &__modal
+    &.visible
       border: 1px solid black
       position: absolute
       top: 10rem
       height: 60rem
       width: 20rem
-      transform: translateX(38%)
       z-index: 1
       padding: 2rem
-      // visibility: hidden
-      // opacity: 0
-      // transition: visibility 02 opacity 0.5s
+      right: 0
+      transform: translateX(38%)
 
-      .modal
-        visibility: hidden
-        opacity: 0
-        transition: visibility 02 opacity 0.5s
-        &__header
-          border-bottom: 1px solid black
-          height: 20%
-        &__content
-          ul
-            list-style: none
-      .visible
-        background-color: red
-        color: red
-        height: 100px
-        width: 100px
+    &.hidden
+      background-color: red
+      display: none
+      transition: visibility 02 opacity 0.5s
+
+    .modal
+      &__header
+        border-bottom: 1px solid black
+        height: 20%
+      &__content
+        ul
+          list-style: none
