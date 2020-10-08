@@ -93,7 +93,7 @@ const userNotFoundError = id => {
 
 // TODO: save fullname Uppercase
 router.post("/",
-//   csrfProtection,
+  csrfProtection,
   userValidation,
   usernameValidation,
   emailAndPasswordValidation,
