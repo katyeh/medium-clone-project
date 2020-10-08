@@ -3,11 +3,14 @@ extends layout.pug
 block content
   div
     div
-    h2 Welcome Back.
-    form()
-      label(for='email') Your email
-      input(type='email', name='email')
-      label(for='password') Your password
-      input(type='password', name='password')
-      button(type='submit') Log In
-  script(src="js/log-in.js")
+      h2 Welcome Back.
+    div
+      form(class="log-in-form")
+        div
+          label(for='email') Your email
+          input(type='email', name='email')
+        div
+          label(for='password') Your password
+          input(type='password', name='password')
+        button(type="submit") Log In
+    script(type="module" src="/js/log-in.js")
