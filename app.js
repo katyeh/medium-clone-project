@@ -1,27 +1,27 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-
 const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
-
-const indexRouter = require('./routes/api/index');
+const app = express();
+const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const responsesRouter = require('./routes/api/responses');
-
-const app = express();
 const storiesRouter = require('./routes/api/stories');
-const utils = require('./utils');
+const cookieParser = require("cookie-parser");
+
 
 app.set('view engine', 'pug');
+// app.use(cookieParser());
+// app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
 
 app.use(indexRouter);
-app.use('/stories', storiesRouter);
-app.use('/users', usersRouter);
-app.use('/responses', responsesRouter);
+app.use('/api/stories', storiesRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/responses', responsesRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested resource couldn\'t be found.');
