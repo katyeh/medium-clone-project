@@ -5,12 +5,13 @@ block content
   +navbar('main')
   #main
     #main__articles
-      .articles-left #main_articles .articles-left
+      .articles-left
         img(src="https://www.okea.org/wp-content/uploads/2019/10/placeholder.png", alt="")
       .articles-right #main_articles .articles-right
     #main__from-following #main__from-following
       p.section-title Latest From Following
-    #main__trends.section
+    .hr
+    #main__trends
       p.section-title Trending on Medium
       .trending__container
         .trending__story#1
@@ -19,6 +20,7 @@ block content
         .trending__story#4
         .trending__story#5
         .trending__story#6
+    .hr
     main#main__feeds main(#main__feeds)
     aside
       #main__sidebar
