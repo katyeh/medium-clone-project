@@ -3,23 +3,23 @@ const morgan = require('morgan');
 const path = require('path');
 const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
-const app = express();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const responsesRouter = require('./routes/api/responses');
 const storiesRouter = require('./routes/api/stories');
-const cookieParser = require("cookie-parser");
+const cookieParser = require('cookie-parser');
+const csrfProtection = require('./routes/csrf');
+const app = express();
 
-
+app.use(express.urlencoded());
 app.set('view engine', 'pug');
 app.use(cookieParser());
-app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.use(indexRouter);
-app.use('/api/stories', storiesRouter);
+app.use('/', csrfProtection, indexRouter);
+app.use('/api/stories', csrfProtection, storiesRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/responses', responsesRouter);
 
