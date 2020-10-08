@@ -35,7 +35,11 @@
       transform: translateX(38%)
       background-color: $color-background-light
 
-#modal
-  & > *
-    width: 100%
+.modal
+  z-index: 1
+  padding: 2rem
+  &__header
     border-bottom: 1px solid black
+    height: 20%
+  &__content
+    list-style: none

@@ -5,11 +5,16 @@ mixin navbar(pageName)
       if pageName == 'splash'
         form(action="/sign-up"): input(type="submit" value="Get started")
       else if pageName == 'main'
-        #main__prof-icon P
-        #main__prof-icon--expanded#modal
-          .modal__header
-            div P
+        #main__prof-icon Profile icon
+        #main__prof-icon--expanded.modal
+          .modal__header Profile pic comes here
+            div Profile
           .modal__content
-            
+            ul
+            li: a(href="") New Story
+            li: a(href="") Stories
+            li: a(href="") Reading List
+            li: a(href="") Profile
+            li: a(href="") Sign ou    
       else
         p stuff here

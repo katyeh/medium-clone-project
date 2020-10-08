@@ -5,6 +5,7 @@
   padding: 0;
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
+  background-color: rgba(255, 255, 255, 0.98);
 }
 
 html {
@@ -104,6 +105,20 @@ html {
   -webkit-transform: translateX(38%);
           transform: translateX(38%);
   background-color: rgba(255, 255, 255, 0.98);
+}
+
+.modal {
+  z-index: 1;
+  padding: 2rem;
+}
+
+.modal__header {
+  border-bottom: 1px solid black;
+  height: 20%;
+}
+
+.modal__content {
+  list-style: none;
 }
 
 #splash * {
