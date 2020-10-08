@@ -13,7 +13,7 @@
     width: 3.5rem
     background-image: url('https://www.flaticon.com/svg/static/icons/svg/711/711769.svg')
   &__modal
-    border: 1px solid $color-gray
+    border: 1px solid $color-gray-1
     border-radius: 5px
     position: absolute
     top: 8.5rem
@@ -22,10 +22,29 @@
     z-index: 1
     padding: 2rem
     right: 0
-    transform: translateX(40%)
     box-shadow: $shadow-1
+    transition: all .3s ease-out
+    transform: translate(40%, 0) scale(1)
 
+    & > *
+      border-bottom: $border-bottom-light
+      padding: 4.5rem 0
     &.hidden
-      background-color: red
-      display: none
-      transition: visibility 02 opacity 0.5s
+      transform: scale(0)
+
+    .modal
+      &__header
+        height: 10rem
+        display: flex
+        align-items: center
+        justify-content: space-evenly
+      
+      &__prof-pic
+        height: 4.5rem
+        width: 4.5rem
+        background-image: url('https://www.flaticon.com/svg/static/icons/svg/711/711769.svg')
+      &__member-info
+        line-height: 1.5rem
+      &__contents
+        ul
+          list-style: none

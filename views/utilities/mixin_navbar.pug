@@ -7,9 +7,10 @@ mixin navbar(pageName)
       else if pageName == 'main'
         #navbar__prof-icon
         #navbar__modal.hidden
-          .modal__header Profile pic comes here
-            div Profile
-          .modal__content
+          .modal__header
+            .modal__prof-pic
+            .modal__member-info Member<br>User's name<br>username
+          .modal__contents
             ul
               li: a(href="") New Story
               li: a(href="") Stories
