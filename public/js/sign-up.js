@@ -1,3 +1,4 @@
+import { handleErrors } from "./utils.js";
 
 const signUpForm = document.querySelector(".sign-up-form");
 
@@ -20,6 +21,7 @@ signUpForm.addEventListener("submit", async (event) => {
             }
         });
         if (!res.ok) {
+            console.log("error happened")
             throw res;
         }
         const {
@@ -28,8 +30,7 @@ signUpForm.addEventListener("submit", async (event) => {
         } = await res.json();
         localStorage.setItem("READIUM_ACCESS_TOKEN", token);
         localStorage.setItem("READIUM_CURRENT_USER_ID", id);
-    } catch (err) {
-        // TODO Add error handling
-        console.log(err);
+    } catch (error) {
+        handleErrors(error)
     }
 })
