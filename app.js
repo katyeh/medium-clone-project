@@ -17,12 +17,11 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
-app.set('view engine', 'pug');
 
 app.use(indexRouter);
-app.use('/stories', storiesRouter);
-app.use('/users', usersRouter);
-app.use('/responses', responsesRouter);
+app.use('/api/stories', storiesRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/responses', responsesRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested resource couldn\'t be found.');

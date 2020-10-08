@@ -1,3 +1,5 @@
+import { handleErrors } from "./utils.js"
+
 document.addEventListener("DOMContentLoaded", () => {
     const createStoryForm = document.querySelector('.create-story-form');
 
@@ -10,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const genreId = formData.get("genreId")
         const story = { title, subtitle, body, genreId };
         try {
-            const res = await fetch('/api/index', {
+            const res = await fetch('/api/stories', {
                 method: "POST",
                 body: JSON.stringify(story),
                 headers: {
@@ -20,8 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     )}`,
                 },
             });
+            if (!res.ok) {
+                throw res;
+            }
+            formData.reset();
         } catch (err) {
-
+            handleErrors(err);
         }
     })
 });

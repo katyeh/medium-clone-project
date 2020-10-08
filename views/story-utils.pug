@@ -1,7 +1,7 @@
-mixin form-group(fieldName, labelText, fieldValue, placeholder, isMultiline)
+mixin form-group(fieldName, labelText, placeholder, isMultiline)
   div
     label(for=fieldName) #{labelText}
     if isMultiline
       textarea(id=fieldName name=fieldName placeholder=placeholder rows='5')= fieldValue
     else
-      input(type='text' id=fieldName name=fieldName value=fieldValue, placeholder=placeholder)
+      input(type='text' id=fieldName name=fieldName placeholder=placeholder)

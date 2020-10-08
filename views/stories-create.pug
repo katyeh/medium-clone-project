@@ -3,12 +3,7 @@ extends layout.pug
 block content
   .errors-container
   form(class="create-story-form" action='/stories/create' method='post')
-    label(for=title) Title
-    input(type='text' id=title name=title value=story.title, placeholder='Title')
-    label(for=subtitle) Subtitle
-    input(type='text' id=subtitle name=subtitle value=story.subtitle placeholder='Subtitle')
-    label(for=body) Body
-    textarea(id=body name=body placeholder='Body' rows='5')= fieldValue
+    include story-form-fields.pug
     div
       label Genre
       select(name="genreId" required)
@@ -17,4 +12,4 @@ block content
     div
       button(type='submit') Create Story
     a(href='/') Cancel
-  script(type="module" src="js/createStory.js")
+  script(type="module" src="/js/createStory.js")

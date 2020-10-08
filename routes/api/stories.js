@@ -26,7 +26,7 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
     body,
     userId
   });
-  res.redirect('/stories');
+//   res.redirect('/stories');
 }));
 
 const validateResponse = [
