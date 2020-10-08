@@ -1,4 +1,6 @@
 const express = require("express");
+// const csrfProtection = require('../csrf');
+// const csrf = require('csurf');
 const router = express.Router();
 const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
@@ -6,33 +8,39 @@ const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 // const { requireAuth } = require('../auth');
 
-
+// const csrfProtection = csrf({ cookie: true });
 // router.use(requireAuth);
 
 const storyValidator = [
+  check('title')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid title.')
+    .isLength({ max: 255 })
+    .withMessage('Title cannot be longer than 255 characters.'),
   check('subtitle')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid subtitle.')
     .isLength({ max: 140 })
-    .withMessage('Subtitle can only be 140 characters long.'),
+    .withMessage('Subtitle cannot be longer than 140 characters.'),
   check('body')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a valid story')
+    .withMessage('Please provide a valid story.')
 ]
 
-router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { title, subtitle, body, genreIds } = req.body;
+
+router.post(
+    '/',
+    storyValidator,
+    handleValidationErrors,
+    asyncHandler(async (req, res, next) => {
+  const { title, subtitle, body, userId } = req.body;
   const story = await Story.create({
     title,
     subtitle,
     body,
-    userId: req.user.id
+    userId: 3
   });
-  genreIds.forEach(async (genreId) => {
-    await StoryGenre.create({
-      storyId: story.id,
-      genreId
-    })
-  })
-  res.redirect('/stories');
+//   res.redirect('/stories'); // TODO: Work on redirect
 }));
 
 const validateResponse = [
