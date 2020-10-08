@@ -2,12 +2,25 @@
   height: 6.5rem
   margin: 2rem 0
 
+
   &__contents
     grid-column: 2 / span 3
     display: flex
     position: relative
     justify-content: space-between
     align-items: center
+
+    .left-contents
+      display: flex
+      align-items: center
+      h1
+        font-family: 'Times New Roman', Times, serif
+        font-size: 3rem
+        &::after
+          content: ''
+          border-right: $border-right-light
+          margin: 0 1.5rem
+
   &__prof-icon
     height: 3.5rem
     width: 3.5rem
