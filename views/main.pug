@@ -12,3 +12,9 @@ block content
       #main__sidebar
         #main__readinglist #main__readinglist
         footer#main__footer footer(#main__footer)
+  script.
+    const profIcon = document.getElementById('main__prof-icon');
+    const modal = document.getElementById('main__prof-icon--expanded');
+    profIcon.addEventListener('click', e => {
+      modal.classList.toggle('visible');
+    });
