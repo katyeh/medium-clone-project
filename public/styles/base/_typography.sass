@@ -1,12 +1,27 @@
-@import '../abstracts/_variables'
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap');
   
 *,
 *::before,
 *::after
-  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+
+a:link,
+a:visited
+  color: $color-font-menu-light
+  text-decoration: none
+
+#main
+  color: $color-font-subtitle
+  font-size: 1.3rem
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif
+  .section-title
+    color: $color-font-story
+    text-transform: uppercase
+    font-weight: bold
+    padding: 0.5rem 0
 
 .story
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif
   font-size: 13rem
   color: $color-font-story
   font-style: normal
@@ -15,7 +30,7 @@
   overflow-wrap: break-word
 
   &__title
-    font-family: medium-content-title-font
+    font-family: "Lora"
     font-size: 30rem
 
   &__subtitle
@@ -26,3 +41,4 @@
   &__section-title
     font-family: $font-family-story
     font-size: 22.5rem
+    background-color: inherit
