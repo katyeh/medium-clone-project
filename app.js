@@ -10,22 +10,19 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const responsesRouter = require('./routes/api/responses');
 const storiesRouter = require('./routes/api/stories');
-const indexjsRouter = require('./public/js/index');
 
 const app = express();
 
 app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, 'public/styles')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public', 'styles')));
 app.set('view engine', 'pug');
 
 app.use(indexRouter);
 app.use('/stories', storiesRouter);
 app.use('/users', usersRouter);
 app.use('/responses', responsesRouter);
-app.use(indexjsRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested resource couldn\'t be found.');
