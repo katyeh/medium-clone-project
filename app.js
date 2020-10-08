@@ -11,6 +11,7 @@ const responsesRouter = require('./routes/api/responses');
 
 const app = express();
 const storiesRouter = require('./routes/api/stories');
+const utils = require('./utils');
 
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));

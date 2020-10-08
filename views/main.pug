@@ -4,13 +4,26 @@ include ./utilities/mixin_navbar.pug
 block content
   +navbar('main')
   #main
-    #main__articles #main_articles
+    #main__articles
+      .articles-left #main_articles .articles-left
+        img(src="https://www.okea.org/wp-content/uploads/2019/10/placeholder.png", alt="")
+      .articles-right #main_articles .articles-right
     #main__from-following #main__from-following
-    #main__trends #main__trends
+      p.section-title Latest From Following
+    #main__trends.section
+      p.section-title Trending on Medium
+      .trending__container
+        .trending__story#1
+        .trending__story#2
+        .trending__story#3
+        .trending__story#4
+        .trending__story#5
+        .trending__story#6
     main#main__feeds main(#main__feeds)
     aside
       #main__sidebar
         #main__readinglist #main__readinglist
+          p.section-title Reading List
         footer#main__footer footer(#main__footer)
   script.
     const profIcon = document.getElementById('navbar__prof-icon');

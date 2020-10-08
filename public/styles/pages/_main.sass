@@ -1,14 +1,37 @@
 #main
+  .section
+    padding: 2.5rem 0
+    border-bottom: solid 1px red
+    border-height: 100vw
+
   & *
     border: 1px solid black
   &__articles
     grid-column: 2 / span 2
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(4, 1fr)
+    .articles-left
+      grid-column: 1
+      grid-row: 1 / -1
+
+      img
+        width: 100%
+    .articles-right
+      grid-row: 1 / -1
   &__from-following
     grid-column: 4
     height: 60vh
   &__trends
     grid-column: 2 / span 3
-    height: 30rem
+    height: auto
+
+    .trending
+      &__container
+        display: grid
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr))
+        grid-template-rows: repeat(2, 13rem)
+
   &__feeds
     grid-column: 2/ span 2
     height: 150vh
@@ -17,5 +40,7 @@
     top: 0
   &__readinglist
     height: 55rem
+    background-color: $color-gray-1
+    padding: 3rem
   &__footer 
     height: 10rem
