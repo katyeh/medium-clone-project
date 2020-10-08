@@ -1,4 +1,5 @@
 const express = require("express");
+const csrf = require('csurf');
 const router = express.Router();
 const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
@@ -6,7 +7,7 @@ const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap } = db;
 const { requireAuth } = require('../../auth');
 
-
+const csrfProtection = csrf({ cookie: true });
 // router.use(requireAuth);
 
 const storyValidator = [
@@ -25,7 +26,12 @@ const storyValidator = [
     .withMessage('Please provide a valid story.')
 ]
 
-router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.post(
+    '/',
+    csrfProtection,
+    storyValidator,
+    handleValidationErrors,
+    asyncHandler(async (req, res, next) => {
   const { title, subtitle, body, userId } = req.body;
   const story = await Story.create({
     title,

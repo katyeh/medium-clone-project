@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router();
-const { Story, Genre } = require('../db/models');
-const { asyncHandler } = require('../utils')
 const csrf = require('csurf');
+const { Story, Genre } = require('../db/models');
+const { asyncHandler } = require('../utils');
+const router = express.Router();
 
 const csrfProtection = csrf({ cookie: true });
 
@@ -12,7 +12,7 @@ router.get('/stories/create', csrfProtection, asyncHandler(async (req, res) => {
   res.render('stories-create', {
       stories,
       genres,
-      token: req.csrfToken()
+      csrfToken: req.csrfToken()
     });
 }));
 

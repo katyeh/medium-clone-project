@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const cors = require('cors');
 
 const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
@@ -10,10 +9,12 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const responsesRouter = require('./routes/api/responses');
 const storiesRouter = require('./routes/api/stories');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.set('view engine', 'pug');
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
