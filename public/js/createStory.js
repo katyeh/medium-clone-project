@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw res;
             }
             formData.reset();
+            // window.location.href = '/'
         } catch (err) {
           handleErrors(err);
         }

@@ -29,7 +29,6 @@ const storyValidator = [
 
 router.post(
     '/',
-    // csrfProtection,
     storyValidator,
     handleValidationErrors,
     asyncHandler(async (req, res, next) => {
@@ -40,7 +39,7 @@ router.post(
     body,
     userId: 3
   });
-//   res.redirect('/stories');
+//   res.redirect('/stories'); // TODO: Work on redirect
 }));
 
 const validateResponse = [
