@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const subtitle = formData.get("subtitle")
         const body = formData.get("body")
         const genreId = formData.get("genreId")
-        const story = { title, subtitle, body, genreId };
+        const _csrf = formData.get("_csrf")
+        const story = { title, subtitle, body, genreId, _csrf };
         try {
             const res = await fetch('/api/stories', {
                 method: "POST",

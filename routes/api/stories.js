@@ -1,5 +1,6 @@
 const express = require("express");
-const csrf = require('csurf');
+// const csrfProtection = require('../csrf');
+// const csrf = require('csurf');
 const router = express.Router();
 const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
@@ -7,7 +8,7 @@ const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap } = db;
 const { requireAuth } = require('../../auth');
 
-const csrfProtection = csrf({ cookie: true });
+// const csrfProtection = csrf({ cookie: true });
 // router.use(requireAuth);
 
 const storyValidator = [
@@ -28,7 +29,7 @@ const storyValidator = [
 
 router.post(
     '/',
-    csrfProtection,
+    // csrfProtection,
     storyValidator,
     handleValidationErrors,
     asyncHandler(async (req, res, next) => {
