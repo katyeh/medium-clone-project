@@ -6,10 +6,9 @@
   & *
     // border: 1px solid black
   &__stories
+    @include border-right($border-light)
     grid-column: 2 / span 2
     height: 60vh
-    @include border-right($border-light)
-
     display: flex
     flex-direction: column
     flex-wrap: wrap
