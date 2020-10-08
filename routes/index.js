@@ -6,7 +6,7 @@ const { asyncHandler } = require("../utils");
 
 
 router.get('/', asyncHandler(async(req, res) => {
-  res.render('splash' /*, { csrfToken: req.csrfToken() } */);
+  res.render('main' /*, { csrfToken: req.csrfToken() } */);
 }));
 
 module.exports = router;
