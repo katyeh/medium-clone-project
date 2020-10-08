@@ -5,8 +5,8 @@ const csrfProtection = csrf({cookie: true});
 const { asyncHandler } = require("../utils");
 
 
-router.get('/', csrfProtection, asyncHandler(async(req, res) => {
-  res.render('splash', { csrfToken: req.csrfToken() });
+router.get('/', asyncHandler(async(req, res) => {
+  res.render('main' /*, { csrfToken: req.csrfToken() } */);
 }));
 
 module.exports = router;
