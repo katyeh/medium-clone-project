@@ -3,11 +3,11 @@ const router = express.Router();
 const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
-const {User, Story, Response, Clap } = db;
-const { requireAuth } = require('../../auth');
+const {User, Story, Response, Clap, StoryGenre, Genre } = db;
+// const { requireAuth } = require('../auth');
 
 
-router.use(requireAuth);
+// router.use(requireAuth);
 
 const storyValidator = [
   check('subtitle')
@@ -19,13 +19,19 @@ const storyValidator = [
 ]
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { title, subtitle, body, userId } = req.body;
+  const { title, subtitle, body, genreIds } = req.body;
   const story = await Story.create({
     title,
     subtitle,
     body,
-    userId
+    userId: req.user.id
   });
+  genreIds.forEach(async (genreId) => {
+    await StoryGenre.create({
+      storyId: story.id,
+      genreId
+    })
+  })
   res.redirect('/stories');
 }));
 
@@ -83,7 +89,7 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
     const clapAmount = await Clap.count({ where: { storyId }});
     res.json({ clapAmount });
   }));
-  
+
   router.post("/:storyId/responses/:responseId/clap", asyncHandler(async(req, res) => {
     const userId = req.user.id;
     const responseId = req.params.responseId;
@@ -96,10 +102,16 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const userId = req.user.id;
+  const userId  = req.user.id;
   const stories = await Story.findAll({
     where: { userId },
-    include: [{ model: User, as: "user", attributes: ["username"] }],
+    include: [
+      { model: User, as: "user", attributes: ["username"] },
+      {
+        model: StoryGenre,
+        include: Genre,
+      }
+    ],
     order: [["createdAt", "DESC"]]
   })
   res.json({ stories })
