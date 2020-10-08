@@ -1,0 +1,23 @@
+mixin navbar(pageName)
+  nav#navbar
+    #navbar__contents
+      .left-contents
+       h1 Readium
+       p Greeting
+      if pageName == 'splash'
+        form(action="/sign-up"): input(type="submit" value="Get started")
+      else if pageName == 'main'
+        #navbar__prof-icon
+        #navbar__modal.hidden
+          .modal__header
+            .modal__prof-pic
+            .modal__member-info Member<br>User's name<br>username
+          .modal__contents
+            ul
+              li: a(href="") New Story
+              li: a(href="") Stories
+              li: a(href="") Reading List
+              li: a(href="") Profile
+              li: a(href="") Sign out    
+      else
+        p stuff here
