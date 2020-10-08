@@ -1,3 +1,15 @@
 extends layout.pug
 
 block content
+  .errors-container
+  form(class="create-story-form" action='/api/stories' method='post')
+    include story-form-fields.pug
+    div
+      label Genre
+      select(name="genreId" required)
+        each genre in genres
+          option(value=genre.id)= genre.title
+    div
+      button(type='submit') Create Story
+    a(href='/') Cancel
+  script(type="module" src="/js/createStory.js")
