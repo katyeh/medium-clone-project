@@ -161,10 +161,10 @@ router.post("/token",
     const user = await User.findOne({
       where: { email },
     });
-    console.log(user)
 
 
-console.log(user.validatePassword(password))
+
+
     if (!user || !user.validatePassword(password)) {
       const err = new Error("Login failed.");
       err.status = 401;
