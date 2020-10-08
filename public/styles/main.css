@@ -139,8 +139,8 @@ html {
 }
 
 #navbar {
-  border: 1px solid black;
   height: 6.5rem;
+  margin: 2rem 0;
 }
 
 #navbar__contents {
@@ -166,9 +166,10 @@ html {
 }
 
 #navbar__modal {
-  border: 1px solid black;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
   position: absolute;
-  top: 10rem;
+  top: 8.5rem;
   height: 60rem;
   width: 20rem;
   z-index: 1;
@@ -176,5 +177,14 @@ html {
   right: 0;
   -webkit-transform: translateX(40%);
           transform: translateX(40%);
+  -webkit-box-shadow: 0px 1px 5px #e6e6e6;
+          box-shadow: 0px 1px 5px #e6e6e6;
+}
+
+#navbar__modal.hidden {
+  background-color: red;
+  display: none;
+  -webkit-transition: visibility 02 opacity 0.5s;
+  transition: visibility 02 opacity 0.5s;
 }
 /*# sourceMappingURL=main.css.map */

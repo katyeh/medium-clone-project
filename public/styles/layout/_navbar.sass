@@ -1,6 +1,6 @@
 #navbar
-  border: 1px solid black
   height: 6.5rem
+  margin: 2rem 0
 
   &__contents
     grid-column: 2 / span 3
@@ -13,17 +13,19 @@
     width: 3.5rem
     background-image: url('https://www.flaticon.com/svg/static/icons/svg/711/711769.svg')
   &__modal
-    border: 1px solid black
+    border: 1px solid $color-gray
+    border-radius: 5px
     position: absolute
-    top: 10rem
+    top: 8.5rem
     height: 60rem
     width: 20rem
     z-index: 1
     padding: 2rem
     right: 0
     transform: translateX(40%)
+    box-shadow: $shadow-1
 
-    // &.hidden
-    //   background-color: red
-    //   display: none
-    //   transition: visibility 02 opacity 0.5s
+    &.hidden
+      background-color: red
+      display: none
+      transition: visibility 02 opacity 0.5s
