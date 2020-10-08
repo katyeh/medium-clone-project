@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(story),
                 headers: {
                     "Content-Type": "application/json",
+                    "Accept": "application/json",
                     Authorization: `Bearer ${localStorage.getItem(
                         "READIUM_ACCESS_TOKEN"
                     )}`,
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             formData.reset();
         } catch (err) {
-            handleErrors(err);
+          handleErrors(err);
         }
     })
 });

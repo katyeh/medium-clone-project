@@ -10,12 +10,19 @@ const { requireAuth } = require('../../auth');
 // router.use(requireAuth);
 
 const storyValidator = [
+  check('title')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid title.')
+    .isLength({ max: 255 })
+    .withMessage('Title cannot be longer than 255 characters.'),
   check('subtitle')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid subtitle.')
     .isLength({ max: 140 })
-    .withMessage('Subtitle can only be 140 characters long.'),
+    .withMessage('Subtitle cannot be longer than 140 characters.'),
   check('body')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a valid story')
+    .withMessage('Please provide a valid story.')
 ]
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
@@ -24,7 +31,7 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
     title,
     subtitle,
     body,
-    userId
+    userId: 3
   });
 //   res.redirect('/stories');
 }));
