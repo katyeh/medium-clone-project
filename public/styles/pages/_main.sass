@@ -14,7 +14,7 @@
     flex-wrap: wrap
 
     & > *
-      padding: 1rem
+      padding: 1.5rem
 
     img
       width: 50%
@@ -40,11 +40,17 @@
         grid-template-rows: repeat(2, 13rem)
 
         & > *
-          padding: 1rem
+          padding: 1.5rem
 
   &__feeds
     grid-column: 2/ span 2
-    height: 150vh
+    height: auto
+
+    & > *
+      padding: 1.5rem
+
+    .feeds-story
+      height: 20rem
   &__sidebar
     position: sticky
     top: 0
