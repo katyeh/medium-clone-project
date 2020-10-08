@@ -90,41 +90,6 @@ html {
   height: 10rem;
 }
 
-#main__prof-icon {
-  border: 1px solid black;
-  height: 5rem;
-  width: 5rem;
-}
-
-#main__modal.visible {
-  border: 1px solid black;
-  position: absolute;
-  top: 10rem;
-  height: 60rem;
-  width: 20rem;
-  z-index: 1;
-  padding: 2rem;
-  right: 0;
-  -webkit-transform: translateX(38%);
-          transform: translateX(38%);
-}
-
-#main__modal.hidden {
-  background-color: red;
-  display: none;
-  -webkit-transition: visibility 02 opacity 0.5s;
-  transition: visibility 02 opacity 0.5s;
-}
-
-#main__modal .modal__header {
-  border-bottom: 1px solid black;
-  height: 20%;
-}
-
-#main__modal .modal__content ul {
-  list-style: none;
-}
-
 #splash * {
   border: 1px solid black;
 }
@@ -164,20 +129,8 @@ html {
   height: 40vh;
 }
 
-#main {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
-      grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
-}
-
-#splash {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
-      grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
-}
-
+#main,
+#splash,
 #navbar {
   display: -ms-grid;
   display: grid;
@@ -194,13 +147,34 @@ html {
   -ms-grid-column: 2;
   -ms-grid-column-span: 3;
   grid-column: 2 / span 3;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#navbar__prof-icon {
+  height: 3.5rem;
+  width: 3.5rem;
+  background-image: url("https://www.flaticon.com/svg/static/icons/svg/711/711769.svg");
+}
+
+#navbar__modal {
+  border: 1px solid black;
+  position: absolute;
+  top: 10rem;
+  height: 60rem;
+  width: 20rem;
+  z-index: 1;
+  padding: 2rem;
+  right: 0;
+  -webkit-transform: translateX(40%);
+          transform: translateX(40%);
 }
 /*# sourceMappingURL=main.css.map */

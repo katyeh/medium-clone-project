@@ -13,9 +13,8 @@ block content
         #main__readinglist #main__readinglist
         footer#main__footer footer(#main__footer)
   script.
-    const profIcon = document.getElementById('main__prof-icon');
-    const modal = document.getElementById('main__modal');
+    const profIcon = document.getElementById('navbar__prof-icon');
+    const modal = document.getElementById('navbar__modal');
     profIcon.addEventListener('click', e => {
-      modal.classList.toggle('visible');
       modal.classList.toggle('hidden');
     });
