@@ -1,3 +1,16 @@
 extends layout.pug
+include ./utilities/mixin_navbar.pug
 
 block content
+  +navbar('splash')
+  include includes/sign-up.pug
+  #splash
+    header#splash__header
+      h1 Some slogan here
+      h2 Some sub-slogan here
+      #splash__contents Stuff
+      form(action="/sign-up"): input(type="submit" value="Get started")
+      p Already have an account?
+        a(href="/login") Sign in.
+    main#splash__main #splash__main
+    footer#splash__footer

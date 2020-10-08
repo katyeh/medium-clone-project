@@ -1,21 +1,62 @@
 #main
+  .hr
+    @include border-bottom($border-light)
+    grid-column: 1 / -1
+
   & *
-    border: 1px solid black
-  &__articles
+    // border: 1px solid black
+  &__stories
+    @include border-right($border-light)
     grid-column: 2 / span 2
+    height: 60vh
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+
+    & > *
+      padding: 1.5rem
+
+    img
+      width: 50%
+      height: 50%
+    .main-suggestion-story
+      width: 50%
+      height: 50%
+    .suggestion-story
+      width: 50%
+      height: 25%
+
   &__from-following
     grid-column: 4
     height: 60vh
   &__trends
     grid-column: 2 / span 3
-    height: 30rem
+    height: auto
+
+    .trending
+      &__container
+        display: grid
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr))
+        grid-template-rows: repeat(2, 13rem)
+
+        & > *
+          padding: 1.5rem
+
   &__feeds
     grid-column: 2/ span 2
-    height: 150vh
+    height: auto
+
+    & > *
+      padding: 1.5rem
+
+    .feeds-story
+      height: 20rem
   &__sidebar
     position: sticky
     top: 0
   &__readinglist
     height: 55rem
+    background-color: $color-gray-2
+    padding: 3rem
   &__footer 
     height: 10rem

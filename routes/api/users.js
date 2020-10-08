@@ -2,7 +2,9 @@ const express = require("express");
 const { check } = require('express-validator');
 const { User, Follow } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
-const { getUserToken, requireAuth } = require('../../auth')
+const { getUserToken, requireAuth } = require('../../auth');
+const csrf = require("csurf");
+const csrfProtection = csrf({cookie: true});
 
 const router = express();
 
@@ -91,6 +93,7 @@ const userNotFoundError = id => {
 
 // TODO: save fullname Uppercase
 router.post("/",
+  csrfProtection,
   userValidation,
   usernameValidation,
   emailAndPasswordValidation,
