@@ -1,6 +1,8 @@
 extends layout.pug
+include ./utilities/mixin_navbar.pug
 
 block content
+  +navbar('main')
   #main
     #main__articles #main_articles
     #main__from-following #main__from-following

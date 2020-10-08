@@ -89,7 +89,53 @@ html {
   height: 10rem;
 }
 
+#splash * {
+  border: 1px solid black;
+}
+
+#splash__header {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / span 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60vh;
+  background-color: lightgrey;
+}
+
+#splash__contents {
+  height: 30rem;
+  width: 100%;
+}
+
+#splash__main {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / span 3;
+  height: 100vh;
+}
+
+#splash__footer {
+  grid-column: 1 / -1;
+  height: 40vh;
+}
+
 #main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
+      grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
+}
+
+#splash {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
@@ -119,6 +165,11 @@ html {
 #navbar__icons {
   -ms-grid-column: 4;
   grid-column: 4;
-  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 /*# sourceMappingURL=main.css.map */
