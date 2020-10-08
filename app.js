@@ -1,10 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-
 const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const responsesRouter = require('./routes/api/responses');

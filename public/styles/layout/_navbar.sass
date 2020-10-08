@@ -1,10 +1,63 @@
 #navbar
-  border: 1px solid black
   height: 6.5rem
+  margin: 2rem 0
 
-  h1
-    grid-column: 2
+  &__contents
+    grid-column: 2 / span 3
+    display: flex
+    position: relative
+    justify-content: space-between
+    align-items: center
 
-  &__icons
-    grid-column: 4
-    height: 100%
+    .left-contents
+      display: flex
+      align-items: center
+      h1
+        font-family: 'Times New Roman', Times, serif
+        font-size: 3rem
+        &::after
+          content: ''
+          border-right: $border-right-light
+          margin: 0 1.5rem
+
+  &__prof-icon
+    height: 3.5rem
+    width: 3.5rem
+    background-image: url('https://www.flaticon.com/svg/static/icons/svg/711/711769.svg')
+  &__modal
+    border: 1px solid $color-gray-1
+    border-radius: 5px
+    position: absolute
+    top: 8.5rem
+    height: 60rem
+    width: 20rem
+    z-index: 1
+    padding: 2rem
+    right: 0
+    box-shadow: $shadow-1
+    transition: all .3s ease-out
+    transform: translate(40%, 0) scale(1)
+    background-color: $color-background-light
+
+    & > *
+      border-bottom: $border-bottom-light
+      padding: 4.5rem 0
+    &.hidden
+      transform: scale(0)
+
+    .modal
+      &__header
+        height: 10rem
+        display: flex
+        align-items: center
+        justify-content: space-evenly
+      
+      &__prof-pic
+        height: 4.5rem
+        width: 4.5rem
+        background-image: url('https://www.flaticon.com/svg/static/icons/svg/711/711769.svg')
+      &__member-info
+        line-height: 1.5rem
+      &__contents
+        ul
+          list-style: none

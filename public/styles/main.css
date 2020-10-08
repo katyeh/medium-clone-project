@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap");
 *,
 *::before,
 *::after {
@@ -16,11 +17,30 @@ html {
 *,
 *::before,
 *::after {
-  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+}
+
+a:link,
+a:visited {
+  color: #7c7c7c;
+  text-decoration: none;
+}
+
+#main {
+  color: #757575;
+  font-size: 1.3rem;
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+#main .section-title {
+  color: #292929;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.5rem 0;
 }
 
 .story {
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 13rem;
   color: #292929;
   font-style: normal;
@@ -30,7 +50,7 @@ html {
 }
 
 .story__title {
-  font-family: medium-content-title-font;
+  font-family: "Lora";
   font-size: 30rem;
 }
 
@@ -43,16 +63,57 @@ html {
 .story__section-title {
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   font-size: 22.5rem;
+  background-color: inherit;
+}
+
+#main .hr {
+  margin: 2.5rem 0;
+  border-bottom: 1px solid #e6e6e6;
+  grid-column: 1 / -1;
 }
 
 #main * {
   border: 1px solid black;
 }
 
-#main__articles {
+#main__stories {
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-column: 2 / span 2;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (13rem)[4];
+      grid-template-rows: repeat(4, 13rem);
+  background-color: skyblue;
+}
+
+#main__stories .stories-left {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  grid-row: 1 / -1;
+}
+
+#main__stories .stories-left img {
+  width: 100%;
+}
+
+#main__stories .stories-right {
+  grid-column: 2 / -1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: limegreen;
+}
+
+#main__stories > * {
+  height: 100px;
+  grid-column: 2 / -1;
 }
 
 #main__from-following {
@@ -65,7 +126,16 @@ html {
   -ms-grid-column: 2;
   -ms-grid-column-span: 3;
   grid-column: 2 / span 3;
-  height: 30rem;
+  height: auto;
+}
+
+#main__trends .trending__container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  -ms-grid-rows: (13rem)[2];
+      grid-template-rows: repeat(2, 13rem);
 }
 
 #main__feeds {
@@ -83,13 +153,56 @@ html {
 
 #main__readinglist {
   height: 55rem;
+  background-color: #e6e6e6;
+  padding: 3rem;
 }
 
 #main__footer {
   height: 10rem;
 }
 
-#main {
+#splash * {
+  border: 1px solid black;
+}
+
+#splash__header {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / span 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60vh;
+  background-color: lightgrey;
+}
+
+#splash__contents {
+  height: 30rem;
+  width: 100%;
+}
+
+#splash__main {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / span 3;
+  height: 100vh;
+}
+
+#splash__footer {
+  grid-column: 1 / -1;
+  height: 40vh;
+}
+
+#main,
+#splash,
+#navbar {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
@@ -97,28 +210,105 @@ html {
 }
 
 #navbar {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
-      grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
+  height: 6.5rem;
+  margin: 2rem 0;
+}
+
+#navbar__contents {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / span 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-#navbar {
-  border: 1px solid black;
-  height: 6.5rem;
+#navbar__contents .left-contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-#navbar h1 {
-  -ms-grid-column: 2;
-  grid-column: 2;
+#navbar__contents .left-contents h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3rem;
 }
 
-#navbar__icons {
-  -ms-grid-column: 4;
-  grid-column: 4;
-  height: 100%;
+#navbar__contents .left-contents h1::after {
+  content: '';
+  border-right: 1px solid #e6e6e6;
+  margin: 0 1.5rem;
+}
+
+#navbar__prof-icon {
+  height: 3.5rem;
+  width: 3.5rem;
+  background-image: url("https://www.flaticon.com/svg/static/icons/svg/711/711769.svg");
+}
+
+#navbar__modal {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  position: absolute;
+  top: 8.5rem;
+  height: 60rem;
+  width: 20rem;
+  z-index: 1;
+  padding: 2rem;
+  right: 0;
+  -webkit-box-shadow: 0px 1px 5px #e6e6e6;
+          box-shadow: 0px 1px 5px #e6e6e6;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  -webkit-transform: translate(40%, 0) scale(1);
+          transform: translate(40%, 0) scale(1);
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+#navbar__modal > * {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 4.5rem 0;
+}
+
+#navbar__modal.hidden {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+#navbar__modal .modal__header {
+  height: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+#navbar__modal .modal__prof-pic {
+  height: 4.5rem;
+  width: 4.5rem;
+  background-image: url("https://www.flaticon.com/svg/static/icons/svg/711/711769.svg");
+}
+
+#navbar__modal .modal__member-info {
+  line-height: 1.5rem;
+}
+
+#navbar__modal .modal__contents ul {
+  list-style: none;
 }
 /*# sourceMappingURL=main.css.map */

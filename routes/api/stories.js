@@ -5,8 +5,8 @@ const router = express.Router();
 const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
-const {User, Story, Response, Clap } = db;
-const { requireAuth } = require('../../auth');
+const {User, Story, Response, Clap, StoryGenre, Genre } = db;
+// const { requireAuth } = require('../auth');
 
 // const csrfProtection = csrf({ cookie: true });
 // router.use(requireAuth);
@@ -26,6 +26,7 @@ const storyValidator = [
     .exists({ checkFalsy: true })
     .withMessage('Please provide a valid story.')
 ]
+
 
 router.post(
     '/',
@@ -109,10 +110,16 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const userId = req.user.id;
+  const userId  = req.user.id;
   const stories = await Story.findAll({
     where: { userId },
-    include: [{ model: User, as: "user", attributes: ["username"] }],
+    include: [
+      { model: User, as: "user", attributes: ["username"] },
+      {
+        model: StoryGenre,
+        include: Genre,
+      }
+    ],
     order: [["createdAt", "DESC"]]
   })
   res.json({ stories })
