@@ -1,30 +1,31 @@
-div
-    h2 Join Readium
-    .errors-container
-div
-    h4 Create an account have access to amazing stories and follow authors you love.
+div(class="sign-up-module")
     div
-      form(class="sign-up-form")
-        div
-          label(for="fullName") Full Name
-          input(type="text" name="fullName" required)
-        div
-          label(for="username") Username
-          input(type="text" name="username" required)
-        div
-          label(for="email") Email
-          input(type="email" name="email" required)
-        div
-          label(for="password") Password
-          input(type="password" name="password" required)
-        div
-          label(for="confirmPassword") Confirm Password
-          input(type="password" name="confirmPassword" required)
-        div
-          input(type="hidden" name="_csrf" value=csrfToken)
-        div
-          button(type="submit") Sign Up
+        h2 Join Readium
+        .errors-container
     div
-      h4 Already have an account?
-        button Sign in
+        h4 Create an account have access to amazing stories and follow authors you love.
+        div
+        form(class="sign-up-form")
+            div
+            label(for="fullName") Full Name
+            input(type="text" name="fullName" required)
+            div
+            label(for="username") Username
+            input(type="text" name="username" required)
+            div
+            label(for="email") Email
+            input(type="email" name="email" required)
+            div
+            label(for="password") Password
+            input(type="password" name="password" required)
+            div
+            label(for="confirmPassword") Confirm Password
+            input(type="password" name="confirmPassword" required)
+            div
+            input(type="hidden" name="_csrf" value=csrfToken)
+            div
+            button(type="submit") Sign Up
+        div
+        h4 Already have an account?
+            button Sign in
 script(type="module" src="/js/sign-up.js")
