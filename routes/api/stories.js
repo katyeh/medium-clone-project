@@ -102,7 +102,7 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const userId  = 2;
+  const userId  = req.user.id;
   const stories = await Story.findAll({
     where: { userId },
     include: [
