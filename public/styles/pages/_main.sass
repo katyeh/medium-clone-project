@@ -33,13 +33,24 @@
       height: 60rem
       width: 20rem
       transform: translateX(38%)
-      background-color: $color-background-light
+      z-index: 1
+      padding: 2rem
+      // visibility: hidden
+      // opacity: 0
+      // transition: visibility 02 opacity 0.5s
 
-.modal
-  z-index: 1
-  padding: 2rem
-  &__header
-    border-bottom: 1px solid black
-    height: 20%
-  &__content
-    list-style: none
+      .modal
+        visibility: hidden
+        opacity: 0
+        transition: visibility 02 opacity 0.5s
+        &__header
+          border-bottom: 1px solid black
+          height: 20%
+        &__content
+          ul
+            list-style: none
+      .visible
+        background-color: red
+        color: red
+        height: 100px
+        width: 100px
