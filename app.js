@@ -20,8 +20,8 @@ app.use(express.json());
 
 app.use('/', csrfProtection, indexRouter);
 app.use('/api/stories', csrfProtection, storiesRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/responses', responsesRouter);
+app.use('/api/users', csrfProtection, usersRouter);
+app.use('/api/responses', csrfProtection, responsesRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested resource couldn\'t be found.');
