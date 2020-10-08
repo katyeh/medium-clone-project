@@ -6,14 +6,14 @@ const { asyncHandler } = require("../utils");
 
 
 router.get('/', asyncHandler(async(req, res) => {
-  res.render('main' /*, { csrfToken: req.csrfToken() } */);
+  res.render('splash' /*, { csrfToken: req.csrfToken() } */);
 }));
 
-router.get('/login', (req, res) => {
-  res.render('log-in');
-})
+// router.get('/login', (req, res) => {
+//   res.render('log-in');
+// })
 
-router.get('/', (req, res) => {
-  res.render('main');
-});
+// router.get('/', (req, res) => {
+//   res.render('main');
+// });
 module.exports = router;

@@ -1,16 +1,17 @@
-extends layout.pug
 
 block content
-  div(id="log-in-container")
-    div(class="errors-container")
+  #login
+    #login__errors(class="errors-container")
       h2 Welcome Back.
-    div
+    #login__form
       form(class="log-in-form")
-        div
+        #login__email
           label(for='email') Your email
           input(type='email', name='email')
-        div
+        #login__password
           label(for='password') Your password
           input(type='password', name='password')
+        div
+          input(type="hidden" name="_csrf" value=csrfToken)
         button(type="submit") Log In
     script(type="module" src="/js/log-in.js")

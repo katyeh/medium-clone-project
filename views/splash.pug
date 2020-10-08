@@ -3,6 +3,8 @@ include ./utilities/mixin_navbar.pug
 
 block content
   +navbar('splash')
+  include includes/sign-up.pug
+  include includes/log-in.pug
   #splash
     header#splash__header
       h1 Some slogan here
