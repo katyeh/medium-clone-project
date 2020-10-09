@@ -205,6 +205,14 @@ a:visited {
   height: 40vh;
 }
 
+#login * {
+  border: 1px solid black;
+}
+
+#login__form {
+  display: fixed;
+}
+
 #main,
 #splash,
 #navbar {

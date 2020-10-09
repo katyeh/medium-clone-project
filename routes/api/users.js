@@ -165,6 +165,9 @@ router.post("/token",
       where: { email },
     });
 
+
+
+
     if (!user || !user.validatePassword(password)) {
       const err = new Error("Login failed.");
       err.status = 401;
@@ -174,7 +177,8 @@ router.post("/token",
     }
 
     // TODO: create user token with jwt and include that token in response json.
-    res.json({ user: { id: user.id } });
+    const token = getUserToken(user);
+    res.json({token, user: { id: user.id } });
 }));
 
 router.post("/follow", asyncHandler(async(req, res) => {
