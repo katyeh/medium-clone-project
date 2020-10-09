@@ -1,4 +1,4 @@
-export const handleErrors = async (err) => {
+const handleErrors = async (err) => {
     if (err.status >= 400 && err.status < 600) {
         const errorJSON = await err.json();
         const errorsContainer = document.querySelector(".errors-container");
