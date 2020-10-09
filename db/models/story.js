@@ -1,22 +1,29 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Story = sequelize.define('Story', {
-    title: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
+  const Story = sequelize.define(
+    "Story",
+    {
+      title: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
+      subtitle: {
+        type: DataTypes.STRING(140),
+      },
+      body: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      imageUrl: {
+        type: DataTypes.STRING(500),
+      }
     },
-    subtitle: {
-      type: DataTypes.STRING(140),
-    },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull:false
-    }
-  }, {});
+    {}
+  );
   Story.associate = function(models) {
     Story.hasMany(models.Response, {
       foreignKey: "storyId",
