@@ -23,6 +23,14 @@ router.get('/stories/create', asyncHandler(async (req, res) => {
     });
 }));
 
+router.get('/story/:id', asyncHandler(async (req, res) => {
+    const storyId = req.params.id
+    const story = await Story.findOne({ where: {id: storyId} })
+    res.render('story', {
+        story
+    });
+}));
+
 // router.get('/login', (req, res) => {
 //   res.render('log-in');
 // })

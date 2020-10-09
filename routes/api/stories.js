@@ -38,9 +38,9 @@ router.post(
     title,
     subtitle,
     body,
-    userId: 3
+    userId
   });
-//   res.redirect('/stories'); 
+//   res.redirect('/stories');
 }));
 
 const validateResponse = [
@@ -133,13 +133,14 @@ const storyNotFoundError = (id) => {
 }
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
-  const story = await Story.findByPk(req.params.id);
+  const storyId = parseInt(req.params.id, 10);
+  const story = await Story.findByPk(storyId);
   if (story) {
     res.json({ story })
   } else {
-    next(storyNotFoundError(req.params.id));
+    next(storyNotFoundError(storyId));
   }
-}))
+}));
 
 
 router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
