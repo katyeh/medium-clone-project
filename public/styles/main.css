@@ -211,7 +211,7 @@ a:visited {
   display: flex;
 }
 
-img {
+#profile__header img {
   border-radius: 50%;
   border: thin solid #ffffff;
 }
