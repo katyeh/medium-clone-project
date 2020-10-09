@@ -17,7 +17,7 @@ block content
       .profile_body_header: h1 Latest
         each story in stories
           .profile_body_story-preview
-            +story-preview(user.fullName, story.date, story.title, story.subtitle, clapAmount)
+            +story-preview(story.id, user.fullName, story.date, story.title, story.subtitle, clapAmount)
 
 
   script.
