@@ -38,7 +38,7 @@ router.post(
     title,
     subtitle,
     body,
-    userId
+    userId: 2
   });
 //   res.redirect('/stories');
 }));
