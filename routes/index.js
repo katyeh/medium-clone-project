@@ -2,8 +2,7 @@ const express = require('express');
 const { Story, Genre, User, Follower } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
-// const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", id);
-const userId = 1
+const fetch = require("node-fetch");
 
 router.get('/', asyncHandler(async(req, res) => {
   res.render('main', {
@@ -11,18 +10,14 @@ router.get('/', asyncHandler(async(req, res) => {
     })
 }));
 
-// router.get('/', (req, res) => {
-//   res.render('main');
-// });
+router.get('/users/:id/profile', asyncHandler(async (req, res) => { // Change data fetch
+  const userId = req.params.id;
+  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile`);
+  const { userAndStories, followingAmount, followerAmount } = await data.json();
 
-router.get('/profile', asyncHandler(async (req, res) => {
-  const stories = await Story.findAll({ where: { userId }})
-  const user = await User.findAll({ where: { id: userId }})
-  const followingAmount = await Follower.count({where: {followeeId: userId}})
-  const followerAmount = await Follower.count({where: {followerId: userId}})
   res.render('profile-layout', {
-    stories,
-    user,
+    user: userAndStories,
+    stories: userAndStories.Stories,
     followingAmount,
     followerAmount
   });

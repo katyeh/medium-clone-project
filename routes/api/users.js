@@ -1,6 +1,6 @@
 const express = require("express");
 const { check } = require('express-validator');
-const { User, Follow } = require("../../db/models");
+const { User, Follower, Story } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
 const { getUserToken, requireAuth } = require('../../auth');
 const csrf = require("csurf");
@@ -193,5 +193,16 @@ router.post("/follow", asyncHandler(async(req, res) => {
     });
     res.end();
 }));
+
+router.get("/:id/profile", asyncHandler(async(req, res) => {
+  const id = req.params.id;
+  const userAndStories = await User.findByPk(id,{
+    include: Story
+  })
+  console.log(userAndStories);
+  const followingAmount = await Follower.count({where: {followeeId: id}})
+  const followerAmount = await Follower.count({where: {followerId: id}})
+  res.json({userAndStories, followingAmount, followerAmount})
+}))
 
 module.exports = router;

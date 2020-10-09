@@ -1,8 +1,9 @@
 mixin story-preview(id, name, date, title, subtitle, body, clapAmount)
   img(src="https://miro.medium.com/fit/c/256/256/0*CEn10raxv9BiN3oD" height="40px" width="40")
-  a(href="/profile").story-preview= name
-  p.story-preview= date
-  a(href=`/stories/${id}`).story-preview= title
-  p.story-preview= subtitle
-  p.story-preview= body
-  p.story-preview= clapAmount
+  profile_body_story-preview_name: a(href="/profile").story-preview= name
+  profile_body_story-preview_date: p.story-preview= date
+  profile_body_story-preview_title: a(href=`/stories/${id}`).story-preview= title
+  profile_body_story-preview_subtitle: p.story-preview= subtitle
+  profile_body_story-preview_body: p.story-preview= body
+  profile_body_story-preview_clapImage: button(href="")
+  profile_body_story-preview_clapAmount: p.story-preview= clapAmount
