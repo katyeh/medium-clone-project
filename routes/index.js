@@ -20,7 +20,7 @@ router.get('/profile', asyncHandler(async (req, res) => {
   const user = await User.findAll({ where: { id: userId }})
   const followingAmount = await Follower.count({where: {followeeId: userId}})
   const followerAmount = await Follower.count({where: {followerId: userId}})
-  res.render('profile', {
+  res.render('profile-layout', {
     stories,
     user,
     followingAmount,
@@ -30,10 +30,12 @@ router.get('/profile', asyncHandler(async (req, res) => {
 
 router.get("/profile/claps", asyncHandler(async(req, res) => {
 
+  res.render("profile-claps")
 }));
 
 router.get("/profile/responses", asyncHandler(async(req, res) => {
 
+  res.render("profile-responses")
 }));
 
 router.get('/stories/create', asyncHandler(async (req, res) => {

@@ -205,12 +205,16 @@ a:visited {
   height: 40vh;
 }
 
-#login * {
-  border: 1px solid black;
+#profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-#login__form {
-  display: fixed;
+.profile_body_story-preview {
+  border: thick solid #4d4d4d;
+  padding: 5px;
+  margin: 10px;
 }
 
 #main,
