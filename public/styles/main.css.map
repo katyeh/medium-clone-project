@@ -10,6 +10,7 @@
         "abstracts/_mixins.sass",
         "pages/_main.sass",
         "pages/_splash.sass",
+        "pages/_profile.sass",
         "pages/_login.sass",
         "pages/_story.sass",
         "components/_buttons.sass",

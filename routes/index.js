@@ -1,16 +1,41 @@
 const express = require('express');
-// const csrfProtection = require('./csrf')
-// const csrf = require('csurf');
-const { Story, Genre, User } = require('../db/models');
+const { Story, Genre, User, Follower } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
-
-// const csrfProtection = csrf({ cookie: true });
+// const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", id);
+const userId = 1
 
 router.get('/', asyncHandler(async(req, res) => {
   res.render('main', {
       csrfToken: req.csrfToken()
     })
+}));
+
+// router.get('/', (req, res) => {
+//   res.render('main');
+// });
+
+router.get('/profile', asyncHandler(async (req, res) => {
+  const stories = await Story.findAll({ where: { userId }})
+  const user = await User.findAll({ where: { id: userId }})
+  const followingAmount = await Follower.count({where: {followeeId: userId}})
+  const followerAmount = await Follower.count({where: {followerId: userId}})
+  res.render('profile-layout', {
+    stories,
+    user,
+    followingAmount,
+    followerAmount
+  });
+}));
+
+router.get("/profile/claps", asyncHandler(async(req, res) => {
+
+  res.render("profile-claps")
+}));
+
+router.get("/profile/responses", asyncHandler(async(req, res) => {
+
+  res.render("profile-responses")
 }));
 
 router.get('/stories/create', asyncHandler(async (req, res) => {
@@ -40,12 +65,6 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
 //   res.render('log-in');
 // })
 
-// router.get('/', (req, res) => {
-//   res.render('main');
-// });
-// router.get('/splash', asyncHandler(async(req, res) => {
-//   res.render('splash', { csrfToken: req.csrfToken() });
-// }));
 
 
 
