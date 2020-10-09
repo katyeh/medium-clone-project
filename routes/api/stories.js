@@ -1,15 +1,12 @@
 const express = require("express");
-// const csrfProtection = require('../csrf');
-// const csrf = require('csurf');
 const router = express.Router();
 const db = require('../../db/models');
 const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap, StoryGenre, Genre } = db;
-// const { requireAuth } = require('../auth');
+const { requireAuth } = require('../../auth');
 
-// const csrfProtection = csrf({ cookie: true });
-// router.use(requireAuth);
+router.use(requireAuth);
 
 const storyValidator = [
   check('title')
@@ -26,7 +23,6 @@ const storyValidator = [
     .exists({ checkFalsy: true })
     .withMessage('Please provide a valid story.')
 ]
-
 
 router.post(
     '/',

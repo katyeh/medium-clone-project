@@ -8,7 +8,7 @@ const router = express.Router();
 // const csrfProtection = csrf({ cookie: true });
 
 router.get('/', asyncHandler(async(req, res) => {
-  res.render('splash', {
+  res.render('main', {
       csrfToken: req.csrfToken()
     })
 }));
