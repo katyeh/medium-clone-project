@@ -27,6 +27,9 @@ module.exports = {
           key: "id",
         },
       },
+      imageUrl: {
+        type: Sequelize.STRING(500),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
