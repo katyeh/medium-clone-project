@@ -205,12 +205,177 @@ a:visited {
   height: 40vh;
 }
 
-#login * {
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   border: 1px solid black;
+  border-radius: 1rem;
+  z-index: 20;
+  background-color: rgba(255, 255, 255, 0.98);
+  width: 50rem;
+  maxwidth: 80%;
+  height: 200rem;
+  max-height: 100%;
+  border: none;
+  -webkit-box-shadow: 0px 2px 5px #e6e6e6;
+          box-shadow: 0px 2px 5px #e6e6e6;
 }
 
-#login__form {
-  display: fixed;
+.modal .modal-header .button-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.modal .modal-header .button-div #close__modal {
+  background-color: rgba(255, 255, 255, 0.98);
+  font: 400 13.3333px Arial;
+  border: none;
+  padding: 1.8rem;
+  color: #757575;
+  cursor: pointer;
+}
+
+.modal .modal-header #header__title {
+  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20rem 5rem 5rem 5rem;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 500;
+  color: #080808;
+}
+
+.modal .log-in-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modal .log-in-form #login__email {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: 2.5rem;
+  height: 10rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal .log-in-form #login__email #email {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  width: 20rem;
+}
+
+.modal .log-in-form #login__email #email__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom: .5px solid black;
+  padding: .5rem;
+  width: 20rem;
+}
+
+.modal .log-in-form #login__password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 4rem;
+  height: 8rem;
+}
+
+.modal .log-in-form #login__password #password {
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 300;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 20rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modal .log-in-form #login__password #password__input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom: .5px solid black;
+  padding: .5rem;
+  width: 20rem;
+}
+
+.modal .log-in-form #login__button {
+  border-radius: 1.5rem;
+  margin: 2em;
+  padding: 1.5rem;
+  background: black;
+}
+
+.modal .log-in-form #login__button #login {
+  color: white;
+  background: black;
+  border: none;
+}
+
+#overlay {
+  position: fixed;
 }
 
 #main,
@@ -279,8 +444,8 @@ a:visited {
   z-index: 1;
   padding: 2rem;
   right: 0;
-  -webkit-box-shadow: 0px 1px 5px #e6e6e6;
-          box-shadow: 0px 1px 5px #e6e6e6;
+  -webkit-box-shadow: 0px 2px 5px #e6e6e6;
+          box-shadow: 0px 2px 5px #e6e6e6;
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
   -webkit-transform: translate(40%, 0) scale(1);
