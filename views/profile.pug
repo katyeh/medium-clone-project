@@ -1,3 +1,28 @@
 extends layout.pug
+include ./utilities/mixin_navbar.pug
+include ./utilities/mixin_story-preview.pug
 
 block content
+  +navbar('main')
+  .profile
+    .profile_header
+      .profile_header_name: h1= user.fullName
+      .profile_header_social-link: a(href="/following") #{followingAmount} Following
+      .profile_header_social-link: a(href="/followers") #{followerAmount} Followers
+      .profile_header_img: img(src="https://miro.medium.com/fit/c/256/256/0*CEn10raxv9BiN3oD" width="128" height="128")
+    .profile_body
+      .profile_body_tab: a(href="/profile") Profile
+      .profile_body_tab: a(href="/claps") Claps
+      .profile_body_tab: a(href="/responses") Responses
+      .profile_body_header: h1 Latest
+        each story in stories
+          .profile_body_story-preview
+            +story-preview(user.fullName, story.date, story.title, story.subtitle, clapAmount)
+
+
+  script.
+    const profIcon = document.getElementById('navbar__prof-icon');
+    const modal = document.getElementById('navbar__modal');
+    profIcon.addEventListener('click', e => {
+      modal.classList.toggle('hidden');
+    });

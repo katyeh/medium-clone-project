@@ -1,0 +1,8 @@
+mixin story-preview(name, date, title, subtitle, body, clapAmount)
+  img(src="https://miro.medium.com/fit/c/256/256/0*CEn10raxv9BiN3oD" height="40px" width="40")
+  a(href="/profile").story-preview= name
+  p.story-preview= date
+  a(href=`/stories/${story.id}`).story-preview= title
+  p.story-preview= subtitle
+  p.story-preview= body
+  p.story-preview= clapAmount
