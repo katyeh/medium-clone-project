@@ -166,6 +166,143 @@ a:visited {
   height: 10rem;
 }
 
+.modal2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  border: 1px solid black;
+  border-radius: 1rem;
+  z-index: 20;
+  background-color: rgba(255, 255, 255, 0.98);
+  width: 50rem;
+  maxwidth: 80%;
+  height: 200rem;
+  max-height: 100%;
+  border: none;
+  -webkit-box-shadow: 0px 2px 5px #e6e6e6;
+          box-shadow: 0px 2px 5px #e6e6e6;
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+}
+
+.button-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.button-div__button {
+  background: rgba(255, 255, 255, 0.98);
+  font: 400 13.3333px Arial;
+  border: none;
+  padding: 1.8rem;
+  color: #757575;
+  cursor: pointer;
+}
+
+.modal2__header-title {
+  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15rem 5rem 5rem 5rem;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 500;
+  color: #080808;
+}
+
+.sign-up-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sign-up-form__div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: .5rem;
+  height: 2rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sign-up-form__label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  width: 20rem;
+}
+
+.sign-up-form__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom: .5px solid black;
+  paddding: .5rem;
+  width: 20rem;
+}
+
+.sign-up-form__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 1.5rem;
+  margin: 2em;
+  padding: 1rem;
+  background: black;
+}
+
+.sign-up-form__button__button {
+  color: white;
+  background: black;
+  border: none;
+}
+
 #splash * {
   border: 1px solid black;
 }
@@ -224,21 +361,12 @@ a:visited {
   display: -ms-flexbox;
   display: flex;
 }
-<<<<<<< HEAD
 
 #profile__header img {
   border-radius: 50%;
   border: thin solid #ffffff;
 }
 
-=======
-
-img {
-  border-radius: 50%;
-  border: thin solid #ffffff;
-}
-
->>>>>>> loginfrontend
 .profile_body_story-preview {
   border: thin solid #4d4d4d;
   padding: 5px;
@@ -436,10 +564,6 @@ img {
 
 #overlay {
   position: fixed;
-<<<<<<< HEAD
-}
-
-=======
   opacity: 0;
   top: 0;
   left: 0;
@@ -456,7 +580,6 @@ img {
   opacity: 1;
 }
 
->>>>>>> loginfrontend
 #story__body {
   border: 1px solid black;
   display: -webkit-box;
