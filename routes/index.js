@@ -6,7 +6,7 @@ const router = express.Router();
 const userId = 1
 
 router.get('/', asyncHandler(async(req, res) => {
-  res.render('main', {
+  res.render('splash', {
       csrfToken: req.csrfToken()
     })
 }));
