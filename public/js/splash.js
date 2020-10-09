@@ -29,7 +29,7 @@ function closeModal(modal) {
 }
 
 const openSignUpModal = document.querySelector(".splash__contents-signup");
-const closeSignUpModal = document.querySelector('.button-div__button');
+const closeSignUpModal = document.querySelector(".button-div__button");
 
 openSignUpModal.addEventListener('click', () => {
   const modal = document.querySelector(".modal2")
@@ -37,6 +37,8 @@ openSignUpModal.addEventListener('click', () => {
 })
 
 closeSignUpModal.addEventListener('click', () => {
-  const modal = button.closest('.modal2')
+  console.log("getting click")
+  const modal = document.querySelector(".modal2")
+  console.log(modal)
   closeModal(modal)
 })
