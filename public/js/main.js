@@ -1,14 +1,14 @@
-// const { api: { storyPhotoAPI } } = require('../../config');
-// const { Story } = require('../../db/models');
-// `https://api.unsplash.com/collections/57324234?client_id=${}`
+const fetchStories = async () => {
+  const res = await fetch('/api/stories', {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('READIUM_ACCESS_TOKEN', 'READIUM_CURRENT_USER_ID')}`
+    }
+  });
+  const stories = await res.json();
+  console.log(stories)
+}
 
-// import { storyPhotoAPI, Story } from './utils';
-
-import * as a from "./import.js";
-console.log(a)
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // const stories = await Story.findAll();
-  // console.log(stories)
-  // console.log(import * from './utils.js')
+  fetchStories();
 });

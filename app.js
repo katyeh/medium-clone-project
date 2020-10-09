@@ -52,12 +52,12 @@ app.use((err, req, res, next) => {
     errors: err.errors
   };
 
-  if (acceptHeader.includes("text/html")) {
-    res.render("errors", errorData);
-  } else if (acceptHeader === "application/json") {
+  if (acceptHeader.includes('text/html')) {
+    res.render('errors', errorData);
+  } else if (acceptHeader === 'application/json') {
     res.json(errorData);
   } else {
-    res.send("Server Error");
+    res.send('Server Error');
   }
 });
 

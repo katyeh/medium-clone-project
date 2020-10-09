@@ -37,7 +37,17 @@ const usernameValidation = [
     .matches(/^\w+$/)
     .withMessage(
       "Username must only contain alphabets, numbers, and _(underscores)."
-    ),
+    )
+    .custom((value) => {
+      return User.findOne({ where: { username: value } }).then((user) => {
+        if (user) {
+          throw new Error(
+            "The provided username is already used by another account."
+          );
+        }
+        return true;
+      });
+    }),
 ];
 
 const emailAndPasswordValidation = [
@@ -91,7 +101,6 @@ const userNotFoundError = id => {
   return err;
 };
 
-// TODO: save fullname Uppercase
 router.post("/",
   csrfProtection,
   userValidation,
@@ -112,7 +121,6 @@ router.post("/",
     hashedPassword
   });
 
-  // TODO: create user token with jwt and include that token in response json.
   const token = getUserToken(user);
   res.status(201).json({
     user: { id: user.id },
@@ -165,9 +173,6 @@ router.post("/token",
       where: { email },
     });
 
-
-
-
     if (!user || !user.validatePassword(password)) {
       const err = new Error("Login failed.");
       err.status = 401;
@@ -176,7 +181,6 @@ router.post("/token",
       return next(err);
     }
 
-    // TODO: create user token with jwt and include that token in response json.
     const token = getUserToken(user);
     res.json({token, user: { id: user.id } });
 }));
