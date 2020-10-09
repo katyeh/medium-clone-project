@@ -1,7 +1,5 @@
 const express = require('express');
-// const csrfProtection = require('./csrf')
-// const csrf = require('csurf');
-const { Story, Genre, User } = require('../db/models');
+const { Story, Genre, User, Follower } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
 // const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", id);
@@ -20,12 +18,23 @@ router.get('/', asyncHandler(async(req, res) => {
 router.get('/profile', asyncHandler(async (req, res) => {
   const stories = await Story.findAll({ where: { userId }})
   const user = await User.findAll({ where: { id: userId }})
+  const followingAmount = await Follower.count({where: {followeeId: userId}})
+  const followerAmount = await Follower.count({where: {followerId: userId}})
   res.render('profile', {
     stories,
-    user
+    user,
+    followingAmount,
+    followerAmount
   });
 }));
 
+router.get("/profile/claps", asyncHandler(async(req, res) => {
+
+}));
+
+router.get("/profile/responses", asyncHandler(async(req, res) => {
+
+}));
 
 router.get('/stories/create', asyncHandler(async (req, res) => {
   const stories = await Story.findAll({})

@@ -4,16 +4,16 @@ include ./utilities/mixin_story-preview.pug
 
 block content
   +navbar('main')
-  .profile
-    .profile_header
+  #profile
+    #profile__header
       .profile_header_name: h1= user.fullName
       .profile_header_social-link: a(href="/following") #{followingAmount} Following
       .profile_header_social-link: a(href="/followers") #{followerAmount} Followers
       .profile_header_img: img(src="https://miro.medium.com/fit/c/256/256/0*CEn10raxv9BiN3oD" width="128" height="128")
-    .profile_body
+    #profile__body
       .profile_body_tab: a(href="/profile") Profile
-      .profile_body_tab: a(href="/claps") Claps
-      .profile_body_tab: a(href="/responses") Responses
+      .profile_body_tab: a(href="/profile/claps") Claps
+      .profile_body_tab: a(href="/profile/responses") Responses
       .profile_body_header: h1 Latest
         each story in stories
           .profile_body_story-preview
