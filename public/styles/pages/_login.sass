@@ -1,12 +1,78 @@
-#login
-   display: flex;
+.modal
+   position: fixed
+   top: 50%
+   left: 50%
+   transform: translate(-50%, -50%)
+   border: 1px solid black
+   border-radius: 1rem
+   z-index: 20
+   background-color: $color-background-light
+   width: 50rem
+   maxwidth: 80%
+   height: 200rem
+   max-height: 100%
 
-  & *
-    border: 1px solid black
-  &__form
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  &__email
-    display: flex;
-    justify-content: center;
+   .modal-header
+
+     .button-div
+       display: flex
+       justify-content: flex-end
+
+       #close__modal
+         background-color: $color-background-light
+         font: 400 13.3333px Arial
+         border: none
+         padding: 1.8rem
+         color: $color-font-subtitle
+
+     #header__title
+      font-family:  medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+      display: flex
+      justify-content: center
+      padding: 1.5rem
+      font-size: 28px
+      font-weight: 500
+
+   .log-in-form
+     display: flex
+     flex-direction: column
+     align-items: center
+     justify-content: space-evenly
+
+     #login__email
+       display: flex
+       align-items: flex-end
+       padding: 2.5rem
+       height: 8rem
+
+       #email
+         font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+         padding: .75em
+         font-size: 16px
+         font-weight: 300
+
+       #email__input
+         border-top-style: hidden
+         border-right-style: hidden
+         border-left-style: hidden
+         border-bottom: .75px solid $color-font-subtitle
+
+     #login__password
+       display: flex
+       align-items: flex-end
+       padding: 2.5rem
+       height: 8rem
+
+       #password
+         font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+         padding: .75em
+         font-size: 16px
+         font-weight: 300
+         display: flex
+         align-items: center
+
+       #password__input
+         border-top-style: hidden
+         border-right-style: hidden
+         border-left-style: hidden
+         border-bottom: .75px solid $color-font-subtitle
