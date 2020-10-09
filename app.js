@@ -13,6 +13,7 @@ const app = express();
 
 app.use(express.urlencoded());
 app.set('view engine', 'pug');
+app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
@@ -20,8 +21,8 @@ app.use(express.json());
 
 app.use('/', csrfProtection, indexRouter);
 app.use('/api/stories', csrfProtection, storiesRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/responses', responsesRouter);
+app.use('/api/users', csrfProtection, usersRouter);
+app.use('/api/responses', csrfProtection, responsesRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested resource couldn\'t be found.');

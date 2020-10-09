@@ -40,7 +40,7 @@ router.post(
     body,
     userId: 3
   });
-//   res.redirect('/stories'); // TODO: Work on redirect
+//   res.redirect('/stories'); 
 }));
 
 const validateResponse = [

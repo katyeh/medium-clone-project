@@ -10,7 +10,8 @@ signUpForm.addEventListener("submit", async (event) => {
     const email = formData.get("email");
     const password = formData.get("password");
     const confirmPassword = formData.get("confirmPassword");
-    const body = { username, fullName, email, password, confirmPassword };
+    const _csrf = formData.get("_csrf")
+    const body = { username, fullName, email, password, confirmPassword, _csrf };
 
     try {
         const res = await fetch("/api/users", {

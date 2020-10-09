@@ -8,8 +8,11 @@ const router = express.Router();
 // const csrfProtection = csrf({ cookie: true });
 
 router.get('/', asyncHandler(async(req, res) => {
-  res.render('splash' /*, { csrfToken: req.csrfToken() } */);
-  
+  res.render('splash', {
+      csrfToken: req.csrfToken()
+    })
+}));
+
 router.get('/stories/create', asyncHandler(async (req, res) => {
   const stories = await Story.findAll({})
   const genres = await Genre.findAll({})
@@ -27,4 +30,10 @@ router.get('/stories/create', asyncHandler(async (req, res) => {
 // router.get('/', (req, res) => {
 //   res.render('main');
 // });
+// router.get('/splash', asyncHandler(async(req, res) => {
+//   res.render('splash', { csrfToken: req.csrfToken() });
+// }));
+
+
+
 module.exports = router;
