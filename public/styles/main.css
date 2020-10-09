@@ -239,6 +239,7 @@ a:visited {
   border: none;
   padding: 1.8rem;
   color: #757575;
+  cursor: pointer;
 }
 
 .modal .modal-header #header__title {
@@ -371,6 +372,10 @@ a:visited {
   color: white;
   background: black;
   border: none;
+}
+
+#overlay {
+  position: fixed;
 }
 
 #main,
