@@ -23,6 +23,13 @@ router.get('/stories/create', asyncHandler(async (req, res) => {
     });
 }));
 
+// router.get('/login', (req, res) => {
+//   res.render('log-in');
+// })
+
+// router.get('/', (req, res) => {
+//   res.render('main');
+// });
 // router.get('/splash', asyncHandler(async(req, res) => {
 //   res.render('splash', { csrfToken: req.csrfToken() });
 // }));

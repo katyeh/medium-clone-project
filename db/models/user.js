@@ -42,7 +42,9 @@ module.exports = (sequelize, DataTypes) => {
     }
     User.belongsToMany(models.User, columnMappingFollower)
   };
-  User.prototype.validatePassword = function(password) {
+  User.prototype.validatePassword = function (password) {
+    console.log(this.hashedPassword.toString())
+    console.log(password)
     return bcrypt.compareSync(password, this.hashedPassword.toString());
   }
   return User;
