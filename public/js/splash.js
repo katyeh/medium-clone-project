@@ -5,7 +5,6 @@ const overlay = document.getElementById('overlay')
 
 
 openLoginModal.addEventListener('click', () => {
-  console.log("hello")
   const modal = document.getElementById('login__modal')
   openModal(modal)
 })
@@ -28,3 +27,16 @@ function closeModal(modal) {
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
+
+const openSignUpModal = document.querySelector(".splash__contents-signup");
+const closeSignUpModal = document.querySelector('.button-div__button');
+
+openSignUpModal.addEventListener('click', () => {
+  const modal = document.querySelector(".modal2")
+  openModal(modal)
+})
+
+closeSignUpModal.addEventListener('click', () => {
+  const modal = button.closest('.modal2')
+  closeModal(modal)
+})

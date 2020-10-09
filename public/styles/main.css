@@ -170,8 +170,8 @@ a:visited {
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
   border: 1px solid black;
   border-radius: 1rem;
   z-index: 20;
@@ -185,6 +185,11 @@ a:visited {
           box-shadow: 0px 2px 5px #e6e6e6;
   -webkit-transition: 200ms ease-in-out;
   transition: 200ms ease-in-out;
+}
+
+.modal2.active {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
 }
 
 .button-div {
@@ -666,6 +671,27 @@ a:visited {
   content: '';
   border-right: 1px solid #e6e6e6;
   margin: 0 1.5rem;
+}
+
+#navbar__contents .navbar__contents__signup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1.5rem;
+  width: 8rem;
+  margin: 2em;
+  padding: 1.5rem;
+  background: black;
+}
+
+#navbar__contents .navbar__contents__signup .splash__contents-signup {
+  color: white;
+  border: none;
+  background: black;
+  cursor: pointer;
 }
 
 #navbar__prof-icon {
