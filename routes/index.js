@@ -1,7 +1,7 @@
 const express = require('express');
 // const csrfProtection = require('./csrf')
 // const csrf = require('csurf');
-const { Story, Genre } = require('../db/models');
+const { Story, Genre, User } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
 
@@ -21,6 +21,19 @@ router.get('/stories/create', asyncHandler(async (req, res) => {
       genres,
       csrfToken: req.csrfToken()
     });
+}));
+
+router.get('/story/:id', asyncHandler(async (req, res) => {
+    const storyId = req.params.id
+    const story = await Story.findOne({
+        where: {
+            id: storyId
+        }
+    });
+    const userId = story.userId
+    const user = await User.findByPk(userId);
+
+    res.render('story', { story, user });
 }));
 
 // router.get('/login', (req, res) => {

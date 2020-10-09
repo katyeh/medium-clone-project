@@ -205,6 +205,10 @@ a:visited {
   height: 40vh;
 }
 
+
+#story__body {
+  border: 1px solid black;
+
 .modal {
   position: fixed;
   top: 50%;
@@ -265,6 +269,35 @@ a:visited {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / span 3;
+  width: 50%;
+  -webkit-transform: translateX(-50%, -50%);
+          transform: translateX(-50%, -50%);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#story__header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#story__user {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+}
+
+#story__user > h2 {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -376,6 +409,7 @@ a:visited {
 
 #overlay {
   position: fixed;
+  
 }
 
 #main,

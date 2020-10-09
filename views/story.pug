@@ -1,0 +1,14 @@
+extends layout.pug
+include ./utilities/mixin_navbar.pug
+
+block content
+  +navbar('main')
+  #story
+    #story__body
+      #story__header
+        h1= story.title
+      #story__user
+        h2= user.fullName
+      #story__contents
+        p= story.body
+      footer#splash__footer
