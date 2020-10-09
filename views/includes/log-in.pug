@@ -8,13 +8,13 @@ block content
       #header__title Welcome Back.
     form(class="log-in-form")
       #login__email
-        label(id="email",for='email') Email
+        label(id="email",for='email') Your email
         input(id="email__input",type='email', name='email')
       #login__password
-        label(id="password",for='password') Password
+        label(id="password",for='password') Your password
         input(id="password__input",type='password', name='password')
-      div
+      #login__button
         input(type="hidden" name="_csrf" value=csrfToken)
-        button(type="submit") Log In
+        button(id="login",type="submit") Log In
   #overlay
     script(type="module" src="/js/log-in.js")

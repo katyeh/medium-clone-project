@@ -219,6 +219,9 @@ a:visited {
   maxwidth: 80%;
   height: 200rem;
   max-height: 100%;
+  border: none;
+  -webkit-box-shadow: 0px 2px 5px #e6e6e6;
+          box-shadow: 0px 2px 5px #e6e6e6;
 }
 
 .modal .modal-header .button-div {
@@ -246,9 +249,11 @@ a:visited {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 1.5rem;
+  padding: 20rem 5rem 5rem 5rem;
   font-size: 28px;
+  line-height: 32px;
   font-weight: 500;
+  color: #080808;
 }
 
 .modal .log-in-form {
@@ -262,9 +267,9 @@ a:visited {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .modal .log-in-form #login__email {
@@ -275,21 +280,43 @@ a:visited {
       -ms-flex-align: end;
           align-items: flex-end;
   padding: 2.5rem;
-  height: 8rem;
+  height: 10rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .modal .log-in-form #login__email #email {
-  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
-  padding: .75em;
-  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 20px;
+  font-size: 15px;
   font-weight: 300;
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  width: 20rem;
 }
 
 .modal .log-in-form #login__email #email__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
-  border-bottom: 0.75px solid #757575;
+  border-bottom: .5px solid black;
+  padding: .5rem;
+  width: 20rem;
 }
 
 .modal .log-in-form #login__password {
@@ -299,28 +326,51 @@ a:visited {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  padding: 2.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 4rem;
   height: 8rem;
 }
 
 .modal .log-in-form #login__password #password {
-  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
-  padding: .75em;
-  font-size: 16px;
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  line-height: 20px;
+  font-size: 15px;
   font-weight: 300;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 20rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .modal .log-in-form #login__password #password__input {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
-  border-bottom: 0.75px solid #757575;
+  border-bottom: .5px solid black;
+  padding: .5rem;
+  width: 20rem;
+}
+
+.modal .log-in-form #login__button {
+  border-radius: 1.5rem;
+  margin: 2em;
+  padding: 1.5rem;
+  background: black;
+}
+
+.modal .log-in-form #login__button #login {
+  color: white;
+  background: black;
+  border: none;
 }
 
 #main,
@@ -389,8 +439,8 @@ a:visited {
   z-index: 1;
   padding: 2rem;
   right: 0;
-  -webkit-box-shadow: 0px 1px 5px #e6e6e6;
-          box-shadow: 0px 1px 5px #e6e6e6;
+  -webkit-box-shadow: 0px 2px 5px #e6e6e6;
+          box-shadow: 0px 2px 5px #e6e6e6;
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
   -webkit-transform: translate(40%, 0) scale(1);
