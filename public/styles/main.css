@@ -208,6 +208,8 @@ a:visited {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -217,6 +219,10 @@ a:visited {
   width: 7.5rem;
   height: 7.5rem;
   border-radius: 50%;
+}
+
+#main__from-following .following-users-container > * div {
+  background-color: red;
 }
 
 #main__trends {

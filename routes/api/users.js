@@ -131,27 +131,15 @@ router.post("/",
 router.get('/:id/main', asyncHandler(async (req, res, next) => {
   const followingUsers = await Follower.findAll({
     where: {
-      followeeId: req.params.id
-    },
-    include: {
-      model: User
+      followerId: req.params.id
     },
     limit: 8
   });
+
   res.json({
     followingUsers,
   });
 }))
-
-// router.get('/main', asyncHandler(async (req, res, next) => {
-//   const followingUsers = await Follower.findAll({
-//     where: {
-//       followeeId: 
-//     },
-//     limit: 6
-//   })
-//   console.log(followingUsers);
-// }));
 
 router.get(
   "/:id(\\d+)",

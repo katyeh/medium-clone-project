@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "followeeId",
         foreignKey: "followerId"
     }
-    User.belongsToMany(models.User, columnMappingFollower)
+    User.belongsToMany(models.User, columnMappingFollower);
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
