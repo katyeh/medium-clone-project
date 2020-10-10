@@ -410,7 +410,6 @@ img {
 }
 
 #story__body {
-  border: 1px solid black;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -464,6 +463,9 @@ img {
 #story .followBtn {
   float: left;
   margin: 5px;
+  color: #03a87c;
+  border-radius: 5px;
+  border-color: #03a87c;
 }
 
 #story .userInfo__left {
