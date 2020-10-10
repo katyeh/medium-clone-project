@@ -29,6 +29,7 @@
     "express-validator": "^6.6.1",
     "heroku": "^7.45.0",
     "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.1",
     "per-env": "^1.0.2",
     "pg": "^8.4.0",
     "pug": "^2.0.4",
