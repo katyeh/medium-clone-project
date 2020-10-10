@@ -4,7 +4,7 @@
     grid-column: 1 / -1
 
   & *
-    border: 1px solid black
+    // border: 1px solid black
   &__stories
     @include border-right($border-light)
     grid-column: 2 / span 2
@@ -34,7 +34,9 @@
     img
       width: 38rem
       object-fit: contain
+      cursor: pointer
     .main-suggestion-story
+      cursor: pointer
       width: 38rem
       height: 23rem
       padding-top: 2rem
@@ -42,8 +44,21 @@
         display: inline-block
         padding-top: 2rem
     .suggestion-story
+      cursor: pointer
       width: 35rem
       height: 12rem
+      a:not(:first-child)
+        display: inline-block
+        padding-top: 2rem
+      img
+        height: 2rem
+        width: 2rem
+        position: relative
+        top: .5rem
+        margin-right: 1rem
+      span
+        display: inline-block
+        padding-bottom: 1rem
 
   &__from-following
     grid-column: 4

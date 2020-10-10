@@ -16,6 +16,7 @@ router.get('/', asyncHandler(async(req, res) => {
     suggestionStories,
   });
 
+  suggestionStories.forEach(a => console.log(a.user.username))
   // if (newStoriesRes.status === 401) {
   //   return (window.location.href = "log-in");
   // }

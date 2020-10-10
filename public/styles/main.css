@@ -72,10 +72,6 @@ a:visited {
   grid-column: 1 / -1;
 }
 
-#main * {
-  border: 1px solid black;
-}
-
 #main__stories {
   margin: 0 2.5rem 0 0;
   border-right: 1px solid #e6e6e6;
@@ -121,9 +117,11 @@ a:visited {
   width: 38rem;
   -o-object-fit: contain;
      object-fit: contain;
+  cursor: pointer;
 }
 
 #main__stories .main-suggestion-story {
+  cursor: pointer;
   width: 38rem;
   height: 23rem;
   padding-top: 2rem;
@@ -135,8 +133,27 @@ a:visited {
 }
 
 #main__stories .suggestion-story {
+  cursor: pointer;
   width: 35rem;
   height: 12rem;
+}
+
+#main__stories .suggestion-story a:not(:first-child) {
+  display: inline-block;
+  padding-top: 2rem;
+}
+
+#main__stories .suggestion-story img {
+  height: 2rem;
+  width: 2rem;
+  position: relative;
+  top: .5rem;
+  margin-right: 1rem;
+}
+
+#main__stories .suggestion-story span {
+  display: inline-block;
+  padding-bottom: 1rem;
 }
 
 #main__from-following {

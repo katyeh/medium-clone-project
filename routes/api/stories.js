@@ -125,9 +125,10 @@ router.get('/main', asyncHandler(async (req, res, next) => {
   // const userId  = req.user.id;
   const newStories = await Story.findAll({
     order: [['createdAt', 'DESC']],
+    include: 'user',
     attributes: {
-      exclude: ['body']
-    }
+      exclude: ['body'],
+    },
   });
 
   const trendingStories = await Story.findAll({
@@ -136,6 +137,7 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     },
   });
   const suggestionStories = await Story.findAll({
+    include: 'user',
     attributes: {
       exclude: ["body"],
     },

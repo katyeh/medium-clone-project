@@ -2,7 +2,16 @@ extends layout.pug
 include ./utilities/mixin_navbar.pug
 
 block content
+
   +navbar('main')
+  -function dateFormatter(string) {
+    -var date = new Date(string);
+    -var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    -var month = monthNames[date.getMonth()];
+    -var day = date.getDate();
+    -return month+' '+day;
+  -}
+
   #main
     #main__stories
       each suggestionStory, index in suggestionStories
@@ -17,8 +26,11 @@ block content
             a(href=`/stories/${suggestionStory.id}`) Read More &#9733
         else
           .suggestion-story
-            a(href=`users/${suggestionStory.userId}`)= suggestionStory.userId
+            a(href=`users/${suggestionStory.userId}`)
+              img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
+              span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]
             h3= suggestionStory.title
+            p #{dateFormatter(suggestionStory.createdAt)}
       
     #main__from-following
       p.section-title Latest From Following
