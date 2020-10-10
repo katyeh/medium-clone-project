@@ -18,7 +18,7 @@ const getUserInfo = userId => {
   await followingUsers.forEach(async (followingUser, i) => {
     followingContainer.innerHTML += `<div>
         <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
-        <div>${await getUserInfo(followingUser.followeeId)}</div>
+        <div>${getUserInfo(followingUser.followeeId)}</div>
       </div>
     `
     })

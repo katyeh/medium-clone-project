@@ -2,26 +2,33 @@
 const bcrypt = require('bcrypt');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    fullName: {
+  const User = sequelize.define(
+    "User",
+    {
+      fullName: {
         type: DataTypes.STRING(55),
         allowNull: false,
-    },
-    username: {
+      },
+      username: {
         type: DataTypes.STRING(40),
         allowNull: false,
-        unique: true
-    },
-    email: {
+        unique: true,
+      },
+      email: {
         type: DataTypes.STRING(55),
         allowNull: false,
-        unique: true
-    },
-    hashedPassword: {
+        unique: true,
+      },
+      hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
-    }
-  }, {});
+      },
+      imageUrl: {
+        type: DataTypes.STRING(500)
+      }
+    },
+    {}
+  );
   User.associate = function(models) {
     User.hasMany(models.Bookmark, {foreignKey: "userId"});
     User.hasMany(models.Story, {foreignKey: "userId"});

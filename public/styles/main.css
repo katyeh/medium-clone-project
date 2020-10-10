@@ -72,10 +72,6 @@ a:visited {
   grid-column: 1 / -1;
 }
 
-#main * {
-  border: 1px solid black;
-}
-
 #main__stories {
   margin: 0 2.5rem 0 0;
   border-right: 1px solid #e6e6e6;
@@ -187,7 +183,6 @@ a:visited {
   -ms-grid-column: 4;
   grid-column: 4;
   height: 50rem;
-  background-color: pink;
 }
 
 #main__from-following .following-users-container {
@@ -204,7 +199,6 @@ a:visited {
 #main__from-following .following-users-container > * {
   width: 9rem;
   height: 9rem;
-  background-color: limegreen;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,6 +207,7 @@ a:visited {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 3rem;
 }
 
 #main__from-following .following-users-container > * img {
@@ -222,7 +217,7 @@ a:visited {
 }
 
 #main__from-following .following-users-container > * div {
-  background-color: red;
+  text-align: center;
 }
 
 #main__trends {
