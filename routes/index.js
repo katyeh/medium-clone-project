@@ -5,7 +5,7 @@ const router = express.Router();
 const fetch = require("node-fetch");
 
 router.get('/', asyncHandler(async(req, res) => {
-  res.render('main', {
+  res.render('splash', {
       csrfToken: req.csrfToken()
     })
 }));
