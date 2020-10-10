@@ -4,7 +4,7 @@
     grid-column: 1 / -1
 
   & *
-    // border: 1px solid black
+    border: 1px solid black
   &__stories
     @include border-right($border-light)
     grid-column: 2 / span 2
@@ -113,6 +113,7 @@
           width: 7rem
           height: 7rem
           border-radius: 50%
+          cursor: pointer
 
         div
           text-align: center
@@ -131,6 +132,23 @@
 
         & > *
           padding: 1.5rem
+      
+      &__story
+        background-color: skyblue
+        display: flex
+
+        .left
+          width: 20%
+          height: 100%
+          background-color: yellow
+        .right
+          width: 80%
+          height: 100%
+          // background-color: green
+
+          span
+            display: inline-block
+            padding-bottom: 1rem
 
   &__feeds
     grid-column: 2/ span 2

@@ -8,8 +8,9 @@ block content
     -var date = new Date(string);
     -var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
     -var month = monthNames[date.getMonth()];
+    -var year = date.getFullYear();
     -var day = date.getDate();
-    -return month+' '+day;
+    -return month+' '+day+', '+year;
   -}
 
   #main
@@ -27,7 +28,7 @@ block content
         else
           .suggestion-story
             .left
-              a(href=`users/${suggestionStory.userId}`)
+              a(href=`/users/${suggestionStory.userId}`)
                 img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
                 span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]
               h3= suggestionStory.title
@@ -42,12 +43,16 @@ block content
     #main__trends
       p.section-title Trending on Medium
       .trending__container
-        .trending__story#1 trending story #1
-        .trending__story#2 trending story #2
-        .trending__story#3 trending story #3
-        .trending__story#4 trending story #4
-        .trending__story#5 trending story #5
-        .trending__story#6 trending story #6
+        each trendingStory in trendingStories
+          .trending__story
+            .left
+            .right
+              a(href=`/users/${trendingStory.userId}`)
+                span #[strong #{trendingStory.user.fullName}] in #[strong #{trendingStory.user.username}]
+              a(href=`/stories/${trendingStory.userId}`)
+                p= trendingStory.title
+              p #{dateFormatter(trendingStory.createdAt)}
+
     .hr
     main#main__feeds
       .feeds-container
