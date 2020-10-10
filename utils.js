@@ -55,7 +55,7 @@ const handleErrors = async (err) => {
         "Something went wrong. Please check your internet connection!"
       );
     }
-  };
+};
 
 module.exports = {
   handleErrors,
