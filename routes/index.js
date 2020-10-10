@@ -26,14 +26,37 @@ router.get('/users/:id/profile', asyncHandler(async (req, res) => { // Change da
 router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
   const userId = req.params.id;
   const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/claps`);
+  const { user, clapAndStories, followingAmount, followerAmount } = await data.json();
 
 
-  res.render("profile-claps")
+  const stories = clapAndStories.map(clap => {
+    return clap.Story
+  })
+
+  res.render("profile-claps", {
+    user: user,
+    stories: stories,
+    followingAmount,
+    followerAmount
+  })
 }));
 
 router.get("/users/:id/profile/responses", asyncHandler(async(req, res) => {
+  const userId = req.params.id;
+  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/responses`);
+  const { user, responseAndStories, followingAmount, followerAmount } = await data.json();
 
-  res.render("profile-responses")
+  const stories = responseAndStories.map(response => {
+    return response.Story
+  })
+
+  console.log(stories)
+  res.render("profile-responses", {
+    user: user,
+    stories: stories,
+    followingAmount,
+    followerAmount
+  })
 }));
 
 router.get('/stories/create', asyncHandler(async (req, res) => {
