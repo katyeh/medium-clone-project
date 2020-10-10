@@ -8,7 +8,9 @@ const fetch = require('node-fetch');
 const userId = 1
 
 router.get('/', asyncHandler(async(req, res) => {
+  // const userId = getUserId();
   const storiesRes = await fetch('http://localhost:8080/api/stories/main');
+
   const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
   res.render("main", {
     newStories,
@@ -16,7 +18,6 @@ router.get('/', asyncHandler(async(req, res) => {
     suggestionStories,
   });
 
-  suggestionStories.forEach(a => console.log(a.user.username))
   // if (newStoriesRes.status === 401) {
   //   return (window.location.href = "log-in");
   // }

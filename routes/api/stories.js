@@ -40,11 +40,11 @@ router.post(
 }));
 
 const validateResponse = [
-    check('body')
-        .exists({ checkFalsy: true })
-        .withMessage("Response can't be empty.")
-        .isLength({ max: 255 })
-        .withMessage("Response can't be longer than 255 characters.")
+  check('body')
+      .exists({ checkFalsy: true })
+      .withMessage("Response can't be empty.")
+      .isLength({ max: 255 })
+      .withMessage("Response can't be longer than 255 characters.")
 ];
 
 router.get('/:id/responses', asyncHandler(async (req, res, next) => {
@@ -136,6 +136,7 @@ router.get('/main', asyncHandler(async (req, res, next) => {
       exclude: ["body"],
     },
   });
+
   const suggestionStories = await Story.findAll({
     include: 'user',
     attributes: {

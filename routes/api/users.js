@@ -1,6 +1,6 @@
 const express = require("express");
 const { check } = require('express-validator');
-const { User, Follow } = require("../../db/models");
+const { User, Follower } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
 const { getUserToken, requireAuth } = require('../../auth');
 const csrf = require("csurf");
@@ -127,6 +127,31 @@ router.post("/",
     token,
   });
 }));
+
+router.get('/:id/main', asyncHandler(async (req, res, next) => {
+  const followingUsers = await Follower.findAll({
+    where: {
+      followeeId: req.params.id
+    },
+    include: {
+      model: User
+    },
+    limit: 8
+  });
+  res.json({
+    followingUsers,
+  });
+}))
+
+// router.get('/main', asyncHandler(async (req, res, next) => {
+//   const followingUsers = await Follower.findAll({
+//     where: {
+//       followeeId: 
+//     },
+//     limit: 6
+//   })
+//   console.log(followingUsers);
+// }));
 
 router.get(
   "/:id(\\d+)",
