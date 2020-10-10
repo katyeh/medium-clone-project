@@ -26,6 +26,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING.BINARY
       },
+      githubUrl: {
+        type: Sequelize.STRING(500),
+      },
+      linkedinUrl: {
+        type: Sequelize.STRING(500),
+      },
+      picUrl: {
+        type: Sequelize.STRING(500),
       imageUrl: {
         type: Sequelize.STRING(500)
       },

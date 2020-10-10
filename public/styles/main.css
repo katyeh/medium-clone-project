@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
 *,
 *::before,
 *::after {
@@ -14,10 +15,16 @@ html {
   font-size: 62.5%;
 }
 
-*,
-*::before,
-*::after {
+h1,
+h2,
+h3,
+p {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+}
+
+.fa-linkedin {
+  font-family: "Font Awesome\ 5 Free";
+  font-weight: 900;
 }
 
 a:link,
@@ -945,42 +952,100 @@ a:visited {
   opacity: 1;
 }
 
-#story__body {
-  border: 1px solid black;
+#story {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100vw;
+}
+
+#story__body {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 3;
-  grid-column: 2 / span 3;
-  width: 50%;
-  -webkit-transform: translateX(-50%, -50%);
-          transform: translateX(-50%, -50%);
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0px 450px;
 }
 
-#story__header {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+#story__header > h1 {
+  font-size: xxx-large;
+  margin: 10px;
 }
 
-#story__user {
+#story__header > h1,
+#story__subtitle > h1,
+#story .userPic > img,
+#story .date > p {
+  margin-left: 25px;
+}
+
+#story__userDiv {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: 10px 2px 10px;
+      grid-template-rows: 10px 2px 10px;
+  font-size: small;
+  height: 50px;
 }
 
-#story__user > h2 {
-  -ms-grid-column: 2;
-      grid-column-start: 2;
+#story .userPic > img {
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+#story .userInfo {
+  float: left;
+}
+
+#story .fullNameDiv {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  float: left;
+  margin: 5px;
+}
+
+#story .followBtn {
+  float: left;
+  margin: 5px;
+  color: #03a87c;
+  border-radius: 5px;
+  border-color: #03a87c;
+}
+
+#story .userInfo__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#story .date {
+  margin: 6px;
+}
+
+#story .social-list {
+  -ms-grid-column: 4;
+      grid-column-start: 4;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  font-size: x-large;
+}
+
+#story .social-list__link {
+  margin: 8px;
+}
+
+#story__userDiv > h2 {
+  font-size: large;
+}
+
+#story__contents {
+  padding: 30px;
 }
 
 #main,
