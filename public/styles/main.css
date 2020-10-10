@@ -115,6 +115,9 @@ a:visited {
 
 #main__stories img {
   width: 38rem;
+  height: 25rem;
+  position: relative;
+  left: -1.8rem;
   -o-object-fit: contain;
      object-fit: contain;
   cursor: pointer;
@@ -1053,7 +1056,7 @@ a:visited {
 }
 
 #navbar__contents .navbar__contents__signup .splash__contents-signup {
-  display: flex;
+  dislplay: flex;
   color: white;
   border: none;
   background: #03A87C;
