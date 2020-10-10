@@ -18,7 +18,8 @@ html {
 h1,
 h2,
 h3,
-p {
+p,
+.suggestion-story {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
 }
 
@@ -124,7 +125,6 @@ a:visited {
   width: 38rem;
   height: 25rem;
   position: relative;
-  left: -1.8rem;
   -o-object-fit: contain;
      object-fit: contain;
   cursor: pointer;
@@ -155,7 +155,26 @@ a:visited {
 }
 
 #main__stories .suggestion-story .left {
-  width: 200px;
+  width: 21rem;
+}
+
+#main__stories .suggestion-story .left p {
+  color: #757575;
+  padding-top: 1.5rem;
+  font-size: 1.2rem;
+}
+
+#main__stories .suggestion-story .left a {
+  display: block;
+  position: relative;
+  height: 3rem;
+  width: 100%;
+  font-size: 1.1rem;
+  color: #292929;
+}
+
+#main__stories .suggestion-story .left a span {
+  display: inline-block;
 }
 
 #main__stories .suggestion-story .right {
@@ -221,13 +240,16 @@ a:visited {
 }
 
 #main__from-following .following-users-container > * img {
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
 }
 
 #main__from-following .following-users-container > * div {
   text-align: center;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-size: 1rem;
+  padding-top: 0.3rem;
 }
 
 #main__trends {
