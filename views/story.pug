@@ -22,9 +22,19 @@ block content
             div(class="followBtnDiv")
               button(type="button" class="followBtn") Follow
           div(class="date")
-            p=date
+            p=date + "·" + readTime
         div(class="social-list")
           include ./utilities/social_list.pug
+          div(class="menu")
+            a(class="social-list__link ellipsis")
+              i(class="fas fa-ellipsis-h", id="social-list__link")
+            #story__menu
+              ul(class="storyMenu__list")
+                li(class="storyMenu__listItem editStoryBtn")
+                  h4 Edit this story
+                li(class="storyMenu__listItem deleteStoryBtn")
+                  h4 Delete this story
       #story__contents
         p= story.body
       footer#splash__footer
+  script(type="module" src="/js/story.js")

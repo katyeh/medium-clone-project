@@ -1,3 +1,4 @@
+const readingTime = require('reading-time');
 const express = require('express');
 const { Story, Genre, User, Follower } = require('../db/models');
 const { asyncHandler } = require('../utils');
@@ -94,18 +95,21 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
             id: storyId
         }
     });
-
     function monthName(mon) {
         return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'][mon - 1];
      }
 
+     // Gets reading time estimate
+    const stats = readingTime(story.body)
+    const readTime = stats.text
+    // Variables for created at date
     const monthNum = story.createdAt.slice(5,7);
     const month = monthName(monthNum);
     const year = story.createdAt.slice(0, 4);
-    const date = month + story.createdAt.slice(8,10) + "," + year
+    const date = month + " " + story.createdAt.slice(8,10) + ", " + year
     const userId = story.userId;
     const user = await User.findByPk(userId);
-    res.render('story', { story, user, date });
+    res.render('story', { story, user, date, readTime });
 }));
 
 // router.get('/login', (req, res) => {
