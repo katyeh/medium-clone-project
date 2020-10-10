@@ -24,14 +24,7 @@ block content
           div(class="date")
             p=date
         div(class="social-list")
-          a(class="social-list__link" href=user.linkedinUrl)
-            i(class="fab fa-linkedin" id="social-list__link")
-          a(class="social-list__link")
-            i(class="fab fa-facebook-square")
-          a(class="social-list__link" href=user.githubUrl)
-            i(class="fab fa-github-square")
-          a(class="social-list__link")
-            i(class="fas fa-ellipsis-h")
+          include ./utilities/social_list.pug
       #story__contents
         p= story.body
       footer#splash__footer

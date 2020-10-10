@@ -1,0 +1,11 @@
+mixin social-list(iconClass, socialUrl)
+  a(class="social-list__link" href=socialUrl)
+    i(class=iconClass, id="social-list__link")
+
++social-list("fab fa-linkedin", user.linkedinUrl)
+if user.facebookUrl
+  +social-list("fab fa-facebook-square", user.facebookUrl)
+else
+  +social-list("fab fa-facebook-square")
++social-list("fab fa-github-square", user.githubUrl)
++social-list("fas fa-ellipsis-h")
