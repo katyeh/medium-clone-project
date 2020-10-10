@@ -95,7 +95,26 @@ a:visited {
 }
 
 #main__stories > * {
-  padding: 1.5rem;
+  padding: 0 1.5rem 0 0;
+}
+
+#main__stories h2, #main__stories h3, #main__stories .subtitle {
+  color: #292929;
+}
+
+#main__stories h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 2.6rem;
+}
+
+#main__stories .subtitle {
+  font-size: 2rem;
+}
+
+#main__stories .subtitle {
+  font-family: 'Times New Roman', Times, serif;
+  padding-top: 2rem;
 }
 
 #main__stories img {
@@ -107,6 +126,12 @@ a:visited {
 #main__stories .main-suggestion-story {
   width: 38rem;
   height: 23rem;
+  padding-top: 2rem;
+}
+
+#main__stories .main-suggestion-story a {
+  display: inline-block;
+  padding-top: 2rem;
 }
 
 #main__stories .suggestion-story {
