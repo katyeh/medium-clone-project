@@ -3,7 +3,7 @@
    position: fixed
    top: 50%
    left: 50%
-   transform: translate(-50%, -50%)
+   transform: translate(-50%, -50%) scale(0)
    border: 1px solid black
    border-radius: 1rem
    z-index: 20
@@ -14,6 +14,19 @@
    max-height: 100%
    border: none
    box-shadow: $shadow-1
+   transition: 200ms ease-in-out
+
+   &.active
+     transform: translate(-50%, -50%) scale(1)
+
+   .errors-container-login
+     display: flex
+     align-items: flex-end
+     padding: 1rem
+     height: 10rem
+     font-size: 15px
+     font-family:  medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+     color: red
 
    .modal-header
 
@@ -59,7 +72,7 @@
          line-height: 20px
          font-size: 15px
          font-weight: 300
-         font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+         font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
          width: 20rem
 
        #email__input
@@ -110,3 +123,15 @@
 
 #overlay
   position: fixed
+  opacity: 0
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: rgba(255,255,255,.85)
+  pointer-events: none
+  transition: 200ms ease-in-out
+
+#overlay.active
+  pointer-events: all
+  opacity: 1

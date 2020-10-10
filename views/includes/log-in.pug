@@ -1,12 +1,12 @@
 
 block content
-  div(class="modal")
-    div(id="login__errors",class="errors-container")
+  div(class="modal", id="login__modal")
     .modal-header
       .button-div
-        button(id="close__modal") X
+        button(id="close__modal", data-close-modal) X
       #header__title Welcome Back.
     form(class="log-in-form")
+      .errors-container-login 
       #login__email
         label(id="email",for='email') Your email
         input(id="email__input",type='email', name='email')

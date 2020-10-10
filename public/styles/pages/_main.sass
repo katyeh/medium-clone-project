@@ -8,27 +8,97 @@
   &__stories
     @include border-right($border-light)
     grid-column: 2 / span 2
-    height: 60vh
+    height: 50rem
     display: flex
     flex-direction: column
     flex-wrap: wrap
 
     & > *
-      padding: 1.5rem
+      padding: 0 1.5rem 0 0
 
+    h2,h3, .subtitle
+      color: $color-font-story
+
+    h2
+      font-size: 1.8rem
+      font-weight: 600
+      line-height: 2.6rem
+
+    .subtitle
+      font-size: 2rem
+
+    .subtitle
+      font-family: 'Times New Roman', Times, serif
+      padding-top: 2rem
+    
     img
-      width: 50%
-      height: 50%
+      width: 38rem
+      object-fit: contain
+      cursor: pointer
     .main-suggestion-story
-      width: 50%
-      height: 50%
+      cursor: pointer
+      width: 38rem
+      height: 23rem
+      padding-top: 2rem
+      a
+        display: inline-block
+        padding-top: 2rem
     .suggestion-story
-      width: 50%
-      height: 25%
+      cursor: pointer
+      width: 35rem
+      height: 12rem
+      display: flex
+      justify-content: space-between
+      .left
+        width: 200px
+      .right
+        height: 100px
+        width: 100px
+        margin-top: .5rem
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+      a:not(:first-child)
+        display: inline-block
+        padding-top: 2rem
+      img
+        height: 2rem
+        width: 2rem
+        position: relative
+        top: .5rem
+        margin-right: 1rem
+      span
+        display: inline-block
+        padding-bottom: 1rem
 
   &__from-following
     grid-column: 4
-    height: 60vh
+    height: 50rem
+
+    .following-users-container
+      width: 100%
+      height: 25rem
+      padding: 1.5rem
+      display: flex
+      flex-wrap: wrap
+
+      & > *
+        width: 9rem
+        height: 9rem
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        margin-bottom: 3rem
+      
+        img
+          width: 7.5rem
+          height: 7.5rem
+          border-radius: 50%
+
+        div
+          text-align: center
+
   &__trends
     grid-column: 2 / span 3
     height: auto

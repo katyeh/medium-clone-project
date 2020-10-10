@@ -34,6 +34,8 @@ module.exports = {
       },
       picUrl: {
         type: Sequelize.STRING(500),
+      imageUrl: {
+        type: Sequelize.STRING(500)
       },
       createdAt: {
         allowNull: false,

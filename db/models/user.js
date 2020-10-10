@@ -2,22 +2,24 @@
 const bcrypt = require('bcrypt');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    fullName: {
+  const User = sequelize.define(
+    "User",
+    {
+      fullName: {
         type: DataTypes.STRING(55),
         allowNull: false,
-    },
-    username: {
+      },
+      username: {
         type: DataTypes.STRING(40),
         allowNull: false,
-        unique: true
-    },
-    email: {
+        unique: true,
+      },
+      email: {
         type: DataTypes.STRING(55),
         allowNull: false,
-        unique: true
-    },
-    hashedPassword: {
+        unique: true,
+      },
+      hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
     },
@@ -49,11 +51,9 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: "followeeId",
         foreignKey: "followerId"
     }
-    User.belongsToMany(models.User, columnMappingFollower)
+    User.belongsToMany(models.User, columnMappingFollower);
   };
   User.prototype.validatePassword = function (password) {
-    console.log(this.hashedPassword.toString())
-    console.log(password)
     return bcrypt.compareSync(password, this.hashedPassword.toString());
   }
   return User;

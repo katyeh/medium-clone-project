@@ -1,1 +1,41 @@
-extends profile-layout.pug
+extends layout.pug
+include ./utilities/mixin_navbar.pug
+include ./utilities/mixin_story-preview.pug
+
+block content
+  +navbar('main')
+  .profile
+    .profile__container
+      .profile__header
+        .profile__header_name: h1 #{user.fullName}
+        .profile__header_social
+          .profile__header_social-link: a(href="/following") #{followingAmount} Following
+          .profile__header_social-link: a(href="/followers") #{followerAmount} Followers
+        .profile__header_img: img(src="https://miro.medium.com/fit/c/256/256/0*CEn10raxv9BiN3oD" width="128" height="128")
+      .profile__body
+        .profile__body_tab: a(class="tab-a tab--underline" href=`/users/${user.id}/profile`) Profile
+        .profile__body_tab: a(class="tab-b" href=`/users/${user.id}/profile/claps`) Claps
+        .profile__body_tab: a(class="tab-c" href=`/users/${user.id}/profile/responses`) Responses
+      .profile__body_header: h1 Latest
+      .profile__body_story
+        each story in stories
+          .profile__body_story-preview
+            +story-preview(story.id, user.fullName, story.createdAt, story.title, story.subtitle, story.body, clapAmount)
+
+  script.
+    const tab_a = document.querySelector("tab-a");
+    const tab_b = document.querySelector("tab-b");
+    const tab_c = document.querySelector("tab-c");
+    tab-b.addEventListener("click", e => {
+      tab_a.classList.remove(".tab--underline");
+      tab_b.classList.add(".tab--underline");
+    });
+    tab-c.addEventListener("click", e => {
+      tab_a.classList.remove(".tab--underline");
+      tab_c.classList.add(".tab--underline");
+    });
+    const profIcon = document.getElementById('navbar__prof-icon');
+    const modal = document.getElementById('navbar__modal');
+    profIcon.addEventListener('click', e => {
+      modal.classList.toggle('hidden');
+    });

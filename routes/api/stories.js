@@ -40,11 +40,11 @@ router.post(
 }));
 
 const validateResponse = [
-    check('body')
-        .exists({ checkFalsy: true })
-        .withMessage("Response can't be empty.")
-        .isLength({ max: 255 })
-        .withMessage("Response can't be longer than 255 characters.")
+  check('body')
+      .exists({ checkFalsy: true })
+      .withMessage("Response can't be empty.")
+      .isLength({ max: 255 })
+      .withMessage("Response can't be longer than 255 characters.")
 ];
 
 router.get('/:id/responses', asyncHandler(async (req, res, next) => {
@@ -106,9 +106,9 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const userId  = req.user.id;
+  // const userId  = req.user.id;
   const stories = await Story.findAll({
-    where: { userId },
+    // where: { userId },
     include: [
       { model: User, as: "user", attributes: ["username"] },
       {
@@ -119,6 +119,37 @@ router.get('/', asyncHandler(async (req, res, next) => {
     order: [["createdAt", "DESC"]]
   })
   res.json({ stories })
+}))
+
+router.get('/main', asyncHandler(async (req, res, next) => {
+  // const userId  = req.user.id;
+  const newStories = await Story.findAll({
+    order: [['createdAt', 'DESC']],
+    include: 'user',
+    attributes: {
+      exclude: ['body'],
+    },
+  });
+
+  const trendingStories = await Story.findAll({
+    attributes: {
+      exclude: ["body"],
+    },
+  });
+
+  const suggestionStories = await Story.findAll({
+    include: 'user',
+    attributes: {
+      exclude: ["body"],
+    },
+    limit: 5
+  });
+
+  res.json({
+    newStories,
+    trendingStories,
+    suggestionStories,
+  });
 }))
 
 const storyNotFoundError = (id) => {

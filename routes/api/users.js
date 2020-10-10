@@ -1,6 +1,6 @@
 const express = require("express");
 const { check } = require('express-validator');
-const { User, Follow } = require("../../db/models");
+const { User, Follower, Story, Clap, Response } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
 const { getUserToken, requireAuth } = require('../../auth');
 const csrf = require("csurf");
@@ -128,6 +128,19 @@ router.post("/",
   });
 }));
 
+router.get('/:id/main', asyncHandler(async (req, res, next) => {
+  const followingUsers = await Follower.findAll({
+    where: {
+      followerId: req.params.id
+    },
+    limit: 8
+  });
+
+  res.json({
+    followingUsers,
+  });
+}))
+
 router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
@@ -192,6 +205,58 @@ router.post("/follow", asyncHandler(async(req, res) => {
         followerId
     });
     res.end();
+}));
+
+router.get("/:id/profile", asyncHandler(async(req, res) => {
+  const id = req.params.id;
+  const userAndStories = await User.findByPk(id,{
+    include: Story
+  })
+  console.log(userAndStories);
+  const followingAmount = await Follower.count({where: {followeeId: id}})
+  const followerAmount = await Follower.count({where: {followerId: id}})
+  res.json({userAndStories, followingAmount, followerAmount})
+}))
+
+router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
+  const userId = req.params.id;
+  const user = await User.findByPk(userId);
+
+  const clapAndStories = await Clap.findAll({
+    where: { userId },
+    include: [ { model: Story, include: [{ model: User, as: "user" }] }  ]
+  })
+
+  const storyIds = clapAndStories.map(obj => {
+    return obj.Story.id
+  })
+
+  // const clapAmount = storyIds.map(async id => {
+  //   let count = await Clap.count({ where: { storyId: id }});
+  //   return count;
+  // })
+
+  // await clapAmount;
+
+  // console.log(clapAmount)
+
+  const followingAmount = await Follower.count({where: {followeeId: userId}})
+  const followerAmount = await Follower.count({where: {followerId: userId}})
+  res.json({user, clapAndStories, followingAmount, followerAmount})
+}))
+
+router.get("/:id/profile/responses", asyncHandler(async(req, res) => {
+  const userId = req.params.id;
+  const user = await User.findByPk(userId);
+  const responseAndStories = await Response.findAll({
+    where: { userId },
+    include: [ { model: Story, include: [{ model: User, as: "user" }] }  ]
+  })
+
+  // console.log(responseAndStories)
+  const followingAmount = await Follower.count({where: {followeeId: userId}})
+  const followerAmount = await Follower.count({where: {followerId: userId}})
+  res.json({user, responseAndStories, followingAmount, followerAmount})
 }));
 
 module.exports = router;
