@@ -1,6 +1,6 @@
 const express = require("express");
 const { check } = require('express-validator');
-const { User, Follower, Story } = require("../../db/models");
+const { User, Follower, Story, Clap } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
 const { getUserToken, requireAuth } = require('../../auth');
 const csrf = require("csurf");
@@ -203,6 +203,22 @@ router.get("/:id/profile", asyncHandler(async(req, res) => {
   const followingAmount = await Follower.count({where: {followeeId: id}})
   const followerAmount = await Follower.count({where: {followerId: id}})
   res.json({userAndStories, followingAmount, followerAmount})
+}))
+
+router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
+  const userId = req.params.id;
+  const clapAndStories = await Clap.findAll({
+    where: { userId },
+    include: [ { model: Story, include: [{ model: User, as: "user" }] }  ]
+  })
+
+  clapAndStories.forEach(user => {
+    console.log(user.Story)
+  })
+
+  const followingAmount = await Follower.count({where: {followeeId: userId}})
+  const followerAmount = await Follower.count({where: {followerId: userId}})
+  // res.json({userAndStories, followingAmount, followerAmount})
 }))
 
 module.exports = router;

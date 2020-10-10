@@ -15,7 +15,7 @@ router.get('/users/:id/profile', asyncHandler(async (req, res) => { // Change da
   const data = await fetch(`http://localhost:8080/api/users/${userId}/profile`);
   const { userAndStories, followingAmount, followerAmount } = await data.json();
 
-  res.render('profile-layout', {
+  res.render('profile-main', {
     user: userAndStories,
     stories: userAndStories.Stories,
     followingAmount,
@@ -23,12 +23,15 @@ router.get('/users/:id/profile', asyncHandler(async (req, res) => { // Change da
   });
 }));
 
-router.get("/profile/claps", asyncHandler(async(req, res) => {
+router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
+  const userId = req.params.id;
+  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/claps`);
+
 
   res.render("profile-claps")
 }));
 
-router.get("/profile/responses", asyncHandler(async(req, res) => {
+router.get("/users/:id/profile/responses", asyncHandler(async(req, res) => {
 
   res.render("profile-responses")
 }));
