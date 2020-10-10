@@ -29,12 +29,14 @@ function closeModal(modal) {
   overlay.classList.remove('active')
 }
 
-const openSignUpModal = document.querySelector(".splash__contents-signup");
+const openSignUpModal = document.querySelectorAll(".splash__contents-signup");
 const closeSignUpModal = document.querySelector(".button-div__button");
 
-openSignUpModal.addEventListener('click', () => {
-  const modal = document.querySelector(".modal2")
-  openModal(modal)
+openSignUpModal.forEach(button => {
+  button.addEventListener("click", () => {
+    const modal = document.querySelector(".modal2")
+    openModal(modal)
+  })
 })
 
 closeSignUpModal.addEventListener('click', () => {
