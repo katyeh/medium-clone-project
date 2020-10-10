@@ -1,12 +1,13 @@
 
-const openLoginModal = document.getElementById('splashlogin');
+const openLoginModal = document.querySelectorAll(".splash-login");
 const closeModalButtons = document.querySelectorAll('[data-close-modal]');
 const overlay = document.getElementById('overlay')
 
-
-openLoginModal.addEventListener('click', () => {
-  const modal = document.getElementById('login__modal')
-  openModal(modal)
+openLoginModal.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = document.getElementById('login__modal')
+    openModal(modal)
+  })
 })
 
 closeModalButtons.forEach(button => {

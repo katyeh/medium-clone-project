@@ -192,6 +192,16 @@ a:visited {
           transform: translate(-50%, -50%) scale(1);
 }
 
+.modal2__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .button-div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -216,14 +226,32 @@ a:visited {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 15rem 5rem 5rem 5rem;
+  padding: 5rem 5rem 5rem 5rem;
   font-size: 28px;
   line-height: 32px;
   font-weight: 500;
   color: #080808;
+}
+
+.errors-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1rem;
+  height: 5rem;
+  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  color: red;
+  font-size: 15px;
 }
 
 .sign-up-container {
@@ -308,6 +336,42 @@ a:visited {
   border: none;
 }
 
+.sign-up-form__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.sign-up-form__footer #splash__login {
+  border-radius: 1.5rem;
+  dislplay: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2em;
+  padding: 1rem;
+  background: black;
+  width: 8rem;
+}
+
+.sign-up-form__footer .splash-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 6rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  background: black;
+  border: none;
+}
+
 #splash * {
   border: 1px solid black;
 }
@@ -335,28 +399,27 @@ a:visited {
   width: 100%;
 }
 
-#splash__contents #splash__login {
+#splash__login {
   border-radius: 1.5rem;
   margin: 2em;
   padding: 1.5rem;
   background: black;
-  z-index: 10;
 }
 
-#splash__contents #splash__login .splash-login {
+#splash__login .splash-login {
   color: white;
   background: black;
   border: none;
 }
 
-#splash__main {
+#splash__login__main {
   -ms-grid-column: 2;
   -ms-grid-column-span: 3;
   grid-column: 2 / span 3;
   height: 100vh;
 }
 
-#splash__footer {
+#splash__login__footer {
   grid-column: 1 / -1;
   height: 40vh;
 }
@@ -411,8 +474,9 @@ a:visited {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  padding: 2.5rem;
+  padding: 1rem;
   height: 10rem;
+  font-size: 15px;
   font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
   color: red;
 }
