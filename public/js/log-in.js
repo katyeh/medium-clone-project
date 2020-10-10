@@ -1,4 +1,4 @@
-import { handleErrors } from "./utils.js";
+
 const logInForm = document.querySelector(".log-in-form");
 
 logInForm.addEventListener("submit", async (e) => {
@@ -9,6 +9,7 @@ logInForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const _csrf = formData.get("_csrf");
   const body = { email, password, _csrf };
+
   try {
     const res = await fetch("api/users/token", {
       method: "POST",
@@ -32,8 +33,31 @@ logInForm.addEventListener("submit", async (e) => {
 
     window.location.href = "/"
   } catch (err) {
-    handleErrors(err);
-};
-
-
+        if (err.status >= 400 && err.status < 600) {
+          const errorJSON = await err.json();
+          const errorsContainer = document.querySelector(".errors-container-login");
+          let errorsHtml = [
+            `
+              <div class="alert">
+                  Something went wrong. Please try again.
+              </div>
+            `,
+          ];
+          const { errors } = errorJSON;
+          if (errors && Array.isArray(errors)) {
+              errorsHtml = errors.map(
+                (message) => `
+                  <div class="alert">
+                    ${message}
+                  </div>
+                `
+              );
+          }
+          errorsContainer.innerHTML = errorsHtml.join("");
+      } else {
+          alert(
+              "Something went wrong. Please check your internet connection and try again!"
+          );
+      }
+  }
 })

@@ -5,7 +5,8 @@ mixin navbar(pageName)
        h1 Readium
        p Greeting
       if pageName == 'splash'
-        form(action="/sign-up"): input(type="submit" value="Get started")
+        div(class="navbar__contents__signup")
+          button(class="splash__contents-signup") Get started
       else if pageName == 'main'
         #navbar__prof-icon
         #navbar__modal.hidden
@@ -18,6 +19,6 @@ mixin navbar(pageName)
               li: a(href="") Stories
               li: a(href="") Reading List
               li: a(href="") Profile
-              li: a(href="") Sign out    
+              li: a(href="") Sign out
       else
         p stuff here
