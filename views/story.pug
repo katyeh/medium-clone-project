@@ -14,12 +14,15 @@ block content
         div(class="subtitle")
       #story__userDiv
         div(class="userInfo")
+          div(class="userPic")
+            img(src="https://miro.medium.com/fit/c/128/128/1*02N7QU6pjxuAZmBh-laQWA.jpeg")
           div(class="fullNameDiv")
             p=user.fullName
           div(class="followBtnDiv")
             button(type="button" class="followBtn") Follow
           div(class="date")
-            p=date
+            p=story.createdAt
+            p=year
         div(class="social-list")
           a(class="social-list__link")
             i(class="fab fa-linkedin" id="social-list__link")

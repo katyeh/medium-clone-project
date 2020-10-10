@@ -439,14 +439,23 @@ img {
       grid-template-rows: 10px 2px 10px;
   font-size: small;
   height: 50px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+}
+
+#story .userPic > img {
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+#story .userInfo {
+  float: left;
 }
 
 #story .fullNameDiv {
+  -ms-grid-row: 1;
+      grid-row-start: 1;
   float: left;
-  margin: 10px;
+  margin: 5px;
 }
 
 #story .followBtn {

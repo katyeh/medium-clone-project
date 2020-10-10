@@ -20,7 +20,16 @@ module.exports = (sequelize, DataTypes) => {
     hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
-    }
+    },
+    githubUrl: {
+        type: DataTypes.STRING(500)
+    },
+    linkedinUrl: {
+        type: DataTypes.STRING(500)
+    },
+    picUrl: {
+        type: DataTypes.STRING(500)
+    },
   }, {});
   User.associate = function(models) {
     User.hasMany(models.Bookmark, {foreignKey: "userId"});
