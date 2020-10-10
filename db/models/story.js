@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       imageUrl: {
         type: DataTypes.STRING(500),
+      },
+      createdAt: {
+          type: DataTypes.DATEONLY
       }
     },
     {}
