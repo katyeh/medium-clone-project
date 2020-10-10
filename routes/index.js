@@ -2,9 +2,25 @@ const express = require('express');
 const { Story, Genre, User, Follower } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
 router.get('/', asyncHandler(async(req, res) => {
+  // const userId = getUserId();
+  const storiesRes = await fetch('http://localhost:8080/api/stories/main');
+
+  const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
+  res.render("main", {
+    newStories,
+    trendingStories,
+    suggestionStories,
+  });
+
+  // if (newStoriesRes.status === 401) {
+  //   return (window.location.href = "log-in");
+  // }
+}));
+
+router.get('/splash', asyncHandler(async(req, res) => {
   res.render('splash', {
       csrfToken: req.csrfToken()
     })

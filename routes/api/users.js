@@ -128,6 +128,19 @@ router.post("/",
   });
 }));
 
+router.get('/:id/main', asyncHandler(async (req, res, next) => {
+  const followingUsers = await Follower.findAll({
+    where: {
+      followerId: req.params.id
+    },
+    limit: 8
+  });
+
+  res.json({
+    followingUsers,
+  });
+}))
+
 router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
