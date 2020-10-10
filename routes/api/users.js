@@ -151,7 +151,7 @@ router.get(
     });
 
     if (user) {
-      res.json({ user: { fullName: user.fullName, email: user.email, imageUrl: user.imageUrl } });
+      res.json({ user: { fullName: user.fullName, email: user.email, picUrl: user.picUrl } });
     } else {
       next(userNotFoundError(req.params.id));
     }
