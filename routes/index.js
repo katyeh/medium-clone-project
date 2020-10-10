@@ -49,15 +49,20 @@ router.get('/stories/create', asyncHandler(async (req, res) => {
 }));
 
 router.get('/story/:id', asyncHandler(async (req, res) => {
+    console.log("hello");
     const storyId = req.params.id
     const story = await Story.findOne({
         where: {
             id: storyId
         }
     });
-    const userId = story.userId
+    const date = await Story.findOne({
+        where: {
+            id: storyId
+        },
+        attributes: ['createdAt']
+    });
     const user = await User.findByPk(userId);
-
     res.render('story', { story, user });
 }));
 

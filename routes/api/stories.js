@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 const { requireAuth } = require('../../auth');
 
-router.use(requireAuth);
+// router.use(requireAuth);
 
 const storyValidator = [
   check('title')

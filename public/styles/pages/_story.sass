@@ -1,17 +1,38 @@
 #story
+  display: flex
+  width: 100vw
   &__body
     border: 1px solid black
-    display: flex
     flex-direction: column
-    grid-column: 2 / span 3
-    width: 50%
-    transform: translateX(-50%, -50%)
-    align-items: center
-  &__header
-    align-items: center
-  &__user
+    justify-content: center
+    margin: 0px 450px
+  &__header > h1
+    font-size: xxx-large
+    margin: 10px
+  &__subtitle > h1
+    margin: 10px
+  &__userDiv
+    // border: 10px solid black
     display: grid
-    grid-template-columns: repeat(5, 1fr)
-  &__user > h2
-    grid-column-start: 2
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: 10px 2px 10px
+    font-size: small
+    height: 50px
+    justify-content: space-between
+  .fullNameDiv
+    float: left
+    margin: 10px
+  .followBtn
+    float: left
+    margin: 5px
+  .date
+    // display: grid
+    // grid-row-start:3
+  .social-list
+    grid-column-start: 4
+    grid-row-start: 2
+  .social-list__link
+    margin: 2px
+  &__userDiv > h2
+    font-size: large
   &__contents

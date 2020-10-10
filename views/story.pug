@@ -7,8 +7,26 @@ block content
     #story__body
       #story__header
         h1= story.title
-      #story__user
-        h2= user.fullName
+      if story.subtitle
+        #story__subtitle
+        h1= story.subtitle
+      else
+        div(class="subtitle")
+      #story__userDiv
+        div(class="userInfo")
+          div(class="fullNameDiv")
+            p=user.fullName
+          div(class="followBtnDiv")
+            button(type="button" class="followBtn") Follow
+          div(class="date")
+            p=date
+        div(class="social-list")
+          a(class="social-list__link")
+            i(class="fab fa-linkedin" id="social-list__link")
+          a(class="social-list__link") Twitter
+          a(class="social-list__link") LinkedIn
+          a(class="social-list__link") Facebook
+          a(class="social-list__link") Github
       #story__contents
         p= story.body
       footer#splash__footer
