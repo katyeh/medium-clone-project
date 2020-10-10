@@ -4,11 +4,11 @@
     grid-column: 1 / -1
 
   & *
-    // border: 1px solid black
+    border: 1px solid black
   &__stories
     @include border-right($border-light)
     grid-column: 2 / span 2
-    height: 60vh
+    height: 50rem
     display: flex
     flex-direction: column
     flex-wrap: wrap
@@ -17,14 +17,17 @@
       padding: 1.5rem
 
     img
-      width: 50%
-      height: 50%
+      // image: url(https://www.okea.org/wp-content/uploads/2019/10/placeholder.png)
+      // images: url(https://cityschool.org/wp-content/uploads/2015/11/Hello-480x195.png)
+      width: 38rem
+      // height: 50%
+      object-fit: contain
     .main-suggestion-story
-      width: 50%
-      height: 50%
+      width: 38rem
+      height: 23rem
     .suggestion-story
-      width: 50%
-      height: 25%
+      width: 35rem
+      height: 12rem
 
   &__from-following
     grid-column: 4

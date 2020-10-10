@@ -5,12 +5,20 @@ block content
   +navbar('main')
   #main
     #main__stories
-      img(src="https://www.okea.org/wp-content/uploads/2019/10/placeholder.png", alt="")
-      .main-suggestion-story Main story - story #1
-      .suggestion-story#2 suggestion story #2
-      .suggestion-story#3 suggestion story #3
-      .suggestion-story#4 suggestion story #4
-      .suggestion-story#5 suggestion story #5
+      each suggestionStory, index in suggestionStories
+        if index === 0
+          if suggestionStory.imageUrl
+            img(src=suggestionStory.imageUrl, alt="")
+          else
+            img(src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt="")
+          .main-suggestion-story 
+            .title= suggestionStory.title
+            .subtitle= suggestionStory.subtitle
+        else
+          .suggestion-story
+            .title= suggestionStory.title
+            .subtitle= suggestionStory.subtitle
+      
     #main__from-following
       p.section-title Latest From Following
     .hr

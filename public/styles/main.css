@@ -72,13 +72,17 @@ a:visited {
   grid-column: 1 / -1;
 }
 
+#main * {
+  border: 1px solid black;
+}
+
 #main__stories {
   margin: 0 2.5rem 0 0;
   border-right: 1px solid #e6e6e6;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-column: 2 / span 2;
-  height: 60vh;
+  height: 50rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,18 +99,19 @@ a:visited {
 }
 
 #main__stories img {
-  width: 50%;
-  height: 50%;
+  width: 38rem;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 #main__stories .main-suggestion-story {
-  width: 50%;
-  height: 50%;
+  width: 38rem;
+  height: 23rem;
 }
 
 #main__stories .suggestion-story {
-  width: 50%;
-  height: 25%;
+  width: 35rem;
+  height: 12rem;
 }
 
 #main__from-following {

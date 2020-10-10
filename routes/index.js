@@ -2,18 +2,24 @@ const express = require('express');
 const { Story, Genre, User, Follower } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
+const fetch = require('node-fetch');
+
 // const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", id);
 const userId = 1
 
 router.get('/', asyncHandler(async(req, res) => {
-  res.render('main', {
-      csrfToken: req.csrfToken()
-    })
-}));
+  const storiesRes = await fetch('http://localhost:8080/api/stories/main');
+  const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
+  res.render("main", {
+    newStories,
+    trendingStories,
+    suggestionStories,
+  });
 
-// router.get('/', (req, res) => {
-//   res.render('main');
-// });
+  // if (newStoriesRes.status === 401) {
+  //   return (window.location.href = "log-in");
+  // }
+}));
 
 router.get('/profile', asyncHandler(async (req, res) => {
   const stories = await Story.findAll({ where: { userId }})
