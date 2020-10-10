@@ -209,6 +209,14 @@ a:visited {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-left: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #profile__header img {
@@ -217,9 +225,14 @@ a:visited {
 }
 
 .profile_body_story-preview {
-  border: thin solid #4d4d4d;
   padding: 5px;
-  margin: 10px;
+  margin: 25px;
+  display: block;
+  height: 250px;
+  width: 678px;
+  border-radius: 1%;
+  -webkit-box-shadow: 0 1px 3px 1px lightgrey;
+          box-shadow: 0 1px 3px 1px lightgrey;
 }
 
 .modal {
