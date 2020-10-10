@@ -26,11 +26,14 @@ block content
             a(href=`/stories/${suggestionStory.id}`) Read More &#9733
         else
           .suggestion-story
-            a(href=`users/${suggestionStory.userId}`)
-              img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
-              span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]
-            h3= suggestionStory.title
-            p #{dateFormatter(suggestionStory.createdAt)}
+            .left
+              a(href=`users/${suggestionStory.userId}`)
+                img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
+                span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]
+              h3= suggestionStory.title
+              p #{dateFormatter(suggestionStory.createdAt)}
+            .right
+              img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
       
     #main__from-following
       p.section-title Latest From Following

@@ -136,6 +136,29 @@ a:visited {
   cursor: pointer;
   width: 35rem;
   height: 12rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#main__stories .suggestion-story .left {
+  width: 70%;
+}
+
+#main__stories .suggestion-story .right {
+  height: 100px;
+  width: 100px;
+  margin-top: .5rem;
+}
+
+#main__stories .suggestion-story .right img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #main__stories .suggestion-story a:not(:first-child) {
