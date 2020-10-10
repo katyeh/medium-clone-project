@@ -9,27 +9,29 @@ block content
         h1= story.title
       if story.subtitle
         #story__subtitle
-        h1= story.subtitle
+          h1= story.subtitle
       else
-        div(class="subtitle")
+        div#story__subtitle
       #story__userDiv
         div(class="userInfo")
           div(class="userPic")
-            img(src="https://miro.medium.com/fit/c/128/128/1*02N7QU6pjxuAZmBh-laQWA.jpeg")
-          div(class="fullNameDiv")
-            p=user.fullName
-          div(class="followBtnDiv")
-            button(type="button" class="followBtn") Follow
+            img(src=user.picUrl)
+          div(class="userInfo__left")
+            div(class="fullNameDiv")
+              p=user.fullName
+            div(class="followBtnDiv")
+              button(type="button" class="followBtn") Follow
           div(class="date")
-            p=story.createdAt
-            p=year
+            p=date
         div(class="social-list")
           a(class="social-list__link")
+            i(class="fab fa-twitter-square")
+          a(class="social-list__link" href=user.linkedinUrl)
             i(class="fab fa-linkedin" id="social-list__link")
-          a(class="social-list__link") Twitter
-          a(class="social-list__link") LinkedIn
-          a(class="social-list__link") Facebook
-          a(class="social-list__link") Github
+          a(class="social-list__link")
+            i(class="fab fa-facebook-square")
+          a(class="social-list__link" href=user.githubUrl)
+            i(class="fab fa-github-square")
       #story__contents
         p= story.body
       footer#splash__footer

@@ -426,8 +426,11 @@ img {
   margin: 10px;
 }
 
-#story__subtitle > h1 {
-  margin: 10px;
+#story__header > h1,
+#story__subtitle > h1,
+#story .userPic > img,
+#story .date > p {
+  margin-left: 25px;
 }
 
 #story__userDiv {
@@ -463,19 +466,34 @@ img {
   margin: 5px;
 }
 
+#story .userInfo__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#story .date {
+  margin: 6px;
+}
+
 #story .social-list {
   -ms-grid-column: 4;
       grid-column-start: 4;
   -ms-grid-row: 2;
       grid-row-start: 2;
+  font-size: x-large;
 }
 
 #story .social-list__link {
-  margin: 2px;
+  margin: 8px;
 }
 
 #story__userDiv > h2 {
   font-size: large;
+}
+
+#story__contents {
+  padding: 30px;
 }
 
 #main,

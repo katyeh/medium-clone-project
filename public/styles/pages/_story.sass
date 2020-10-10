@@ -9,8 +9,12 @@
   &__header > h1
     font-size: xxx-large
     margin: 10px
-  &__subtitle > h1
-    margin: 10px
+  &__header > h1,
+  &__subtitle > h1,
+  .userPic > img,
+  .date > p
+    margin-left: 25px
+
   &__userDiv
     // border: 10px solid black
     display: grid
@@ -31,14 +35,17 @@
   .followBtn
     float: left
     margin: 5px
+  .userInfo__left
+    display: flex
   .date
-    // display: grid
-    // grid-row-start:3
+    margin: 6px
   .social-list
     grid-column-start: 4
     grid-row-start: 2
+    font-size: x-large
   .social-list__link
-    margin: 2px
+    margin: 8px
   &__userDiv > h2
     font-size: large
   &__contents
+    padding: 30px
