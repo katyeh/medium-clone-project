@@ -200,7 +200,7 @@ router.post("/token",
     }
 
     const token = getUserToken(user);
-    res.json({token, user: { id: user.id } });
+    res.json({token, user: { id: user.id, picUrl: user.picUrl } });
 }));
 
 router.post("/follow", asyncHandler(async(req, res) => {
@@ -272,6 +272,17 @@ router.get("/:id/profile/following", asyncHandler(async(req, res) => {
   })
   const followerAmount = await Follower.count({where: {followeeId: followerId}})
   const followingAmount = await Follower.count({where: {followerId: followerId}})
+  res.json({user, followerAmount, followingAmount});
+}));
+
+router.get("/:id/profile/followers", asyncHandler(async(req, res) => {
+  const followeeId = req.params.id;
+  const user = await User.findOne({
+    where: { id: followeeId },
+    include: [ { model: User, as: "followers"} ]
+  })
+  const followerAmount = await Follower.count({where: {followeeId: followeeId}})
+  const followingAmount = await Follower.count({where: {followerId: followeeId}})
   res.json({user, followerAmount, followingAmount});
 }));
 

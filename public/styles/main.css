@@ -1292,6 +1292,54 @@ a:visited {
   margin-top: 20px;
 }
 
+.profile__container .profile__body_follow-list .profile__body_follow-list-preview {
+  position: relative;
+  padding: 20px;
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 120px;
+  width: 678px;
+  border-radius: 1%;
+  -webkit-box-shadow: 0 1px 3px 1px lightgrey;
+          box-shadow: 0 1px 3px 1px lightgrey;
+}
+
+.profile__container .profile__body_follow-list .profile__body_follow-list-preview .follow-list-preview_img {
+  position: absolute;
+  border-radius: 50%;
+  border: thin solid #ffffff;
+}
+
+.profile__container .profile__body_follow-list .profile__body_follow-list-preview .follow-list-preview-name {
+  font-size: 18px;
+  padding-left: 80px;
+}
+
+.profile__container .profile__body_follow-list .profile__body_follow-list-preview .follow-list-preview-name .preview_name {
+  color: #000000D6;
+}
+
+.profile__container .profile__body_follow-list .profile__body_follow-list-preview .follow-list-preview-message {
+  font-size: 16px;
+  color: #000000D6;
+  padding-left: 80px;
+  font-weight: 100;
+}
+
 .modal {
   position: fixed;
   top: 50%;
@@ -1656,6 +1704,13 @@ a:visited {
   cursor: pointer;
 }
 
+.story_responses {
+  width: 400px;
+  background-color: salmon;
+  position: absolute;
+  right: 0;
+}
+
 #main,
 #splash,
 #navbar {
@@ -1726,19 +1781,19 @@ a:visited {
   height: 3.5rem;
   width: 3.5rem;
   cursor: pointer;
-  background-image: url("https://www.flaticon.com/svg/static/icons/svg/711/711769.svg");
+  border-radius: 50%;
 }
 
 #navbar__modal {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   position: absolute;
-  top: 8.5rem;
-  height: 60rem;
+  top: 5rem;
+  height: 35rem;
   width: 20rem;
   z-index: 1;
   padding: 2rem;
-  right: 0;
+  right: 5.25em;
   -webkit-box-shadow: 0px 2px 5px #e6e6e6;
           box-shadow: 0px 2px 5px #e6e6e6;
   -webkit-transition: all .3s ease-out;
@@ -1774,14 +1829,49 @@ a:visited {
 #navbar__modal .modal__prof-pic {
   height: 4.5rem;
   width: 4.5rem;
-  background-image: url("https://www.flaticon.com/svg/static/icons/svg/711/711769.svg");
+  border-radius: 50%;
 }
 
 #navbar__modal .modal__member-info {
   line-height: 1.5rem;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+#navbar__modal .modal__contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 #navbar__modal .modal__contents ul {
+  height: 13rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   list-style: none;
+  font-size: 16px;
+}
+
+#navbar__modal .modal__contents ul li {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 /*# sourceMappingURL=main.css.map */

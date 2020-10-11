@@ -28,12 +28,12 @@ signUpForm.addEventListener("submit", async (event) => {
         }
         const {
             token,
-            user: { id }
+            user: { id },
+            user: { picUrl },
         } = await res.json();
         localStorage.setItem("READIUM_ACCESS_TOKEN", token);
-      localStorage.setItem("READIUM_CURRENT_USER_ID", id);
-        window.location.href = "/"
-
+        localStorage.setItem("READIUM_CURRENT_USER_ID", id);
+        localStorage.setItem("READIUM_CURRENT_USER_PIC_URL", picUrl);
     } catch (error) {
         handleErrors(error)
     }
