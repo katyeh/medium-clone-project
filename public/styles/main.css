@@ -81,10 +81,6 @@ a:visited {
   grid-column: 1 / -1;
 }
 
-#main * {
-  border: 1px solid black;
-}
-
 #main__stories {
   margin: 0 2.5rem 0 0;
   border-right: 1px solid #e6e6e6;
@@ -183,8 +179,8 @@ a:visited {
 }
 
 #main__stories .suggestion-story .right {
-  height: 100px;
-  width: 100px;
+  height: 10rem;
+  width: 10rem;
   margin-top: .5rem;
 }
 
@@ -279,7 +275,6 @@ a:visited {
 }
 
 #main__trends .trending__story {
-  background-color: skyblue;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -288,12 +283,17 @@ a:visited {
 #main__trends .trending__story .left {
   width: 20%;
   height: 100%;
-  background-color: yellow;
+  font-weight: 500;
+  font-size: 3rem;
 }
 
 #main__trends .trending__story .right {
   width: 80%;
   height: 100%;
+}
+
+#main__trends .trending__story .right a {
+  color: #292929;
 }
 
 #main__trends .trending__story .right span {

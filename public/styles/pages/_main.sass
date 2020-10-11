@@ -4,7 +4,7 @@
     grid-column: 1 / -1
 
   & *
-    border: 1px solid black
+    // border: 1px solid black
   &__stories
     @include border-right($border-light)
     grid-column: 2 / span 2
@@ -69,8 +69,8 @@
           span
             display: inline-block
       .right
-        height: 100px
-        width: 100px
+        height: 10rem
+        width: 10rem
         margin-top: .5rem
         img
           width: 100%
@@ -134,17 +134,18 @@
           padding: 1.5rem
       
       &__story
-        background-color: skyblue
         display: flex
 
         .left
           width: 20%
           height: 100%
-          background-color: yellow
+          font-weight: 500
+          font-size: 3rem
         .right
           width: 80%
           height: 100%
-          // background-color: green
+          a
+            color: $color-font-story
 
           span
             display: inline-block

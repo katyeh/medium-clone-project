@@ -43,9 +43,9 @@ block content
     #main__trends
       p.section-title Trending on Medium
       .trending__container
-        each trendingStory in trendingStories
+        each trendingStory, index in trendingStories
           .trending__story
-            .left
+            .left 0#{index + 1}
             .right
               a(href=`/users/${trendingStory.userId}`)
                 span #[strong #{trendingStory.user.fullName}] in #[strong #{trendingStory.user.username}]
