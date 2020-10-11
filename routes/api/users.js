@@ -102,7 +102,6 @@ const userNotFoundError = id => {
 };
 
 router.post("/",
-  csrfProtection,
   userValidation,
   usernameValidation,
   emailAndPasswordValidation,
