@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const res = await fetch('/api/stories', {
-                method: "POST",
+                method: "PUT",
                 body: JSON.stringify(story),
                 headers: {
                     "Content-Type": "application/json",

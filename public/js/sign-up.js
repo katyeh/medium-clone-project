@@ -30,10 +30,14 @@ signUpForm.addEventListener("submit", async (event) => {
             token,
             user: { id },
             user: { picUrl },
+            user: { fullName },
+            user: { username }
         } = await res.json();
         localStorage.setItem("READIUM_ACCESS_TOKEN", token);
         localStorage.setItem("READIUM_CURRENT_USER_ID", id);
         localStorage.setItem("READIUM_CURRENT_USER_PIC_URL", picUrl);
+        localStorage.setItem("READIUM_CURRENT_USER_FULLNAME", fullName);
+        localStorage.setItem("READIUM_CURRENT_USER_USERNAME", username);
     } catch (error) {
         handleErrors(error)
     }

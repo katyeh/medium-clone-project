@@ -1,9 +1,9 @@
 mixin navbar(pageName, img)
-  nav#navbar
+  nav.shadow#navbar
     #navbar__contents
       .left-contents
        a(href="/"): h1 Readium
-       p Greeting
+       p.greeting
       if pageName == 'splash'
         div(class="right-contents")
           div(class="splash__contents-login")
@@ -16,13 +16,61 @@ mixin navbar(pageName, img)
           .modal__header
             img(class="modal__prof-pic" src="")
             .modal__member-info
-              .modal__member-info-name: a(href="") Cole McCoy
-              .modal__member-info-username: a(href="") @cmccoy
+              .modal__member-info-name: a(href="")
+              .modal__member-info-username: a(href="")
           .modal__contents
             ul
               li: a(class="nav-new-story-link" href="") New Story
               li: a(class="nav-user-stories" href="") Stories
               li: a(class="nav-profile-link" href="") Profile
-              li: a(class="" href="") Sign out
+              li: a(class="nav-profile-sign-out" href="/splash") Sign out
+        script.
+          const nav = document.getElementById('navbar');
+          nav.classList.remove('shadow');
+          const profileLink = document.querySelector(".nav-profile-link");
+          const profileNavImg = document.querySelector(".modal__prof-pic");
+          const profileDropdownImg = document.querySelector("#navbar__prof-icon");
+          const profileFullName = document.querySelector(".modal__member-info-name")
+          const profileUserName = document.querySelector(".modal__member-info-username")
+          const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", );
+          const picUrl = localStorage.getItem(`READIUM_CURRENT_USER_PIC_URL`);
+          const fullName = localStorage.getItem("READIUM_CURRENT_USER_FULLNAME");
+          const username = localStorage.getItem("READIUM_CURRENT_USER_USERNAME");
+          profileNavImg.setAttribute("src", `${picUrl}`);
+          profileDropdownImg.setAttribute("src", `${picUrl}`);
+          profileLink.setAttribute("href", `/users/${userId}/profile`);
+          profileFullName.innerText = `${fullName}`;
+          profileUserName.innerText = `@${username}`;
+
+          const greetingContainer = document.querySelector('.greeting');
+          const currentTime = new Date().getHours();
+          document.querySelector(".nav-profile-sign-out")
+            .addEventListener("click", e => {
+              localStorage.clear();
+            })
+
+          if (currentTime < 12) greetingContainer.innerHTML = 'Good morning';
+          else if (currentTime < 18) greetingContainer.innerHTML = 'Good afternoon';
+          else greetingContainer.innerHTML = 'Good evening';
+
+      else if pageName == 'storyForm'
+        #right-contents
+          #navbar__prof-icon
+          //- a(class="navbarIcon storyForm-bell")
+          //-   i(class="navbarIcon far fa-bell")
+          //- a(class="navbarIcon storyForm-ellipsis")
+          //-   i(class="navbarIcon fal fa-plus-circle")
+          button(class="navbarIcon publishBtn") Publish
+          #navbar__modal.hidden
+            .modal__header
+              .modal__prof-pic
+              .modal__member-info Member<br>User's name<br>username
+            .modal__contents
+              ul
+                li: a(class="nav-new-story-link" href="") New Story
+                li: a(class="nav-user-stories" href="") Stories
+                li: a(class="" href="") Reading List
+                li: a(class="nav-profile-link" href="") Profile
+                li: a(class="" href="") Sign out
       else
         p stuff here

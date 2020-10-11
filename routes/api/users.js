@@ -3,8 +3,6 @@ const { check } = require('express-validator');
 const { User, Follower, Story, Clap, Response } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
 const { getUserToken, requireAuth } = require('../../auth');
-const csrf = require("csurf");
-const csrfProtection = csrf({cookie: true});
 
 const router = express();
 
@@ -102,7 +100,6 @@ const userNotFoundError = id => {
 };
 
 router.post("/",
-  csrfProtection,
   userValidation,
   usernameValidation,
   emailAndPasswordValidation,
@@ -123,7 +120,7 @@ router.post("/",
     username: username.trim(),
     email: email.toLowerCase().trim(),
     picUrl,
-    hashedPassword,
+    hashedPassword
   });
 
   const token = getUserToken(user);
@@ -141,8 +138,18 @@ router.get('/:id/main', asyncHandler(async (req, res, next) => {
     limit: 8
   });
 
+  const claps = await Clap.findAll({
+    order: [["updatedAt", "DESC"]],
+    where: {
+      userId: req.params.id
+    },
+    include: [Story, User],
+    limit: 4,
+  });
+
   res.json({
     followingUsers,
+    claps
   });
 }))
 
@@ -200,7 +207,7 @@ router.post("/token",
     }
 
     const token = getUserToken(user);
-    res.json({token, user: { id: user.id, picUrl: user.picUrl } });
+    res.json({token, user: { id: user.id, picUrl: user.picUrl, fullName: user.fullName, username: user.username } });
 }));
 
 router.post("/follow", asyncHandler(async(req, res) => {

@@ -2,16 +2,21 @@ extends layout.pug
 include ./utilities/mixin_navbar.pug
 
 block content
-
   +navbar('main')
   -function dateFormatter(string) {
-    -var date = new Date(string);
-    -var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-    -var month = monthNames[date.getMonth()];
-    -var year = date.getFullYear();
-    -var day = date.getDate();
+    -const date = new Date(string);
+    -const monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    -const month = monthNames[date.getMonth()];
+    -const year = date.getFullYear();
+    -const day = date.getDate();
     -return month+' '+day+', '+year;
-  -}
+  -};
+
+  -function randomIcon() {
+    -const icons = ['https://www.flaticon.com/svg/static/icons/svg/1754/1754512.svg','https://www.flaticon.com/svg/static/icons/svg/1276/1276892.svg','https://www.flaticon.com/svg/static/icons/svg/3182/3182548.svg','https://www.flaticon.com/svg/static/icons/svg/2729/2729001.svg','https://www.flaticon.com/svg/static/icons/svg/3612/3612081.svg','https://www.flaticon.com/svg/static/icons/svg/27/27106.svg','https://www.flaticon.com/svg/static/icons/svg/3603/3603989.svg','https://www.flaticon.com/svg/static/icons/svg/2933/2933488.svg','https://www.flaticon.com/svg/static/icons/svg/2689/2689183.svg','https://www.flaticon.com/svg/static/icons/svg/2726/2726422.svg','https://www.flaticon.com/svg/static/icons/svg/201/201811.svg'];
+    -const randomNum = Math.floor(Math.random() * (icons.length - 1) + 1);
+    -return icons[randomNum];
+  -};
 
   #main
     #main__stories
@@ -39,36 +44,47 @@ block content
     #main__from-following
       p.section-title Latest From Following
       .following-users-container
+      a.green-link All from following
+
     .hr
     #main__trends
-      p.section-title Trending on Medium
+      p.section-title <i class="fas fa-chart-line"></i>&nbsp;&nbsp;Trending on Medium
       .trending__container
         each trendingStory, index in trendingStories
           .trending__story
             .left 0#{index + 1}
             .right
               a(href=`/users/${trendingStory.userId}`)
+                img(src=randomIcon(), alt="")
                 span #[strong #{trendingStory.user.fullName}] in #[strong #{trendingStory.user.username}]
               a(href=`/stories/${trendingStory.userId}`)
-                p= trendingStory.title
-              p #{dateFormatter(trendingStory.createdAt)}
+                h3= trendingStory.title
+              p #{dateFormatter(trendingStory.createdAt)} &#9733
 
     .hr
     main#main__feeds
       .feeds-container
-        .feeds-story#1 feeds story #1
-        .feeds-story#2 feeds story #2
-        .feeds-story#3 feeds story #3
-        .feeds-story#4 feeds story #4
-        .feeds-story#5 feeds story #5
-        .feeds-story#6 feeds story #6
-        .feeds-story#7 feeds story #7
-        .feeds-story#8 feeds story #8
+        each newStory in newStories
+          .feeds-story
+            .left
+              a(href=`/users/${newStory.userId}`)
+                img(src=randomIcon(), alt="User icon")
+                span #[strong #{newStory.user.fullName}] in #[strong #{newStory.user.username}]
+              a(href=`/stories/${newStory.userId}`)
+                h3= newStory.title
+                p= newStory.subtitle
+              p #{dateFormatter(newStory.createdAt)} &#9733
+            .right-image
+              img.feed-image(src=newStory.imageUrl, alt="")
     aside
       #main__sidebar
-        #main__readinglist
-          p.section-title Reading List
-        footer#main__footer footer(#main__footer)
+        #main__clapsList
+          p.section-title <i class="fas fa-sign-language"></i>&nbsp;&nbsp;Clap List
+        footer#main__footer
+          a(href="https://github.com/cmccoy10/" target="_blank") Cole McCoy &nbsp| 
+          a(href="https://github.com/katyeh" target="_blank") Kathleen Yeh &nbsp| 
+          a(href="https://github.com/ryanblack045" target="_blank") Ryan Black &nbsp| 
+          a(href="https://github.com/smilelk4" target="_blank") Yuka Moribe
   script.
     const profIcon = document.getElementById('navbar__prof-icon');
     const modal = document.getElementById('navbar__modal');

@@ -5,6 +5,7 @@ const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 const { requireAuth } = require('../../auth');
+const { sequelize } = require("../../db/models");
 
 // router.use(requireAuth);
 
@@ -106,9 +107,9 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  // const userId  = req.user.id;
+  const userId  = req.user.id;
   const stories = await Story.findAll({
-    // where: { userId },
+    where: { userId },
     include: [
       { model: User, as: "user", attributes: ["username"] },
       {
@@ -122,7 +123,24 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/main', asyncHandler(async (req, res, next) => {
-  // const userId  = req.user.id;
+
+  const suggestionStories = await Story.findAll({
+    include: "user",
+    order: sequelize.random(),
+    attributes: {
+      exclude: ["body"],
+    },
+    limit: 5,
+  });
+  
+  const trendingStories = await Story.findAll({
+    include: 'user',
+    attributes: {
+      exclude: ["body"],
+    },
+    limit: 6
+  });
+  
   const newStories = await Story.findAll({
     order: [['createdAt', 'DESC']],
     include: 'user',
@@ -131,26 +149,10 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     },
   });
 
-  const trendingStories = await Story.findAll({
-    include: 'user',
-    attributes: {
-      exclude: ["body"],
-    },
-    limit: 6
-  });
-
-  const suggestionStories = await Story.findAll({
-    include: 'user',
-    attributes: {
-      exclude: ["body"],
-    },
-    limit: 5
-  });
-
   res.json({
-    newStories,
-    trendingStories,
     suggestionStories,
+    trendingStories,
+    newStories,
   });
 }))
 
@@ -186,11 +188,24 @@ router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(as
   }
   }))
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
-  const storyId = parseInt(req.params.id);
-  const story = await Story.findByPk(storyId);
+router.delete('/:id', asyncHandler(async (req, res, next) => {
+//   const storyId = parseInt(req.params.id);
+//   const story = await Story.findByPk(storyId);
+    const story = await Story.findOne({
+        where: {
+            id: req.params.id,
+        },
+    });
+  /* if (req.user.id !== story.userId) {
+      const err = new Error("Unauthorized");
+      err.status = 401;
+      err.message = "You are not authorized to delete this story.";
+      err.title = "Unauthorized";
+      throw err;
+  } */
   if (story) {
     await story.destroy();
+    res.json({ message: `Delete story with id of ${storyId}` });
   } else {
     next(storyNotFoundError(storyId));
   }
