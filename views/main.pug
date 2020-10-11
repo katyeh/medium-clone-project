@@ -2,7 +2,6 @@ extends layout.pug
 include ./utilities/mixin_navbar.pug
 
 block content
-
   +navbar('main')
   -function dateFormatter(string) {
     -const date = new Date(string);
@@ -58,7 +57,7 @@ block content
                 span #[strong #{trendingStory.user.fullName}] in #[strong #{trendingStory.user.username}]
               a(href=`/stories/${trendingStory.userId}`)
                 h3= trendingStory.title
-              p #{dateFormatter(trendingStory.createdAt)}
+              p #{dateFormatter(trendingStory.createdAt)} &#9733
 
     .hr
     main#main__feeds
@@ -72,13 +71,13 @@ block content
               a(href=`/stories/${newStory.userId}`)
                 h3= newStory.title
                 p= newStory.subtitle
-              p #{dateFormatter(newStory.createdAt)}
+              p #{dateFormatter(newStory.createdAt)} &#9733
             .right-image
               img.feed-image(src=newStory.imageUrl, alt="")
     aside
       #main__sidebar
-        #main__readinglist
-          p.section-title Reading List
+        #main__clapsList
+          p.section-title Clap List
         footer#main__footer footer(#main__footer)
   script.
     const profIcon = document.getElementById('navbar__prof-icon');

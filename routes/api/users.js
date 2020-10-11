@@ -138,8 +138,18 @@ router.get('/:id/main', asyncHandler(async (req, res, next) => {
     limit: 8
   });
 
+  const claps = await Clap.findAll({
+    order: [["updatedAt", "DESC"]],
+    where: {
+      userId: req.params.id
+    },
+    include: [Story, User],
+    limit: 4,
+  });
+
   res.json({
     followingUsers,
+    claps
   });
 }))
 

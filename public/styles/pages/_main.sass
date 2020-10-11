@@ -16,7 +16,7 @@
     & > *
       padding: 0 1.5rem 0 0
 
-    h2,h3, .subtitle
+    h2,h3
       color: $color-font-story
 
     h2
@@ -114,8 +114,8 @@
         margin-bottom: 3rem
       
         img
-          width: 7rem
-          height: 7rem
+          width: 6.2rem
+          height: 6.2rem
           border-radius: 50%
           cursor: pointer
 
@@ -154,7 +154,7 @@
           display: flex
           flex-direction: column
           h3
-            margin-top: .8rem
+            margin-top: .5rem
           img
             height: 2rem
             width: 2rem
@@ -177,9 +177,10 @@
   &__feeds
     grid-column: 2/ span 2
     height: auto
+    margin-right: 2rem
 
-    // // & > *
-    //   padding: 1.5rem
+  &__feeds, aside
+    margin-top: 2rem
 
     // .feeds-container:not(:first-child)
     //   padding: 1.5rem
@@ -223,9 +224,30 @@
   &__sidebar
     position: sticky
     top: 0
-  &__readinglist
+
+    .clapped-stories
+      margin: 2rem 0
+      height: 8rem
+
+  &__clapsList
     height: 55rem
     background-color: $color-gray-2
     padding: 3rem
+    line-height: 2.3rem
+
+    span, h4
+      color: $color-font-story
+
+    h4
+      font-size: 1.4rem
+
+    p
+      font-size: 1.2rem
+
   &__footer 
     height: 10rem
+
+.prof-icon
+  width: 2rem
+  height: 2rem
+  border-radius: 50%
