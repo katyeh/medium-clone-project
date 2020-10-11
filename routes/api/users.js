@@ -200,7 +200,7 @@ router.post("/token",
     }
 
     const token = getUserToken(user);
-    res.json({token, user: { id: user.id } });
+    res.json({token, user: { id: user.id, picUrl: user.picUrl } });
 }));
 
 router.post("/follow", asyncHandler(async(req, res) => {

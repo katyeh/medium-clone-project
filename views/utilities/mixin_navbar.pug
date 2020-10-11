@@ -1,4 +1,4 @@
-mixin navbar(pageName)
+mixin navbar(pageName, img)
   nav#navbar
     #navbar__contents
       .left-contents
@@ -11,10 +11,10 @@ mixin navbar(pageName)
           div(class="navbar__contents__signup")
             button(class="splash__contents-signup") Get started
       else if pageName == 'main'
-        #navbar__prof-icon
+        img(id="navbar__prof-icon" src="")
         #navbar__modal.hidden
           .modal__header
-            .modal__prof-pic
+            img(class="modal__prof-pic" src="")
             .modal__member-info Member<br>User's name<br>username
           .modal__contents
             ul
