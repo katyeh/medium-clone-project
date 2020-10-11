@@ -4,7 +4,7 @@
   &__body
     flex-direction: column
     justify-content: center
-    margin: 0px 450px
+    margin: 0 25vw
     margin-top: 70px
   &__header > h1
     font-size: xxx-large
@@ -24,6 +24,24 @@
   .date > p
     display: flex
     margin-left: 15px
+  .responseDiv
+    display: flex
+    justify-content: space-between
+    align-items: center
+  .responses
+    display: flex
+    align-items: center
+  .clapImg,
+  .responseImg
+    width: 40px
+    height: 40px
+    transform: scaleX(-1);
+    position: relative
+    border-radius: 50%
+    border: thin solid #ffffff
+    margin: 20px
+  .responseImg
+    font-size: xx-large
   &__userDiv
     // border: 10px solid black
     display: grid
@@ -73,6 +91,8 @@
   &__contents
     padding: 30px
     margin-top: 30px
+  &__contents > p
+    font-size: medium
   &__menu
     display: none
     position: absolute
