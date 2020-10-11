@@ -39,7 +39,7 @@ module.exports = {
           githubUrl: "https://github.com/ryanblack045",
           linkedinUrl: "https://www.linkedin.com/in/ryan-black-b838932a/",
           picUrl:
-            "https://media-exp1.licdn.com/dms/image/C4D03AQF4XOOkq_Jttg/profile-displayphoto-shrink_400_400/0?e=1607558400&v=beta&t=nPHa6JCEeLd4s4k71h55-lQTDd50-kOggXN9w8n-dPI",
+          "https://avatars0.githubusercontent.com/u/63464575?s=460&u=cbd7c6a4534590745e458d179898b2b9df802eb3&v=4",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -136,6 +136,19 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          fullName: "Demo User",
+          username: "demouser",
+          email: "demo@user.com",
+          hashedPassword:
+            "$2b$10$lYAdho1ns2ChPIAzLfv/depkJjlCXbMy9a62VmiolZFb/TtibcudS",
+          githubUrl: "",
+          linkedinUrl: "",
+          picUrl:
+          "https://media.fromthegrapevine.com/assets/images/2017/1/jeff-bridges-dude.jpg.839x0_q71_crop-scale.jpg",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        }
       ],
       {}
     );

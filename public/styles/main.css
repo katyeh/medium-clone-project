@@ -344,7 +344,7 @@ a:visited {
   background-color: rgba(255, 255, 255, 0.98);
   width: 50rem;
   maxwidth: 80%;
-  height: 200rem;
+  height: 100%;
   max-height: 100%;
   border: none;
   -webkit-box-shadow: 0px 2px 5px #e6e6e6;
@@ -387,6 +387,12 @@ a:visited {
   cursor: pointer;
 }
 
+.button-div__button:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .modal2__header-title {
   font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
   display: -webkit-box;
@@ -398,7 +404,7 @@ a:visited {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 5rem 5rem 5rem 5rem;
+  padding: 3rem 5rem 3rem 5rem;
   font-size: 28px;
   line-height: 32px;
   font-weight: 500;
@@ -438,6 +444,23 @@ a:visited {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.sign-up-container__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 75%;
 }
 
 .sign-up-form__div {
@@ -504,6 +527,12 @@ a:visited {
   color: white;
   background: black;
   border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 .sign-up-form__footer {
@@ -518,28 +547,35 @@ a:visited {
 }
 
 .sign-up-form__footer #splash__login {
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   dislplay: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 2em;
-  padding: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: black;
   width: 8rem;
+  padding: .5rem;
 }
 
-.sign-up-form__footer .splash-login {
+.sign-up-form__footer #splash__login .splash-login {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 6rem;
+  width: 100%;
+  height: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: white;
   background: black;
   border: none;
+  margin: 0;
 }
 
 #splash {
@@ -673,6 +709,12 @@ a:visited {
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   font-weight: 200;
   font-size: 1.5rem;
+}
+
+#splashnav #navbar__contents .splash__contents-login .splash-login.navbar:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 #splashnav #navbar__contents .navbar__contents__signup {
@@ -1350,10 +1392,8 @@ a:visited {
   border-radius: 1rem;
   z-index: 20;
   background-color: rgba(255, 255, 255, 0.98);
-  width: 50rem;
-  maxwidth: 80%;
-  height: 200rem;
   max-height: 100%;
+  width: 50%;
   border: none;
   -webkit-box-shadow: 0px 2px 5px #e6e6e6;
           box-shadow: 0px 2px 5px #e6e6e6;
@@ -1396,6 +1436,12 @@ a:visited {
   padding: 1.8rem;
   color: #757575;
   cursor: pointer;
+}
+
+.modal .modal-header .button-div #close__modal:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .modal .modal-header #header__title {
