@@ -127,7 +127,7 @@
     .trending
       &__container
         display: grid
-        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr))
+        grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr))
         grid-template-rows: repeat(2, 13rem)
 
         & > *
@@ -142,13 +142,32 @@
           font-weight: 500
           font-size: 3rem
           color: $color-gray-1
-          font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
           font-style: strong
+          font-family: 'Roboto'
         .right
           width: 80%
           height: 100%
+          display: flex
+          flex-direction: column
+          h3
+            margin-top: .8rem
+          img
+            height: 2rem
+            width: 2rem
+            border-radius: 50%
+            margin-right: 1rem
           a
             color: $color-font-story
+            // color: red
+            // display: inline-block
+            // position: relative
+            // top: -.5rem
+            span
+              display: inline-block
+              position: relative
+              top: -.5rem
+          p
+            padding-top: 1.5rem
 
           span
             display: inline-block
@@ -163,6 +182,16 @@
 
     .feeds-story
       height: 20rem
+
+      span, h3
+        color: $color-font-story
+
+      img
+        width: 2rem
+        height: 2rem
+        border-radius: 50%
+
+
   &__sidebar
     position: sticky
     top: 0

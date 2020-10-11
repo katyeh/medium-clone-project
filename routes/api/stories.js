@@ -5,6 +5,7 @@ const { asyncHandler, handleValidationErrors } = require("../../utils");
 const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 const { requireAuth } = require('../../auth');
+const { sequelize } = require("../../db/models");
 
 // router.use(requireAuth);
 
@@ -141,6 +142,7 @@ router.get('/main', asyncHandler(async (req, res, next) => {
 
   const suggestionStories = await Story.findAll({
     include: 'user',
+    order: sequelize.random(),
     attributes: {
       exclude: ["body"],
     },
