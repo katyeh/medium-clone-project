@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const deleteStory = document.querySelector(".deleteStoryBtn");
 
     deleteStory.addEventListener('click', async () => {
-        // debugger
+        debugger
         try {
             const res = await fetch(`/api/stories/${storyId}`, {
                 method: "DELETE",

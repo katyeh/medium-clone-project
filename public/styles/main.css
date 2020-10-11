@@ -1454,6 +1454,12 @@ a:visited {
   color: #fff;
 }
 
+#genre {
+  margin-top: 20px;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
 #main,
 #splash,
 #navbar {
