@@ -22,7 +22,8 @@ p,
 .suggestion-story,
 .trending__story,
 .feeds-story,
-.clapped-stories {
+.clapped-stories,
+.green-link {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
 }
 
@@ -414,13 +415,15 @@ a:visited {
 #main__sidebar .clapped-stories {
   margin: 2rem 0;
   height: 8rem;
+  position: relative;
+  top: -1.5rem;
 }
 
 #main__clapsList {
   height: 55rem;
   background-color: #f7f7f7;
   padding: 3rem;
-  line-height: 2.3rem;
+  line-height: 2.75rem;
 }
 
 #main__clapsList span, #main__clapsList h4 {
@@ -433,6 +436,16 @@ a:visited {
 
 #main__clapsList p {
   font-size: 1.2rem;
+}
+
+#main__clapsList .green-link {
+  color: #03a87c;
+}
+
+#main__clapsList a img {
+  margin-right: 1rem;
+  position: relative;
+  top: .5rem;
 }
 
 #main__footer {

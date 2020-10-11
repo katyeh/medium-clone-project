@@ -47,8 +47,11 @@ const getUserInfo = userId => {
           <a href=/stories/${clap.Story.id}>
           <h4>${clap.Story.title}</h4>
           <p>${dateFormatter(clap.Story.createdAt)} &#9733</p>
-        </a>
-      </div>
-    `;
+          </a>
+          </div>
+      `;
   });
+
+  clapsContainer.innerHTML += `<a class='green-link' href='/'>See your full clap list</a>`
+
 })();
