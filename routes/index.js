@@ -2,6 +2,8 @@ const express = require('express');
 const { Story, Genre, User, Follower } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
+// const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", id);
+// const userId = 1
 const fetch = require('node-fetch');
 
 router.get('/', asyncHandler(async(req, res) => {
@@ -9,7 +11,7 @@ router.get('/', asyncHandler(async(req, res) => {
   const storiesRes = await fetch('http://localhost:8080/api/stories/main');
 
   const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
-  res.render("main", {
+  res.render("splash", {
     newStories,
     trendingStories,
     suggestionStories,
@@ -130,10 +132,18 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
             id: storyId
         }
     });
-    const userId = story.userId
-    const user = await User.findByPk(userId);
 
-    res.render('story', { story, user });
+    function monthName(mon) {
+        return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'][mon - 1];
+     }
+
+    const monthNum = story.createdAt.slice(5,7);
+    const month = monthName(monthNum);
+    const year = story.createdAt.slice(0, 4);
+    const date = month + story.createdAt.slice(8,10) + "," + year
+    const userId = story.userId;
+    const user = await User.findByPk(userId);
+    res.render('story', { story, user, date });
 }));
 
 

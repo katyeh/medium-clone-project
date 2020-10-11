@@ -132,9 +132,11 @@ router.get('/main', asyncHandler(async (req, res, next) => {
   });
 
   const trendingStories = await Story.findAll({
+    include: 'user',
     attributes: {
       exclude: ["body"],
     },
+    limit: 6
   });
 
   const suggestionStories = await Story.findAll({

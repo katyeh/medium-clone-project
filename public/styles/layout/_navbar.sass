@@ -2,6 +2,9 @@
   height: 5rem
   margin: 2rem 0
   box-shadow: 0 4px 16px -10px lightgrey
+  position: fixed
+  top: 0
+  background: $color-background-light
 
   &__contents
     grid-column: 2 / span 3
@@ -23,13 +26,33 @@
           border-right: $border-light
           margin: 0 1.5rem
 
+    .right-contents
+      display: flex
+      align-items: center
+
+    .splash__contents-login
+      display: flex
+      justify-content: flex-end
+      height: 3rem
+      align-items: flex-start
+      padding: 1rem
+
+      .splash-login.navbar
+        display: flex
+        align-items: flex-end
+        justify-content: flex-end
+        background: $color-background-light
+        color: black
+        border: none
+        cursor: pointer
+
     .navbar__contents__signup
       display: flex
       align-items: center
       justify-content: center
       border-radius: .5rem
       height: 4rem
-      margin: 2em
+      margin: 2rem
       padding: 1rem
       background: #03A87C
       cursor: pointer
@@ -41,6 +64,13 @@
         border: none
         background: #03A87C
         cursor: pointer
+        width: 12rem
+        height: 4rem
+        border-radius: .5rem
+
+      .splash__contents-signup:focus
+        outline: none
+        box-shadow: none
 
   &__prof-icon
     height: 3.5rem
