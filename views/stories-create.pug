@@ -5,23 +5,21 @@ block content
   #storyForm
   .errors-container
   #storyForm__fields
-    form(class="create-story-form" action='/api/stories' method='post')
+    form(class="createStory-form" action='/api/stories' method='post')
       input(type='hidden' name='_csrf' value=csrfToken)
-      div
-        label(for='title') #{Title}
-          input(type='text' id='title' name='title')
-      div
-        label(for='subtitle') #{Subtitle}
-          input(type='text' id='subtitle' name='subtitle')
-      div
-        label(for='body') #{Body}
-          textarea(id='body' name='body' rows='5', 'Tell your story...')
-      div
-        label Genre
-        select(name="genreId" required)
-          each genre in genres
-            option(value=genre.id)= genre.title
-      div
-        button(type='submit') Create Story
-      a(href='/') Cancel
+      #storyForm__div
+        #storyForm__field
+          label(for='title')
+            input(type='text' class='storyInput' id='title' name='title' placeholder='Title')
+        #storyForm__field
+          label(for='subtitle')
+            input(type='text' class='storyInput' id='subtitle' name='subtitle' placeholder='Subtitle')
+        #storyForm__field
+          label(for='body')
+            textarea(id='body' class='storyInput' name='body' rows='5', placeholder='Tell your story...')
+        #storyForm__field
+          label
+          select(name="genreId" class='storyInput' id='genre' required)
+            each genre in genres
+              option(value=genre.id)= genre.title
   script(type="module" src="/js/createStory.js")

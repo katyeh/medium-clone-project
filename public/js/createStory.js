@@ -1,17 +1,30 @@
 import { handleErrors } from "./utils.js"
 
 document.addEventListener("DOMContentLoaded", () => {
-    const createStoryForm = document.querySelector('.create-story-form');
 
-    createStoryForm.addEventListener("submit", async (e) => {
+    function publish() {
+        const publishBtn = document.querySelector('.publishBtn');
+        if (publishBtn.innerHTML === "Publish") {
+            publishBtn.innerHTML = "Published"
+            publishBtn.style.background = 'rgba(3, 168, 124, .25)';
+            publishBtn.style.color = 'white';
+        }
+    }
+
+    const publishBtn = document.querySelector('.publishBtn');
+    const storyForm = document.querySelector('.createStory-form');
+
+    publishBtn.addEventListener("click", async (e) => {
+        publish();
         e.preventDefault();
-        const formData = new FormData(createStoryForm);
+        const formData = new FormData(storyForm);
         const title = formData.get("title")
         const subtitle = formData.get("subtitle")
         const body = formData.get("body")
         const genreId = formData.get("genreId")
         const _csrf = formData.get("_csrf")
         const story = { title, subtitle, body, genreId, _csrf };
+
         try {
             const res = await fetch('/api/stories', {
                 method: "POST",
@@ -24,11 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     )}`,
                 },
             });
+            if (res.status === 401) {
+                window.location.href = '/splash'
+                return;
+            }
             if (!res.ok) {
                 throw res;
             }
-            formData.reset();
-            // window.location.href = '/'
+            form.reset();
         } catch (err) {
           handleErrors(err);
         }
