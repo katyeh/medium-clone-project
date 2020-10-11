@@ -15,29 +15,15 @@ const followingContainer = document.querySelector(
 const getUserInfo = userId => {
   return fetch(`api/users/${userId}`)
     .then((res) => res.json())
-    .then((res) => res.user
-      // console.log(res.user.fullName)
-      // console.log(res.user.imageUrl)
-    // }
-    )
+    .then((res) => res.user)
 }
 
-// const fetchUser = id => {
-//   return fetch(`api/users/${userId}`)
-//     .then(res => res.json())
-//     .then(res => console.log(res))
-// }
-
-// const followingContainer = document.getElementById("main__from-following");
-// document.addEventListener("DOMContentLoaded", async () => {
 (async () => {
-    const userId = localStorage.getItem("READIUM_CURRENT_USER_ID");
+  const userId = localStorage.getItem("READIUM_CURRENT_USER_ID");
 
-    // console.log(await getUserInfo(2));
-  const followingRes = await fetch(`/api/users/${userId}/main`);
-  const { followingUsers } = await followingRes.json();
+  const res = await fetch(`/api/users/${userId}/main`);
+  const { followingUsers } = await res.json();
   followingUsers.forEach(async (followingUser, i) => {
-    // console.log(followingUser.followeeId);
     let followee = await getUserInfo(followingUser.followeeId);
     followingContainer.innerHTML += `<div>
         <img src=${followee.picUrl}>
@@ -45,9 +31,5 @@ const getUserInfo = userId => {
       </div>
     `;
   });
-  }
-)()
-    // ${console.log(getUserInfo(followingUser.followeeId))}
-    // ${console.log(followingUser.followeeId)}
-    // ${console.log(i, getUserInfo(followingUser.followeeId))}
-    // <span>${getUserInfo(followingUser.followeeId)}</span>
+
+})();

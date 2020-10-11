@@ -123,7 +123,24 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/main', asyncHandler(async (req, res, next) => {
-  // const userId  = req.user.id;
+
+  const suggestionStories = await Story.findAll({
+    include: "user",
+    order: sequelize.random(),
+    attributes: {
+      exclude: ["body"],
+    },
+    limit: 5,
+  });
+  
+  const trendingStories = await Story.findAll({
+    include: 'user',
+    attributes: {
+      exclude: ["body"],
+    },
+    limit: 6
+  });
+  
   const newStories = await Story.findAll({
     order: [['createdAt', 'DESC']],
     include: 'user',
@@ -132,27 +149,10 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     },
   });
 
-  const trendingStories = await Story.findAll({
-    include: 'user',
-    attributes: {
-      exclude: ["body"],
-    },
-    limit: 6
-  });
-
-  const suggestionStories = await Story.findAll({
-    include: 'user',
-    order: sequelize.random(),
-    attributes: {
-      exclude: ["body"],
-    },
-    limit: 5
-  });
-
   res.json({
-    newStories,
-    trendingStories,
     suggestionStories,
+    trendingStories,
+    newStories,
   });
 }))
 
