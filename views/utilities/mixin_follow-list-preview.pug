@@ -1,0 +1,4 @@
+mixin follow-list-preview(id, fullName, imageUrl, message)
+  img(class="follow-list-preview_img" src= `${imageUrl}`)
+  .follow-list-preview-name: a(href="/profile").preview_name= fullName
+  .follow-list-preview-name: h1.preview_message= message
