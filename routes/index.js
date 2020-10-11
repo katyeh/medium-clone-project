@@ -32,12 +32,18 @@ router.get('/users/:id/profile', asyncHandler(async (req, res) => { // Change da
   const userId = req.params.id;
   const data = await fetch(`http://localhost:8080/api/users/${userId}/profile`);
   const { userAndStories, followingAmount, followerAmount } = await data.json();
+  const dateFormatter = require("./dateFormatter");
+
+  let dateInfo = {};
+  dateInfo.title = "Demo";
+  dateInfo.dateFormatter = dateFormatter;
 
   res.render('profile-main', {
     user: userAndStories,
     stories: userAndStories.Stories,
     followingAmount,
-    followerAmount
+    followerAmount,
+    dateInfo
   });
 }));
 
@@ -45,7 +51,11 @@ router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
   const userId = req.params.id;
   const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/claps`);
   const { user, clapAndStories, followingAmount, followerAmount } = await data.json();
+  const dateFormatter = require("./dateFormatter");
 
+  let dateInfo = {};
+  dateInfo.title = "Demo";
+  dateInfo.dateFormatter = dateFormatter;
 
   const stories = clapAndStories.map(clap => {
     return clap.Story
@@ -55,7 +65,8 @@ router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
     user: user,
     stories: stories,
     followingAmount,
-    followerAmount
+    followerAmount,
+    dateInfo
   })
 }));
 
@@ -63,19 +74,46 @@ router.get("/users/:id/profile/responses", asyncHandler(async(req, res) => {
   const userId = req.params.id;
   const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/responses`);
   const { user, responseAndStories, followingAmount, followerAmount } = await data.json();
+  const dateFormatter = require("./dateFormatter");
+
+  let dateInfo = {};
+  dateInfo.title = "Demo";
+  dateInfo.dateFormatter = dateFormatter;
 
   const stories = responseAndStories.map(response => {
     return response.Story
   })
 
-  console.log(stories)
   res.render("profile-responses", {
     user: user,
     stories: stories,
     followingAmount,
-    followerAmount
+    followerAmount,
+    dateInfo
   })
 }));
+
+router.get('/users/:id/profile/following', async(req, res) => {
+  const userId = req.params.id;
+  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/following`);
+  const { user, followerAmount, followingAmount } = await data.json();
+
+  console.log(user.followees);
+
+  res.render('following', {
+    user,
+    followees: user.followees,
+    followerAmount,
+    followingAmount
+  });
+})
+
+router.get('/users/:id/profile/followers', async(req, res) => {
+  const userId = req.params.id;
+  res.render('following', {
+
+  });
+})
 
 router.get('/stories/create', asyncHandler(async (req, res) => {
   const stories = await Story.findAll({})
@@ -107,10 +145,6 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
     const user = await User.findByPk(userId);
     res.render('story', { story, user, date });
 }));
-
-// router.get('/login', (req, res) => {
-//   res.render('log-in');
-// })
 
 
 

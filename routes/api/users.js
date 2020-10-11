@@ -213,8 +213,8 @@ router.get("/:id/profile", asyncHandler(async(req, res) => {
     include: Story
   })
   console.log(userAndStories);
-  const followingAmount = await Follower.count({where: {followeeId: id}})
-  const followerAmount = await Follower.count({where: {followerId: id}})
+  const followerAmount = await Follower.count({where: {followeeId: id}})
+  const followingAmount = await Follower.count({where: {followerId: id}})
   res.json({userAndStories, followingAmount, followerAmount})
 }))
 
@@ -240,8 +240,8 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
 
   // console.log(clapAmount)
 
-  const followingAmount = await Follower.count({where: {followeeId: userId}})
-  const followerAmount = await Follower.count({where: {followerId: userId}})
+  const followerAmount = await Follower.count({where: {followeeId: userId}})
+  const followingAmount = await Follower.count({where: {followerId: userId}})
   res.json({user, clapAndStories, followingAmount, followerAmount})
 }))
 
@@ -254,9 +254,20 @@ router.get("/:id/profile/responses", asyncHandler(async(req, res) => {
   })
 
   // console.log(responseAndStories)
-  const followingAmount = await Follower.count({where: {followeeId: userId}})
-  const followerAmount = await Follower.count({where: {followerId: userId}})
+  const followerAmount = await Follower.count({where: {followeeId: userId}})
+  const followingAmount = await Follower.count({where: {followerId: userId}})
   res.json({user, responseAndStories, followingAmount, followerAmount})
+}));
+
+router.get("/:id/profile/following", asyncHandler(async(req, res) => {
+  const followerId = req.params.id;
+  const user = await User.findOne({
+    where: { id: followerId },
+    include: [ { model: User, as: "followees"} ]
+  })
+  const followerAmount = await Follower.count({where: {followeeId: followerId}})
+  const followingAmount = await Follower.count({where: {followerId: followerId}})
+  res.json({user, followerAmount, followingAmount});
 }));
 
 module.exports = router;
