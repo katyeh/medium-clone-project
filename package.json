@@ -4,7 +4,10 @@
   "description": "Readium is an online publishing platform pertaining to books, inspired by Medium. Users can create, comment, and like each other's articles about their favorite books.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "per-env",
+    "start:development": "nodemon -r dotenv/config ./bin/www",
+    "start:production": "node ./bin/www"
   },
   "repository": {
     "type": "git",
