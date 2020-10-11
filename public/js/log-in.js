@@ -26,10 +26,12 @@ logInForm.addEventListener("submit", async (e) => {
     const {
       token,
       user: { id },
+      user: { picUrl },
     } = await res.json();
 
     localStorage.setItem("READIUM_ACCESS_TOKEN", token);
     localStorage.setItem("READIUM_CURRENT_USER_ID", id);
+    localStorage.setItem("READIUM_CURRENT_USER_PIC_URL", picUrl);
 
     window.location.href = "/"
   } catch (err) {
