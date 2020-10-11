@@ -1227,6 +1227,14 @@ a:visited {
   margin-left: 15px;
 }
 
+#story .clapImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  border: thin solid #ffffff;
+}
+
 #story__userDiv {
   display: -ms-grid;
   display: grid;
