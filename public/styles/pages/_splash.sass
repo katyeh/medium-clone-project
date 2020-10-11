@@ -1,22 +1,114 @@
 #splash
   margin-top: 10rem
 
-  &__header
+#splash__header
+  grid-column: 2 / span 3
+  display: flex
+  flex-direction: column
+  align-items: center
+  height: 150vh
+  background: $color-background-light
+
+#splash__contents
+  height: 50em
+  width: 100%
+
+#splash__main
+  grid-column: 2 / span 3
+  height: 100vh
+
+#splash__footer
+  grid-column: 1 / -1
+  height: 40rem
+
+#splashnav
+  height: 7rem
+  display: flex
+  position: fixed
+  top: 0
+  width: 100%
+  background: $color-background-light
+
+  #navbar__contents
     grid-column: 2 / span 3
     display: flex
-    flex-direction: column
+    justify-content: space-between
     align-items: center
-    height: 150vh
-    background-color: white
-  &__contents
-    height: 50em
+    position: relative
+    padding: .5rem
     width: 100%
-  &__main
-    grid-column: 2 / span 3
-    height: 100vh
-  &__footer
-    grid-column: 1 / -1
-    height: 40rem
+
+
+    .left-contents
+      margin-left: 7.5rem
+      display: flex
+      align-items: center
+
+
+      .readiumnavtitle
+        font-family: 'Times New Roman', Times, serif
+        font-size: 3rem
+        color: #292929
+        border: none
+        background: $color-background-light
+        font-weight: 600
+
+
+    .right-contents
+      display: flex
+      align-items: center
+      justify-content: flex-end
+      margin-right: 6rem
+
+    .splash__contents-login
+      display: flex
+      justify-content: flex-end
+      height: 3rem
+      align-items: flex-start
+      padding: 1rem
+
+      .splash-login.navbar
+        display: flex
+        align-items: flex-end
+        justify-content: flex-end
+        background: $color-background-light
+        color: black
+        border: none
+        cursor: pointer
+        font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+        font-weight: 200
+        font-size: 1.5rem
+
+      .splash-login.navbar:focus
+        outline: none
+        box-shadow: none
+
+    .navbar__contents__signup
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: .5rem
+      height: 3.5rem
+      margin: 2rem
+      padding: 1rem
+      background: #03A87C
+      cursor: pointer
+      width: 15rem
+
+      .splash__contents-signup
+        dislplay: flex
+        color: white
+        border: none
+        background: #03A87C
+        cursor: pointer
+        width: 15rem
+        height: 3.5rem
+        font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+        border-radius: .5rem
+
+      .splash__contents-signup:focus
+        outline: none
+        box-shadow: none
 
 .splash-header-container
   margin-top: 4.5rem
@@ -61,15 +153,17 @@
     height: 4rem
 
   .splash__contents-signup.one:focus
-        outline: none
-        box-shadow: none
+    outline: none
+    box-shadow: none
 
 .splash__conntents-buttons
   display: flex
   justify-content: center
-  max-height: 50rem
-  max-width: 15rem
+  flex-direction: row
+  height: auto
   margin-top: 4rem
+  flex-wrap: wrap
+  width: auto
 
   .splash__contents-genres
     background: $color-gray-3
@@ -98,6 +192,82 @@
       margin-right: .6rem
       box-shadow: .1rem .1rem .5rem black
 
+    .splash__contents-genres-circle.blue
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 2rem
+      width: 2.5rem
+      height: 2.5rem
+      font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+      font-weight: 300
+      color: white
+      background: blue
+      font-size: 1.6rem
+      margin-right: .6rem
+      box-shadow: .1rem .1rem .5rem black
+
+    .splash__contents-genres-circle.yellow
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 2rem
+      width: 2.5rem
+      height: 2.5rem
+      font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+      font-weight: 300
+      color: black
+      background: yellow
+      font-size: 1.6rem
+      margin-right: .6rem
+      box-shadow: .1rem .1rem .5rem black
+
+    .splash__contents-genres-circle.green
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 2rem
+      width: 2.5rem
+      height: 2.5rem
+      font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+      font-weight: 300
+      color: white
+      background: green
+      font-size: 1.6rem
+      margin-right: .6rem
+      box-shadow: .1rem .1rem .5rem black
+
+    .splash__contents-genres-circle.navy
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 2rem
+      width: 2.5rem
+      height: 2.5rem
+      font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+      font-weight: 300
+      color: white
+      background: navy
+      font-size: 1.6rem
+      margin-right: .6rem
+      box-shadow: .1rem .1rem .5rem black
+
+    .splash__contents-genres-circle.red
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 2rem
+      width: 2.5rem
+      height: 2.5rem
+      font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+      font-weight: 300
+      color: white
+      background: red
+      font-size: 1.6rem
+      margin-right: .6rem
+      box-shadow: .1rem .1rem .5rem black
+
+
     .splash__contents-genres-text
       display: flex
       border-radius: 1rem
@@ -111,6 +281,56 @@
       color: $color-font-subtitle
       font-size: 1.75rem
       font-weight: 300
+
+.splash__contents-footer
+  display: flex
+  justify-content: center
+  margin-top: 2rem
+  flex-direction: column
+  align-items: center
+
+.navbar__contents__signup.big
+  display: flex
+  align-items: center
+  justify-content: center
+  border-radius: .5rem
+  height: 6.5em
+  margin: 2rem
+  padding: 1rem
+  background: #03A87C
+  cursor: pointer
+  width: 35rem
+
+  .splash__contents-signup.big
+    dislplay: flex
+    color: white
+    border: none
+    background: #03A87C
+    cursor: pointer
+    width: 35rem
+    height: 6.5rem
+    font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+    border-radius: .5rem
+    font-size: 2rem
+
+  .splash__contents-signup:focus
+    outline: none
+    box-shadow: none
+
+.ptext
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+  font-size: 1.5rem
+  background: white
+
+#splashlogin
+  display: inline-block
+  background: white
+  color: #03A87C
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+  cursor: pointer
+  border: none
+  font-weight: 300
+  margin-left: 1rem
 
 #splash__login
   display: flex

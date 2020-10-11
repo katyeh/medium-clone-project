@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&Lora:ital@0;1&display=swap');
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css");
 
 // *,
@@ -10,7 +10,11 @@ h2,
 h3,
 p,
 .suggestion-story,
-.trending__story
+.trending__story,
+.feeds-story,
+.clapped-stories,
+.green-link,
+#main__footer
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
 
 .fa-linkedin
@@ -23,14 +27,16 @@ a:visited
   text-decoration: none
 
 #main
-  color: $color-font-subtitle
+  color: $color-font-light
   font-size: 1.3rem
   font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif
   .section-title
     color: $color-font-story
     text-transform: uppercase
     font-weight: bold
-    padding: 1rem
+    padding: 1rem 1rem 1rem .5rem
+  &__footer
+    color: $color-font-menu-light
 
 .story
   font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif

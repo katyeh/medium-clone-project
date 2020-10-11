@@ -1,60 +1,47 @@
+import { dateFormatter, randomIcon } from "./utils.js";
 const followingContainer = document.querySelector(
   ".following-users-container"
 );
-
-(async () => {
-  const profileLink = document.querySelector(".nav-profile-link");
-  const profileNavImg = document.querySelector(".modal__prof-pic");
-  const profileDropdownImg = document.querySelector("#navbar__prof-icon");
-  const userId = localStorage.getItem("READIUM_CURRENT_USER_ID");
-  const picUrl = localStorage.getItem(`READIUM_CURRENT_USER_PIC_URL`);
-  profileNavImg.setAttribute("src", `${picUrl}`);
-  profileDropdownImg.setAttribute("src", `${picUrl}`);
-  profileLink.setAttribute("href", `/users/${userId}/profile`);
-})()
-
-
-// profileLink.addEventListener("click", event => {
-//   window.location.href = `/users/1/profile`
-// });
+const clapsContainer = document.getElementById("main__clapsList");
 
 const getUserInfo = userId => {
   return fetch(`api/users/${userId}`)
     .then((res) => res.json())
-    .then((res) => res.user
-      // console.log(res.user.fullName)
-      // console.log(res.user.imageUrl)
-    // }
-    )
+    .then((res) => res.user)
 }
 
-// const fetchUser = id => {
-//   return fetch(`api/users/${userId}`)
-//     .then(res => res.json())
-//     .then(res => console.log(res))
-// }
-
-// const followingContainer = document.getElementById("main__from-following");
-// document.addEventListener("DOMContentLoaded", async () => {
 (async () => {
-    const userId = localStorage.getItem("READIUM_CURRENT_USER_ID");
+  const userId = localStorage.getItem("READIUM_CURRENT_USER_ID");
 
-    // console.log(await getUserInfo(2));
-  const followingRes = await fetch(`/api/users/${userId}/main`);
-  const { followingUsers } = await followingRes.json();
+  const res = await fetch(`/api/users/${userId}/main`);
+  const { followingUsers, claps } = await res.json();
+
   followingUsers.forEach(async (followingUser, i) => {
-    // console.log(followingUser.followeeId);
     let followee = await getUserInfo(followingUser.followeeId);
-    console.log(followee.picUrl);
     followingContainer.innerHTML += `<div>
         <img src=${followee.picUrl}>
         <div>${followee.fullName}</div>
       </div>
     `;
   });
-  }
-)()
-    // ${console.log(getUserInfo(followingUser.followeeId))}
-    // ${console.log(followingUser.followeeId)}
-    // ${console.log(i, getUserInfo(followingUser.followeeId))}
-    // <span>${getUserInfo(followingUser.followeeId)}</span>
+
+  claps.forEach(async (clap, i) => {
+    clapsContainer.innerHTML += `
+      <div class="clapped-stories">
+        <a href=/users/${clap.User.id}>
+          <img src=${randomIcon()} class="prof-icon">
+          <span><strong>${clap.User.fullName + " "}</strong>in<strong>${
+        " " + clap.User.username
+      }</strong></span>
+        </a>
+          <a href=/stories/${clap.Story.id}>
+          <h4>${clap.Story.title}</h4>
+          <p>${dateFormatter(clap.Story.createdAt)} &#9733</p>
+          </a>
+          </div>
+      `;
+  });
+
+  clapsContainer.innerHTML += `<a class='green-link' href='/'>See your full clap list</a>`
+
+})();
