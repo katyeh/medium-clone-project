@@ -2,6 +2,19 @@
 const openLoginModal = document.querySelectorAll(".splash-login");
 const closeModalButtons = document.querySelectorAll('[data-close-modal]');
 const overlay = document.getElementById('overlay')
+const demoLogin = document.getElementById('demo')
+const insertDemoName = document.getElementById('email__input')
+const insertDemoPassword = document.getElementById('password__input')
+
+
+
+
+demoLogin.addEventListener('click', () => {
+  const modal = document.getElementById('login__modal')
+  openModal(modal);
+  insertDemoName.value= "demo@user.com";
+  insertDemoPassword.value = "password123";
+})
 
 openLoginModal.forEach(button => {
   button.addEventListener('click', () => {
