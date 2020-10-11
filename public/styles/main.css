@@ -1201,9 +1201,25 @@ a:visited {
 
 #story__header > h1,
 #story__subtitle > h1,
-#story .userPic > img,
-#story .date > p {
+#story .userPic > img {
   margin-left: 25px;
+}
+
+#story .fullNameDiv > p,
+#story .followBtn {
+  margin-left: 10px;
+}
+
+#story .date {
+  display: inline;
+  position: absolute;
+}
+
+#story .date > p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 15px;
 }
 
 #story__userDiv {
@@ -1220,6 +1236,7 @@ a:visited {
 #story .userPic > img {
   height: 50px;
   width: 50px;
+  border-radius: 25px;
   float: left;
 }
 
@@ -1235,11 +1252,22 @@ a:visited {
 }
 
 #story .followBtn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   float: left;
-  margin: 5px;
+  line-height: 20px;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 300;
+  padding: 0px 8px;
   color: #03a87c;
-  border-radius: 5px;
+  border-radius: 4px;
+  border-width: 1px;
   border-color: #03a87c;
+  -webkit-tap-highlight-color: transparent;
+  background: 0;
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
 }
 
 #story .userInfo__left {
@@ -1248,20 +1276,19 @@ a:visited {
   display: flex;
 }
 
-#story .date {
-  margin: 6px;
-}
-
 #story .social-list {
   -ms-grid-column: 4;
       grid-column-start: 4;
   -ms-grid-row: 2;
       grid-row-start: 2;
   font-size: x-large;
+  margin-right: 20px;
+  position: relative;
 }
 
 #story .social-list__link {
   margin: 8px;
+  cursor: pointer;
 }
 
 #story__userDiv > h2 {
@@ -1270,6 +1297,39 @@ a:visited {
 
 #story__contents {
   padding: 30px;
+}
+
+#story__menu {
+  position: absolute;
+  width: 150px;
+  border: 1px solid #e6e6e6;
+  margin-top: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: small;
+  -webkit-box-shadow: #e6e6e6 0px 1px 4px;
+          box-shadow: #e6e6e6 0px 1px 4px;
+  left: -55px;
+}
+
+#story .menu {
+  position: relative;
+  display: inline-block;
+}
+
+#story .storyMenu__list {
+  list-style-type: none;
+  margin: 10px;
+}
+
+#story .storyMenu__listItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
 }
 
 #main,
