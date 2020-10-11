@@ -544,6 +544,7 @@ a:visited {
 }
 
 .profile__container {
+  padding-top: 40px;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -993,8 +994,10 @@ a:visited {
 }
 
 #navbar {
-  height: 6.5rem;
+  height: 5rem;
   margin: 2rem 0;
+  -webkit-box-shadow: 0 4px 16px -10px lightgrey;
+          box-shadow: 0 4px 16px -10px lightgrey;
 }
 
 #navbar__contents {
@@ -1011,6 +1014,7 @@ a:visited {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 1.75rem;
 }
 
 #navbar__contents .left-contents {
@@ -1025,6 +1029,7 @@ a:visited {
 #navbar__contents .left-contents h1 {
   font-family: 'Times New Roman', Times, serif;
   font-size: 3rem;
+  color: #292929;
 }
 
 #navbar__contents .left-contents h1::after {
@@ -1053,7 +1058,7 @@ a:visited {
 }
 
 #navbar__contents .navbar__contents__signup .splash__contents-signup {
-  display: flex;
+  dislplay: flex;
   color: white;
   border: none;
   background: #03A87C;

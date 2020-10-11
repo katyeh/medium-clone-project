@@ -9,8 +9,8 @@ block content
       .profile__header
         .profile__header_name: h1 #{user.fullName}
         .profile__header_social
-          .profile__header_social-link: a(href="/following") #{followingAmount} Following
-          .profile__header_social-link: a(href="/followers") #{followerAmount} Followers
+          .profile__header_social-link: a(href=`/users/${user.id}/profile/following`) #{followingAmount} Following
+          .profile__header_social-link: a(href=`/users/${user.id}/profile/followers`) #{followerAmount} Followers
         .profile__header_img: img(src="https://miro.medium.com/fit/c/256/256/0*CEn10raxv9BiN3oD" width="128" height="128")
       .profile__body
         .profile__body_tab: a(class="tab-a" href=`/users/${user.id}/profile`) Profile
@@ -19,23 +19,24 @@ block content
       .profile__body_header: h1 Claps
       .profile__body_story
         each story in stories
+          -const date = dateInfo.dateFormatter(story.createdAt)
           .profile__body_story-preview
-            +story-preview(story.id, story.user.fullName, story.createdAt, story.title, story.subtitle, story.body, clapAmount)
+            +story-preview(story.id, story.user.fullName, date, story.title, story.subtitle, story.body, clapAmount)
 
   script.
     const tab_a = document.querySelector("tab-a");
     const tab_b = document.querySelector("tab-b");
     const tab_c = document.querySelector("tab-c");
-    tab-a.addEventListener("click", e => {
-      tab_b.classList.remove(".tab--underline");
-      tab_a.classList.add(".tab--underline");
-    });
-    tab-c.addEventListener("click", e => {
-      tab_b.classList.remove(".tab--underline");
-      tab_c.classList.add(".tab--underline");
-    });
     const profIcon = document.getElementById('navbar__prof-icon');
     const modal = document.getElementById('navbar__modal');
     profIcon.addEventListener('click', e => {
       modal.classList.toggle('hidden');
+    });
+    tab-b.addEventListener("click", e => {
+      tab_a.classList.remove(".tab--underline");
+      tab_b.classList.add(".tab--underline");
+    });
+    tab-c.addEventListener("click", e => {
+      tab_a.classList.remove(".tab--underline");
+      tab_c.classList.add(".tab--underline");
     });

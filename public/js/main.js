@@ -2,6 +2,16 @@ const followingContainer = document.querySelector(
   ".following-users-container"
 );
 
+(async () => {
+  const profileLink = document.querySelector(".nav-profile-link");
+  const userId = localStorage.getItem("READIUM_CURRENT_USER_ID");
+  profileLink.setAttribute("href", `/users/${userId}/profile`)
+})()
+
+// profileLink.addEventListener("click", event => {
+//   window.location.href = `/users/1/profile`
+// });
+
 const getUserInfo = userId => {
   return fetch(`api/users/${userId}`)
     .then((res) => res.json())
