@@ -2028,11 +2028,6 @@ a:visited {
   font-size: 21px;
 }
 
-.active {
-  background: rgba(3, 168, 124, 0.25);
-  color: #fff;
-}
-
 #genre {
   margin-top: 20px;
   position: -webkit-sticky;
