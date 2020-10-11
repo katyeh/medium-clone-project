@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteStory.addEventListener('click', async () => {
         try {
             debugger
-            let storyId = 4;
+            let storyId = 35;
             const res = await fetch(`/api/stories/${storyId}`, {
                 method: "DELETE",
                 headers: {
