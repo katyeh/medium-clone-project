@@ -4,11 +4,6 @@ const followingContainer = document.querySelector(
 );
 const clapsContainer = document.getElementById("main__clapsList");
 
-
-// profileLink.addEventListener("click", event => {
-//   window.location.href = `/users/1/profile`
-// });
-
 const getUserInfo = userId => {
   return fetch(`api/users/${userId}`)
     .then((res) => res.json())

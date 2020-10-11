@@ -26,7 +26,7 @@ module.exports = {
             "$2b$10$lYAdho1ns2ChPIAzLfv/depkJjlCXbMy9a62VmiolZFb/TtibcudS",
           githubUrl: "https://github.com/cmccoy10",
           linkedinUrl: "https://www.linkedin.com/in/cole-mccoy-20665096/",
-          picUrl: "https://miro.medium.com/fit/c/256/256/0*CEn10raxv9BiN3oD",
+          picUrl: "https://miro.medium.com/fit/c/256/256/1*hLKzSxjViHNOYdum_hkmwg.jpeg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
