@@ -1,30 +1,136 @@
 #splash
-  & *
-    border: 1px solid black
+  margin-top: 10rem
+
   &__header
     grid-column: 2 / span 3
     display: flex
     flex-direction: column
     align-items: center
-    height: 60vh
-    background-color: lightgrey
+    height: 150vh
+    background-color: white
   &__contents
-    height: 30rem
+    height: 50em
     width: 100%
   &__main
     grid-column: 2 / span 3
     height: 100vh
   &__footer
     grid-column: 1 / -1
-    height: 40vh
+    height: 40rem
+
+.splash-header-container
+  margin-top: 4.5rem
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+
+.splash-header-header
+  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+  font-size: 6rem
+  background: white
+  line-height: 7rem
+  font-weight: 550
+  display: flex
+
+.splash-header-subtitle
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+  font-size: 1.8rem
+  margin-top: 1.8rem
+  background: white
+
+.splash-signup-container
+  display: flex
+  align-items: center
+  justify-content: center
+  border-radius: .5rem
+  height: 4rem
+  margin: 2em
+  padding: 1rem
+  background: #03A87C
+  cursor: pointer
+  width: 17rem
+
+  .splash__contents-signup.one
+    dislplay: flex
+    color: white
+    border: none
+    background: #03A87C
+    width: 17em
+    cursor: pointer
+    height: 4rem
+
+  .splash__contents-signup.one:focus
+        outline: none
+        box-shadow: none
+
+.splash__conntents-buttons
+  display: flex
+  justify-content: center
+  max-height: 50rem
+  max-width: 15rem
+  margin-top: 4rem
+
+  .splash__contents-genres
+    background: $color-gray-3
+    display: flex
+    align-items: center
+    justify-content: center
+    width: min-content
+    height: 4rem
+    border-radius: 99em
+    border: none
+    margin: 1rem
+    padding: 1rem
+
+    .splash__contents-genres-circle
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 2rem
+      width: 2.5rem
+      height: 2.5rem
+      font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif
+      font-weight: 300
+      color: white
+      background: black
+      font-size: 1.6rem
+      margin-right: .6rem
+      box-shadow: .1rem .1rem .5rem black
+
+    .splash__contents-genres-text
+      display: flex
+      border-radius: 1rem
+      justify-content: center
+      align-items: center
+      border: none
+      width: max-content
+      height: 3rem
+      background: $color-gray-3
+      font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+      color: $color-font-subtitle
+      font-size: 1.75rem
+      font-weight: 300
 
 #splash__login
+  display: flex
+  align-items: center
+  justify-content: center
   border-radius: 1.5rem
+  width: 7rem
+  height: 4rem
   margin: 2em
   padding: 1.5rem
   background: black
 
   .splash-login
+    height: 4rem
+    width: 7rem
+    cursor: pointer
     color: white
     background: black
     border: none
+
+  .splash-login:focus
+    outline: none
+    box-shadow: none
