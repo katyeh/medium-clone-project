@@ -1395,6 +1395,7 @@ a:visited {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  margin-right: 120px;
 }
 
 #storyForm__field {
@@ -1404,7 +1405,6 @@ a:visited {
 .storyInput {
   border: none;
   font-family: medium-content-title-font,Georgia,Cambria,"Times New Roman",Times,serif;
-  right: 20px;
 }
 
 .storyInput::-webkit-input-placeholder {
