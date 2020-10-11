@@ -24,5 +24,24 @@ mixin navbar(pageName, img)
               li: a(class="nav-user-stories" href="") Stories
               li: a(class="nav-profile-link" href="") Profile
               li: a(class="" href="") Sign out
+      else if pageName == 'storyForm'
+        #right-contents
+          #navbar__prof-icon
+          //- a(class="navbarIcon storyForm-bell")
+          //-   i(class="navbarIcon far fa-bell")
+          //- a(class="navbarIcon storyForm-ellipsis")
+          //-   i(class="navbarIcon fal fa-plus-circle")
+          button(class="navbarIcon publishBtn") Publish
+          #navbar__modal.hidden
+            .modal__header
+              .modal__prof-pic
+              .modal__member-info Member<br>User's name<br>username
+            .modal__contents
+              ul
+                li: a(class="nav-new-story-link" href="") New Story
+                li: a(class="nav-user-stories" href="") Stories
+                li: a(class="" href="") Reading List
+                li: a(class="nav-profile-link" href="") Profile
+                li: a(class="" href="") Sign out
       else
         p stuff here

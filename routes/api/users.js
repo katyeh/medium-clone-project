@@ -102,7 +102,6 @@ const userNotFoundError = id => {
 };
 
 router.post("/",
-  csrfProtection,
   userValidation,
   usernameValidation,
   emailAndPasswordValidation,
@@ -123,7 +122,7 @@ router.post("/",
     username: username.trim(),
     email: email.toLowerCase().trim(),
     picUrl,
-    hashedPassword,
+    hashedPassword
   });
 
   const token = getUserToken(user);

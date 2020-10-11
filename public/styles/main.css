@@ -1240,11 +1240,16 @@ a:visited {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0px 450px;
+  margin-top: 70px;
 }
 
 #story__header > h1 {
   font-size: xxx-large;
   margin: 10px;
+}
+
+#story__subtitle {
+  margin-bottom: 10px;
 }
 
 #story__header > h1,
@@ -1345,9 +1350,11 @@ a:visited {
 
 #story__contents {
   padding: 30px;
+  margin-top: 30px;
 }
 
 #story__menu {
+  display: none;
   position: absolute;
   width: 150px;
   border: 1px solid #e6e6e6;
@@ -1378,6 +1385,127 @@ a:visited {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  margin: 10px;
+}
+
+.rightContents__icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 190px;
+}
+
+.navbarIcon {
+  font-size: large;
+  font-weight: 200px;
+}
+
+.publishBtn {
+  height: 25px;
+  line-height: 25px;
+  padding: 0 8px;
+  margin-right: 3px;
+  color: #fff;
+  background: #03a87c;
+  border-color: #03a87c;
+  border-radius: 4px;
+}
+
+.createStory-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  right: 40px;
+}
+
+#storyForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+}
+
+#storyForm__fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  margin-right: 120px;
+}
+
+#storyForm__field {
+  border: none;
+}
+
+.storyInput {
+  border: none;
+  font-family: medium-content-title-font,Georgia,Cambria,"Times New Roman",Times,serif;
+}
+
+.storyInput::-webkit-input-placeholder {
+  color: #b3b3b1;
+}
+
+.storyInput:-ms-input-placeholder {
+  color: #b3b3b1;
+}
+
+.storyInput::-ms-input-placeholder {
+  color: #b3b3b1;
+}
+
+.storyInput::placeholder {
+  color: #b3b3b1;
+}
+
+.storyInput:focus {
+  outline: none;
+}
+
+#title {
+  font-size: xxx-large;
+  margin-top: 30px;
+}
+
+#subtitle {
+  font-size: x-large;
+  margin-top: 15px;
+}
+
+#body {
+  resize: none;
+  width: 600px;
+  height: 600px;
+  margin-top: 30px;
+}
+
+#body,
+#genre {
+  font-size: 21px;
+}
+
+.active {
+  background: rgba(3, 168, 124, 0.25);
+  color: #fff;
+}
+
+#genre {
+  margin-top: 20px;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 .story_responses {

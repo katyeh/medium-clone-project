@@ -130,6 +130,17 @@ router.get('/stories/create', asyncHandler(async (req, res) => {
     });
 }));
 
+router.get('/stories/:id/edit', asyncHandler(async (req, res) => {
+    const storyId = req.params.id;
+    const story = await Story.findByPk(storyId)
+    const genres = await Genre.findAll({})
+    res.render('edit-story', {
+        story,
+        genres,
+        csrfToken: req.csrfToken()
+    });
+}));
+
 router.get('/story/:id', asyncHandler(async (req, res) => {
     const storyId = req.params.id
     const story = await Story.findOne({
@@ -153,8 +164,6 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
     const user = await User.findByPk(userId);
     res.render('story', { story, user, date, readTime });
 }));
-
-
 
 
 module.exports = router;
