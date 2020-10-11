@@ -293,7 +293,7 @@ a:visited {
 }
 
 #main__trends .trending__container > * {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 1.5rem .5rem;
 }
 
 #main__trends .trending__story {
