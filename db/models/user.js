@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(500)
     },
     picUrl: {
-        type: DataTypes.STRING(500)
+        type: DataTypes.STRING(500),
     },
   }, {});
   User.associate = function(models) {

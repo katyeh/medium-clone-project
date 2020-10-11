@@ -105,17 +105,22 @@ router.post("/",
   emailAndPasswordValidation,
   handleValidationErrors,
   asyncHandler(async (req, res, next) => {
-  let { fullName, username, email, password } = req.body;
+  let { fullName, username, email, password, picUrl } = req.body;
 
   const hashedPassword = await hashPassword(password.trim());
 
   fullName = fullName.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 
+  if (!picUrl) {
+    picUrl = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"
+  }
+
   const user = await User.create({
     fullName: fullName.trim(),
     username: username.trim(),
     email: email.toLowerCase().trim(),
-    hashedPassword
+    picUrl,
+    hashedPassword,
   });
 
   const token = getUserToken(user);
@@ -210,8 +215,8 @@ router.get("/:id/profile", asyncHandler(async(req, res) => {
     include: Story
   })
   console.log(userAndStories);
-  const followingAmount = await Follower.count({where: {followeeId: id}})
-  const followerAmount = await Follower.count({where: {followerId: id}})
+  const followerAmount = await Follower.count({where: {followeeId: id}})
+  const followingAmount = await Follower.count({where: {followerId: id}})
   res.json({userAndStories, followingAmount, followerAmount})
 }))
 
@@ -237,8 +242,8 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
 
   // console.log(clapAmount)
 
-  const followingAmount = await Follower.count({where: {followeeId: userId}})
-  const followerAmount = await Follower.count({where: {followerId: userId}})
+  const followerAmount = await Follower.count({where: {followeeId: userId}})
+  const followingAmount = await Follower.count({where: {followerId: userId}})
   res.json({user, clapAndStories, followingAmount, followerAmount})
 }))
 
@@ -251,9 +256,20 @@ router.get("/:id/profile/responses", asyncHandler(async(req, res) => {
   })
 
   // console.log(responseAndStories)
-  const followingAmount = await Follower.count({where: {followeeId: userId}})
-  const followerAmount = await Follower.count({where: {followerId: userId}})
+  const followerAmount = await Follower.count({where: {followeeId: userId}})
+  const followingAmount = await Follower.count({where: {followerId: userId}})
   res.json({user, responseAndStories, followingAmount, followerAmount})
+}));
+
+router.get("/:id/profile/following", asyncHandler(async(req, res) => {
+  const followerId = req.params.id;
+  const user = await User.findOne({
+    where: { id: followerId },
+    include: [ { model: User, as: "followees"} ]
+  })
+  const followerAmount = await Follower.count({where: {followeeId: followerId}})
+  const followingAmount = await Follower.count({where: {followerId: followerId}})
+  res.json({user, followerAmount, followingAmount});
 }));
 
 module.exports = router;

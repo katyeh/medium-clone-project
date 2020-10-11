@@ -11,9 +11,16 @@
   &__header > h1,
   &__subtitle > h1,
   .userPic > img,
-  .date > p
     margin-left: 25px
-
+  .fullNameDiv > p,
+  .followBtn
+    margin-left: 10px
+  .date
+    display: inline
+    position: absolute
+  .date > p
+    display: flex
+    margin-left: 15px
   &__userDiv
     // border: 10px solid black
     display: grid
@@ -24,6 +31,7 @@
   .userPic > img
     height: 50px
     width: 50px
+    border-radius: 25px
     float: left
   .userInfo
     float: left
@@ -32,22 +40,51 @@
     float: left
     margin: 5px
   .followBtn
+    align-items: center
     float: left
-    margin: 5px
+    line-height: 20px
+    font-size: 15px
+    text-decoration: none
+    font-weight: 300
+    padding: 0px 8px
     color: rgba(3, 168, 124, 1);
-    border-radius: 5px
+    border-radius: 4px
+    border-width: 1px
     border-color: rgba(3, 168, 124, 1);
+    -webkit-tap-highlight-color: transparent
+    background: 0
+    font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   .userInfo__left
     display: flex
-  .date
-    margin: 6px
   .social-list
     grid-column-start: 4
     grid-row-start: 2
     font-size: x-large
+    margin-right: 20px
+    position: relative
   .social-list__link
     margin: 8px
+    cursor: pointer
   &__userDiv > h2
     font-size: large
   &__contents
     padding: 30px
+  &__menu
+    position: absolute
+    width: 150px
+    border: 1px solid rgb(230, 230, 230)
+    margin-top: 5px
+    box-sizing: border-box
+    font-size: small
+    box-shadow: rgb(230, 230, 230) 0px 1px 4px
+    left: -55px;
+  .menu
+    position: relative
+    display: inline-block
+  .storyMenu__list
+    list-style-type: none
+    margin: 10px
+  .storyMenu__listItem
+    display: flex
+    justify-content: center
+    cursor: pointer

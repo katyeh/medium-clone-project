@@ -7,13 +7,68 @@ block content
   include includes/log-in.pug
   #splash
     header#splash__header
-      h1 Some slogan here
-      h2 Some sub-slogan here
+      div(class="splash-header-container")
+        h1(class="splash-header-header") Dive deeper into the
+        h1(class="splash-header-header") stories you love.
+        h2(class="splash-header-subtitle") Join our community. Read others stories or write your own.
       #splash__contents Stuff
-      button(class="splash__contents-signup")
-      p Already have an account?
-      #splash__login
-        button(class="splash-login", id ="splashlogin",data-modal-target="#modal") Login
+        div(class="splash__conntents-buttons")
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Fiction
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Bio
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Sci-Fi
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Thriller
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Mystery
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Horror
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Fantay
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Non Fiction
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") News
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Plays
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Journals
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text")
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Cookbooks
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") History
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Young Adult
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Philosophy
+          div(class="splash__contents-genres")
+            div(class="splash__contents-genres-circle") R
+            div(class="splash__contents-genres-text") Mystery
     main#splash__main #splash__main
     footer#splash__footer
+      div(class="splash-signup-container")
+        button(class="splash__contents-signup one") Get started
+      p Already have an account?
+        #splash__login
+          button(class="splash-login", id ="splashlogin",data-modal-target="#modal") Login
     script(type="module" src="/js/splash.js")
