@@ -33,6 +33,8 @@
     
     img
       width: 38rem
+      height: 25rem
+      position: relative
       object-fit: contain
       cursor: pointer
     .main-suggestion-story
@@ -50,15 +52,31 @@
       display: flex
       justify-content: space-between
       .left
-        width: 200px
+        width: 21rem
+
+        p
+          color: $color-font-subtitle
+          padding-top: 1.5rem
+          font-size: 1.2rem
+        a
+          display: block
+          position: relative
+          height: 3rem
+          width: 100%
+          font-size: 1.1rem
+          color: $color-font-story
+
+          span
+            display: inline-block
       .right
-        height: 100px
-        width: 100px
+        height: 10rem
+        width: 10rem
         margin-top: .5rem
         img
           width: 100%
           height: 100%
           object-fit: cover
+        
       a:not(:first-child)
         display: inline-block
         padding-top: 2rem
@@ -92,13 +110,16 @@
         margin-bottom: 3rem
       
         img
-          width: 7.5rem
-          height: 7.5rem
+          width: 7rem
+          height: 7rem
           border-radius: 50%
+          cursor: pointer
 
         div
           text-align: center
-
+          font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+          font-size: 1rem
+          padding-top: 0.3rem
   &__trends
     grid-column: 2 / span 3
     height: auto
@@ -111,6 +132,24 @@
 
         & > *
           padding: 1.5rem
+      
+      &__story
+        display: flex
+
+        .left
+          width: 20%
+          height: 100%
+          font-weight: 500
+          font-size: 3rem
+        .right
+          width: 80%
+          height: 100%
+          a
+            color: $color-font-story
+
+          span
+            display: inline-block
+            padding-bottom: 1rem
 
   &__feeds
     grid-column: 2/ span 2

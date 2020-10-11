@@ -33,7 +33,8 @@ module.exports = {
         type: Sequelize.STRING(500),
       },
       picUrl: {
-        type: Sequelize.STRING(500),
+        type: Sequelize.STRING(500)
+      },
       imageUrl: {
         type: Sequelize.STRING(500)
       },
