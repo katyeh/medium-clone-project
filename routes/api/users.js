@@ -114,8 +114,8 @@ router.post("/",
 
   fullName = fullName.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 
-  if (!user.picUrl) {
-    user.picUrl = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"
+  if (!picUrl) {
+    picUrl = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"
   }
 
   const user = await User.create({
@@ -124,7 +124,6 @@ router.post("/",
     email: email.toLowerCase().trim(),
     picUrl,
     hashedPassword
-
   });
 
   const token = getUserToken(user);
