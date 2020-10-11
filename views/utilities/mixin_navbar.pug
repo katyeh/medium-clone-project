@@ -15,13 +15,13 @@ mixin navbar(pageName, img)
         #navbar__modal.hidden
           .modal__header
             img(class="modal__prof-pic" src="")
-            .modal__member-info Member<br>User's name<br>username
+            .modal__member-info
+              .modal__member-info-name: a(href="") Cole McCoy
+              .modal__member-info-username: a(href="") @cmccoy
           .modal__contents
             ul
-            -console.log("hello")
               li: a(class="nav-new-story-link" href="") New Story
               li: a(class="nav-user-stories" href="") Stories
-              li: a(class="" href="") Reading List
               li: a(class="nav-profile-link" href="") Profile
               li: a(class="" href="") Sign out
       else

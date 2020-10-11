@@ -1380,6 +1380,13 @@ a:visited {
   cursor: pointer;
 }
 
+.story_responses {
+  width: 400px;
+  background-color: salmon;
+  position: absolute;
+  right: 0;
+}
+
 #main,
 #splash,
 #navbar {
@@ -1523,12 +1530,12 @@ a:visited {
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   position: absolute;
-  top: 8.5rem;
-  height: 60rem;
+  top: 5rem;
+  height: 35rem;
   width: 20rem;
   z-index: 1;
   padding: 2rem;
-  right: 0;
+  right: 5.25em;
   -webkit-box-shadow: 0px 2px 5px #e6e6e6;
           box-shadow: 0px 2px 5px #e6e6e6;
   -webkit-transition: all .3s ease-out;
@@ -1569,9 +1576,44 @@ a:visited {
 
 #navbar__modal .modal__member-info {
   line-height: 1.5rem;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+#navbar__modal .modal__contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 #navbar__modal .modal__contents ul {
+  height: 13rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   list-style: none;
+  font-size: 16px;
+}
+
+#navbar__modal .modal__contents ul li {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 /*# sourceMappingURL=main.css.map */
