@@ -1,10 +1,16 @@
 #navbar
   height: 5rem
   margin: 2rem 0
-  box-shadow: 0 4px 16px -10px lightgrey
   position: relative
   top: 0
   background: $color-background-light
+
+  &.shadow
+    box-shadow: 0 4px 16px -10px lightgrey
+
+  .greeting
+    font-size: 1.6rem
+    font-weight: bold
 
   &__contents
     grid-column: 2 / span 3

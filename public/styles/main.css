@@ -1866,6 +1866,13 @@ a:visited {
   margin: 10px;
 }
 
+.story_responses {
+  width: 400px;
+  background-color: salmon;
+  position: absolute;
+  right: 0;
+}
+
 .rightContents__icons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1986,13 +1993,6 @@ a:visited {
   position: sticky;
 }
 
-.story_responses {
-  width: 400px;
-  background-color: salmon;
-  position: absolute;
-  right: 0;
-}
-
 #main,
 #splash,
 #navbar {
@@ -2005,11 +2005,19 @@ a:visited {
 #navbar {
   height: 5rem;
   margin: 2rem 0;
-  -webkit-box-shadow: 0 4px 16px -10px lightgrey;
-          box-shadow: 0 4px 16px -10px lightgrey;
   position: relative;
   top: 0;
   background: rgba(255, 255, 255, 0.98);
+}
+
+#navbar.shadow {
+  -webkit-box-shadow: 0 4px 16px -10px lightgrey;
+          box-shadow: 0 4px 16px -10px lightgrey;
+}
+
+#navbar .greeting {
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
 #navbar__contents {
