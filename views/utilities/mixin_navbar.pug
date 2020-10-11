@@ -5,8 +5,11 @@ mixin navbar(pageName)
        h1 Readium
        p Greeting
       if pageName == 'splash'
-        div(class="navbar__contents__signup")
-          button(class="splash__contents-signup") Get started
+        div(class="right-contents")
+          div(class="splash__contents-login")
+            button(class="splash-login navbar") Sign in
+          div(class="navbar__contents__signup")
+            button(class="splash__contents-signup") Get started
       else if pageName == 'main'
         #navbar__prof-icon
         #navbar__modal.hidden

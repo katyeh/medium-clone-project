@@ -11,7 +11,7 @@ router.get('/', asyncHandler(async(req, res) => {
   const storiesRes = await fetch('http://localhost:8080/api/stories/main');
 
   const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
-  res.render("main", {
+  res.render("splash", {
     newStories,
     trendingStories,
     suggestionStories,

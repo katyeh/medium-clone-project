@@ -542,8 +542,8 @@ a:visited {
   border: none;
 }
 
-#splash * {
-  border: 1px solid black;
+#splash {
+  margin-top: 10rem;
 }
 
 #splash__header {
@@ -560,12 +560,12 @@ a:visited {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 60vh;
-  background-color: lightgrey;
+  height: 150vh;
+  background-color: white;
 }
 
 #splash__contents {
-  height: 30rem;
+  height: 50em;
   width: 100%;
 }
 
@@ -578,20 +578,189 @@ a:visited {
 
 #splash__footer {
   grid-column: 1 / -1;
-  height: 40vh;
+  height: 40rem;
+}
+
+.splash-header-container {
+  margin-top: 4.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.splash-header-header {
+  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 6rem;
+  background: white;
+  line-height: 7rem;
+  font-weight: 550;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.splash-header-subtitle {
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-size: 1.8rem;
+  margin-top: 1.8rem;
+  background: white;
+}
+
+.splash-signup-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: .5rem;
+  height: 4rem;
+  margin: 2em;
+  padding: 1rem;
+  background: #03A87C;
+  cursor: pointer;
+  width: 17rem;
+}
+
+.splash-signup-container .splash__contents-signup.one {
+  dislplay: flex;
+  color: white;
+  border: none;
+  background: #03A87C;
+  width: 17em;
+  cursor: pointer;
+  height: 4rem;
+}
+
+.splash-signup-container .splash__contents-signup.one:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.splash__conntents-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-height: 50rem;
+  max-width: 15rem;
+  margin-top: 4rem;
+}
+
+.splash__conntents-buttons .splash__contents-genres {
+  background: #f2f2f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: 4rem;
+  border-radius: 99em;
+  border: none;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.splash__conntents-buttons .splash__contents-genres .splash__contents-genres-circle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 300;
+  color: white;
+  background: black;
+  font-size: 1.6rem;
+  margin-right: .6rem;
+  -webkit-box-shadow: .1rem .1rem .5rem black;
+          box-shadow: .1rem .1rem .5rem black;
+}
+
+.splash__conntents-buttons .splash__contents-genres .splash__contents-genres-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: 3rem;
+  background: #f2f2f2;
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  color: #757575;
+  font-size: 1.75rem;
+  font-weight: 300;
 }
 
 #splash__login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-radius: 1.5rem;
+  width: 7rem;
+  height: 4rem;
   margin: 2em;
   padding: 1.5rem;
   background: black;
 }
 
 #splash__login .splash-login {
+  height: 4rem;
+  width: 7rem;
+  cursor: pointer;
   color: white;
   background: black;
   border: none;
+}
+
+#splash__login .splash-login:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .profile {
@@ -1113,7 +1282,10 @@ a:visited {
 
 #navbar {
   height: 6.5rem;
-  margin: 2rem 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  background: rgba(255, 255, 255, 0.98);
 }
 
 #navbar__contents {
@@ -1152,6 +1324,45 @@ a:visited {
   margin: 0 1.5rem;
 }
 
+#navbar__contents .right-contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#navbar__contents .splash__contents-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 3rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 1rem;
+}
+
+#navbar__contents .splash__contents-login .splash-login.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background: rgba(255, 255, 255, 0.98);
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
 #navbar__contents .navbar__contents__signup {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1164,7 +1375,7 @@ a:visited {
           justify-content: center;
   border-radius: .5rem;
   height: 4rem;
-  margin: 2em;
+  margin: 2rem;
   padding: 1rem;
   background: #03A87C;
   cursor: pointer;
@@ -1177,6 +1388,15 @@ a:visited {
   border: none;
   background: #03A87C;
   cursor: pointer;
+  width: 12rem;
+  height: 4rem;
+  border-radius: .5rem;
+}
+
+#navbar__contents .navbar__contents__signup .splash__contents-signup:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 #navbar__prof-icon {
