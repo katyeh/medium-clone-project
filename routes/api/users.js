@@ -275,4 +275,15 @@ router.get("/:id/profile/following", asyncHandler(async(req, res) => {
   res.json({user, followerAmount, followingAmount});
 }));
 
+router.get("/:id/profile/followers", asyncHandler(async(req, res) => {
+  const followeeId = req.params.id;
+  const user = await User.findOne({
+    where: { id: followeeId },
+    include: [ { model: User, as: "followers"} ]
+  })
+  const followerAmount = await Follower.count({where: {followeeId: followeeId}})
+  const followingAmount = await Follower.count({where: {followerId: followeeId}})
+  res.json({user, followerAmount, followingAmount});
+}));
+
 module.exports = router;

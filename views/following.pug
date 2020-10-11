@@ -20,8 +20,8 @@ block content
       .profile__body_header: h1 #{user.fullName} follows
       .profile__body_follow-list
         each followee in followees
-          .profile__body_follow-list
-            +follow-list-preview(followee.id, followee.fullName, followee.imageUrl, "Following")
+          .profile__body_follow-list-preview
+            +follow-list-preview(followee.id, followee.fullName, followee.picUrl, "Following")
 
   script.
     const tab_a = document.querySelector("tab-a");
