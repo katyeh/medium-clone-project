@@ -1,15 +1,27 @@
 extends layout.pug
 
 block content
+  include ./utilities/formNav.pug
+  #storyForm
   .errors-container
-  form(class="create-story-form" action='/api/stories' method='post')
-    include story-form-fields.pug
-    div
-      label Genre
-      select(name="genreId" required)
-        each genre in genres
-          option(value=genre.id)= genre.title
-    div
-      button(type='submit') Create Story
-    a(href='/') Cancel
+  #storyForm__fields
+    form(class="create-story-form" action='/api/stories' method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
+      div
+        label(for='title') #{Title}
+          input(type='text' id='title' name='title')
+      div
+        label(for='subtitle') #{Subtitle}
+          input(type='text' id='subtitle' name='subtitle')
+      div
+        label(for='body') #{Body}
+          textarea(id='body' name='body' rows='5', 'Tell your story...')
+      div
+        label Genre
+        select(name="genreId" required)
+          each genre in genres
+            option(value=genre.id)= genre.title
+      div
+        button(type='submit') Create Story
+      a(href='/') Cancel
   script(type="module" src="/js/createStory.js")

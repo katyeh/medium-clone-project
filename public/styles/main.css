@@ -1192,11 +1192,16 @@ a:visited {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0px 450px;
+  margin-top: 70px;
 }
 
 #story__header > h1 {
   font-size: xxx-large;
   margin: 10px;
+}
+
+#story__subtitle {
+  margin-bottom: 10px;
 }
 
 #story__header > h1,
@@ -1297,9 +1302,11 @@ a:visited {
 
 #story__contents {
   padding: 30px;
+  margin-top: 30px;
 }
 
 #story__menu {
+  display: none;
   position: absolute;
   width: 150px;
   border: 1px solid #e6e6e6;
@@ -1330,6 +1337,45 @@ a:visited {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  margin: 10px;
+}
+
+.rightContents__icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 190px;
+}
+
+.navbarIcon {
+  font-size: large;
+  font-weight: 200px;
+}
+
+.publishBtn {
+  height: 25px;
+  line-height: 25px;
+  padding: 0 8px;
+  color: #fff;
+  background: #03a87c;
+  border-color: #03a87c;
+  border-radius: 4px;
+}
+
+#storyForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
 }
 
 #main,
