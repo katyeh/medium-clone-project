@@ -124,12 +124,14 @@ a:visited {
 }
 
 #main__stories img {
+  position: relative;
   width: 38rem;
   height: 25rem;
-  position: relative;
   -o-object-fit: contain;
      object-fit: contain;
   cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #main__stories .main-suggestion-story {
