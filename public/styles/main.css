@@ -23,7 +23,8 @@ p,
 .trending__story,
 .feeds-story,
 .clapped-stories,
-.green-link {
+.green-link,
+#main__footer {
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
 }
 
@@ -34,12 +35,12 @@ p,
 
 a:link,
 a:visited {
-  color: #7c7c7c;
+  color: #969696;
   text-decoration: none;
 }
 
 #main {
-  color: #757575;
+  color: #969696;
   font-size: 1.3rem;
   font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
 }
@@ -141,6 +142,7 @@ a:visited {
   width: 38rem;
   height: 23rem;
   padding-top: 2rem;
+  color: #292929;
 }
 
 #main__stories .main-suggestion-story a {
@@ -415,6 +417,9 @@ a:visited {
 #main__sidebar .clapped-stories {
   margin: 2rem 0;
   height: 8rem;
+}
+
+#main__sidebar .clapped-stories, #main__sidebar .green-link {
   position: relative;
   top: -1.5rem;
 }
@@ -450,6 +455,9 @@ a:visited {
 
 #main__footer {
   height: 10rem;
+  margin: 2rem 0;
+  line-height: 3rem;
+  word-break: keep-all;
 }
 
 .prof-icon {
