@@ -1,9 +1,9 @@
 mixin navbar(pageName, img)
-  nav#navbar
+  nav.shadow#navbar
     #navbar__contents
       .left-contents
        a(href="/"): h1 Readium
-       p Greeting
+       p.greeting
       if pageName == 'splash'
         div(class="right-contents")
           div(class="splash__contents-login")
@@ -13,6 +13,7 @@ mixin navbar(pageName, img)
       else if pageName == 'main'
         img(id="navbar__prof-icon" src="")
         #navbar__modal.hidden
+
           .modal__header
             img(class="modal__prof-pic" src="")
             .modal__member-info
@@ -24,6 +25,17 @@ mixin navbar(pageName, img)
               li: a(class="nav-user-stories" href="") Stories
               li: a(class="nav-profile-link" href="") Profile
               li: a(class="" href="") Sign out
+        script.
+          const nav = document.getElementById('navbar');
+          nav.classList.remove('shadow');
+ 
+          const greetingContainer = document.querySelector('.greeting');
+          const currentTime = new Date().getHours();
+
+          if (currentTime < 12) greetingContainer.innerHTML = 'Good morning';
+          else if (currentTime < 18) greetingContainer.innerHTML = 'Good afternoon';
+          else greetingContainer.innerHTML = 'Good evening';
+
       else if pageName == 'storyForm'
         #right-contents
           #navbar__prof-icon
