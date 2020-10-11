@@ -3,8 +3,6 @@ const { check } = require('express-validator');
 const { User, Follower, Story, Clap, Response } = require("../../db/models");
 const { asyncHandler, hashPassword, handleValidationErrors } = require("../../utils");
 const { getUserToken, requireAuth } = require('../../auth');
-const csrf = require("csurf");
-const csrfProtection = csrf({cookie: true});
 
 const router = express();
 
@@ -102,7 +100,6 @@ const userNotFoundError = id => {
 };
 
 router.post("/",
-  csrfProtection,
   userValidation,
   usernameValidation,
   emailAndPasswordValidation,
