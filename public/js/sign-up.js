@@ -31,7 +31,9 @@ signUpForm.addEventListener("submit", async (event) => {
             user: { id }
         } = await res.json();
         localStorage.setItem("READIUM_ACCESS_TOKEN", token);
-        localStorage.setItem("READIUM_CURRENT_USER_ID", id);
+      localStorage.setItem("READIUM_CURRENT_USER_ID", id)
+      window.location.href = "/"
+
     } catch (error) {
         handleErrors(error)
     }
