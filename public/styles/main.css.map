@@ -13,6 +13,7 @@
         "pages/_profile.sass",
         "pages/_login.sass",
         "pages/_story.sass",
+        "pages/_storyForm.sass",
         "components/_buttons.sass",
         "layout/_grid.sass",
         "layout/_footer.sass",

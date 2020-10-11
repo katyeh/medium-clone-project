@@ -107,9 +107,9 @@ router.post("/:id/clap", asyncHandler(async (req, res) => {
 }));
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  // const userId  = req.user.id;
+  const userId  = req.user.id;
   const stories = await Story.findAll({
-    // where: { userId },
+    where: { userId },
     include: [
       { model: User, as: "user", attributes: ["username"] },
       {
@@ -188,11 +188,24 @@ router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(as
   }
   }))
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
-  const storyId = parseInt(req.params.id);
-  const story = await Story.findByPk(storyId);
+router.delete('/:id', asyncHandler(async (req, res, next) => {
+//   const storyId = parseInt(req.params.id);
+//   const story = await Story.findByPk(storyId);
+    const story = await Story.findOne({
+        where: {
+            id: req.params.id,
+        },
+    });
+  /* if (req.user.id !== story.userId) {
+      const err = new Error("Unauthorized");
+      err.status = 401;
+      err.message = "You are not authorized to delete this story.";
+      err.title = "Unauthorized";
+      throw err;
+  } */
   if (story) {
     await story.destroy();
+    res.json({ message: `Delete story with id of ${storyId}` });
   } else {
     next(storyNotFoundError(storyId));
   }

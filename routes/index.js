@@ -99,8 +99,6 @@ router.get('/users/:id/profile/following', async(req, res) => {
   const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/following`);
   const { user, followerAmount, followingAmount } = await data.json();
 
-  console.log(user.followees);
-
   res.render('following', {
     user,
     followees: user.followees,
@@ -111,8 +109,14 @@ router.get('/users/:id/profile/following', async(req, res) => {
 
 router.get('/users/:id/profile/followers', async(req, res) => {
   const userId = req.params.id;
-  res.render('following', {
+  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/followers`);
+  const { user, followerAmount, followingAmount } = await data.json();
 
+  res.render('followers', {
+    user,
+    followers: user.followers,
+    followerAmount,
+    followingAmount
   });
 })
 
@@ -123,6 +127,17 @@ router.get('/stories/create', asyncHandler(async (req, res) => {
       stories,
       genres,
       csrfToken: req.csrfToken()
+    });
+}));
+
+router.get('/stories/:id/edit', asyncHandler(async (req, res) => {
+    const storyId = req.params.id;
+    const story = await Story.findByPk(storyId)
+    const genres = await Genre.findAll({})
+    res.render('edit-story', {
+        story,
+        genres,
+        csrfToken: req.csrfToken()
     });
 }));
 
@@ -149,8 +164,6 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
     const user = await User.findByPk(userId);
     res.render('story', { story, user, date, readTime });
 }));
-
-
 
 
 module.exports = router;
