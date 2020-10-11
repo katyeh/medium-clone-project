@@ -108,17 +108,23 @@ router.post("/",
   emailAndPasswordValidation,
   handleValidationErrors,
   asyncHandler(async (req, res, next) => {
-  let { fullName, username, email, password } = req.body;
+  let { fullName, username, email, password, picUrl } = req.body;
 
   const hashedPassword = await hashPassword(password.trim());
 
   fullName = fullName.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 
+  if (!user.picUrl) {
+    user.picUrl = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"
+  }
+
   const user = await User.create({
     fullName: fullName.trim(),
     username: username.trim(),
     email: email.toLowerCase().trim(),
+    picUrl,
     hashedPassword
+
   });
 
   const token = getUserToken(user);

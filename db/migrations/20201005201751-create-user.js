@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       fullName: {
         allowNull: false,
@@ -34,8 +34,9 @@ module.exports = {
       },
       picUrl: {
         type: Sequelize.STRING(500),
+      },
       imageUrl: {
-        type: Sequelize.STRING(500)
+        type: Sequelize.STRING(500),
       },
       createdAt: {
         allowNull: false,
@@ -43,8 +44,8 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

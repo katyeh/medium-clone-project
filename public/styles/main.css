@@ -1085,14 +1085,12 @@ a:visited {
   font-size: small;
   -webkit-box-shadow: #e6e6e6 0px 1px 4px;
           box-shadow: #e6e6e6 0px 1px 4px;
+  left: -55px;
 }
 
 #story .menu {
-  display: inline-block;
-}
-
-#story .ellipsis {
   position: relative;
+  display: inline-block;
 }
 
 #story .storyMenu__list {
