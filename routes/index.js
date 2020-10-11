@@ -12,7 +12,7 @@ router.get('/', asyncHandler(async(req, res) => {
   const storiesRes = await fetch('http://localhost:8080/api/stories/main');
 
   const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
-  res.render("splash", {
+  res.render("main", {
     newStories,
     trendingStories,
     suggestionStories,
@@ -99,8 +99,6 @@ router.get('/users/:id/profile/following', async(req, res) => {
   const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/following`);
   const { user, followerAmount, followingAmount } = await data.json();
 
-  console.log(user.followees);
-
   res.render('following', {
     user,
     followees: user.followees,
@@ -111,8 +109,14 @@ router.get('/users/:id/profile/following', async(req, res) => {
 
 router.get('/users/:id/profile/followers', async(req, res) => {
   const userId = req.params.id;
-  res.render('following', {
+  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/followers`);
+  const { user, followerAmount, followingAmount } = await data.json();
 
+  res.render('followers', {
+    user,
+    followers: user.followers,
+    followerAmount,
+    followingAmount
   });
 })
 

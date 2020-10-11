@@ -11,7 +11,7 @@ block content
         .profile__header_social
           .profile__header_social-link: a(href=`/users/${user.id}/profile/following`) #{followingAmount} Following
           .profile__header_social-link: a(href=`/users/${user.id}/profile/followers`) #{followerAmount} Followers
-        .profile__header_img: img(src="https://miro.medium.com/fit/c/256/256/0*CEn10raxv9BiN3oD" width="128" height="128")
+        .profile__header_img: img(src=`${user.picUrl}` width="128" height="128")
       .profile__body
         .profile__body_tab: a(class="tab-a" href=`/users/${user.id}/profile`) Profile
         .profile__body_tab: a(class="tab-b tab--underline" href=`/users/${user.id}/profile/claps`) Claps
@@ -21,7 +21,7 @@ block content
         each story in stories
           -const date = dateInfo.dateFormatter(story.createdAt)
           .profile__body_story-preview
-            +story-preview(story.id, story.user.fullName, date, story.title, story.subtitle, story.body, clapAmount)
+            +story-preview(story.user.picUrl, story.user.id, story.user.fullName, date, story.title, story.subtitle, story.body, clapAmount)
 
   script.
     const tab_a = document.querySelector("tab-a");
@@ -40,3 +40,4 @@ block content
       tab_a.classList.remove(".tab--underline");
       tab_c.classList.add(".tab--underline");
     });
+  script(type="module" src="/js/profile.js")

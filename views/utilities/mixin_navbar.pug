@@ -1,4 +1,4 @@
-mixin navbar(pageName)
+mixin navbar(pageName, img)
   nav#navbar
     #navbar__contents
       .left-contents
@@ -11,17 +11,17 @@ mixin navbar(pageName)
           div(class="navbar__contents__signup")
             button(class="splash__contents-signup") Get started
       else if pageName == 'main'
-        #navbar__prof-icon
+        img(id="navbar__prof-icon" src="")
         #navbar__modal.hidden
           .modal__header
-            .modal__prof-pic
-            .modal__member-info Member<br>User's name<br>username
+            img(class="modal__prof-pic" src="")
+            .modal__member-info
+              .modal__member-info-name: a(href="") Cole McCoy
+              .modal__member-info-username: a(href="") @cmccoy
           .modal__contents
             ul
-            -console.log("hello")
               li: a(class="nav-new-story-link" href="") New Story
               li: a(class="nav-user-stories" href="") Stories
-              li: a(class="" href="") Reading List
               li: a(class="nav-profile-link" href="") Profile
               li: a(class="" href="") Sign out
       else if pageName == 'storyForm'
