@@ -55,6 +55,8 @@
       justify-content: space-between
       .left
         width: 21rem
+        h3
+          padding-top: 1rem
 
         p
           color: $color-font-subtitle
@@ -160,10 +162,7 @@
             margin-right: 1rem
           a
             color: $color-font-story
-            // color: red
-            // display: inline-block
-            // position: relative
-            // top: -.5rem
+
             span
               display: inline-block
               position: relative
@@ -179,19 +178,46 @@
     grid-column: 2/ span 2
     height: auto
 
-    & > *
-      padding: 1.5rem
+    // // & > *
+    //   padding: 1.5rem
+
+    // .feeds-container:not(:first-child)
+    //   padding: 1.5rem
 
     .feeds-story
-      height: 20rem
+      height: 14rem
+      display: flex
+      justify-content: space-between
+
+      &:first-child
+        margin: 0 8rem 5rem 0
+        
+      &:not(:first-child)
+        margin: 5rem 8rem 5rem 0
 
       span, h3
         color: $color-font-story
 
-      img
-        width: 2rem
-        height: 2rem
-        border-radius: 50%
+      h3
+        font-size: 1.8rem
+        padding: 1.5rem 0
+
+      .left
+        flex-grow: 1
+        img
+          width: 2rem
+          height: 2rem
+          border-radius: 50%
+          margin-right: 1rem
+          position: relative
+          top: .5rem
+        & > p
+          padding-top: 1rem
+
+      .feed-image
+        width: 200px
+        height: 100%
+        object-fit: cover
 
 
   &__sidebar

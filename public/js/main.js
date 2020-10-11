@@ -39,7 +39,6 @@ const getUserInfo = userId => {
   followingUsers.forEach(async (followingUser, i) => {
     // console.log(followingUser.followeeId);
     let followee = await getUserInfo(followingUser.followeeId);
-    console.log(followee.picUrl);
     followingContainer.innerHTML += `<div>
         <img src=${followee.picUrl}>
         <div>${followee.fullName}</div>

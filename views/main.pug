@@ -65,13 +65,16 @@ block content
       .feeds-container
         each newStory in newStories
           .feeds-story
-            a(href=`/users/${newStory.userId}`)
-              img(src=randomIcon(), alt="User icon")
-              span #[strong #{newStory.user.fullName}] in #[strong #{newStory.user.username}]
-            a(href=`/stories/${newStory.userId}`)
-              h3= newStory.title
-              p= newStory.subtitle
-            p #{dateFormatter(newStory.createdAt)}
+            .left
+              a(href=`/users/${newStory.userId}`)
+                img(src=randomIcon(), alt="User icon")
+                span #[strong #{newStory.user.fullName}] in #[strong #{newStory.user.username}]
+              a(href=`/stories/${newStory.userId}`)
+                h3= newStory.title
+                p= newStory.subtitle
+              p #{dateFormatter(newStory.createdAt)}
+            .right-image
+              img.feed-image(src=newStory.imageUrl, alt="")
     aside
       #main__sidebar
         #main__readinglist
