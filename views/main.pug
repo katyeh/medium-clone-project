@@ -21,7 +21,6 @@ block content
   #main
     #main__stories
       each suggestionStory, index in suggestionStories
-        -console.log(suggestionStories)
         if index === 0
           if suggestionStory.imageUrl
             img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
@@ -45,7 +44,7 @@ block content
     #main__from-following
       p.section-title Latest From Following
       .following-users-container
-      a.green-link All from following
+      a(href="http://localhost:8080/users/1/profile/following").green-link All from following
 
     .hr
     #main__trends

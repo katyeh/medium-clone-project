@@ -125,7 +125,12 @@ router.post("/",
 
   const token = getUserToken(user);
   res.status(201).json({
-    user: { id: user.id },
+    user: {
+      id: user.id,
+      fullName: user.fullName,
+      picUrl: user.picUrl,
+      username: user.username,
+    },
     token,
   });
 }));
