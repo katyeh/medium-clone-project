@@ -76,7 +76,7 @@ const emailAndPasswordValidation = [
       }
       return true;
     })
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/)
     .withMessage(
       "Password must have at least one lower-case letter, upper-case letter, number, and special character(!@#$%^&*)."
     ),
@@ -125,7 +125,12 @@ router.post("/",
 
   const token = getUserToken(user);
   res.status(201).json({
-    user: { id: user.id, fullName: user.fullName, picUrl: user.picUrl, username: user.username },
+    user: {
+      id: user.id,
+      fullName: user.fullName,
+      picUrl: user.picUrl,
+      username: user.username,
+    },
     token,
   });
 }));

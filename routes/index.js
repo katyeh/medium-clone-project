@@ -1,15 +1,15 @@
 const readingTime = require('reading-time');
 const express = require('express');
-const { Story, Genre, User, Follower, StoryGenre } = require('../db/models');
+const { Story, Genre, User, Follower, StoryGenre, Clap, Response } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
 // const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", id);
 // const userId = 1
 const fetch = require('node-fetch');
+const { port, db: { host } } = require('../config');
 
 router.get('/', asyncHandler(async(req, res) => {
-  // const userId = getUserId();
-  const storiesRes = await fetch('http://localhost:8080/api/stories/main')
+  const storiesRes = await fetch("http://localhost:8080/api/stories/main");
 
   const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
   res.render("main", {
@@ -18,9 +18,9 @@ router.get('/', asyncHandler(async(req, res) => {
     suggestionStories,
   });
 
-  // if (newStoriesRes.status === 401) {
-  //   return (window.location.href = "log-in");
-  // }
+  if (storiesRes.status === 401) {
+    return (window.location.href = "/log-in");
+  }
 }));
 
 router.get('/splash', asyncHandler(async(req, res) => {
@@ -29,28 +29,40 @@ router.get('/splash', asyncHandler(async(req, res) => {
     })
 }));
 
-router.get('/users/:id/profile', asyncHandler(async (req, res) => { // Change data fetch
-  const userId = req.params.id;
-  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile`);
-  const { userAndStories, followingAmount, followerAmount } = await data.json();
-  const dateFormatter = require("./dateFormatter");
+router.get(
+  "/users/:id/profile",
+  asyncHandler(async (req, res) => {
+    // Change data fetch
+    const userId = req.params.id;
+    const data = await fetch(
+      `http://${host}:${port}/api/users/${userId}/profile`
+    );
+    const {
+      userAndStories,
+      followingAmount,
+      followerAmount,
+    } = await data.json();
+    const dateFormatter = require("./dateFormatter");
 
-  let dateInfo = {};
-  dateInfo.title = "Demo";
-  dateInfo.dateFormatter = dateFormatter;
+    let dateInfo = {};
+    dateInfo.title = "Demo";
+    dateInfo.dateFormatter = dateFormatter;
 
-  res.render('profile-main', {
-    user: userAndStories,
-    stories: userAndStories.Stories,
-    followingAmount,
-    followerAmount,
-    dateInfo
-  });
-}));
+    res.render("profile-main", {
+      user: userAndStories,
+      stories: userAndStories.Stories,
+      followingAmount,
+      followerAmount,
+      dateInfo,
+    });
+  })
+);
 
 router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
   const userId = req.params.id;
-  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/claps`);
+  const data = await fetch(
+    `http://${host}:${port}/api/users/${userId}/profile/claps`
+  );
   const { user, clapAndStories, followingAmount, followerAmount } = await data.json();
   const dateFormatter = require("./dateFormatter");
 
@@ -73,7 +85,9 @@ router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
 
 router.get("/users/:id/profile/responses", asyncHandler(async(req, res) => {
   const userId = req.params.id;
-  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/responses`);
+  const data = await fetch(
+    `http://${host}:${port}/api/users/${userId}/profile/responses`
+  );
   const { user, responseAndStories, followingAmount, followerAmount } = await data.json();
   const dateFormatter = require("./dateFormatter");
 
@@ -96,7 +110,9 @@ router.get("/users/:id/profile/responses", asyncHandler(async(req, res) => {
 
 router.get('/users/:id/profile/following', async(req, res) => {
   const userId = req.params.id;
-  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/following`);
+  const data = await fetch(
+    `http://${host}:${port}/api/users/${userId}/profile/following`
+  );
   const { user, followerAmount, followingAmount } = await data.json();
 
   res.render('following', {
@@ -109,7 +125,9 @@ router.get('/users/:id/profile/following', async(req, res) => {
 
 router.get('/users/:id/profile/followers', async(req, res) => {
   const userId = req.params.id;
-  const data = await fetch(`http://localhost:8080/api/users/${userId}/profile/followers`);
+  const data = await fetch(
+    `http://${host}:${port}/api/users/${userId}/profile/followers`
+  );
   const { user, followerAmount, followingAmount } = await data.json();
 
   res.render('followers', {
@@ -141,14 +159,17 @@ router.get('/stories/:id/edit', asyncHandler(async (req, res) => {
     });
 }));
 
-router.get('/story/:id', asyncHandler(async (req, res) => {
+router.get('/stories/:id', asyncHandler(async (req, res) => {
     const storyId = req.params.id
     const story = await Story.findOne({
         where: {
             id: storyId
         },
-        include: StoryGenre
+        include: StoryGenre, Clap, Response
     });
+
+    const responseAmount = await Response.count({ where: { storyId }});
+    const clapAmount = await Clap.count({ where: { storyId }});
     function monthName(mon) {
         return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'][mon - 1];
      }
@@ -163,7 +184,7 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
     const date = month + " " + story.createdAt.slice(8,10) + ", " + year
     const userId = story.userId;
     const user = await User.findByPk(userId);
-    res.render('story', { story, user, date, readTime });
+    res.render('story', { story, user, date, readTime, clapAmount, responseAmount});
 }));
 
 

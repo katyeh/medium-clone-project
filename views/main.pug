@@ -22,29 +22,33 @@ block content
     #main__stories
       each suggestionStory, index in suggestionStories
         if index === 0
-          if suggestionStory.imageUrl
-            img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
-          else
-            img(src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt="")
+          a(href=`/stories/${suggestionStory.id}`)
+            if suggestionStory.imageUrl
+              img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
+            else
+              img(src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt="")
           .main-suggestion-story 
-            h2= suggestionStory.title
-            .subtitle= suggestionStory.subtitle
-            a(href=`/stories/${suggestionStory.id}`) Read More &#9733
+            a(href=`/stories/${suggestionStory.id}`)
+              h2= suggestionStory.title
+              .subtitle= suggestionStory.subtitle
+              p Read More &#9733
         else
           .suggestion-story
             .left
-              a(href=`/users/${suggestionStory.userId}`)
+              a.imgContainer(href=`/users/${suggestionStory.id}`)
                 img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
-                span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]
-              h3= suggestionStory.title
+                span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]              
+              a(href=`/stories/${suggestionStory.id}`)
+                h3= suggestionStory.title
               p #{dateFormatter(suggestionStory.createdAt)}
             .right
-              img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
+              a(href=`/stories/${suggestionStory.id}`)
+                img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
       
     #main__from-following
       p.section-title Latest From Following
       .following-users-container
-      a.green-link All from following
+      a#flink(href="").green-link All from following
 
     .hr
     #main__trends
@@ -91,4 +95,8 @@ block content
     profIcon.addEventListener('click', e => {
       modal.classList.toggle('hidden');
     });
+
+    const followingLink = document.getElementById('flink');
+    followingLink.setAttribute('href', `http://localhost:8080/users/${userId}/profile/following`)
+    
   script(type="module" src="/js/main.js")
