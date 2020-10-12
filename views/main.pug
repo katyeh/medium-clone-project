@@ -37,6 +37,7 @@ block content
             .left
               a.imgContainer(href=`/users/${suggestionStory.id}`)
                 img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
+              a.writerLink(href=`/users/${suggestionStory.user.id}/profile/`)
                 span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]              
               a(href=`/stories/${suggestionStory.id}`)
                 h3= suggestionStory.title
@@ -48,7 +49,7 @@ block content
     #main__from-following
       p.section-title Latest From Following
       .following-users-container
-      a#flink(href="").green-link All from following
+      a.flink(href="").green-link All from following
 
     .hr
     #main__trends
@@ -96,7 +97,10 @@ block content
       modal.classList.toggle('hidden');
     });
 
-    const followingLink = document.getElementById('flink');
-    followingLink.setAttribute('href', `http://localhost:8080/users/${userId}/profile/following`)
+    const followingLink = document.querySelector('.flink');
+    followingLink.setAttribute('href', `/users/${userId}/profile/following`)
     
+    //- const writerLink = document.querySelector('.writerLink');
+    //- writerLink.setAttribute('href', `http://localhost:8080/users/${userId}/profile/following`);
+
   script(type="module" src="/js/main.js")
