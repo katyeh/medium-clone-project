@@ -38,14 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
             });
             if (res.status === 401) {
-                window.location.href = '/splash'
                 return;
             }
             if (!res.ok) {
                 throw res;
             }
-          form.reset();
-          window.location.href = "/users/:id/profile"
+        //   form.reset();
         } catch (err) {
           handleErrors(err);
         }

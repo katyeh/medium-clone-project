@@ -36,7 +36,7 @@ router.post(
     body,
     userId: req.user.id
   });
-//   res.redirect('/stories');
+  res.redirect('/main');
 }));
 
 const validateResponse = [
