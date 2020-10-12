@@ -7,7 +7,7 @@ const router = express.Router();
 // const userId = 1
 const fetch = require('node-fetch');
 
-router.get('/', asyncHandler(async(req, res) => {
+router.get('/main', asyncHandler(async(req, res) => {
   // const userId = getUserId();
   const storiesRes = await fetch('http://localhost:8080/api/stories/main')
 
@@ -23,7 +23,7 @@ router.get('/', asyncHandler(async(req, res) => {
   // }
 }));
 
-router.get('/splash', asyncHandler(async(req, res) => {
+router.get('/', asyncHandler(async(req, res) => {
   res.render('splash', {
       csrfToken: req.csrfToken()
     })
