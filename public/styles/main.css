@@ -672,6 +672,9 @@ a:visited {
   border-bottom: .5px solid black;
   paddding: .5rem;
   width: 20rem;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .sign-up-form__button {
@@ -1764,6 +1767,9 @@ a:visited {
   border-bottom: .5px solid black;
   padding: .5rem;
   width: 20rem;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .modal .log-in-form #login__password {
@@ -1779,6 +1785,9 @@ a:visited {
           flex-direction: column;
   padding: 4rem;
   height: 8rem;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .modal .log-in-form #login__password #password {
@@ -1796,6 +1805,9 @@ a:visited {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .modal .log-in-form #login__password #password__input {
@@ -1805,6 +1817,9 @@ a:visited {
   border-bottom: .5px solid black;
   padding: .5rem;
   width: 20rem;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .modal .log-in-form #login__button {
