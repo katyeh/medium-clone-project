@@ -1894,10 +1894,38 @@ a:visited {
   border-radius: 1%;
   -webkit-box-shadow: 0 1px 3px 1px lightgrey;
           box-shadow: 0 1px 3px 1px lightgrey;
+  margin-bottom: 4em;
 }
 
 #story__response #story__response_container .story__response_body .story__response-preview {
-  border: thin solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 10px;
+  height: auto;
+  border-bottom: thin solid lightgrey;
+  font-size: 16px;
+  padding-bottom: 2em;
+  color: #292929;
+}
+
+#story__response #story__response_container .story__response_body .story__response-preview .response-preview_img {
+  position: absolute;
+  border-radius: 50%;
+  border: thin solid #ffffff;
+}
+
+#story__response #story__response_container .story__response_body .story__response-preview .response-list-preview_name {
+  color: #292929;
+  padding-left: 3em;
+}
+
+#story__response #story__response_container .story__response_body .story__response-preview .response-list-preview_body {
+  padding-top: 2.5em;
 }
 
 #story__body {

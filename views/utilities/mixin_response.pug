@@ -1,4 +1,4 @@
 mixin response-list-preview(id, fullName, picUrl, body)
   img(class="response-preview_img" src=`${picUrl}` height="40px" width="40")
   .response-list-preview_name: a(href=`/users/${id}/profile`).response-preview_name= fullName
-  .response-list-preview_name: p.response-preview_body= body
+  .response-list-preview_body: p.response-preview_body= body

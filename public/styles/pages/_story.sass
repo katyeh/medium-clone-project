@@ -30,9 +30,26 @@
           height: 20rem
           border-radius: 1%
           box-shadow: 0 1px 3px 1px lightgrey
+          margin-bottom: 4em
       .story__response_body
         .story__response-preview
-          border: thin solid black
+          display: flex
+          flex-direction: column
+          margin-bottom: 10px
+          height: auto
+          border-bottom: thin solid lightgrey
+          font-size: 16px
+          padding-bottom: 2em
+          color: #292929
+          .response-preview_img
+            position: absolute
+            border-radius: 50%
+            border: thin solid #ffffff
+          .response-list-preview_name
+            color: #292929
+            padding-left: 3em
+          .response-list-preview_body
+            padding-top: 2.5em
   &__body
     flex-direction: column
     justify-content: center
