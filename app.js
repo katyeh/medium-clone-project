@@ -8,7 +8,7 @@ const usersRouter = require('./routes/api/users');
 const responsesRouter = require('./routes/api/responses');
 const storiesRouter = require('./routes/api/stories');
 const cookieParser = require('cookie-parser');
-const csrfProtection = require('./routes/csrf');
+// const csrfProtection = require('./routes/csrf');
 const app = express();
 
 app.set('view engine', 'pug');
@@ -18,10 +18,10 @@ app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-app.use('/', csrfProtection, indexRouter);
+app.use('/', indexRouter);
 app.use('/api/stories', storiesRouter); // delete csrf for testing purposes
-app.use('/api/users', csrfProtection, usersRouter);
-app.use('/api/responses', csrfProtection, responsesRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/responses', responsesRouter);
 
 app.use((req, res, next) => {
   const err = new Error('The requested resource couldn\'t be found.');
