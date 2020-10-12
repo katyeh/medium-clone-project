@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok) {
                 throw res;
             }
-            window.location.href = "/main"
+            window.location.href = `/users/${userId}/profile`
         } catch (err) {
             console.log("error")
         }
