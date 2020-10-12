@@ -104,7 +104,6 @@ block content
       modal.classList.toggle('hidden');
     });
 
-    //- const followingLink = document.getElementById('flink');
-    //- followingLink.setAttribute('href', `http://localhost:8080/users/${userId}/profile/following`)
+    const followingLink = document.querySelector('.flink');
+    followingLink.setAttribute('href', `/users/${userId}/profile/following`)
 
-  script(type="module" src="/js/main.js")
