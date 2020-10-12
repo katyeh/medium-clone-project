@@ -1844,6 +1844,88 @@ a:visited {
   display: -ms-flexbox;
   display: flex;
   width: 100vw;
+  position: relative;
+}
+
+#story__response {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 40rem;
+  height: 100%;
+  background-color: white;
+  -webkit-box-shadow: 0 3px 5px 4px lightgrey;
+          box-shadow: 0 3px 5px 4px lightgrey;
+}
+
+#story__response #story__response_container {
+  height: 95%;
+  width: 36rem;
+  background-color: white;
+}
+
+#story__response #story__response_container .story__response_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: auto;
+}
+
+#story__response #story__response_container .story__response_create_box .story__response_create {
+  margin-top: 2em;
+  width: 100%;
+  height: 20rem;
+  border-radius: 1%;
+  -webkit-box-shadow: 0 1px 3px 1px lightgrey;
+          box-shadow: 0 1px 3px 1px lightgrey;
+  margin-bottom: 4em;
+}
+
+#story__response #story__response_container .story__response_body .story__response-preview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 10px;
+  height: auto;
+  border-bottom: thin solid lightgrey;
+  font-size: 16px;
+  padding-bottom: 2em;
+  color: #292929;
+}
+
+#story__response #story__response_container .story__response_body .story__response-preview .response-preview_img {
+  position: absolute;
+  border-radius: 50%;
+  border: thin solid #ffffff;
+}
+
+#story__response #story__response_container .story__response_body .story__response-preview .response-list-preview_name {
+  color: #292929;
+  padding-left: 3em;
+}
+
+#story__response #story__response_container .story__response_body .story__response-preview .response-list-preview_body {
+  padding-top: 2.5em;
 }
 
 #story__body {

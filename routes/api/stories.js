@@ -50,7 +50,7 @@ router.get('/:id/responses', asyncHandler(async (req, res, next) => {
   const storyId = req.params.id;
   const responses = await Response.findAll({
     where: { storyId },
-    include: [{ model: User, attributes: ["username"] }],
+    include: [{ model: User }],
     order: [["createdAt", "DESC"]]
   })
   res.json({ responses });
