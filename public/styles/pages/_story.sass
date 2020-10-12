@@ -3,6 +3,7 @@
   width: 100vw
   position: relative
   &__response
+    transform: scale(0)
     display: flex
     justify-content: center
     align-items: center
@@ -13,6 +14,13 @@
     height: 100%
     background-color: white
     box-shadow: 0 3px 5px 4px lightgrey
+    z-index: 6
+
+    &.appear
+      animation: slideLeft 1.4s ease
+      transform: scale(1)
+
+    transform: scale(0)
     #story__response_container
       height: 95%
       width: 36rem
@@ -23,6 +31,9 @@
         justify-content: space-between
         height: auto
         .story__response_close
+          outline: none
+          box-shadow: none
+          cursor: pointer
       .story__response_create_box
         .story__response_create
           margin-top: 2em
@@ -90,6 +101,9 @@
     border-radius: 50%
     border: thin solid #ffffff
     margin: 20px
+    outline: none
+    box-shadow: none
+    cursor: pointer
   .clapImg
     outline: none
     text-decoration: none
@@ -209,3 +223,10 @@
     width: 60px
     border-radius: 30px
     float: left
+@keyframes slideLeft
+
+  0%
+    transform: translateX(500px)
+
+  100%
+    transform: translateX(0)
