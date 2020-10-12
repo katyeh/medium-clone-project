@@ -145,6 +145,16 @@ module.exports = {
       { userId: 13, storyId: 1, responseId: null, createdAt: new Date(), updatedAt: new Date() },
       { userId: 13, storyId: 1, responseId: null, createdAt: new Date(), updatedAt: new Date() },
       { userId: 13, storyId: 1, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 1, storyId: 14, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 2, storyId: 14, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 3, storyId: 14, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 4, storyId: 14, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 5, storyId: 15, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 6, storyId: 15, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 7, storyId: 15, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 9, storyId: 16, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 10, storyId: 16, responseId: null, createdAt: new Date(), updatedAt: new Date() },
+      { userId: 10, storyId: 16, responseId: null, createdAt: new Date(), updatedAt: new Date() },
     ]);
   },
 

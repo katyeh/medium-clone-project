@@ -34,7 +34,9 @@ router.post(
     title,
     subtitle,
     body,
-    userId: req.user.id
+    userId: req.user.id,
+    imageUrl:
+      "https://www.vroomkart.com/sites/vroomkart.com/files/default_images/placeholder-640x480.png",
   });
   res.redirect('/main');
 }));
