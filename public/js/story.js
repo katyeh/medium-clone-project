@@ -15,9 +15,10 @@ const editStory = document.querySelector(".editStoryBtn");
         showMenu();
     })
 
-    editStory.addEventListener('click', () => {
-        //TODO: Edit story page
-    })
+    editStory.addEventListener('click', (e) => {
+        const storyId = e.target.value
+        window.location.href = `/stories/${storyId}/edit`
+    });
 
     const responseSubmit = document.querySelector(".story-response-submit");
     const responseForm = document.querySelector(".responseForm")

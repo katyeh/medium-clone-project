@@ -83,7 +83,7 @@ router.get("/:storyId/responses/:responseId/claps", asyncHandler(async(req, res)
     const responseId = req.params.id;
     const clapAmount = await Clap.count({ where: { responseId }});
     res.json({ clapAmount });
-}))
+}));
 
 router.post(
     "/:id/clap",
@@ -177,9 +177,9 @@ router.put('/:id(\\d+)', requireAuth, storyValidator, handleValidationErrors, as
       title: req.body.title
     })
     res.json({story})
-  } else {
+} else {
     next(storyNotFoundError(storyId))
-  }
+}
   }))
 
 router.delete('/:id', requireAuth, asyncHandler(async (req, res, next) => {

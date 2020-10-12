@@ -1,10 +1,9 @@
-nav#navbar
-  #navbar__contents
-    .left-contents
-      a(href="/"): h1 Readium
-      p.greeting
-    #rightContents
-      div(class="rightContents__icons")
+mixin navbar(pageName, img)
+  nav.shadow#navbar
+    #navbar__contents
+      .left-contents
+       a(href="/main"): h1 Readium
+       p.greeting
         img(id="navbar__prof-icon" src="")
         #navbar__modal.hidden
           .modal__header
@@ -49,20 +48,3 @@ nav#navbar
           if (currentTime < 12) greetingContainer.innerHTML = 'Good morning <i class="far fa-sun"></i>';
           else if (currentTime < 18) greetingContainer.innerHTML = 'Good afternoon <i class="fas fa-rainbow"></i>';
           else greetingContainer.innerHTML = 'Good evening <i class="far fa-moon"></i>';
-        #navbar__prof-icon
-        a(class="navbarIcon storyForm-bell")
-          i(class="navbarIcon far fa-bell")
-        a(class="navbarIcon storyForm-ellipsis")
-          i(class="fas fa-ellipsis-h")
-        button(type="submit" class="publishBtn") Publish
-      #navbar__modal.hidden
-        .modal__header
-          .modal__prof-pic
-          .modal__member-info Member<br>User's name<br>username
-        .modal__contents
-            ul
-              li: a(class="nav-new-story-link" href="") New Story
-              li: a(class="nav-user-stories" href="") Stories
-              li: a(class="" href="") Reading List
-              li: a(class="nav-profile-link" href="") Profile
-              li: a(class="" href="") Sign out
