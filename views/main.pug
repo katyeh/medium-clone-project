@@ -29,18 +29,23 @@ block content
               img(src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt="")
           .main-suggestion-story 
             a(href=`/stories/${suggestionStory.id}`)
+            a(href=`/users/${suggestionStory.user.id}/profile/`)
+              img(src=randomIcon(), alt="")
+              span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]
+            a(href=`/stories/${suggestionStory.id}`)
               h2= suggestionStory.title
               .subtitle= suggestionStory.subtitle
               p Read More &#9733
         else
           .suggestion-story
             .left
-              a.imgContainer(href=`/users/${suggestionStory.id}`)
+              a.imgContainer(href=`/users/${suggestionStory.user.id}/profile/`)
                 img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
+              a.writerLink(href=`/users/${suggestionStory.user.id}/profile/`)
                 span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]              
               a(href=`/stories/${suggestionStory.id}`)
                 h3= suggestionStory.title
-              p #{dateFormatter(suggestionStory.createdAt)}
+              p #{dateFormatter(suggestionStory.createdAt)} &middot; #{readingTime(suggestionStory.body).text} &#9733
             .right
               a(href=`/stories/${suggestionStory.id}`)
                 img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
@@ -48,7 +53,7 @@ block content
     #main__from-following
       p.section-title Latest From Following
       .following-users-container
-      a#flink(href="").green-link All from following
+      a.flink(href="").green-link All from following
 
     .hr
     #main__trends
@@ -58,12 +63,13 @@ block content
           .trending__story
             .left 0#{index + 1}
             .right
-              a(href=`/users/${trendingStory.userId}`)
+              a(href=`/users/${trendingStory.user.id}/profile/`)
                 img(src=randomIcon(), alt="")
+              a(href=`/users/${trendingStory.user.id}/profile/`)
                 span #[strong #{trendingStory.user.fullName}] in #[strong #{trendingStory.user.username}]
-              a(href=`/stories/${trendingStory.userId}`)
+              a(href=`/stories/${trendingStory.id}`)
                 h3= trendingStory.title
-              p #{dateFormatter(trendingStory.createdAt)} &#9733
+              p #{dateFormatter(trendingStory.createdAt)} &middot; #{readingTime(trendingStory.body).text} &#9733
 
     .hr
     main#main__feeds
@@ -71,15 +77,16 @@ block content
         each newStory in newStories
           .feeds-story
             .left
-              a(href=`/users/${newStory.userId}`)
+              a(href=`/users/${newStory.user.id}/profile/`)
                 img(src=randomIcon(), alt="User icon")
                 span #[strong #{newStory.user.fullName}] in #[strong #{newStory.user.username}]
-              a(href=`/stories/${newStory.userId}`)
+              a(href=`/stories/${newStory.id}`)
                 h3= newStory.title
                 p= newStory.subtitle
-              p #{dateFormatter(newStory.createdAt)} &#9733
+              p #{dateFormatter(newStory.createdAt)} &middot; #{readingTime(newStory.body).text} &#9733
             .right-image
-              img.feed-image(src=newStory.imageUrl, alt="")
+              a(href=`/stories/${newStory.id}`)
+                img.feed-image(src=newStory.imageUrl, alt="")
     aside
       #main__sidebar
         #main__clapsList
@@ -89,6 +96,7 @@ block content
           a(href="https://github.com/katyeh" target="_blank") Kathleen Yeh &nbsp| 
           a(href="https://github.com/ryanblack045" target="_blank") Ryan Black &nbsp| 
           a(href="https://github.com/smilelk4" target="_blank") Yuka Moribe
+  script(type="module" src="/js/main.js")
   script.
     const profIcon = document.getElementById('navbar__prof-icon');
     const modal = document.getElementById('navbar__modal');
@@ -96,7 +104,5 @@ block content
       modal.classList.toggle('hidden');
     });
 
-    const followingLink = document.getElementById('flink');
-    followingLink.setAttribute('href', `http://localhost:8080/users/${userId}/profile/following`)
-    
-  script(type="module" src="/js/main.js")
+    const followingLink = document.querySelector('.flink');
+    followingLink.setAttribute('href', `/users/${userId}/profile/following`)

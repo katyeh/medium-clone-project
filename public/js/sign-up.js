@@ -15,12 +15,12 @@ signUpForm.addEventListener("submit", async (event) => {
 
     try {
         const res = await fetch("/api/users", {
-            method: "POST",
-            body: JSON.stringify(body),
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
+          method: "POST",
+          body: JSON.stringify(body),
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+          }
         });
         if (!res.ok) {
             console.log("error happened")
