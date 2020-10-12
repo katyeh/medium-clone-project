@@ -18,7 +18,7 @@ logInForm.addEventListener("submit", async (e) => {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        Authorization: `Bearer ${localStorage.getItems(
+        Authorization: `Bearer ${localStorage.getItem(
             "READIUM_ACCESS_TOKEN"
         )}`,
       },
