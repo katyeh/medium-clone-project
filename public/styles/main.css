@@ -150,11 +150,6 @@ a:visited {
   color: #292929;
 }
 
-#main__stories .main-suggestion-story a {
-  display: inline-block;
-  padding-top: 2rem;
-}
-
 #main__stories .main-suggestion-story p {
   color: #757575;
   padding-top: 1.4rem;
@@ -167,8 +162,14 @@ a:visited {
   margin-right: 1rem;
 }
 
+#main__stories .main-suggestion-story h2 {
+  margin-top: 1.5rem;
+  margin-bottom: -1rem;
+}
+
 #main__stories .main-suggestion-story span {
   color: #292929;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
 }
 
 #main__stories .suggestion-story {
@@ -428,6 +429,7 @@ a:visited {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  margin-top: .5rem;
 }
 
 #main__sidebar .clapped-stories {
