@@ -20,13 +20,15 @@ mixin navbar(pageName, img)
               .modal__member-info-username: a(href="")
           .modal__contents
             ul
-              li: a(class="nav-new-story-link" href="") New Story
+              li: a(class="nav-new-story-link" href="/stories/create") New Story
               li: a(class="nav-user-stories" href="") Stories
               li: a(class="nav-profile-link" href="") Profile
               li: a(class="nav-profile-sign-out" href="/") Sign out
         script.
           const nav = document.getElementById('navbar');
           nav.classList.remove('shadow');
+          const newStoryLink = document.querySelector(".nav-new-story-link");
+          const userStoriesLink = document.querySelector(".nav-user-stories");
           const profileLink = document.querySelector(".nav-profile-link");
           const profileNavImg = document.querySelector(".modal__prof-pic");
           const profileDropdownImg = document.querySelector("#navbar__prof-icon");
@@ -38,6 +40,8 @@ mixin navbar(pageName, img)
           const username = localStorage.getItem("READIUM_CURRENT_USER_USERNAME");
           profileNavImg.setAttribute("src", `${picUrl}`);
           profileDropdownImg.setAttribute("src", `${picUrl}`);
+          newStoryLink.setAttribute("href", `/stories/create`);
+          userStoriesLink.setAttribute("href", `/users/${userId}/profile`);
           profileLink.setAttribute("href", `/users/${userId}/profile`);
           profileFullName.innerText = `${fullName}`;
           profileUserName.innerText = `@${username}`;
@@ -49,9 +53,9 @@ mixin navbar(pageName, img)
               localStorage.clear();
             })
 
-          if (currentTime < 12) greetingContainer.innerHTML = 'Good morning';
-          else if (currentTime < 18) greetingContainer.innerHTML = 'Good afternoon';
-          else greetingContainer.innerHTML = 'Good evening';
+          if (currentTime < 12) greetingContainer.innerHTML = 'Good morning <i class="far fa-sun"></i>';
+          else if (currentTime < 18) greetingContainer.innerHTML = 'Good afternoon <i class="fas fa-rainbow"></i>';
+          else greetingContainer.innerHTML = 'Good evening <i class="far fa-moon"></i>';
 
       else if pageName == 'storyForm'
         #right-contents

@@ -144,7 +144,7 @@ router.get('/:id/main', asyncHandler(async (req, res, next) => {
   });
 
   const claps = await Clap.findAll({
-    order: [["updatedAt", "DESC"]],
+    order: [["createdAt", "DESC"]],
     where: {
       userId: req.params.id
     },
@@ -168,7 +168,7 @@ router.get(
     });
 
     if (user) {
-      res.json({ user: { fullName: user.fullName, email: user.email, picUrl: user.picUrl } });
+      res.json({ user: { fullName: user.fullName, email: user.email, picUrl: user.picUrl, id: user.id } });
     } else {
       next(userNotFoundError(req.params.id));
     }

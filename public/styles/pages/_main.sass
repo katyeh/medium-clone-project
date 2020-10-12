@@ -46,16 +46,25 @@
       height: 23rem
       padding-top: 2rem
       color: $color-font-story
+
       a
         display: inline-block
         padding-top: 2rem
 
       p
         color: $color-font-subtitle
-        padding-top: 1.5rem
+        padding-top: 1.4rem
         font-size: 1.2rem
+
+      img
+        width: 2rem
+        height: 2rem
+        margin-right: 1rem
+
+      span
+        color: $color-font-story
+        
     .suggestion-story
-      cursor: pointer
       width: 35rem
       height: 12rem
       display: flex
@@ -63,15 +72,20 @@
 
       .left
         width: 21rem
+        position: relative
+        top: -1rem
 
         h3
           // padding-bottom: 1rem
           position: relative
-          top: -2rem
+          top: -1.5rem
         span
           font-size: 1.1rem
           color: $color-font-story
-          
+        p
+          position: relative
+          top: -.5rem
+
 
         // a.imgContainer
         //   display: block
@@ -141,7 +155,7 @@
           text-align: center
           font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
           font-size: 1rem
-          padding-top: 0.3rem
+          padding-top: 0.7rem
   &__trends
     grid-column: 2 / span 3
     height: auto
@@ -172,10 +186,9 @@
         .right
           width: 80%
           height: 100%
-          display: flex
-          flex-direction: column
+
           h3
-            margin-top: .5rem
+            margin-top: .8rem
           img
             height: 2rem
             width: 2rem
@@ -185,16 +198,13 @@
           a
             color: $color-font-story
 
-            span
-              display: inline-block
-              position: relative
-              top: -.5rem
+          span
+            display: inline-block
+            position: relative
+            top: -.5rem
           p
             padding-top: 1.5rem
 
-          span
-            display: inline-block
-            padding-bottom: 1rem
 
   &__feeds
     grid-column: 2/ span 2
@@ -253,6 +263,7 @@
     .clapped-stories, .green-link  
       position: relative
       top: -1.5rem
+        
 
   &__clapsList
     height: 55rem
