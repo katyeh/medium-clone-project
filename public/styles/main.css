@@ -429,6 +429,7 @@ a:visited {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  margin-top: .5rem;
 }
 
 #main__sidebar .clapped-stories {
