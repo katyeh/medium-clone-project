@@ -26,10 +26,12 @@ const editStory = document.querySelector(".editStoryBtn");
     const username = localStorage.getItem("READIUM_CURRENT_USER_USERNAME");
     const responseUserImg = document.querySelector(".story__user_response_img")
     const responseName = document.querySelector(".story__user_response_name")
+    const responseCountHeader = document.querySelector(".response-count-header");
 
     responseUserImg.setAttribute("src", `${picUrl}`);
     responseName.setAttribute("href", `/users/${userId}/profile`);
     responseName.innerText = `${fullName}`;
+
 
     const responseSubmit = document.querySelector(".story-response-submit");
     const responseForm = document.querySelector(".responseForm")
@@ -73,6 +75,7 @@ const editStory = document.querySelector(".editStoryBtn");
             </div>
           `)
           responseAmount.innerHTML = `${count} responses`
+          responseCountHeader.innerText = `Responses (${count})`
       } catch (err) {
         console.log(err);
       }
