@@ -41,7 +41,7 @@ block content
                 span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]              
               a(href=`/stories/${suggestionStory.id}`)
                 h3= suggestionStory.title
-              p #{dateFormatter(suggestionStory.createdAt)}
+              p #{dateFormatter(suggestionStory.createdAt)} &middot; #{readingTime(suggestionStory.body).text} &#9733
             .right
               a(href=`/stories/${suggestionStory.id}`)
                 img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
@@ -65,7 +65,7 @@ block content
                 span #[strong #{trendingStory.user.fullName}] in #[strong #{trendingStory.user.username}]
               a(href=`/stories/${trendingStory.id}`)
                 h3= trendingStory.title
-              p #{dateFormatter(trendingStory.createdAt)} &#9733
+              p #{dateFormatter(trendingStory.createdAt)} &middot; #{readingTime(trendingStory.body).text} &#9733
 
     .hr
     main#main__feeds
@@ -79,7 +79,7 @@ block content
               a(href=`/stories/${newStory.id}`)
                 h3= newStory.title
                 p= newStory.subtitle
-              p #{dateFormatter(newStory.createdAt)} &#9733
+              p #{dateFormatter(newStory.createdAt)} &middot; #{readingTime(newStory.body).text} &#9733
             .right-image
               a(href=`/stories/${newStory.id}`)
                 img.feed-image(src=newStory.imageUrl, alt="")
@@ -92,6 +92,7 @@ block content
           a(href="https://github.com/katyeh" target="_blank") Kathleen Yeh &nbsp| 
           a(href="https://github.com/ryanblack045" target="_blank") Ryan Black &nbsp| 
           a(href="https://github.com/smilelk4" target="_blank") Yuka Moribe
+  script(type="module" src="/js/main.js")
   script.
     const profIcon = document.getElementById('navbar__prof-icon');
     const modal = document.getElementById('navbar__modal');
@@ -101,5 +102,3 @@ block content
 
     const followingLink = document.querySelector('.flink');
     followingLink.setAttribute('href', `/users/${userId}/profile/following`)
-
-  script(type="module" src="/js/main.js")

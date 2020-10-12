@@ -13,7 +13,6 @@ const getUserInfo = userId => {
 (async () => {
   const userId = localStorage.getItem("READIUM_CURRENT_USER_ID");
 
-
   const res = await fetch(`/api/users/${userId}/main`);
   const { followingUsers, claps } = await res.json();
 
@@ -40,11 +39,12 @@ const getUserInfo = userId => {
           <a href=/stories/${clap.Story.id}>
           <h4>${clap.Story.title}</h4>
           </a>
-          <p>${dateFormatter(clap.Story.createdAt)} &#9733</p>
+          <p>${dateFormatter(
+            clap.Story.createdAt
+          )} &#9733; <span class="est"></span></p>
           </div>
       `;
   });
 
   clapsContainer.innerHTML += `<a class='green-link' href='/users/${userId}/profile/claps'>See your full clap list</a>`;
-
 })();
