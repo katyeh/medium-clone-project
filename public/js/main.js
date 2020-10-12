@@ -29,11 +29,11 @@ const getUserInfo = userId => {
   claps.forEach(async (clap, i) => {
     clapsContainer.innerHTML += `
       <div class="clapped-stories">
-        <a href=/users/${clap.User.id}>
+        <a href=/users/${clap.User.id}/profile/following>
           <img src=${randomIcon()} class="prof-icon">
           <span><strong>${clap.User.fullName + " "}</strong>in<strong>${
-        " " + clap.User.username
-      }</strong></span>
+      " " + clap.User.username
+    }</strong></span>
         </a>
           <a href=/stories/${clap.Story.id}>
           <h4>${clap.Story.title}</h4>
@@ -43,6 +43,6 @@ const getUserInfo = userId => {
       `;
   });
 
-  clapsContainer.innerHTML += `<a class='green-link' href='/'>See your full clap list</a>`
+  clapsContainer.innerHTML += `<a class='green-link' href='/users/${userId}/profile/claps'>See your full clap list</a>`;
 
 })();
