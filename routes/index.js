@@ -1,6 +1,6 @@
 const readingTime = require('reading-time');
 const express = require('express');
-const { Story, Genre, User, Follower } = require('../db/models');
+const { Story, Genre, User, Follower, StoryGenre, Clap } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
 // const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", id);
@@ -146,7 +146,8 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
     const story = await Story.findOne({
         where: {
             id: storyId
-        }
+        },
+        include: StoryGenre, Clap
     });
     function monthName(mon) {
         return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'][mon - 1];

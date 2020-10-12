@@ -1851,7 +1851,7 @@ a:visited {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 0px 450px;
+  margin: 0 25vw;
   margin-top: 70px;
 }
 
@@ -1885,6 +1885,43 @@ a:visited {
   display: -ms-flexbox;
   display: flex;
   margin-left: 15px;
+}
+
+#story .responseDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#story .responses {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#story .clapImg,
+#story .responseImg {
+  width: 40px;
+  height: 40px;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+  position: relative;
+  border-radius: 50%;
+  border: thin solid #ffffff;
+  margin: 20px;
+}
+
+#story .responseImg {
+  font-size: xx-large;
 }
 
 #story__userDiv {
@@ -1965,6 +2002,10 @@ a:visited {
   margin-top: 30px;
 }
 
+#story__contents > p {
+  font-size: medium;
+}
+
 #story__menu {
   display: none;
   position: absolute;
@@ -2005,6 +2046,58 @@ a:visited {
   background-color: salmon;
   position: absolute;
   right: 0;
+}
+
+.author {
+  line-height: 18px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #757575;
+  font-weight: 300;
+}
+
+.authorName,
+.author {
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+}
+
+.authorName {
+  font-weight: bolder;
+  font-size: medium;
+}
+
+.footer_userInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 43vw;
+  position: absolute;
+  margin-left: 5vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px;
+  padding-top: 5px;
+}
+
+.underline {
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  border-bottom-color: grey;
+}
+
+#footer__userDiv {
+  display: block;
+  font-size: small;
+  height: 50px;
+  padding-top: 20px;
+  height: 6vw;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .rightContents__icons {
