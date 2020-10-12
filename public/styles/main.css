@@ -850,7 +850,6 @@ a:visited {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  height: 3rem;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -861,12 +860,12 @@ a:visited {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background: rgba(255, 255, 255, 0.98);
   color: black;
   border: none;
@@ -1244,21 +1243,65 @@ a:visited {
           box-shadow: none;
 }
 
+#splash__footer {
+  background: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 15rem;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#ptext2 {
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-size: 1.5rem;
+  color: #757575;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem;
+}
+
 .ptext {
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   font-size: 1.5rem;
-  background: white;
+  color: black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem;
 }
 
 #splashlogin {
-  display: inline-block;
-  background: white;
-  color: #03A87C;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
   cursor: pointer;
   border: none;
   font-weight: 300;
   margin-left: 1rem;
+  padding: 1rem;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: black;
 }
 
 #splash__login {
@@ -1279,17 +1322,35 @@ a:visited {
   background: black;
 }
 
-#splash__login .splash-login {
+.splash-login {
   height: 4rem;
   width: 7rem;
   cursor: pointer;
+  color: #757575;
+  background: white;
+  border: none;
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.splash-login .splash-login:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#splash__signup2 {
+  dislplay: flex;
   color: white;
   background: black;
   border: none;
-}
-
-#splash__login .splash-login:focus {
+  cursor: pointer;
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  border-radius: .5rem;
   outline: none;
+  padding: 1rem;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1557,7 +1618,7 @@ a:visited {
   border-radius: 1rem;
   z-index: 20;
   background-color: rgba(255, 255, 255, 0.98);
-  max-height: 100%;
+  height: 100%;
   width: 50%;
   border: none;
   -webkit-box-shadow: 0px 2px 5px #e6e6e6;
@@ -1583,6 +1644,17 @@ a:visited {
   font-size: 15px;
   font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
   color: red;
+}
+
+.modal .modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 10rem;
 }
 
 .modal .modal-header .button-div {
@@ -1617,8 +1689,8 @@ a:visited {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 20rem 5rem 5rem 5rem;
   font-size: 28px;
+  padding: 5rem;
   line-height: 32px;
   font-weight: 500;
   color: #080808;
@@ -1635,9 +1707,6 @@ a:visited {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .modal .log-in-form #login__email {
@@ -1729,16 +1798,24 @@ a:visited {
 }
 
 .modal .log-in-form #login__button {
-  border-radius: 1.5rem;
+  border-radius: .5rem;
   margin: 2em;
-  padding: 1.5rem;
+  padding: .5rem;
   background: black;
+  margin-top: 5rem;
 }
 
 .modal .log-in-form #login__button #login {
   color: white;
   background: black;
   border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  cursor: pointer;
+  padding: .75rem;
+  width: 100%;
+  height: 100%;
 }
 
 #overlay {

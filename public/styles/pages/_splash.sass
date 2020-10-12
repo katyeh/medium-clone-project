@@ -65,14 +65,13 @@
     .splash__contents-login
       display: flex
       justify-content: flex-end
-      height: 3rem
       align-items: flex-start
       padding: 1rem
 
       .splash-login.navbar
         display: flex
-        align-items: flex-end
-        justify-content: flex-end
+        align-items: center
+        justify-content: center
         background: $color-background-light
         color: black
         border: none
@@ -319,20 +318,43 @@
     outline: none
     box-shadow: none
 
+#splash__footer
+  background: black
+  display: flex
+  height: 15rem
+  flex-direction: row
+  align-items: center
+
+#ptext2
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+  font-size: 1.5rem
+  color: $color-font-subtitle
+  align-items: center
+  display: flex
+  padding: 2rem
+
 .ptext
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
   font-size: 1.5rem
-  background: white
+  color: black
+  align-items: center
+  display: flex
+  padding: 2rem
+
 
 #splashlogin
-  display: inline-block
-  background: white
-  color: #03A87C
+  display: flex
+  color: white
+  align-items: center
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
   cursor: pointer
   border: none
   font-weight: 300
   margin-left: 1rem
+  padding: 1rem
+  outline: none
+  box-shadow: none
+  background: black
 
 #splash__login
   display: flex
@@ -345,14 +367,29 @@
   padding: 1.5rem
   background: black
 
-  .splash-login
-    height: 4rem
-    width: 7rem
-    cursor: pointer
-    color: white
-    background: black
-    border: none
+.splash-login
+  height: 4rem
+  width: 7rem
+  cursor: pointer
+  color: $color-font-subtitle
+  background: white
+  border: none
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+  outline: none
+  box-shadow: none
 
   .splash-login:focus
     outline: none
     box-shadow: none
+
+#splash__signup2
+  dislplay: flex
+  color: white
+  background: black
+  border: none
+  cursor: pointer
+  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+  border-radius: .5rem
+  outline: none
+  padding: 1rem
+  box-shadow: none
