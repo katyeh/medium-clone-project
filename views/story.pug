@@ -16,7 +16,7 @@ block content
         .story__response_body
           each response in responses
             .story__response-preview
-              +response-list-preview(response.user.id, response.user.fullName, response.user.picUrl, response.user.body)
+              +response-list-preview(response.User.id, response.User.fullName, response.User.picUrl, response.body)
 
     #story__body
       #story__header

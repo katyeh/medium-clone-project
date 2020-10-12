@@ -167,6 +167,8 @@ router.get('/stories/:id', asyncHandler(async (req, res) => {
         },
         include: StoryGenre, Clap, Response
     });
+    const data = await fetch(`http://${host}:${port}/api/stories/${storyId}/responses`);
+    const { responses } = await data.json()
 
     const responseAmount = await Response.count({ where: { storyId }});
     const clapAmount = await Clap.count({ where: { storyId }});
@@ -184,7 +186,11 @@ router.get('/stories/:id', asyncHandler(async (req, res) => {
     const date = month + " " + story.createdAt.slice(8,10) + ", " + year
     const userId = story.userId;
     const user = await User.findByPk(userId);
-    res.render('story', { story, user, date, readTime, clapAmount, responseAmount});
+
+    // responses.forEach(response => {
+    //   console.log(response.User)
+    // })
+    res.render('story', { story, user, date, readTime, clapAmount, responseAmount, responses});
 }));
 
 
