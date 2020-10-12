@@ -1,6 +1,6 @@
 #navbar
   height: 5rem
-  margin: 2rem 0
+  margin: 3.5rem 0 2rem 0
   position: relative
   top: 0
   background: $color-background-light
@@ -56,12 +56,14 @@
     transition: all .3s ease-out
     transform: translate(40%, 0) scale(1)
     background-color: $color-background-light
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+    padding-bottom: 38rem
 
     & > *
       border-bottom: $border-light
       padding: 4.5rem 0
-    &.hidden
-      transform: scale(0)
+    // &.hidden
+    //   transform: scale(0)
 
     .modal
       &__header
@@ -74,12 +76,16 @@
         height: 4.5rem
         width: 4.5rem
         border-radius: 50%
+        margin-right: .8rem
       &__member-info
-        line-height: 1.5rem
+        line-height: 2rem
         font-size: 1.5rem
         display: flex
         flex-direction: column
         align-content: space-between
+        font-size: 1.3rem
+        &-username
+          color: $color-font-menu-light
       &__contents
         display: flex
         justify-content: flex-start
@@ -89,7 +95,7 @@
           flex-direction: column
           justify-content: space-around
           list-style: none
-          font-size: 16px
+          font-size: 1.3rem
           li
             padding-top: 1.25rem
             padding-bottom: 1.25rem

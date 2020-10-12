@@ -50,6 +50,7 @@ a:visited {
   text-transform: uppercase;
   font-weight: bold;
   padding: 1rem 1rem 1rem .5rem;
+  font-size: 1.1rem;
 }
 
 #main__footer {
@@ -2083,7 +2084,7 @@ a:visited {
 
 #navbar {
   height: 5rem;
-  margin: 2rem 0;
+  margin: 3.5rem 0 2rem 0;
   position: relative;
   top: 0;
   background: rgba(255, 255, 255, 0.98);
@@ -2170,16 +2171,13 @@ a:visited {
   -webkit-transform: translate(40%, 0) scale(1);
           transform: translate(40%, 0) scale(1);
   background-color: rgba(255, 255, 255, 0.98);
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  padding-bottom: 38rem;
 }
 
 #navbar__modal > * {
   border-bottom: 1px solid #e6e6e6;
   padding: 4.5rem 0;
-}
-
-#navbar__modal.hidden {
-  -webkit-transform: scale(0);
-          transform: scale(0);
 }
 
 #navbar__modal .modal__header {
@@ -2199,10 +2197,11 @@ a:visited {
   height: 4.5rem;
   width: 4.5rem;
   border-radius: 50%;
+  margin-right: .8rem;
 }
 
 #navbar__modal .modal__member-info {
-  line-height: 1.5rem;
+  line-height: 2rem;
   font-size: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2213,6 +2212,11 @@ a:visited {
           flex-direction: column;
   -ms-flex-line-pack: justify;
       align-content: space-between;
+  font-size: 1.3rem;
+}
+
+#navbar__modal .modal__member-info-username {
+  color: #7c7c7c;
 }
 
 #navbar__modal .modal__contents {
@@ -2236,7 +2240,7 @@ a:visited {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   list-style: none;
-  font-size: 16px;
+  font-size: 1.3rem;
 }
 
 #navbar__modal .modal__contents ul li {
