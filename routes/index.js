@@ -8,14 +8,8 @@ const router = express.Router();
 const fetch = require('node-fetch');
 const { port, db: { host } } = require('../config');
 
-<<<<<<< HEAD
 router.get('/main', asyncHandler(async(req, res) => {
-  // const userId = getUserId();
-  const storiesRes = await fetch('http://localhost:8080/api/stories/main')
-=======
-router.get('/', asyncHandler(async(req, res) => {
   const storiesRes = await fetch("http://localhost:8080/api/stories/main");
->>>>>>> ryan
 
   const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
   res.render("main", {
