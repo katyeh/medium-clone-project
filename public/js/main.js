@@ -20,7 +20,9 @@ const getUserInfo = userId => {
   followingUsers.forEach(async (followingUser, i) => {
     let followee = await getUserInfo(followingUser.followeeId);
     followingContainer.innerHTML += `<div>
+        <a href=/users/${followee.id}/profile>
         <img src=${followee.picUrl}>
+        </a>
         <div>${followee.fullName}</div>
       </div>
     `;
@@ -37,8 +39,8 @@ const getUserInfo = userId => {
         </a>
           <a href=/stories/${clap.Story.id}>
           <h4>${clap.Story.title}</h4>
-          <p>${dateFormatter(clap.Story.createdAt)} &#9733</p>
           </a>
+          <p>${dateFormatter(clap.Story.createdAt)} &#9733</p>
           </div>
       `;
   });
