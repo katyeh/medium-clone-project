@@ -35,7 +35,7 @@ block content
         else
           .suggestion-story
             .left
-              a.imgContainer(href=`/users/${suggestionStory.id}`)
+              a.imgContainer(href=`/users/${suggestionStory.user.id}/profile/`)
                 img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
               a.writerLink(href=`/users/${suggestionStory.user.id}/profile/`)
                 span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]              
@@ -59,10 +59,11 @@ block content
           .trending__story
             .left 0#{index + 1}
             .right
-              a(href=`/users/${trendingStory.userId}`)
+              a(href=`/users/${trendingStory.user.id}/profile/`)
                 img(src=randomIcon(), alt="")
+              a(href=`/users/${trendingStory.user.id}/profile/`)
                 span #[strong #{trendingStory.user.fullName}] in #[strong #{trendingStory.user.username}]
-              a(href=`/stories/${trendingStory.userId}`)
+              a(href=`/stories/${trendingStory.id}`)
                 h3= trendingStory.title
               p #{dateFormatter(trendingStory.createdAt)} &#9733
 

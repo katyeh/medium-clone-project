@@ -318,17 +318,10 @@ a:visited {
 #main__trends .trending__story .right {
   width: 80%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 #main__trends .trending__story .right h3 {
-  margin-top: .5rem;
+  margin-top: .8rem;
 }
 
 #main__trends .trending__story .right img {
@@ -343,7 +336,7 @@ a:visited {
   color: #292929;
 }
 
-#main__trends .trending__story .right a span {
+#main__trends .trending__story .right span {
   display: inline-block;
   position: relative;
   top: -.5rem;
@@ -351,11 +344,6 @@ a:visited {
 
 #main__trends .trending__story .right p {
   padding-top: 1.5rem;
-}
-
-#main__trends .trending__story .right span {
-  display: inline-block;
-  padding-bottom: 1rem;
 }
 
 #main__feeds {
