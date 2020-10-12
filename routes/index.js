@@ -9,6 +9,7 @@ const fetch = require('node-fetch');
 const { port, db: { host } } = require('../config');
 
 router.get('/main', asyncHandler(async(req, res) => {
+    console.log(host, port);
   const storiesRes = await fetch(`http://${host}:${port}/api/stories/main`);
 
   // console.log('!!!!!!!!!!!', readingTime('hello').text);
