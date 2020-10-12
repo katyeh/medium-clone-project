@@ -140,7 +140,7 @@ router.get('/main', asyncHandler(async (req, res, next) => {
   });
 
   const newStories = await Story.findAll({
-    order: [['createdAt', 'DESC']],
+    order: [['createdAt', 'ASC']],
     include: 'user',
   });
 

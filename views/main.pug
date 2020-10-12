@@ -74,7 +74,7 @@ block content
     .hr
     main#main__feeds
       .feeds-container
-        each newStory in newStories
+        each newStory in newStories.reverse()
           .feeds-story
             .left
               a(href=`/users/${newStory.user.id}/profile/`)
