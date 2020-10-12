@@ -54,7 +54,8 @@ router.get('/:id/responses', asyncHandler(async (req, res, next) => {
     include: [{ model: User }],
     order: [["createdAt", "DESC"]]
   })
-  res.json({ responses });
+  const count = await Response.count({ where: { storyId }});
+  res.json({ responses, count });
 }));
 
 router.post(
@@ -63,14 +64,14 @@ router.post(
   validateResponse,
   handleValidationErrors,
   asyncHandler(async (req, res) => {
-    console.log("beans")
     const { body } = req.body;
     const response = await Response.create({
       body,
       storyId: req.params.id,
       userId: req.user.id,
     });
-    res.status(201).json({ response });
+    const count = await Response.count({ where: { storyId: req.params.id }});
+    res.status(201).json({ response, count });
   }));
 
 router.get("/:id/claps", asyncHandler(async(req, res) => {
