@@ -44,7 +44,7 @@ block content
     #main__from-following
       p.section-title Latest From Following
       .following-users-container
-      a(href="http://localhost:8080/users/1/profile/following").green-link All from following
+      a#flink(href="").green-link All from following
 
     .hr
     #main__trends
@@ -91,4 +91,8 @@ block content
     profIcon.addEventListener('click', e => {
       modal.classList.toggle('hidden');
     });
+
+    const followingLink = document.getElementById('flink');
+    followingLink.setAttribute('href', `http://localhost:8080/users/${userId}/profile/following`)
+    
   script(type="module" src="/js/main.js")
