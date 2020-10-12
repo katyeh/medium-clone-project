@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const story = { title, subtitle, body, genreId, _csrf };
 
         try {
-            const res = await fetch('/api/stories', {
+            const res = await fetch(`/api/stories/${storyId}`, {
                 method: "PUT",
                 body: JSON.stringify(story),
                 headers: {
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
             });
             if (res.status === 401) {
-                window.location.href = '/splash'
-                return;
+ /*                window.location.href = '/splash'
+                return; */
             }
             if (!res.ok) {
                 throw res;
