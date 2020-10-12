@@ -27,7 +27,7 @@ block content
               img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
             else
               img(src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt="")
-          .main-suggestion-story 
+          .main-suggestion-story
             a(href=`/stories/${suggestionStory.id}`)
             a(href=`/users/${suggestionStory.user.id}/profile/`)
               img(src=randomIcon(), alt="")
@@ -42,14 +42,14 @@ block content
               a.imgContainer(href=`/users/${suggestionStory.user.id}/profile/`)
                 img(src="https://www.flaticon.com/svg/static/icons/svg/2824/2824422.svg", alt="User icon")
               a.writerLink(href=`/users/${suggestionStory.user.id}/profile/`)
-                span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]              
+                span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]
               a(href=`/stories/${suggestionStory.id}`)
                 h3= suggestionStory.title
               p #{dateFormatter(suggestionStory.createdAt)} &middot; #{readingTime(suggestionStory.body).text} &#9733
             .right
               a(href=`/stories/${suggestionStory.id}`)
                 img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
-      
+
     #main__from-following
       p.section-title Latest From Following
       .following-users-container
@@ -92,9 +92,9 @@ block content
         #main__clapsList
           p.section-title <i class="fas fa-sign-language"></i>&nbsp;&nbsp;Clap List
         footer#main__footer
-          a(href="https://github.com/cmccoy10/" target="_blank") Cole McCoy &nbsp| 
-          a(href="https://github.com/katyeh" target="_blank") Kathleen Yeh &nbsp| 
-          a(href="https://github.com/ryanblack045" target="_blank") Ryan Black &nbsp| 
+          a(href="https://github.com/cmccoy10/" target="_blank") Cole McCoy &nbsp|
+          a(href="https://github.com/katyeh" target="_blank") Kathleen Yeh &nbsp|
+          a(href="https://github.com/ryanblack045" target="_blank") Ryan Black &nbsp|
           a(href="https://github.com/smilelk4" target="_blank") Yuka Moribe
   script(type="module" src="/js/main.js")
   script.
@@ -104,5 +104,7 @@ block content
       modal.classList.toggle('hidden');
     });
 
-    const followingLink = document.querySelector('.flink');
-    followingLink.setAttribute('href', `/users/${userId}/profile/following`)
+    //- const followingLink = document.getElementById('flink');
+    //- followingLink.setAttribute('href', `http://localhost:8080/users/${userId}/profile/following`)
+
+  script(type="module" src="/js/main.js")

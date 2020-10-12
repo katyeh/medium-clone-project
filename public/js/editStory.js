@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const publishBtn = document.querySelector('.publishBtn');
     const storyForm = document.querySelector('.createStory-form');
+    const publishBtn = document.querySelector('.beans');
 
     publishBtn.addEventListener("click", async (e) => {
         publish();
@@ -22,30 +22,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const subtitle = formData.get("subtitle")
         const body = formData.get("body")
         const genreId = formData.get("genreId")
-        const _csrf = formData.get("_csrf")
-        const story = { title, subtitle, body, genreId, _csrf };
+        const storyId = formData.get("storyId")
+        const story = { title, subtitle, body, genreId };
 
         try {
-            const res = await fetch('/api/stories', {
+            const res = await fetch(`/api/stories/${storyId}`, {
                 method: "PUT",
                 body: JSON.stringify(story),
                 headers: {
                     "Content-Type": "application/json",
-                    "Accept": "application/json",
                     Authorization: `Bearer ${localStorage.getItem(
                         "READIUM_ACCESS_TOKEN"
                     )}`,
                 },
             });
             if (res.status === 401) {
-                window.location.href = '/splash'
-                return;
+ /*                window.location.href = '/splash'
+                return; */
             }
             if (!res.ok) {
                 throw res;
             }
-            form.reset();
+            storyForm.reset();
         } catch (err) {
+          console.log(err);
           handleErrors(err);
         }
     })

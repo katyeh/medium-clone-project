@@ -1,10 +1,34 @@
 extends layout.pug
 include ./utilities/mixin_navbar.pug
+include ./utilities/mixin_response.pug
 
 block content
 
   +navbar('main')
   #story
+    #story__response
+      #story__response_container
+        .story__response_header
+          .story__response_title: h1 Responses ( #{responseAmount} )
+          .story__response_close: input(id="closeResponseButton",class="response_close_btn" type="image" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDkwIDQ5MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDkwIDQ5MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBvbHlnb24gcG9pbnRzPSIxMS4zODcsNDkwIDI0NSwyNTUuODMyIDQ3OC42MTMsNDkwIDQ4OS40MzksNDc5LjE3NCAyNTUuODA5LDI0NC45OTYgNDg5LjQzOSwxMC44MTEgNDc4LjYxMywwIDI0NSwyMzQuMTYxIA0KCTExLjM4NywwIDAuNTYxLDEwLjgxMSAyMzQuMTkxLDI0NC45OTYgMC41NjEsNDc5LjE3NCAiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" width="15px" height="15px")
+        .story__response_create_box
+          .story__response_create
+            .story__response_create_header
+              .story__response_img: img(class="story__user_response_img" src=`${user.picUrl}`, height="40px" width="40")
+              .story__response_name: a(class="story__user_response_name" href=`/users/${user.id}/profile`)= user.fullName
+            .story__response_create_form
+              form(class="responseForm")
+                textarea(class="story__response_textarea" placeholder="What are your thoughts?" name="body")
+                .story_response_form_buttons
+                  button(class="story-response-cancel") Cancel
+                  button(class="story-response-submit" type="submit") Respond
+                input(type="hidden" name="storyId" value= story.id)
+
+        .story__response_body
+          each response in responses
+            .story__response-preview
+              +response-list-preview(response.User.id, response.User.fullName, response.User.picUrl, response.body)
+
     #story__body
       #story__header
         h1= story.title
@@ -31,19 +55,17 @@ block content
               i(class="fas fa-ellipsis-h", id="social-list__link")
             #story__menu
               ul(class="storyMenu__list")
-                li(class="storyMenu__listItem editStoryBtn")
-                  h4 Edit this story
-                li(class="storyMenu__listItem deleteStoryBtn")
-                  h4 Delete this story
+                li(class="storyMenu__listItem editStoryBtn") Edit this story
+                button(class="storyMenu__listItem deleteStoryBtn" value= story.id) Delete this story
       #story__contents
         p= story.body
-      footer#splash__footer
+      footer#story__footer
         div(class="responseDiv underline")
           div(class="responses")
             p= story.StoryGenre
             input(class="clapImg" type="image" src="data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIuMDIgNTEyLjAyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMi4wMiA1MTIuMDIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHBhdGggZD0ibS4wNDYgMTg2LjI2OGMyLjM2MiA0MC4xNTMgMi4xNjQgNzMuNDUgMS45ODkgMTAyLjgyOC0uNDYzIDc3Ljg4OC0xLjE4OCAxMjguNjM0IDUzLjU4MyAxODMuNDA1IDUyLjYzNSA1Mi42MzQgMTM4LjI4MSA1Mi42MzggMTkwLjkxOSAwIC4wMDEtLjAwMS4wMDEtLjAwMi4wMDItLjAwM2wxNDguNDktMTQ4LjQ5YzE3LjU4Ni0xNy41ODUgMTcuNTg5LTQ2LjA1MiAwLTYzLjY0LTMuNzE3LTMuNzE3LTcuOTI5LTYuNjQ3LTEyLjQyNC04Ljc4OWwyNC42MS0yNC42MWMxNy41NDUtMTcuNTQ1IDE3LjU0NS00Ni4wOTMgMC02My42NC00LjEzOC00LjEzOC04Ljg5Mi03LjI4Ny0xMy45NjYtOS40NzQgOS43ODItMTcuMDM4IDcuNTYtMzkuMzU5LTcuMjQ4LTU0LjE2Ni0zLjkxOS0zLjkxOS04LjM4OS02Ljk1Ni0xMy4xNjEtOS4xMjQgMTEuMTEzLTE3LjIzNSA5LjM1Mi00MC43MjgtNi4wNTItNTYuMTMxLTE0LjY1Mi0xNC42NTItMzYuOTcyLTE3LjA1Ny01NC4xNDEtNy4yNTMtMi4yMjUtNS4xNDQtNS40MTYtOS44NzgtOS40OTktMTMuOTYtMTcuNTQ0LTE3LjU0NS00Ni4wOTQtMTcuNTQ2LTYzLjYyLS4wMTktLjkxMi45MDgtNzkuMzgzIDc5LjA5NS0xMjkuNjMyIDEyOS4yNzJsLTcuNzE1LTU0LjU0OGMtLjYwOC0yNC4yNy0yMC40NDEtNDMuODQyLTQ0Ljk4NC00My44NDItMjQuNTcgMC00NC4zOTcgMTkuNjAyLTQ0Ljk4NiA0My44OTktLjAxMS40MTUtLjAwMy44MzEuMDIxIDEuMjQ1IDEuMjAxIDIwLjM5OCAxLjg1MiA0MC45MzEgMi4wMzEgNjQuMDU1LTEwLjEyMiA5LjQ4My0xNC43ODIgMjIuOTc4LTE0LjIxNyAzMi45ODV6bTM3My43NyAxMTYuNTI4LTE0OC40OTIgMTQ4LjQ5MmMtNDAuOTM4IDQwLjkzOS0xMDcuNTUzIDQwLjk0LTE0OC40OTMgMC00NS40ODktNDUuNDg5LTQ1LjI1Ny04NC40MzEtNDQuNzk2LTE2Mi4wMTQuMTc2LTI5LjY1Ni4zNzYtNjMuMjQzLTEuOTk4LTEwNC4wMzYuNzUxLTEyLjgzNyAxNi40NTUtMTguODQ3IDI1LjU4MS05LjcyMSA1LjA4OSA1LjA4OSAzLjE0IDcuMjc5IDQuNTQzIDEyLjcxOC4wMDMuMDI3LjAwNy4wNTQuMDEyLjA4bDEyLjA0IDg1LjE0MmMxLjczIDEyLjIyIDE2LjcyMiAxNy4yNDcgMjUuNDYgOC41MDUgMjUuODktMjUuODk0LTIuNzE0IDIuNjk0IDE0OS4yOTUtMTQ5LjI2MSA1Ljg3NS01LjQzOSAxNS4wNzEtNS4zMiAyMC43ODIuMzkgNS44NjMgNS44NjMgNS44NjMgMTUuMzUgMCAyMS4yMTMtLjAwMi4wMDItLjAwMy4wMDQtLjAwNS4wMDZsLTYzLjYzNSA2My42MzRjLTUuODU4IDUuODU4LTUuODU4IDE1LjM1NSAwIDIxLjIxMyA1Ljg1NiA1Ljg1OCAxNS4zNTQgNS44NTggMjEuMjEzIDAgNC45OC00Ljk4IDc5Ljg5NC03OS44OTMgODQuODU0LTg0Ljg1MyA1Ljg1LTUuODQ4IDE1LjM2NS01Ljg0OCAyMS4yMTIuMDAxIDUuODYzIDUuODYzIDUuODYzIDE1LjM1IDAgMjEuMjEzIDAgMC03OS44ODMgNzkuODgzLTg0Ljg1MyA4NC44NTMtNS44NTggNS44NTgtNS44NTggMTUuMzU1IDAgMjEuMjEzIDUuODU3IDUuODU4IDE1LjM1NSA1Ljg1OCAyMS4yMTMgMGw2My42NC02My42NGM1Ljg1LTUuODQ5IDE1LjM2Ny01Ljg0OCAyMS4yMTMgMCA1Ljg0OSA1Ljg0OSA1Ljg1IDE1LjM2NS4wMDEgMjEuMjEzLTEwLjU5IDEwLjU5LTU5LjAyIDU5LjAyLTYzLjY0IDYzLjY0LTUuODU4IDUuODU4LTUuODU4IDE1LjM1NSAwIDIxLjIxMyA1Ljg1NyA1Ljg1OCAxNS4zNTUgNS44NTggMjEuMjEzIDBsNDIuNTAyLTQyLjUwMmM1Ljg1Ni01Ljc3MyAxNS4zMTQtNS43NDcgMjEuMTM4LjA3NSA1Ljg2MyA1Ljg2MiA1Ljg2MyAxNS4zNSAwIDIxLjIxM3ptLTkuMDI3LTE4MS44OTJjNS44NjMgNS44NjMgNS44NjMgMTUuMzUgMCAyMS4yMTNsLTMuMzg1IDMuMzg1Yy0yLjE3Ny00LjU0Ny01LjEzMS04Ljc0Mi04LjgwMi0xMi40MTItMy42Ny0zLjY3LTcuODY0LTYuNjI0LTEyLjQxMi04LjgwMWwzLjM5My0zLjM5MmM1Ljg0OS01Ljg0MSAxNS4zNjEtNS44MzkgMjEuMjA2LjAwN3ptMjEuMjE0IDg0Ljg1My0zLjQwNSAzLjQwNWMtMi4xNDItNC40OTctNS4wNjMtOC43MTMtOC43ODItMTIuNDMyLTMuNzE4LTMuNzE4LTcuOTM0LTYuNjQtMTIuNDMxLTguNzgybDMuNDA0LTMuNDA0YzUuODUtNS44NDkgMTUuMzY3LTUuODQ4IDIxLjIxMy0uMDAxIDUuODQ4IDUuODQ5IDUuODQ5IDE1LjM2NS4wMDEgMjEuMjE0em0tNDAuNDI3LTE1MC4xMDhjNS44NDUgNS44NDUgNS44NjggMTUuMzA1LjAzNyAyMS4xNzYtMS45MTIgMS44OTcgMTEuMDUyLTEwLjk2NC00Ny44NDkgNDcuNDY1LTIuMTc3LTQuNTQ3LTUuMTMxLTguNzQyLTguODAyLTEyLjQxMy0zLjY4Ni0zLjY4Ni03Ljg2Mi02LjU4Ny0xMi4zMTUtOC43MjUgMi42NzMtMi42NjEgNDYuMDQ4LTQ1Ljg0NCA0Ny43MTQtNDcuNTA0IDUuODUzLTUuODQ5IDE1LjM2Ny01Ljg0NyAyMS4yMTUuMDAxem0tMjM1LjcxNyAxMjkuMjc0YzQ0LjgwMi00NC44MDkgMTQ5Ljc4OS0xNDkuNDE3IDE1MC44NjMtMTUwLjQ4NyA1Ljg1MS01Ljg0OSAxNS4zNjUtNS44NDggMjEuMjE0IDAgNS41OTYgNS41OTYgNS44MDMgMTQuMzkzLjg4MiAyMC4yNDEtMTQwLjI3NiAxMzkuOTk0IDY1Ljk2Ni02Ni4yNzktMTg1LjEwOSAxODQuODJsLTcuNTMtNTMuMjQzYzYuMDA4IDQuNTY3IDE0LjQwMiAzLjk0OSAxOS42OC0xLjMzMXptLTY3LjYzNi05Ni43MjVjLjc0OC0xMi44MzQgMTYuNDU2LTE4Ljg0NCAyNS41ODEtOS43MiA1LjA4OSA1LjA5IDMuMTM5IDcuMjc4IDQuNTQyIDEyLjcxNy4wMDQuMDI4IDkuODM2IDY5LjU1MiA5LjgzNiA2OS41NTItOC44MTktMTIuODYtMjMuMTYtMTkuODcxLTM4LjA1NS0xOS41ODEtLjI4Ni0xOC42NjQtLjkwOC0zNS44NTgtMS45MDQtNTIuOTY4eiIvPjxwYXRoIGQ9Im00OTcuMDIgOTIuMDQyaC0zMGMtOC4yODQgMC0xNSA2LjcxNi0xNSAxNXM2LjcxNiAxNSAxNSAxNWgzMGM4LjI4NCAwIDE1LTYuNzE2IDE1LTE1cy02LjcxNS0xNS0xNS0xNXoiLz48cGF0aCBkPSJtNDQ2LjYyNyA1NS42NDggMzAtMzBjNS44NTgtNS44NTggNS44NTgtMTUuMzU1IDAtMjEuMjEzLTUuODU3LTUuODU4LTE1LjM1NS01Ljg1OC0yMS4yMTMgMGwtMzAgMzBjLTUuODU4IDUuODU4LTUuODU4IDE1LjM1NSAwIDIxLjIxMyA1Ljg1NyA1Ljg1OCAxNS4zNTUgNS44NTkgMjEuMjEzIDB6Ii8+PC9nPjwvc3ZnPg==" href="" class="clapButton")
             p=clapAmount
-            i(class="far fa-comment responseImg")
+            i(class="far fa-comment responseImg", id="responseicon1")
             p=responseAmount
           div(class="social-list")
             include ./utilities/social_list.pug

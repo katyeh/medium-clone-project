@@ -8,8 +8,8 @@ logInForm.addEventListener("submit", async (e) => {
   const formData = new FormData(logInForm);
   const email = formData.get("email");
   const password = formData.get("password");
-  const _csrf = formData.get("_csrf");
-  const body = { email, password, _csrf };
+//   const _csrf = formData.get("_csrf");
+  const body = { email, password };
 
   try {
     const res = await fetch("api/users/token", {
@@ -38,7 +38,7 @@ logInForm.addEventListener("submit", async (e) => {
     localStorage.setItem("READIUM_CURRENT_USER_FULLNAME", fullName);
     localStorage.setItem("READIUM_CURRENT_USER_USERNAME", username);
 
-    window.location.href = "/"
+    window.location.href = "/main"
   } catch (err) {
         if (err.status >= 400 && err.status < 600) {
           const errorJSON = await err.json();

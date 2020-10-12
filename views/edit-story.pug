@@ -5,9 +5,10 @@ block content
   #storyForm
   .errors-container
   #storyForm__fields
-    form(class="createStory-form" action='/api/stories' method='post')
-      input(type='hidden' name='_csrf' value=csrfToken)
+    form(class="createStory-form")
       #storyForm__div
+        #storyFrom__field
+          input(type="hidden" name="storyId" value= story.id)
         #storyForm__field
           label(for='title')
             input(type='text' class='storyInput' id='title' name='title' placeholder='Title' value=story.title)
@@ -22,4 +23,5 @@ block content
           select(name="genreId" class='storyInput' id='genre' required)
             each genre in genres
               option(value=genre.id)= genre.title
-  script(type="module" src="/js/createStory.js")
+        button(type="submit" class="beans") submit
+  script(type="module" src="/js/editStory.js")
