@@ -19,4 +19,35 @@ const editStory = document.querySelector(".editStoryBtn");
         //TODO: Edit story page
     })
 
+    const responseSubmit = document.querySelector(".story-response-submit");
+    const responseForm = document.querySelector(".responseForm")
+
+    responseSubmit.addEventListener("click", async (e) => {
+      e.preventDefault();
+      console.log("clicked")
+      const formData = new FormData(responseForm);
+      const body = formData.get("body");
+      const storyId = formData.get("storyId");
+      const response = { body };
+
+      try {
+          const res = await fetch(`/api/stories/${storyId}/responses`, {
+              method: "POST",
+              body: JSON.stringify(response),
+              headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${localStorage.getItem(
+                      "READIUM_ACCESS_TOKEN"
+                  )}`,
+              },
+          });
+          if (!res.ok) {
+              throw res;
+          }
+          form.reset();
+      } catch (err) {
+        console.log(err);
+      }
+  })
+
 });
