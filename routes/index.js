@@ -159,7 +159,7 @@ router.get('/stories/:id/edit', asyncHandler(async (req, res) => {
     });
 }));
 
-router.get('/story/:id', asyncHandler(async (req, res) => {
+router.get('/stories/:id', asyncHandler(async (req, res) => {
     const storyId = req.params.id
     const story = await Story.findOne({
         where: {
