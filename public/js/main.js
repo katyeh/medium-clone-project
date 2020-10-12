@@ -13,6 +13,7 @@ const getUserInfo = userId => {
 (async () => {
   const userId = localStorage.getItem("READIUM_CURRENT_USER_ID");
 
+
   const res = await fetch(`/api/users/${userId}/main`);
   const { followingUsers, claps } = await res.json();
 

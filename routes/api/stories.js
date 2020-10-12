@@ -7,8 +7,6 @@ const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 const { requireAuth } = require('../../auth');
 const { sequelize } = require("../../db/models");
 
-// router.use(requireAuth);
-
 const storyValidator = [
   check('title')
     .exists({ checkFalsy: true })
@@ -30,12 +28,12 @@ router.post(
     storyValidator,
     handleValidationErrors,
     asyncHandler(async (req, res, next) => {
-  const { title, subtitle, body, userId } = req.body;
+  const { title, subtitle, body} = req.body;
   const story = await Story.create({
     title,
     subtitle,
     body,
-    userId: 2
+    userId: req.user.id
   });
 //   res.redirect('/stories');
 }));
@@ -123,7 +121,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/main', asyncHandler(async (req, res, next) => {
-
+console.log('HIHIHIHIHIHI')
   const suggestionStories = await Story.findAll({
     include: "user",
     order: sequelize.random(),
@@ -132,7 +130,7 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     },
     limit: 5,
   });
-  
+
   const trendingStories = await Story.findAll({
     include: 'user',
     attributes: {
@@ -140,7 +138,7 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     },
     limit: 6
   });
-  
+
   const newStories = await Story.findAll({
     order: [['createdAt', 'DESC']],
     include: 'user',

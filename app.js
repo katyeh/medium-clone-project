@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 app.use('/', csrfProtection, indexRouter);
-app.use('/api/stories', csrfProtection, storiesRouter);
+app.use('/api/stories', storiesRouter); // delete csrf for testing purposes
 app.use('/api/users', csrfProtection, usersRouter);
 app.use('/api/responses', csrfProtection, responsesRouter);
 
