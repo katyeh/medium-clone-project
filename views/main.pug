@@ -21,6 +21,7 @@ block content
   #main
     #main__stories
       each suggestionStory, index in suggestionStories
+        -console.log(suggestionStories)
         if index === 0
           if suggestionStory.imageUrl
             img(src=suggestionStory.imageUrl, alt="Photo of a suggested article.")
