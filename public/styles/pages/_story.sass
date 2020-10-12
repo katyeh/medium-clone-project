@@ -1,6 +1,93 @@
 #story
   display: flex
   width: 100vw
+  position: relative
+  &__response
+    display: flex
+    justify-content: center
+    align-items: center
+    position: fixed
+    right: 0
+    top: 0
+    width: 40rem
+    height: 100%
+    background-color: white
+    box-shadow: 0 3px 5px 4px lightgrey
+    #story__response_container
+      height: 95%
+      width: 36rem
+      background-color: white
+      .story__response_header
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        height: auto
+        .story__response_close
+      .story__response_create_box
+        .story__response_create
+          display: flex
+          flex-direction: column
+          margin-top: 2em
+          width: 100%
+          height: 20rem
+          border-radius: 1%
+          box-shadow: 0 1px 3px 1px lightgrey
+          margin-bottom: 4em
+          .story__response_create_header
+            display: flex
+            flex-direction: row
+            margin-top: 1em
+            margin-left: 1em
+            .story__response_img
+              .story__user_response_img
+                border-radius: 50%
+                border: thin solid #ffffff
+            .story__response_name
+              align-self: center
+              margin-left: 1em
+              .story__user_response_name
+                color: #292929
+                font-size: 16px
+          .story__response_create_form
+            margin-top: 1em
+            margin-left: 1em
+            display: flex
+            flex-direction: column
+            form
+              .story__response_textarea
+                height: 7.5em
+                width: 25.5em
+                border: none
+                font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif
+              .story_response_form_buttons
+                .story-response-cancel
+                  height: 30px
+                  width: 80px
+                  border: none
+                  background-color: none
+                  margin-left: 12.5em
+                .story-response-submit
+                  height: 30px
+                  width: 80px
+      .story__response_body
+        .story__response-preview
+          display: flex
+          flex-direction: column
+          margin-bottom: 10px
+          height: auto
+          border-bottom: thin solid lightgrey
+          font-size: 16px
+          padding-bottom: 2em
+          color: #292929
+          .response-preview_img
+            position: absolute
+            border-radius: 50%
+            border: thin solid #ffffff
+          .response-list-preview_name
+            color: #292929
+            padding-left: 3em
+          .response-list-preview_body
+            padding-top: 2.5em
   &__body
     flex-direction: column
     justify-content: center

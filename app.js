@@ -11,10 +11,10 @@ const cookieParser = require('cookie-parser');
 // const csrfProtection = require('./routes/csrf');
 const app = express();
 
-app.use(express.urlencoded());
 app.set('view engine', 'pug');
 app.use(cookieParser());
 app.use(morgan('dev'));
+app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
