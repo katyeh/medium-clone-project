@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     deleteStory.addEventListener('click', async () => {
         try {
-            debugger
-            let storyId = 35;
+            let storyId = story.id
             const res = await fetch(`/api/stories/${storyId}`, {
                 method: "DELETE",
                 headers: {
@@ -18,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok) {
                 throw res;
             }
+            window.location.href = "/main"
         } catch (err) {
             console.log("error")
         }

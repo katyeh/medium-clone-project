@@ -2,7 +2,7 @@ mixin navbar(pageName, img)
   nav.shadow#navbar
     #navbar__contents
       .left-contents
-       a(href="/"): h1 Readium
+       a(href="/main"): h1 Readium
        p.greeting
       if pageName == 'splash'
         div(class="right-contents")
@@ -23,7 +23,7 @@ mixin navbar(pageName, img)
               li: a(class="nav-new-story-link" href="") New Story
               li: a(class="nav-user-stories" href="") Stories
               li: a(class="nav-profile-link" href="") Profile
-              li: a(class="nav-profile-sign-out" href="/splash") Sign out
+              li: a(class="nav-profile-sign-out" href="/") Sign out
         script.
           const nav = document.getElementById('navbar');
           nav.classList.remove('shadow');

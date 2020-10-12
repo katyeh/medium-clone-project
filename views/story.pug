@@ -57,7 +57,7 @@ block content
               ul(class="storyMenu__list")
                 li(class="storyMenu__listItem editStoryBtn")
                   h4 Edit this story
-                li(class="storyMenu__listItem deleteStoryBtn")
+                li(class="storyMenu__listItem deleteStoryBtn" value=story.id)
                   h4 Delete this story
       #story__contents
         p= story.body
