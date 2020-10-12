@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok) {
                 throw res;
             }
-            form.reset();
+          form.reset();
+          window.location.href = "/users/:id/profile"
         } catch (err) {
           handleErrors(err);
         }
