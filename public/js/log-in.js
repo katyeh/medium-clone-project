@@ -38,7 +38,7 @@ logInForm.addEventListener("submit", async (e) => {
     localStorage.setItem("READIUM_CURRENT_USER_FULLNAME", fullName);
     localStorage.setItem("READIUM_CURRENT_USER_USERNAME", username);
 
-    window.location.href = "/"
+    window.location.href = "/main"
   } catch (err) {
         if (err.status >= 400 && err.status < 600) {
           const errorJSON = await err.json();
