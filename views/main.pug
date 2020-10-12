@@ -98,6 +98,8 @@ block content
           a(href="https://github.com/smilelk4" target="_blank") Yuka Moribe
   script(type="module" src="/js/main.js")
   script.
+    const nav = document.getElementById('navbar');
+    nav.classList.remove('shadow');
     const profIcon = document.getElementById('navbar__prof-icon');
     const modal = document.getElementById('navbar__modal');
     profIcon.addEventListener('click', e => {
