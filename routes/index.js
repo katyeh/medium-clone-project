@@ -1,6 +1,6 @@
 const readingTime = require('reading-time');
 const express = require('express');
-const { Story, Genre, User, Follower, StoryGenre, Clap } = require('../db/models');
+const { Story, Genre, User, Follower, StoryGenre, Clap, Response } = require('../db/models');
 const { asyncHandler } = require('../utils');
 const router = express.Router();
 // const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", id);
@@ -147,8 +147,11 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
         where: {
             id: storyId
         },
-        include: StoryGenre, Clap
+        include: StoryGenre, Clap, Response
     });
+
+    const responseAmount = await Response.count({ where: { storyId }});
+    const clapAmount = await Clap.count({ where: { storyId }});
     function monthName(mon) {
         return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'][mon - 1];
      }
@@ -163,7 +166,7 @@ router.get('/story/:id', asyncHandler(async (req, res) => {
     const date = month + " " + story.createdAt.slice(8,10) + ", " + year
     const userId = story.userId;
     const user = await User.findByPk(userId);
-    res.render('story', { story, user, date, readTime });
+    res.render('story', { story, user, date, readTime, clapAmount, responseAmount});
 }));
 
 

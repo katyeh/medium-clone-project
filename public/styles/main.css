@@ -1778,7 +1778,8 @@ a:visited {
 
 #story__header > h1,
 #story__subtitle > h1,
-#story .userPic > img {
+#story .userPic > img,
+#story .footer__userPic > img {
   margin-left: 25px;
 }
 
@@ -1830,6 +1831,11 @@ a:visited {
   border-radius: 50%;
   border: thin solid #ffffff;
   margin: 20px;
+}
+
+#story .clapImg {
+  outline: none;
+  text-decoration: none;
 }
 
 #story .responseImg {
@@ -2005,6 +2011,13 @@ a:visited {
   height: 50px;
   padding-top: 20px;
   height: 6vw;
+}
+
+.footerPic {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  float: left;
 }
 
 html {
