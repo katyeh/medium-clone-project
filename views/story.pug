@@ -1,6 +1,6 @@
 extends layout.pug
-include ./utilities/mixin_navbar.pug
 include ./utilities/mixin_response.pug
+include ./utilities/mixin_navbar.pug
 
 block content
 
@@ -55,7 +55,7 @@ block content
               i(class="fas fa-ellipsis-h", id="social-list__link")
             #story__menu
               ul(class="storyMenu__list")
-                li(class="storyMenu__listItem editStoryBtn") Edit this story
+                button(class="storyMenu__listItem editStoryBtn" value= story.id) Edit this story
                 button(class="storyMenu__listItem deleteStoryBtn" value= story.id) Delete this story
       #story__contents
         p= story.body
@@ -83,3 +83,20 @@ block content
   script(type="module" src="/js/deleteStory.js")
   script(type="module" src="/js/followBtn.js")
   script(type="module" src="/js/clap.js")
+  script.
+    const tab_a = document.querySelector("tab-a");
+    const tab_b = document.querySelector("tab-b");
+    const tab_c = document.querySelector("tab-c");
+    const profIcon = document.getElementById('navbar__prof-icon');
+    const modal = document.getElementById('navbar__modal');
+    profIcon.addEventListener('click', e => {
+      modal.classList.toggle('hidden');
+    });
+    tab_b.addEventListener("click", e => {
+      tab_a.classList.remove(".tab--underline");
+      tab_b.classList.add(".tab--underline");
+    });
+    tab-c.addEventListener("click", e => {
+      tab_a.classList.remove(".tab--underline");
+      tab_c.classList.add(".tab--underline");
+    });

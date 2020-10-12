@@ -3,7 +3,7 @@ import { handleErrors } from "./utils.js"
 document.addEventListener("DOMContentLoaded", () => {
 
     function publish() {
-        const publishBtn = document.querySelector('.publishBtn');
+        const publishBtn = document.querySelector('.beans');
         if (publishBtn.innerHTML === "Publish") {
             publishBtn.innerHTML = "Published"
             publishBtn.style.background = 'rgba(3, 168, 124, .25)';
@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const publishBtn = document.querySelector('.beans');
 
     publishBtn.addEventListener("click", async (e) => {
-        publish();
         e.preventDefault();
         const formData = new FormData(storyForm);
         const title = formData.get("title")
@@ -43,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok) {
                 throw res;
             }
+            publish();
+            window.location.href = `/stories/${storyId}`
             storyForm.reset();
         } catch (err) {
           console.log(err);

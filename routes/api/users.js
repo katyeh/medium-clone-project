@@ -224,6 +224,15 @@ router.post("/follow", asyncHandler(async(req, res) => {
     res.end();
 }));
 
+router.delete("/follow", asyncHandler(async(req, res) => {
+    const { followerId, followeeId } = req.body;
+    await Follower.destroy({
+        followeeId,
+        followerId
+    });
+    res.end();
+}));
+
 router.get("/:id/profile", asyncHandler(async(req, res) => {
   const id = req.params.id;
   const userAndStories = await User.findByPk(id,{
