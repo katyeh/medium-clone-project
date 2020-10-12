@@ -75,11 +75,11 @@ const emailAndPasswordValidation = [
         throw new Error("Password cannot have spaces.");
       }
       return true;
-    })
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
-    .withMessage(
-      "Password must have at least one lower-case letter, upper-case letter, number, and special character(!@#$%^&*)."
-    ),
+    }),
+    // .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
+    // .withMessage(
+    //   "Password must have at least one lower-case letter, upper-case letter, number, and special character(!@#$%^&*)."
+    // ),
   check("confirmPassword")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value to confirm password.")
