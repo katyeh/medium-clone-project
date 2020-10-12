@@ -154,6 +154,12 @@ a:visited {
   padding-top: 2rem;
 }
 
+#main__stories .main-suggestion-story p {
+  color: #757575;
+  padding-top: 1.5rem;
+  font-size: 1.2rem;
+}
+
 #main__stories .suggestion-story {
   cursor: pointer;
   width: 35rem;
@@ -171,25 +177,16 @@ a:visited {
 }
 
 #main__stories .suggestion-story .left h3 {
-  padding-top: 1rem;
-}
-
-#main__stories .suggestion-story .left p {
-  color: #757575;
-  padding-top: 1.5rem;
-  font-size: 1.2rem;
-}
-
-#main__stories .suggestion-story .left a {
-  display: block;
   position: relative;
-  height: 3rem;
-  width: 100%;
+  top: -2rem;
+}
+
+#main__stories .suggestion-story .left span {
   font-size: 1.1rem;
   color: #292929;
 }
 
-#main__stories .suggestion-story .left a span {
+#main__stories .suggestion-story .left h3 span {
   display: inline-block;
 }
 
@@ -581,7 +578,13 @@ a:visited {
   height: 4rem;
   font-family: medium-marketing-display-font, Georgia, Cambria, "Times New Roman", Times, serif;
   color: red;
-  font-size: 8px;
+  font-size: 1.2rem;
+  position: relative;
+  top: -3.5rem;
+}
+
+.alert {
+  margin: 0 .5rem;
 }
 
 .sign-up-container {

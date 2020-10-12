@@ -7,8 +7,6 @@ const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 const { requireAuth } = require('../../auth');
 const { sequelize } = require("../../db/models");
 
-router.use(requireAuth);
-
 const storyValidator = [
   check('title')
     .exists({ checkFalsy: true })
@@ -123,7 +121,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/main', asyncHandler(async (req, res, next) => {
-
+console.log('HIHIHIHIHIHI')
   const suggestionStories = await Story.findAll({
     include: "user",
     order: sequelize.random(),
