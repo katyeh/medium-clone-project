@@ -78,12 +78,10 @@ block content
           div(class="navbar__contents__signup big")
             button(class="splash__contents-signup big") Get started
           div(class="ptext") Already have an account?
-            button(class="splash-login", id ="splashlogin",data-modal-target="#modal") Sign in
-    main#splash__main #splash__main
+            button(class="splash-login",data-modal-target="#modal") Sign in
+    //- main#splash__main #splash__main
     footer#splash__footer
-      div(class="splash-signup-container")
-        button(class="splash__contents-signup one") Get started
-      div(class="ptext") Already have an account?
-        #splash__login
-          button(class="splash-login", id ="splashlogin",data-modal-target="#modal") Login
+      button(id="splash__signup2",class="splash__contents-signup") Get started
+      div(class="ptext", id="ptext2") Have an account?
+          button(id="splashlogin",class="splash-login",data-modal-target="#modal") Login
     script(type="module" src="/js/splash.js")
