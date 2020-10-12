@@ -8,8 +8,8 @@ logInForm.addEventListener("submit", async (e) => {
   const formData = new FormData(logInForm);
   const email = formData.get("email");
   const password = formData.get("password");
-  const _csrf = formData.get("_csrf");
-  const body = { email, password, _csrf };
+//   const _csrf = formData.get("_csrf");
+  const body = { email, password };
 
   try {
     const res = await fetch("api/users/token", {
