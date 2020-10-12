@@ -55,10 +55,8 @@ block content
               i(class="fas fa-ellipsis-h", id="social-list__link")
             #story__menu
               ul(class="storyMenu__list")
-                li(class="storyMenu__listItem editStoryBtn")
-                  h4 Edit this story
-                li(class="storyMenu__listItem deleteStoryBtn" value=story.id)
-                  h4 Delete this story
+                li(class="storyMenu__listItem editStoryBtn") Edit this story
+                button(class="storyMenu__listItem deleteStoryBtn" value= story.id) Delete this story
       #story__contents
         p= story.body
       footer#story__footer
