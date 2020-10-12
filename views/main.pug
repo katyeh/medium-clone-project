@@ -73,15 +73,16 @@ block content
         each newStory in newStories
           .feeds-story
             .left
-              a(href=`/users/${newStory.userId}`)
+              a(href=`/users/${newStory.user.id}/profile/`)
                 img(src=randomIcon(), alt="User icon")
                 span #[strong #{newStory.user.fullName}] in #[strong #{newStory.user.username}]
-              a(href=`/stories/${newStory.userId}`)
+              a(href=`/stories/${newStory.id}`)
                 h3= newStory.title
                 p= newStory.subtitle
               p #{dateFormatter(newStory.createdAt)} &#9733
             .right-image
-              img.feed-image(src=newStory.imageUrl, alt="")
+              a(href=`/stories/${newStory.id}`)
+                img.feed-image(src=newStory.imageUrl, alt="")
     aside
       #main__sidebar
         #main__clapsList
@@ -100,8 +101,5 @@ block content
 
     const followingLink = document.querySelector('.flink');
     followingLink.setAttribute('href', `/users/${userId}/profile/following`)
-    
-    //- const writerLink = document.querySelector('.writerLink');
-    //- writerLink.setAttribute('href', `http://localhost:8080/users/${userId}/profile/following`);
 
   script(type="module" src="/js/main.js")
