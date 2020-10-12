@@ -20,8 +20,21 @@ const editStory = document.querySelector(".editStoryBtn");
         window.location.href = `/stories/${storyId}/edit`
     });
 
+    const userId = localStorage.getItem("READIUM_CURRENT_USER_ID", );
+    const picUrl = localStorage.getItem(`READIUM_CURRENT_USER_PIC_URL`);
+    const fullName = localStorage.getItem("READIUM_CURRENT_USER_FULLNAME");
+    const username = localStorage.getItem("READIUM_CURRENT_USER_USERNAME");
+    const responseUserImg = document.querySelector(".story__user_response_img")
+    const responseName = document.querySelector(".story__user_response_name")
+
+    responseUserImg.setAttribute("src", `${picUrl}`);
+    responseName.setAttribute("href", `/users/${userId}/profile`);
+    responseName.innerText = `${fullName}`;
+
     const responseSubmit = document.querySelector(".story-response-submit");
     const responseForm = document.querySelector(".responseForm")
+    const responseDiv = document.querySelector(".story__response_body")
+    const responseAmount = document.querySelector(".responseAmount")
 
     responseSubmit.addEventListener("click", async (e) => {
       e.preventDefault();
@@ -46,6 +59,20 @@ const editStory = document.querySelector(".editStoryBtn");
               throw res;
           }
           responseForm.reset();
+          const { count } = await res.json();
+          responseDiv.insertAdjacentHTML('afterbegin',
+          `
+            <div class="story__response-preview">
+              <img class="response-preview_img" src="${picUrl}" height="40px" width="40px">
+              <div class="response-list-preview_name">
+                <a class="response-preview_name" href='/users/${userId}/profile'>${fullName}</a>
+              </div>
+              <div class="response-list-preview_body">
+                <p class="response-preview_body">${body}
+              </div>
+            </div>
+          `)
+          responseAmount.innerHTML = `${count} responses`
       } catch (err) {
         console.log(err);
       }
