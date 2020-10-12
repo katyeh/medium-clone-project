@@ -38,11 +38,7 @@ signUpForm.addEventListener("submit", async (event) => {
         localStorage.setItem("READIUM_CURRENT_USER_PIC_URL", picUrl);
         localStorage.setItem("READIUM_CURRENT_USER_FULLNAME", fullName);
         localStorage.setItem("READIUM_CURRENT_USER_USERNAME", username);
-<<<<<<< HEAD
-        window.location.href = "/"
-=======
         window.location.href = '/';
->>>>>>> ryan
     } catch (error) {
         handleErrors(error)
     }
