@@ -49,6 +49,18 @@ module.exports = {
       { followeeId: 10, followerId: 4, createdAt: new Date(), updatedAt: new Date() },
       { followeeId: 11, followerId: 4, createdAt: new Date(), updatedAt: new Date() },
       { followeeId: 12, followerId: 4, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 1, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 2, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 3, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 4, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 5, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 6, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 7, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 8, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 9, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 10, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 11, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
+      { followeeId: 12, followerId: 13, createdAt: new Date(), updatedAt: new Date() },
     ]);
   },
 
