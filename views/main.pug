@@ -29,6 +29,10 @@ block content
               img(src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt="")
           .main-suggestion-story 
             a(href=`/stories/${suggestionStory.id}`)
+            a(href=`/users/${suggestionStory.user.id}/profile/`)
+              img(src=randomIcon(), alt="")
+              span #[strong #{suggestionStory.user.fullName}] in #[strong #{suggestionStory.user.username}]
+            a(href=`/stories/${suggestionStory.id}`)
               h2= suggestionStory.title
               .subtitle= suggestionStory.subtitle
               p Read More &#9733

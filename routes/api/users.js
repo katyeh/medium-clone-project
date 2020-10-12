@@ -144,7 +144,7 @@ router.get('/:id/main', asyncHandler(async (req, res, next) => {
   });
 
   const claps = await Clap.findAll({
-    order: [["updatedAt", "DESC"]],
+    order: [["createdAt", "DESC"]],
     where: {
       userId: req.params.id
     },

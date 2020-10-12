@@ -128,7 +128,7 @@ router.get('/main', asyncHandler(async (req, res, next) => {
   });
 
   const trendingStories = await Story.findAll({
-    include: 'user',
+    include: ['user', Clap],
     limit: 6
   });
 

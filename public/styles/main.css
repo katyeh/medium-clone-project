@@ -157,8 +157,18 @@ a:visited {
 
 #main__stories .main-suggestion-story p {
   color: #757575;
-  padding-top: 1.5rem;
+  padding-top: 1.4rem;
   font-size: 1.2rem;
+}
+
+#main__stories .main-suggestion-story img {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+
+#main__stories .main-suggestion-story span {
+  color: #292929;
 }
 
 #main__stories .suggestion-story {
