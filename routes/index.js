@@ -25,7 +25,7 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.get('/splash', asyncHandler(async(req, res) => {
   res.render('splash', {
-      csrfToken: req.csrfToken()
+    //   csrfToken: req.csrfToken()
     })
 }));
 
@@ -144,7 +144,7 @@ router.get('/stories/create', asyncHandler(async (req, res) => {
   res.render('stories-create', {
       stories,
       genres,
-      csrfToken: req.csrfToken()
+    //   csrfToken: req.csrfToken()
     });
 }));
 
@@ -155,7 +155,7 @@ router.get('/stories/:id/edit', asyncHandler(async (req, res) => {
     res.render('edit-story', {
         story,
         genres,
-        csrfToken: req.csrfToken()
+        // csrfToken: req.csrfToken()
     });
 }));
 

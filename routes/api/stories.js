@@ -82,7 +82,10 @@ router.get("/:storyId/responses/:responseId/claps", asyncHandler(async(req, res)
     res.json({ clapAmount });
 }))
 
-router.post("/:id/clap", asyncHandler(async (req, res) => {
+router.post(
+    "/:id/clap",
+    requireAuth,
+    asyncHandler(async (req, res) => {
     const userId = req.user.id;
     const storyId = req.params.id;
     const clap = await Clap.create({

@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const clapBtn = document.querySelector('.clapImg');
-    clapBtn.addEventListener('click', async () => {
+    clapBtn.addEventListener('click', async (e) => {
         clap();
-        const res = await fetch('/api/:id/claps', {
+        const storyId = e.target.value
+        const res = await fetch(`/api/stories/${storyId}/clap`, {
             method: 'POST',
             body: JSON.stringify(story),
             headers: {
@@ -13,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 )}`,
             },
         })
+        const { clapAmount } = await res.json();
+        console.log(clapAmount)
+        const clapDiv = document.querySelector('.clapNum');
+        clapDiv.innerHTML = clapAmount + " claps";
     });
 });
 
