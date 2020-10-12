@@ -150,11 +150,6 @@ a:visited {
   color: #292929;
 }
 
-#main__stories .main-suggestion-story a {
-  display: inline-block;
-  padding-top: 2rem;
-}
-
 #main__stories .main-suggestion-story p {
   color: #757575;
   padding-top: 1.4rem;
@@ -165,6 +160,11 @@ a:visited {
   width: 2rem;
   height: 2rem;
   margin-right: 1rem;
+}
+
+#main__stories .main-suggestion-story h2 {
+  margin-top: 1.5rem;
+  margin-bottom: -1rem;
 }
 
 #main__stories .main-suggestion-story span {
