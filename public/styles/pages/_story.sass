@@ -1,6 +1,38 @@
 #story
   display: flex
   width: 100vw
+  position: relative
+  &__response
+    display: flex
+    justify-content: center
+    align-items: center
+    position: fixed
+    right: 0
+    top: 0
+    width: 40rem
+    height: 100%
+    background-color: white
+    box-shadow: 0 3px 5px 4px lightgrey
+    #story__response_container
+      height: 95%
+      width: 36rem
+      background-color: white
+      .story__response_header
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        height: auto
+        .story__response_close
+      .story__response_create_box
+        .story__response_create
+          margin-top: 2em
+          width: 100%
+          height: 20rem
+          border-radius: 1%
+          box-shadow: 0 1px 3px 1px lightgrey
+      .story__response_body
+        .story__response-preview
+          border: thin solid black
   &__body
     flex-direction: column
     justify-content: center
