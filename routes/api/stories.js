@@ -25,6 +25,7 @@ const storyValidator = [
 
 router.post(
     '/',
+    requireAuth,
     storyValidator,
     handleValidationErrors,
     asyncHandler(async (req, res, next) => {
@@ -58,9 +59,11 @@ router.get('/:id/responses', asyncHandler(async (req, res, next) => {
 
 router.post(
   '/:id/responses',
+  requireAuth,
   validateResponse,
   handleValidationErrors,
   asyncHandler(async (req, res) => {
+    console.log("beans")
     const { body } = req.body;
     const response = await Response.create({
       body,
