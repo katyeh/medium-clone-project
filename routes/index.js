@@ -9,13 +9,15 @@ const fetch = require('node-fetch');
 const { port, db: { host } } = require('../config');
 
 router.get('/main', asyncHandler(async(req, res) => {
-  const storiesRes = await fetch("http://localhost:8080/api/stories/main");
+  const storiesRes = await fetch(`http://${host}:${port}/api/stories/main`);
 
+  // console.log('!!!!!!!!!!!', readingTime('hello').text);
   const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
   res.render("main", {
     newStories,
     trendingStories,
     suggestionStories,
+    readingTime,
   });
 
   if (storiesRes.status === 401) {

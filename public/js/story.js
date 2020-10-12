@@ -51,3 +51,16 @@ const editStory = document.querySelector(".editStoryBtn");
   })
 
 });
+
+const responseButton = document.getElementById("responseicon1");
+responseButton.addEventListener('click', () => {
+  const responseContainer = document.getElementById("story__response");
+  responseContainer.classList.add("appear")
+})
+
+const closeResponseBtn = document.getElementById("closeResponseButton");
+closeResponseBtn.addEventListener('click', () => {
+  console.log("got it")
+  const responseContainer = document.getElementById("story__response");
+  responseContainer.classList.remove("appear")
+})

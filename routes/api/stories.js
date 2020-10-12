@@ -36,7 +36,7 @@ router.post(
     body,
     userId: req.user.id
   });
-//   res.redirect('/stories');
+  res.redirect('/main');
 }));
 
 const validateResponse = [
@@ -127,30 +127,20 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/main', asyncHandler(async (req, res, next) => {
-console.log('HIHIHIHIHIHI')
   const suggestionStories = await Story.findAll({
     include: "user",
     order: sequelize.random(),
-    attributes: {
-      exclude: ["body"],
-    },
     limit: 5,
   });
 
   const trendingStories = await Story.findAll({
-    include: 'user',
-    attributes: {
-      exclude: ["body"],
-    },
+    include: ['user', Clap],
     limit: 6
   });
 
   const newStories = await Story.findAll({
     order: [['createdAt', 'DESC']],
     include: 'user',
-    attributes: {
-      exclude: ['body'],
-    },
   });
 
   res.json({
@@ -178,8 +168,8 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
 }));
 
 
-router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const storyId = parseInt(req.params.id);
+router.put('/:id(\\d+)', requireAuth, storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
+  const storyId = req.params.id;
   const story = await Story.findByPk(storyId);
   if (story) {
     await story.update({
