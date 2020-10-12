@@ -1,11 +1,11 @@
-import { handleErrors } from "./utils.js"
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const deleteStory = document.querySelector(".deleteStoryBtn");
 
-    deleteStory.addEventListener('click', async () => {
+    deleteStory.addEventListener('click', async (e) => {
+      let storyId = e.target.value
         try {
-            let storyId = story.id
             const res = await fetch(`/api/stories/${storyId}`, {
                 method: "DELETE",
                 headers: {
