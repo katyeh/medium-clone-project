@@ -44,7 +44,7 @@ const editStory = document.querySelector(".editStoryBtn");
           if (!res.ok) {
               throw res;
           }
-          form.reset();
+          responseForm.reset();
       } catch (err) {
         console.log(err);
       }
