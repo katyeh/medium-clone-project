@@ -1,10 +1,23 @@
 extends layout.pug
 include ./utilities/mixin_navbar.pug
+include ./utilities/mixin_response.pug
 
 block content
 
   +navbar('main')
   #story
+    #story__response
+      #story__response_container
+        .story__response_header
+          .story__response_title: h1 Responses ( #{responseAmount} )
+          .story__response_close: input(class="response_close_btn" type="image" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDkwIDQ5MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDkwIDQ5MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBvbHlnb24gcG9pbnRzPSIxMS4zODcsNDkwIDI0NSwyNTUuODMyIDQ3OC42MTMsNDkwIDQ4OS40MzksNDc5LjE3NCAyNTUuODA5LDI0NC45OTYgNDg5LjQzOSwxMC44MTEgNDc4LjYxMywwIDI0NSwyMzQuMTYxIA0KCTExLjM4NywwIDAuNTYxLDEwLjgxMSAyMzQuMTkxLDI0NC45OTYgMC41NjEsNDc5LjE3NCAiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" width="15px" height="15px")
+        .story__response_create_box
+          .story__response_create
+        .story__response_body
+          each response in responses
+            .story__response-preview
+              +response-list-preview(response.User.id, response.User.fullName, response.User.picUrl, response.body)
+
     #story__body
       #story__header
         h1= story.title
