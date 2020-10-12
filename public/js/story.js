@@ -52,7 +52,7 @@ const editStory = document.querySelector(".editStoryBtn");
 
 });
 
-const responseButton = document.getElementById("responseicon1");
+const responseButton = document.querySelector(".responseImg");
 responseButton.addEventListener('click', () => {
   const responseContainer = document.getElementById("story__response");
   responseContainer.classList.add("appear")
