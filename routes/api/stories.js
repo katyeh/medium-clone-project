@@ -175,8 +175,8 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
 }));
 
 
-router.put('/:id(\\d+)', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const storyId = parseInt(req.params.id);
+router.put('/:id(\\d+)', requireAuth, storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
+  const storyId = req.params.id;
   const story = await Story.findByPk(storyId);
   if (story) {
     await story.update({
