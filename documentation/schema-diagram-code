@@ -1,0 +1,61 @@
+Users
+--
+id integer pk FK >- Followers.followerId
+fullName varchar(55)
+username varchar(40)
+email varchar(55)
+hashedPassword varchar
+createdAt timestamp
+updatedAt timestamp
+
+Followers
+--
+followeeId integer FK >- Users.id
+followerId integer
+
+Stories
+--
+id integer pk
+title varchar(255)
+body text
+userId integer FK >- Users.id
+createdAt timestamp
+updatedAt timestamp
+
+
+Responses
+--
+id integer pk
+body varchar(255)
+userId integer FK >- Users.id
+storyId integer FK >- Stories.id
+createdAt timestamp
+updatedAt timestamp
+
+Claps
+--
+id integer pk
+userId integer FK >- Users.id
+storyId integer FK >- Stories.id
+responseId integer FK >- Responses.id
+
+Genres
+--
+id integer pk
+title varchar(100)
+createdAt timestamp
+updatedAt timestamp
+
+StoryGenres
+--
+id integer pk
+genreId integer FK >- Genres.id
+storyId integer FK >- Stories.id
+
+Bookmarks
+--
+id integer pk
+userId integer FK >- Users.id
+storyId integer FK >- Stories.id
+createdAt timestamp
+updatedAt timestamp
