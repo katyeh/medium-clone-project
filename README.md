@@ -2,7 +2,7 @@
 
 Readium is an online publishing platform pertaining to books, inspired by Medium. Users can create, comment, and like each other's articles about their favorite books.
 
-Check out the app: [Live Demo](https://)
+Check out the app: [Live Demo](http://readiumapp.herokuapp.com/)
 
 ### Technologies Used
 
