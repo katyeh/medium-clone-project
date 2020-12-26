@@ -16,14 +16,14 @@ block content
           label(for='subtitle')
             input(type='text' class='storyInput' id='subtitle' name='subtitle' placeholder='Subtitle' value=story.subtitle)
         #storyForm__field
-          label(for='body')
-            textarea(class='storyInput textareaEdit' name='body' rows='5', placeholder='Tell your story...')= story.body
-        #storyForm__field
           label
           select(name="genreId" class='storyInput' id='genre' required)
             each genre in genres
               option(value=genre.id)= genre.title
-        button(type="submit" class="notbeans") submit
+        #storyForm__field
+          label(for='body')
+            textarea(class='storyInput textareaEdit' name='body' rows='5', placeholder='Tell your story...')= story.body
+
   script.
     const tab_a = document.querySelector("tab-a");
     const tab_b = document.querySelector("tab-b");
