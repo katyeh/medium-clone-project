@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const storyId = e.target.value
         const res = await fetch(`/api/stories/${storyId}/clap`, {
             method: 'POST',
-            body: JSON.stringify(story),
+            // body: storyId,
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",

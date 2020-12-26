@@ -1,7 +1,7 @@
 nav#navbar
   #navbar__contents
     .left-contents
-      a(href="/"): h1 Readium
+      a(href="/main"): h1 Readium
       p.greeting
     #rightContents
       div(class="rightContents__icons")
@@ -50,10 +50,6 @@ nav#navbar
           else if (currentTime < 18) greetingContainer.innerHTML = 'Good afternoon <i class="fas fa-rainbow"></i>';
           else greetingContainer.innerHTML = 'Good evening <i class="far fa-moon"></i>';
         #navbar__prof-icon
-        a(class="navbarIcon storyForm-bell")
-          i(class="navbarIcon far fa-bell")
-        a(class="navbarIcon storyForm-ellipsis")
-          i(class="fas fa-ellipsis-h")
         button(type="submit" class="publishBtn") Publish
       #navbar__modal.hidden
         .modal__header
