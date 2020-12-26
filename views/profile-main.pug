@@ -22,7 +22,7 @@ block content
         each story in stories
           -const date = dateInfo.dateFormatter(story.createdAt)
           .profile__body_story-preview
-            +story-preview(user.picUrl, story.id, user.fullName, date, story.title, story.subtitle, story.body, clapAmount)
+            +story-preview(user.picUrl, user.id, user.fullName, date, story.title, story.subtitle, story.body, clapAmount)
 
   script.
     const tab_a = document.querySelector("tab-a");
