@@ -174,6 +174,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/main', asyncHandler(async (req, res, next) => {
+
   const clapped = await Clap.findAll({
     attributes: ['storyId', [sequelize.fn('count', sequelize.col('storyId')), 'count']],
     group: ['Clap.storyId'],
@@ -181,10 +182,9 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     order: [['count', 'DESC']],
     limit: 6
   });
-
   const storyIdsOfTopClapped = clapped.map(c => c.storyId);
 
-  const suggestionStories = await Story.findAll({
+  const randomStories = await Story.findAll({
     where: {
       id: {
         [Op.in]: storyIdsOfTopClapped
@@ -218,7 +218,7 @@ router.get('/main', asyncHandler(async (req, res, next) => {
   });
 
   res.json({
-    suggestionStories,
+    randomStories,
     trendingStories,
     newStories,
   });

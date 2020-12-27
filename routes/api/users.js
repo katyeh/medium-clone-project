@@ -238,7 +238,6 @@ router.get("/:id/profile", asyncHandler(async(req, res) => {
   const userAndStories = await User.findByPk(id,{
     include: Story
   })
-  console.log(userAndStories);
   const followerAmount = await Follower.count({where: {followeeId: id}})
   const followingAmount = await Follower.count({where: {followerId: id}})
   res.json({userAndStories, followingAmount, followerAmount})
@@ -253,18 +252,9 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
     include: [ { model: Story, include: [{ model: User, as: "user" }] }  ]
   })
 
-  const storyIds = clapAndStories.map(obj => {
+  clapAndStories.map(obj => {
     return obj.Story.id
-  })
-
-  // const clapAmount = storyIds.map(async id => {
-  //   let count = await Clap.count({ where: { storyId: id }});
-  //   return count;
-  // })
-
-  // await clapAmount;
-
-  // console.log(clapAmount)
+  });
 
   const followerAmount = await Follower.count({where: {followeeId: userId}})
   const followingAmount = await Follower.count({where: {followerId: userId}})

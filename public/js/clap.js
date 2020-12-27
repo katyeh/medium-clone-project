@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         })
         const { clapAmount } = await res.json();
-        console.log(clapAmount)
         const clapDiv = document.querySelector('.clapNum');
         clapDiv.innerHTML = clapAmount + " claps";
     });
