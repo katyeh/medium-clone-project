@@ -179,13 +179,15 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     group: ['Clap.storyId'],
     raw: true,
     order: [['count', 'DESC']],
-    limit: 5
+    limit: 6
   });
+
+  const storyIdsOfTopClapped = clapped.map(c => c.storyId);
 
   const suggestionStories = await Story.findAll({
     where: {
       id: {
-        [Op.in]: clapped.map(c => c.storyId)
+        [Op.in]: storyIdsOfTopClapped
       }
     },
     include: "user",
@@ -193,11 +195,23 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     limit: 5,
   });
 
-  const trendingStories = await Story.findAll({
+  let trendingStories = await Story.findAll({
+    where: {
+      id: {
+        [Op.in]: clapped.map(c => c.storyId)
+      },
+    },
     include: ['user', Clap],
     limit: 6
   });
-
+  
+  trendingStories = trendingStories.sort((a, b) => {
+    if (storyIdsOfTopClapped.indexOf(a.id) < storyIdsOfTopClapped.indexOf(b.id)) {
+      return -1;
+    }
+    return 1;
+  });
+  
   const newStories = await Story.findAll({
     order: [['createdAt', 'DESC']],
     include: 'user',
