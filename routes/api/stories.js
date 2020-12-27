@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 const { requireAuth } = require('../../auth');
 const { sequelize } = require("../../db/models");
+const { Op } = require('sequelize');
 const fetch = require('node-fetch');
 
 const storyValidator = [
@@ -174,17 +175,19 @@ router.get('/', asyncHandler(async (req, res, next) => {
 
 router.get('/main', asyncHandler(async (req, res, next) => {
   const clapped = await Clap.findAll({
-    attributes: ['storyId', [sequelize.fn('count', sequelize.col('storyId')), 'storyId']],
+    attributes: ['storyId', [sequelize.fn('count', sequelize.col('storyId')), 'count']],
     group: ['Clap.storyId'],
     raw: true,
     order: [['count', 'DESC']],
     limit: 5
   });
 
-  console.log('-!!!!!!!!!!')
-  console.log(clapped)
-
   const suggestionStories = await Story.findAll({
+    where: {
+      id: {
+        [Op.in]: clapped.map(c => c.storyId)
+      }
+    },
     include: "user",
     order: sequelize.random(),
     limit: 5,
