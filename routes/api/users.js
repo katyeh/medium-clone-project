@@ -276,6 +276,7 @@ const followingAmount = await Follower.count({where: {followerId: userId}})
         "subtitle": clap.Story.subtitle,
         "body": clap.Story.body,
         "clapAmount": clapAmount[i],
+        "createdAt": clap.Story.createdAt,
         "user": clap.Story.user
 
     }
