@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 const { requireAuth } = require('../../auth');
 const { sequelize } = require("../../db/models");
+const fetch = require('node-fetch');
 
 const storyValidator = [
   check('title')
@@ -29,15 +30,57 @@ router.post(
     storyValidator,
     handleValidationErrors,
     asyncHandler(async (req, res, next) => {
-  const { title, subtitle, body} = req.body;
+
+  const { title, subtitle, body, genreId} = req.body;
+  let collectionId;
+  switch(+genreId) {
+    case(1): {
+      collectionId = 91261971;
+      break;
+    }
+    case(2): {
+      collectionId = 91274923;
+      break;
+    }
+    case(3): {
+      collectionId = 49463825;
+      break;
+    }
+    case(4): {
+      collectionId = 89874913;
+      break;
+    }
+    case(5): {
+      collectionId = 64106385;
+      break;
+    }
+    case(6): {
+      collectionId = 87237332;
+      break;
+    }
+    case(7): {
+      collectionId = 71772644;
+      break;
+    }
+    default: {
+      return;
+    }
+  }
+
+  const imageData = await fetch(`https://source.unsplash.com/collection/${collectionId}`);
   const story = await Story.create({
     title,
     subtitle,
     body,
     userId: req.user.id,
-    imageUrl:
-      "https://www.vroomkart.com/sites/vroomkart.com/files/default_images/placeholder-640x480.png",
+    imageUrl: imageData.url,
   });
+
+  await StoryGenre.create({
+    genreId,
+    storyId: story.id
+  });
+
   res.redirect('/main');
 }));
 
