@@ -278,9 +278,6 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
 
   clapAndStories.map(obj => {
     return obj.Story.id
-<<<<<<< HEAD
-  });
-=======
   })
 
   const clapAmount = [];
@@ -291,7 +288,6 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
 
 const followerAmount = await Follower.count({where: {followeeId: userId}})
 const followingAmount = await Follower.count({where: {followerId: userId}})
->>>>>>> main
 
   const stories = clapAndStories.map(((clap, i) => {
     return {
