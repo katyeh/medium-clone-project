@@ -1565,12 +1565,37 @@ a:visited {
   font-size: 18px;
 }
 
-.profile__container .profile__body_story .profile__body_story-preview .profile_body_story-preview_clapImage .clapButton {
+.profile__container .profile__body_story .profile__body_story-preview .story-preview_clapDiv {
+  height: auto;
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.profile__container .profile__body_story .profile__body_story-preview .story-preview_clapDiv .profile_body_story-preview_clapImage {
+  display: inline-block;
+  padding-right: 1em;
+}
+
+.profile__container .profile__body_story .profile__body_story-preview .story-preview_clapDiv .profile_body_story-preview_clapImage .clapButton {
   height: 25px;
   width: 25px;
   -webkit-transform: scaleX(-1);
           transform: scaleX(-1);
   margin-top: 20px;
+}
+
+.profile__container .profile__body_story .profile__body_story-preview .profile_body_story-preview_clapAmount {
+  display: inline-block;
+  padding-bottom: .5em;
 }
 
 .profile__container .profile__body_follow-list .profile__body_follow-list-preview {
@@ -2350,10 +2375,10 @@ a:visited {
 
 .textareaEdit {
   margin-top: 2vw;
+  margin-bottom: 10em;
   width: 45vw;
   height: 50vw;
   font-size: 18px;
-  margin-bottom: 10vw;
 }
 
 .navbarIcon {
@@ -2482,7 +2507,6 @@ html {
 #subtitle {
   font-size: x-large;
   margin-top: 15px;
-  width: 36em;
 }
 
 #body {

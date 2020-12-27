@@ -41,10 +41,12 @@ router.get(
     );
     const {
       userAndStories,
+      stories,
       followingAmount,
       followerAmount,
     } = await data.json();
     const dateFormatter = require("./dateFormatter");
+    // const clapAmount = await Clap.count({ where: { storyId }});
 
     let dateInfo = {};
     dateInfo.title = "Demo";
@@ -52,7 +54,7 @@ router.get(
 
     res.render("profile-main", {
       user: userAndStories,
-      stories: userAndStories.Stories,
+      stories: stories,
       followingAmount,
       followerAmount,
       dateInfo,
@@ -65,23 +67,20 @@ router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
   const data = await fetch(
     `http://${host}:${port}/api/users/${userId}/profile/claps`
   );
-  const { user, clapAndStories, followingAmount, followerAmount } = await data.json();
+  const { user, stories, followingAmount, followerAmount } = await data.json();
   const dateFormatter = require("./dateFormatter");
 
   let dateInfo = {};
   dateInfo.title = "Demo";
   dateInfo.dateFormatter = dateFormatter;
 
-  const stories = clapAndStories.map(clap => {
-    return clap.Story
-  })
 
   res.render("profile-claps", {
-    user: user,
-    stories: stories,
+    user,
+    stories,
     followingAmount,
     followerAmount,
-    dateInfo
+    dateInfo,
   })
 }));
 
@@ -90,23 +89,19 @@ router.get("/users/:id/profile/responses", asyncHandler(async(req, res) => {
   const data = await fetch(
     `http://${host}:${port}/api/users/${userId}/profile/responses`
   );
-  const { user, responseAndStories, followingAmount, followerAmount } = await data.json();
+  const { user, stories, followingAmount, followerAmount } = await data.json();
   const dateFormatter = require("./dateFormatter");
 
   let dateInfo = {};
   dateInfo.title = "Demo";
   dateInfo.dateFormatter = dateFormatter;
 
-  const stories = responseAndStories.map(response => {
-    return response.Story
-  })
-
   res.render("profile-responses", {
     user: user,
-    stories: stories,
+    stories,
     followingAmount,
     followerAmount,
-    dateInfo
+    dateInfo,
   })
 }));
 
