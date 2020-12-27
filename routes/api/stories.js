@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator');
 const {User, Story, Response, Clap, StoryGenre, Genre } = db;
 const { requireAuth } = require('../../auth');
 const { sequelize } = require("../../db/models");
+const { Op } = require('sequelize');
 const fetch = require('node-fetch');
 
 const storyValidator = [
@@ -175,24 +176,51 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }))
 
 router.get('/main', asyncHandler(async (req, res, next) => {
-  const suggestionStories = await Story.findAll({
+
+  const clapped = await Clap.findAll({
+    attributes: ['storyId', [sequelize.fn('count', sequelize.col('storyId')), 'count']],
+    group: ['Clap.storyId'],
+    raw: true,
+    order: [['count', 'DESC']],
+    limit: 6
+  });
+  const storyIdsOfTopClapped = clapped.map(c => c.storyId);
+
+  const randomStories = await Story.findAll({
+    where: {
+      id: {
+        [Op.in]: storyIdsOfTopClapped
+      }
+    },
     include: "user",
     order: sequelize.random(),
     limit: 5,
   });
 
-  const trendingStories = await Story.findAll({
+  let trendingStories = await Story.findAll({
+    where: {
+      id: {
+        [Op.in]: clapped.map(c => c.storyId)
+      },
+    },
     include: ['user', Clap],
     limit: 6
   });
-
+  
+  trendingStories = trendingStories.sort((a, b) => {
+    if (storyIdsOfTopClapped.indexOf(a.id) < storyIdsOfTopClapped.indexOf(b.id)) {
+      return -1;
+    }
+    return 1;
+  });
+  
   const newStories = await Story.findAll({
-    order: [['createdAt', 'ASC']],
+    order: [['createdAt', 'DESC']],
     include: 'user',
   });
 
   res.json({
-    suggestionStories,
+    randomStories,
     trendingStories,
     newStories,
   });
