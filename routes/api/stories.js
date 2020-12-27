@@ -93,7 +93,9 @@ router.post(
     requireAuth,
     asyncHandler(async (req, res) => {
     const userId = req.user.id;
+    console.log("User Id", userId, "\n");
     const storyId = req.params.id;
+    console.log("Story Id\n", storyId, "\n");
     const clap = await Clap.create({
       userId,
       storyId

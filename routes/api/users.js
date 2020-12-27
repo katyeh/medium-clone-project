@@ -238,7 +238,7 @@ router.get("/:id/profile", asyncHandler(async(req, res) => {
   const userAndStories = await User.findByPk(id,{
     include: Story
   })
-  console.log(userAndStories);
+  console.log("user and stories\n\n",userAndStories, "\n\n");
   const followerAmount = await Follower.count({where: {followeeId: id}})
   const followingAmount = await Follower.count({where: {followerId: id}})
   res.json({userAndStories, followingAmount, followerAmount})
@@ -257,18 +257,31 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
     return obj.Story.id
   })
 
-  // const clapAmount = storyIds.map(async id => {
-  //   let count = await Clap.count({ where: { storyId: id }});
-  //   return count;
-  // })
+  const clapAmount = [];
+  await storyIds.forEach(id => {
+    Clap.count({ where: { storyId: id }}).then((clap) => clapAmount.push(clap))
+  })
 
-  // await clapAmount;
 
-  // console.log(clapAmount)
+const followerAmount = await Follower.count({where: {followeeId: userId}})
+const followingAmount = await Follower.count({where: {followerId: userId}})
 
-  const followerAmount = await Follower.count({where: {followeeId: userId}})
-  const followingAmount = await Follower.count({where: {followerId: userId}})
-  res.json({user, clapAndStories, followingAmount, followerAmount})
+
+// console.log("clapAmount\n\n", clapAmount, "\n\n")
+
+  const stories = clapAndStories.map(((clap, i) => {
+    return {
+        "id": clap.Story.id,
+        "title": clap.Story.title,
+        "subtitle": clap.Story.subtitle,
+        "body": clap.Story.body,
+        "clapAmount": clapAmount[i],
+        "user": clap.Story.user
+
+    }
+  }))
+//   console.log("Claps and stories\n", stories, "\n")
+  res.json({user, stories, followingAmount, followerAmount})
 }))
 
 router.get("/:id/profile/responses", asyncHandler(async(req, res) => {

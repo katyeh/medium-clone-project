@@ -22,12 +22,13 @@ block content
         each story in stories
           -const date = dateInfo.dateFormatter(story.createdAt)
           .profile__body_story-preview
-            +story-preview(user.picUrl, story.id, user.fullName, date, story.title, story.subtitle, story.body, clapAmount)
+            +story-preview(user.picUrl, story.id, user.fullName, date, story.title, story.subtitle, story.body, clapAmount, story.id)
 
+  script(type="module" src="/js/clap.js")
   script.
-    const tab_a = document.querySelector("tab-a");
-    const tab_b = document.querySelector("tab-b");
-    const tab_c = document.querySelector("tab-c");
+    const tab_a = document.querySelector(".tab-a");
+    const tab_b = document.querySelector(".tab-b");
+    const tab_c = document.querySelector(".tab-c");
     const profIcon = document.getElementById('navbar__prof-icon');
     const modal = document.getElementById('navbar__modal');
     profIcon.addEventListener('click', e => {
@@ -37,7 +38,7 @@ block content
       tab_a.classList.remove(".tab--underline");
       tab_b.classList.add(".tab--underline");
     });
-    tab-c.addEventListener("click", e => {
+    tab_c.addEventListener("click", e => {
       tab_a.classList.remove(".tab--underline");
       tab_c.classList.add(".tab--underline");
     });

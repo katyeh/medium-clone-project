@@ -46,6 +46,7 @@ router.get(
       followerAmount,
     } = await data.json();
     const dateFormatter = require("./dateFormatter");
+    // const clapAmount = await Clap.count({ where: { storyId }});
 
     let dateInfo = {};
     dateInfo.title = "Demo";
@@ -66,23 +67,26 @@ router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
   const data = await fetch(
     `http://${host}:${port}/api/users/${userId}/profile/claps`
   );
-  const { user, clapAndStories, followingAmount, followerAmount } = await data.json();
+  const { user, stories, followingAmount, followerAmount } = await data.json();
   const dateFormatter = require("./dateFormatter");
+//   const clapAmount = await Clap.count({ where: { storyId }});
 
   let dateInfo = {};
   dateInfo.title = "Demo";
   dateInfo.dateFormatter = dateFormatter;
 
-  const stories = clapAndStories.map(clap => {
-    return clap.Story
-  })
+//   const stories = clapAndStories.map(clap => {
+//     return clap.Story
+//   })
+
+    console.log(stories)
 
   res.render("profile-claps", {
     user: user,
     stories: stories,
     followingAmount,
     followerAmount,
-    dateInfo
+    dateInfo,
   })
 }));
 
@@ -93,6 +97,7 @@ router.get("/users/:id/profile/responses", asyncHandler(async(req, res) => {
   );
   const { user, responseAndStories, followingAmount, followerAmount } = await data.json();
   const dateFormatter = require("./dateFormatter");
+//   const clapAmount = await Clap.count({ where: { storyId }});
 
   let dateInfo = {};
   dateInfo.title = "Demo";
@@ -107,7 +112,7 @@ router.get("/users/:id/profile/responses", asyncHandler(async(req, res) => {
     stories: stories,
     followingAmount,
     followerAmount,
-    dateInfo
+    dateInfo,
   })
 }));
 
