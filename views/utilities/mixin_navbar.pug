@@ -25,8 +25,6 @@ mixin navbar(pageName, img)
               li: a(class="nav-profile-link" href="") Profile
               li: a(class="nav-profile-sign-out" href="/") Sign out
         script.
-          //- const nav = document.getElementById('navbar');
-          //- nav.classList.remove('shadow');
           const newStoryLink = document.querySelector(".nav-new-story-link");
           const userStoriesLink = document.querySelector(".nav-user-stories");
           const profileLink = document.querySelector(".nav-profile-link");
@@ -61,10 +59,6 @@ mixin navbar(pageName, img)
       else if pageName == 'storyForm'
         #right-contents
           #navbar__prof-icon
-          //- a(class="navbarIcon storyForm-bell")
-          //-   i(class="navbarIcon far fa-bell")
-          //- a(class="navbarIcon storyForm-ellipsis")
-          //-   i(class="navbarIcon fal fa-plus-circle")
           button(class="navbarIcon publishBtn") Publish
           #navbar__modal.hidden
             .modal__header

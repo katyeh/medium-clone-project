@@ -12,12 +12,11 @@ const { port } = require('../config');
 router.get('/main', asyncHandler(async(req, res) => {
   const storiesRes = await fetch(`http://${host}:${port}/api/stories/main`);
 
-  // console.log('!!!!!!!!!!!', readingTime('hello').text);
-  const { newStories, trendingStories, suggestionStories } = await storiesRes.json();
+  const { newStories, trendingStories, randomStories } = await storiesRes.json();
   res.render("main", {
     newStories,
     trendingStories,
-    suggestionStories,
+    randomStories,
     readingTime,
   });
 

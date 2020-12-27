@@ -276,7 +276,7 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
     include: [ { model: Story, include: [{ model: User, as: "user" }] }  ]
   })
 
-  const storyIds = clapAndStories.map(obj => {
+  clapAndStories.map(obj => {
     return obj.Story.id
   })
 
