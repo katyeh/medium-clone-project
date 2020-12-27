@@ -42,6 +42,7 @@ router.get(
     );
     const {
       userAndStories,
+      stories,
       followingAmount,
       followerAmount,
     } = await data.json();
@@ -54,7 +55,7 @@ router.get(
 
     res.render("profile-main", {
       user: userAndStories,
-      stories: userAndStories.Stories,
+      stories: stories,
       followingAmount,
       followerAmount,
       dateInfo,
@@ -69,21 +70,15 @@ router.get("/users/:id/profile/claps", asyncHandler(async(req, res) => {
   );
   const { user, stories, followingAmount, followerAmount } = await data.json();
   const dateFormatter = require("./dateFormatter");
-//   const clapAmount = await Clap.count({ where: { storyId }});
 
   let dateInfo = {};
   dateInfo.title = "Demo";
   dateInfo.dateFormatter = dateFormatter;
 
-//   const stories = clapAndStories.map(clap => {
-//     return clap.Story
-//   })
-
-    console.log(stories)
 
   res.render("profile-claps", {
-    user: user,
-    stories: stories,
+    user,
+    stories,
     followingAmount,
     followerAmount,
     dateInfo,
