@@ -2,7 +2,7 @@ mixin story-preview(picUrl, id, name, date, title, subtitle, body, clapAmount, s
   img(class="story-preview_img" src=`${picUrl}` height="40px" width="40")
   .profile_body_story-preview_name: a(href=`/users/${id}/profile`).story-preview_name= name
   .profile_body_story-preview_date: p.story-preview_date= date
-  .profile_body_story-preview_title: a(href=`/stories/${id}`).story-preview_title= title
+  .profile_body_story-preview_title: a(href=`/stories/${storyId}`).story-preview_title= title
   .profile_body_story-preview_subtitle: p.story-preview_subtitle= subtitle
   .profile_body_story-preview_body: p.story-preview_body= body
   div.story-preview_clapDiv
