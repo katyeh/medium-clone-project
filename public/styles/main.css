@@ -2505,6 +2505,7 @@ html {
 }
 
 #subtitle {
+  width: 24em;
   font-size: x-large;
   margin-top: 15px;
 }
