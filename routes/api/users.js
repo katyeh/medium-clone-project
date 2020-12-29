@@ -273,7 +273,12 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
     include: [ { model: Story, include: [{ model: User, as: "user" }] }  ]
   })
 
-  const storyIds = clapAndStories.map(obj => {
+  const uniqueStories = Array.from(new Set(clapAndStories.map(obj => obj.storyId)))
+    .map(id => {
+        return clapAndStories.find(obj => obj.storyId === id);
+    })
+
+  const storyIds = uniqueStories.map(obj => {
     return obj.Story.id
   })
 
@@ -286,7 +291,7 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
 const followerAmount = await Follower.count({where: {followeeId: userId}})
 const followingAmount = await Follower.count({where: {followerId: userId}})
 
-  const stories = clapAndStories.map(((clap, i) => {
+  const stories = uniqueStories.map(((clap, i) => {
     return {
         "id": clap.Story.id,
         "title": clap.Story.title,
