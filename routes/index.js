@@ -183,9 +183,13 @@ router.get('/stories/:id', asyncHandler(async (req, res) => {
     const date = month + " " + story.createdAt.slice(8,10) + ", " + year
     const userId = story.userId;
     const user = await User.findByPk(userId);
-
-    // responses.forEach(response => {
-    //   console.log(response.User)
+    // console.log("THIS IS THE USERR\n", req.user)
+    // let followerId = localStorage.getItem("READIUM_CURRENT_USER_ID")
+    // const following = await Follower.findOne({
+    //   where: {
+    //     followeeId: userId,
+    //     followerId: followerId
+    //   }
     // })
     res.render('story', { story, user, date, readTime, clapAmount, responseAmount, responses});
 }));

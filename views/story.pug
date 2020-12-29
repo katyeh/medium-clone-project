@@ -45,7 +45,7 @@ block content
             div(class="fullNameDiv")
               p=user.fullName
             div(class="followBtnDiv")
-              button(type="button" class="followBtn") Follow
+              button(type="button" value=user.id class="followBtn") Follow
           div(class="date")
             p=date + "·" + readTime
         div(class="social-list")
@@ -77,8 +77,8 @@ block content
               div(class="fullNameDiv")
                 p(class="author") Written By
                 p(class="authorName")=user.fullName
-              div(class="followBtnDiv")
-                button(type="button" class="followBtn") Follow
+              //- div(class="followBtnDiv")
+              //-   button(type="button" class="followBtn") Follow
   script(type="module" src="/js/story.js")
   script(type="module" src="/js/deleteStory.js")
   script(type="module" src="/js/followBtn.js")
