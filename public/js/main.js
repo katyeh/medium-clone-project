@@ -5,7 +5,13 @@ const followingContainer = document.querySelector(
 const clapsContainer = document.getElementById("main__clapsList");
 
 const getUserInfo = userId => {
-  return fetch(`api/users/${userId}`)
+  return fetch(`api/users/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem(
+          "READIUM_ACCESS_TOKEN"
+          )}`,
+      },
+  })
     .then((res) => res.json())
     .then((res) => res.user)
 }

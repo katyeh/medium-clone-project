@@ -160,9 +160,8 @@ router.get('/:id/main', asyncHandler(async (req, res, next) => {
 
 router.get(
   "/:id(\\d+)",
+  requireAuth,
   asyncHandler(async (req, res, next) => {
-    // TODO: Must validate token to check if the user has authority to view the info!
-
     const user = await User.findOne({
       where: { id: req.params.id },
     });
@@ -175,9 +174,9 @@ router.get(
   })
 );
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
-  // TODO: Must validate token to check if the user has authority to delete the user info!!
-
+router.delete('/:id(\\d+)',
+  requireAuth,
+  asyncHandler(async (req, res, next) => {
   const user = await User.findOne({
     where: { id: req.params.id },
   });
