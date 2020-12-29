@@ -237,11 +237,9 @@ router.get("/:id/profile", asyncHandler(async(req, res) => {
   const userAndStories = await User.findByPk(id,{
     include: Story
   })
-//   console.log("user and stories\n\n",userAndStories, "\n\n");
   const storyIds = userAndStories.Stories.map(obj => {
     return obj.id
   })
-  console.log("story ids\n\n", storyIds, "\n\n")
   const clapAmount = [];
   await storyIds.forEach(id => {
     Clap.count({ where: { storyId: id }}).then((clap) => clapAmount.push(clap))
@@ -262,7 +260,6 @@ router.get("/:id/profile", asyncHandler(async(req, res) => {
         "user": userAndStories
     }
   }))
-  console.log("user", userAndStories)
   res.json({userAndStories, stories, followingAmount, followerAmount})
 }))
 
@@ -275,7 +272,12 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
     include: [ { model: Story, include: [{ model: User, as: "user" }] }  ]
   })
 
-  const storyIds = clapAndStories.map(obj => {
+  const uniqueStories = Array.from(new Set(clapAndStories.map(obj => obj.storyId)))
+    .map(id => {
+        return clapAndStories.find(obj => obj.storyId === id);
+    })
+
+  const storyIds = uniqueStories.map(obj => {
     return obj.Story.id
   })
 
@@ -288,7 +290,7 @@ router.get("/:id/profile/claps", asyncHandler(async(req, res) => {
 const followerAmount = await Follower.count({where: {followeeId: userId}})
 const followingAmount = await Follower.count({where: {followerId: userId}})
 
-  const stories = clapAndStories.map(((clap, i) => {
+  const stories = uniqueStories.map(((clap, i) => {
     return {
         "id": clap.Story.id,
         "title": clap.Story.title,
