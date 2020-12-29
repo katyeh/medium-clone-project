@@ -223,11 +223,28 @@ router.post("/follow", asyncHandler(async(req, res) => {
     res.end();
 }));
 
+router.get("/:followeeId/:followerId/checkfollow", asyncHandler(async(req,res) => {
+    const following = await Follower.count({
+      where: {
+        followeeId: req.params.followeeId,
+        followerId: req.params.followerId
+      }
+    })
+    console.log(following)
+  if (following > 0) {
+    res.json(true)
+  } else {
+    res.json(false)
+  }
+}))
+
 router.delete("/follow", asyncHandler(async(req, res) => {
     const { followerId, followeeId } = req.body;
     await Follower.destroy({
+      where: {
         followeeId,
         followerId
+      }
     });
     res.end();
 }));
