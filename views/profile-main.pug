@@ -21,7 +21,7 @@ block content
       .profile__body_story
         each story in stories
           -const date = dateInfo.dateFormatter(story.createdAt)
-          .profile__body_story-preview
+          .profile__body_story-preview(key= story.id)
             +story-preview(user.picUrl, user.id, user.fullName, date, story.title, story.subtitle, story.body, story.clapAmount, story.id)
 
   script(type="module" src="/js/clap.js")

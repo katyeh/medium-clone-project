@@ -137,9 +137,7 @@ router.post(
     requireAuth,
     asyncHandler(async (req, res) => {
     const userId = req.user.id;
-    console.log("User Id", userId, "\n");
     const storyId = req.params.id;
-    console.log("Story Id\n", storyId, "\n");
     const clap = await Clap.create({
       userId,
       storyId
@@ -206,14 +204,14 @@ router.get('/main', asyncHandler(async (req, res, next) => {
     include: ['user', Clap],
     limit: 6
   });
-  
+
   trendingStories = trendingStories.sort((a, b) => {
     if (storyIdsOfTopClapped.indexOf(a.id) < storyIdsOfTopClapped.indexOf(b.id)) {
       return -1;
     }
     return 1;
   });
-  
+
   const newStories = await Story.findAll({
     order: [['createdAt', 'DESC']],
     include: 'user',

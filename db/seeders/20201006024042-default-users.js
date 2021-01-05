@@ -62,7 +62,7 @@ module.exports = {
           email: "john@doe.com",
           hashedPassword:
             "$2b$10$lYAdho1ns2ChPIAzLfv/depkJjlCXbMy9a62VmiolZFb/TtibcudS",
-          picUrl: "https://img.icons8.com/color/48/000000/year-of-goat.png",
+          picUrl: "https://www.flaticon.com/svg/static/icons/svg/3975/3975287.svg",
             createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -92,7 +92,7 @@ module.exports = {
           email: "mimi@wwkjf.com",
           hashedPassword:
             "$2b$10$lYAdho1ns2ChPIAzLfv/depkJjlCXbMy9a62VmiolZFb/TtibcudS",
-          picUrl: "https://img.icons8.com/color/48/000000/library.png",
+          picUrl: "https://www.flaticon.com/svg/static/icons/svg/3069/3069172.svg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -102,7 +102,7 @@ module.exports = {
           email: "gg638100@outlook.com",
           hashedPassword:
             "$2b$10$lYAdho1ns2ChPIAzLfv/depkJjlCXbMy9a62VmiolZFb/TtibcudS",
-          picUrl: "https://img.icons8.com/color/48/000000/full-moon.png",
+          picUrl: "https://www.flaticon.com/svg/static/icons/svg/3048/3048127.svg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -112,7 +112,7 @@ module.exports = {
           email: "lynn@bb.com",
           hashedPassword:
             "$2b$10$lYAdho1ns2ChPIAzLfv/depkJjlCXbMy9a62VmiolZFb/TtibcudS",
-          picUrl: "https://img.icons8.com/color/48/000000/water-element.png",
+          picUrl: "https://www.flaticon.com/svg/static/icons/svg/3975/3975033.svg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
