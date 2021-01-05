@@ -18,7 +18,7 @@ Check out the app: [Live Demo](http://readiumapp.herokuapp.com/) 💫
 ✳️&nbsp; RDBMS = PostgreSQL <br>
 ✳️&nbsp; ORM = Sequelize <br>
 
-###  Instruction
+###  Instructions
 1. Clone the repository.
 2. Run `npm install` from the root directory to install all dependencies.
 3. Run `npm start` to start up the app.
