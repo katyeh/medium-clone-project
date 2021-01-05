@@ -4,8 +4,9 @@ Readium is an online publishing platform pertaining to books, inspired by Medium
 
 Check out the app: [Live Demo](http://readiumapp.herokuapp.com/)
 
-### Technologies Used
+![Readium main image](https://raw.githubusercontent.com/katyeh/medium-clone-project/main/public/readium.gif)
 
+### Technologies Used
 
 * HTML5
 * CSS3
@@ -17,8 +18,12 @@ Check out the app: [Live Demo](http://readiumapp.herokuapp.com/)
 * RDBMS = PostgreSQL
 * ORM = Sequelize
 
+###  Instruction
+1. Clone the repository.
+2. Run `npm install` from the root directory to install all dependencies.
+3. Run `npm start` to start up the app.
+4. Navigate to http://localhost:8080/ on a browser.
 ### Documentation
-
 
 * [Feature List](/documentation/featureList.md)
 * [MVP](/documentation/MVP.md)
