@@ -3,7 +3,11 @@
   margin: 3rem 0 2rem 0
   position: relative
   top: 0
-  background: $color-background-light
+
+  @include respond-large
+    display: flex
+    justify-content: space-around
+    padding: 0 5rem
 
   &.shadow
     box-shadow: 0 4px 16px -10px lightgrey
@@ -18,7 +22,8 @@
     position: relative
     justify-content: space-between
     align-items: center
-    padding-bottom: 1.75rem
+    padding-bottom: 1.75rem     
+    width: 100% 
 
     .left-contents
       display: flex
@@ -58,6 +63,11 @@
     background-color: $color-background-light
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
     padding-bottom: 38rem
+
+    @include respond-xlarge
+      position: fixed
+      right: 8rem
+      top: 8rem
 
     & > *
       border-bottom: $border-light
