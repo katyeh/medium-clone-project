@@ -2630,6 +2630,14 @@ html {
   padding-bottom: 38rem;
 }
 
+@media (max-width: 1400px) {
+  #navbar__modal {
+    position: fixed;
+    right: 7%;
+    top: 8rem;
+  }
+}
+
 #navbar__modal > * {
   border-bottom: 1px solid #e6e6e6;
   padding: 4.5rem 0;
