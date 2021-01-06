@@ -1258,6 +1258,9 @@ a:visited {
 
 #splash__footer {
   background: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1269,6 +1272,14 @@ a:visited {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#splash__footer-left {
+  display: flex;
+}
+
+#splash__footer-right {
+  font-size: 1.8rem;
 }
 
 #ptext2 {
