@@ -6,8 +6,12 @@
   margin: 0 2.5rem 0 0
   border-right: $color
 
-@mixin respond-large
+@mixin respond-xlarge
   @media (max-width: 1400px)
+    @content
+
+@mixin respond-large
+  @media (max-width: 1300px)
     @content
 
 @mixin respond-medium

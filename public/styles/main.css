@@ -2542,7 +2542,17 @@ html {
   margin: 3rem 0 2rem 0;
   position: relative;
   top: 0;
-  background: rgba(255, 255, 255, 0.98);
+}
+
+@media (max-width: 1300px) {
+  #navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 0 5rem;
+  }
 }
 
 #navbar.shadow {
@@ -2570,6 +2580,7 @@ html {
       -ms-flex-align: center;
           align-items: center;
   padding-bottom: 1.75rem;
+  width: 100%;
 }
 
 #navbar__contents .left-contents {
