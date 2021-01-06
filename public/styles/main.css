@@ -90,6 +90,12 @@ a:visited {
   grid-column: 1 / -1;
 }
 
+@media (max-width: 1300px) {
+  #main {
+    background: pink;
+  }
+}
+
 #main__stories {
   margin: 0 2.5rem 0 0;
   border-right: 1px solid #e6e6e6;
@@ -106,6 +112,8 @@ a:visited {
           flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  background: skyblue;
+  width: 100%;
 }
 
 #main__stories > * {
@@ -245,6 +253,14 @@ a:visited {
   height: 50rem;
 }
 
+@media (max-width: 1300px) {
+  #main__from-following {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+  }
+}
+
 #main__from-following .green-link {
   color: #03a87c;
   padding: 1.5rem;
@@ -261,6 +277,14 @@ a:visited {
       flex-wrap: wrap;
   position: relative;
   left: -1.5rem;
+}
+
+@media (max-width: 1300px) {
+  #main__from-following .following-users-container {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+  }
 }
 
 #main__from-following .following-users-container > * {
@@ -298,6 +322,12 @@ a:visited {
   height: auto;
 }
 
+@media (max-width: 1300px) {
+  #main__trends {
+    width: 100%;
+  }
+}
+
 #main__trends .trending__container {
   display: -ms-grid;
   display: grid;
@@ -305,6 +335,23 @@ a:visited {
       grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
   -ms-grid-rows: (13rem)[2];
       grid-template-rows: repeat(2, 13rem);
+}
+
+@media (max-width: 1300px) {
+  #main__trends .trending__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    height: 40rem;
+    -ms-flex-line-pack: distribute;
+        align-content: space-around;
+  }
 }
 
 #main__trends .trending__container > * {
@@ -315,6 +362,12 @@ a:visited {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+@media (max-width: 1300px) {
+  #main__trends .trending__story {
+    width: 30rem;
+  }
 }
 
 #main__trends .trending__story .left {
@@ -2535,6 +2588,24 @@ html {
   display: grid;
   -ms-grid-columns: 1fr (minmax(40rem, 1fr))[3] 1fr;
       grid-template-columns: 1fr repeat(3, minmax(40rem, 1fr)) 1fr;
+}
+
+@media (max-width: 1300px) {
+  #main,
+  #splash,
+  #navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0 5rem;
+  }
 }
 
 #navbar {

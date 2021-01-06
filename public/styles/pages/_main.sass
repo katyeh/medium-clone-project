@@ -3,8 +3,9 @@
     @include border-bottom($border-light)
     grid-column: 1 / -1
 
-  & *
-    // border: 1px solid black
+  @include respond-large
+    background: pink
+
 
   &__stories
     @include border-right($border-light)
@@ -13,6 +14,11 @@
     display: flex
     flex-direction: column
     flex-wrap: wrap
+    background: skyblue
+    width: 100%
+
+    @include respond-large
+      // grid-column: 1 / -1
 
     & > *
       padding: 0 1.5rem 0 0
@@ -129,6 +135,9 @@
     grid-column: 4
     height: 50rem
 
+    @include respond-large
+      height: max-content
+
     .green-link
       color: $color-green-dark
       padding: 1.5rem
@@ -141,6 +150,9 @@
       flex-wrap: wrap
       position: relative
       left: -1.5rem
+
+      @include respond-large
+        height: max-content
 
       & > *
         width: 9rem
@@ -165,17 +177,30 @@
     grid-column: 2 / span 3
     height: auto
 
+    @include respond-large
+      width: 100%
+
     .trending
       &__container
         display: grid
         grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr))
         grid-template-rows: repeat(2, 13rem)
 
+        @include respond-large
+          display: flex
+          flex-direction: column
+          flex-wrap: wrap
+          height: 40rem
+          align-content: space-around
+
         & > *
           padding: 1.5rem 1.5rem 1.5rem 0
 
       &__story
         display: flex
+
+        @include respond-large
+          width: 30rem
 
         .left
           width: 15%
