@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             window.location.href = `/users/${userId}/profile`
         } catch (err) {
-            console.log("error")
+            // console.log("error")
         }
     });
 });
