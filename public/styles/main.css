@@ -15,6 +15,10 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  color: #292929;
+}
+
 h1,
 h2,
 h3,
@@ -128,10 +132,6 @@ a:visited {
   #main__stories > * {
     padding: 0;
   }
-}
-
-#main__stories h2, #main__stories h3 {
-  color: #292929;
 }
 
 #main__stories h2 {
@@ -1650,6 +1650,7 @@ a:visited {
 .profile__container .profile__body_story .profile__body_story-preview .profile_body_story-preview_subtitle {
   height: 30px;
   overflow-y: hidden;
+  margin: 1rem 0;
 }
 
 .profile__container .profile__body_story .profile__body_story-preview .profile_body_story-preview_subtitle .story-preview_subtitle {
@@ -1661,6 +1662,7 @@ a:visited {
   overflow-y: hidden;
   height: 84px;
   font-size: 18px;
+  line-height: 2.8rem;
 }
 
 .profile__container .profile__body_story .profile__body_story-preview .story-preview_clapDiv {
@@ -2210,7 +2212,7 @@ a:visited {
 }
 
 #story__subtitle {
-  margin-bottom: 10px;
+  margin-bottom: 2rem;
 }
 
 #story__header > h1,
@@ -2363,6 +2365,7 @@ a:visited {
 
 #story__contents > p {
   font-size: medium;
+  line-height: 3rem;
 }
 
 #story__menu {
