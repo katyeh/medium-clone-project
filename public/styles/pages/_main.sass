@@ -3,9 +3,12 @@
     @include border-bottom($border-light)
     grid-column: 1 / -1
 
+<<<<<<< HEAD
   // & *
     // border: 1px solid black
 
+=======
+>>>>>>> 565f64fd9d7e8f7a9e8da52689cb7efdca91020e
   &__stories
     @include border-right($border-light)
     grid-column: 2 / span 2
@@ -13,6 +16,11 @@
     display: flex
     flex-direction: column
     flex-wrap: wrap
+    width: 100%
+    align-content: space-between
+
+    @include respond-large
+      margin: 0
 
     & > *
       padding: 0 1.5rem 0 0
@@ -128,6 +136,10 @@
   &__from-following
     grid-column: 4
     height: 50rem
+    width: 100%
+
+    @include respond-large
+      height: max-content
 
     .green-link
       color: $color-green-dark
@@ -141,6 +153,9 @@
       flex-wrap: wrap
       position: relative
       left: -1.5rem
+
+      @include respond-large
+        height: max-content
 
       & > *
         width: 9rem
@@ -165,17 +180,31 @@
     grid-column: 2 / span 3
     height: auto
 
+    @include respond-large
+      width: 100%
+
     .trending
       &__container
         display: grid
         grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr))
         grid-template-rows: repeat(2, 13rem)
 
+        @include respond-large
+          // display: flex
+          // flex-direction: column
+          // flex-wrap: wrap
+          // height: 40rem
+          // align-content: space-between
+
         & > *
           padding: 1.5rem 1.5rem 1.5rem 0
 
       &__story
         display: flex
+        // flex-grow: 1
+
+        @include respond-large
+          width: 30rem
 
         .left
           width: 15%
@@ -216,16 +245,24 @@
     height: auto
     margin-right: 2rem
 
+
   &__feeds, aside
     margin-top: 2rem
 
+    @include respond-large
+      margin: 0
+    // @include respond-large
+    //   margin-top: 0
+
     // .feeds-container:not(:first-child)
     //   padding: 1.5rem
+
 
     .feeds-story
       height: 14rem
       display: flex
       justify-content: space-between
+      width: 100%
 
       &:first-child
         margin: 0 8rem 5rem 0
@@ -261,6 +298,10 @@
     position: sticky
     top: 0
     margin-top: .5rem
+
+    @include respond-large
+      position: relative
+
 
     .clapped-stories
       margin: 2rem 0
