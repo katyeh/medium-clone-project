@@ -5,3 +5,15 @@
 @mixin border-right($color)
   margin: 0 2.5rem 0 0
   border-right: $color
+
+@mixin respond-xlarge
+  @media (max-width: 1400px)
+    @content
+
+@mixin respond-large
+  @media (max-width: 1200px)
+    @content
+
+@mixin respond-medium
+  @media (max-width: 900px)
+    @content
