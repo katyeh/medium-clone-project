@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const followeeId = followBtn.value
     const followerId = localStorage.getItem("READIUM_CURRENT_USER_ID");
     if (followBtn.innerHTML === "Following") {
-      console.log(followBtn.innerHTML)
+      // console.log(followBtn.innerHTML)
       const res = await fetch("/api/users/follow", {
         method: "DELETE",
         body: JSON.stringify({followeeId, followerId}),
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         followBtn.style.color = 'rgba(3, 168, 124, 1)';
       }
     } else if (followBtn.innerHTML === "Follow") {
-      console.log(followBtn.innerHTMl)
+      // console.log(followBtn.innerHTMl)
       const res = await fetch("/api/users/follow", {
         method: "POST",
         body: JSON.stringify({followeeId, followerId}),

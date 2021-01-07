@@ -81,7 +81,13 @@ block content
             button(class="splash-login",data-modal-target="#modal") Sign in
     //- main#splash__main #splash__main
     footer#splash__footer
-      button(id="splash__signup2",class="splash__contents-signup") Get started
-      div(class="ptext", id="ptext2") Have an account?
-          button(id="splashlogin",class="splash-login",data-modal-target="#modal") Login
+      div#splash__footer-left
+        button(id="splash__signup2",class="splash__contents-signup") Get started
+        div(class="ptext", id="ptext2") Have an account?
+            button(id="splashlogin",class="splash-login",data-modal-target="#modal") Login
+      div#splash__footer-right
+        a(class="splash__footer-link" href="https://github.com/cmccoy10/" target="_blank") Cole McCoy &nbsp|&nbsp
+        a(class="splash__footer-link" href="https://github.com/katyeh" target="_blank") Kathleen Yeh &nbsp|&nbsp
+        a(href="https://github.com/ryanblack045" target="_blank") Ryan Black &nbsp|&nbsp
+        a(href="https://github.com/smilelk4" target="_blank") Yuka Moribe
     script(type="module" src="/js/splash.js")

@@ -53,8 +53,8 @@ openSignUpModal.forEach(button => {
 })
 
 closeSignUpModal.addEventListener('click', () => {
-  console.log("getting click")
+  // console.log("getting click")
   const modal = document.querySelector(".modal2")
-  console.log(modal)
+  // console.log(modal)
   closeModal(modal)
 })

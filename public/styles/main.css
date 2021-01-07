@@ -1364,6 +1364,9 @@ a:visited {
 
 #splash__footer {
   background: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1375,6 +1378,14 @@ a:visited {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#splash__footer-left {
+  display: flex;
+}
+
+#splash__footer-right {
+  font-size: 1.8rem;
 }
 
 #ptext2 {
@@ -2126,6 +2137,7 @@ a:visited {
   width: 25.5em;
   border: none;
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  outline: none;
 }
 
 #story__response #story__response_container .story__response_create_box .story__response_create .story__response_create_form form .story_response_form_buttons {
