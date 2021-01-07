@@ -40,7 +40,7 @@ const editStory = document.querySelector(".editStoryBtn");
 
     responseSubmit.addEventListener("click", async (e) => {
       e.preventDefault();
-      console.log("clicked")
+      // console.log("clicked")
       const formData = new FormData(responseForm);
       const body = formData.get("body");
       const storyId = formData.get("storyId");
@@ -91,7 +91,7 @@ responseButton.addEventListener('click', () => {
 
 const closeResponseBtn = document.getElementById("closeResponseButton");
 closeResponseBtn.addEventListener('click', () => {
-  console.log("got it")
+  // console.log("got it")
   const responseContainer = document.getElementById("story__response");
   responseContainer.classList.remove("appear")
 })

@@ -230,7 +230,7 @@ router.get("/:followeeId/:followerId/checkfollow", asyncHandler(async(req,res) =
         followerId: req.params.followerId
       }
     })
-    console.log(following)
+    // console.log(following)
   if (following > 0) {
     res.json(true)
   } else {

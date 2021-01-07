@@ -21,12 +21,18 @@
 
     @include respond-large
       margin: 0
+      width: 80vw
+      margin: 0;
+      border-right: none
 
     & > *
-      padding: 0 1.5rem 0 0
+      padding: 0 2.5rem 0 0
 
-    h2,h3
-      color: $color-font-story
+      @include respond-large
+        padding: 0
+
+    // h2,h3
+    //   color: $color-font-story
 
     h2
       font-size: 1.8rem
@@ -89,7 +95,6 @@
         top: -1rem
 
         h3
-          // padding-bottom: 1rem
           position: relative
           top: -1.5rem
         span
@@ -137,13 +142,16 @@
     grid-column: 4
     height: 50rem
     width: 100%
+    margin-left: 2rem
 
     @include respond-large
       height: max-content
+      width: 80vw
+      margin-left: 0
 
     .green-link
       color: $color-green-dark
-      padding: 1.5rem
+      padding: 1rem 1rem 1rem .5rem
 
     .following-users-container
       width: 100%
@@ -152,10 +160,11 @@
       display: flex
       flex-wrap: wrap
       position: relative
-      left: -1.5rem
 
       @include respond-large
         height: max-content
+        display: flex
+        justify-content: center
 
       & > *
         width: 9rem
@@ -181,7 +190,10 @@
     height: auto
 
     @include respond-large
-      width: 100%
+      width: 80vw
+      display: flex
+      flex-direction: column
+      flex-wrap: wrap
 
     .trending
       &__container
@@ -190,10 +202,10 @@
         grid-template-rows: repeat(2, 13rem)
 
         @include respond-large
-          // display: flex
-          // flex-direction: column
-          // flex-wrap: wrap
-          // height: 40rem
+          display: flex
+          flex-direction: column
+          flex-wrap: wrap
+          height: 40rem
           // align-content: space-between
 
         & > *
@@ -201,10 +213,9 @@
 
       &__story
         display: flex
-        // flex-grow: 1
 
         @include respond-large
-          width: 30rem
+          width: 35rem
 
         .left
           width: 15%
@@ -257,6 +268,9 @@
     // .feeds-container:not(:first-child)
     //   padding: 1.5rem
 
+    .feeds-container
+      @include respond-large
+        width: 80vw
 
     .feeds-story
       height: 14rem
