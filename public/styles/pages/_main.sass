@@ -3,6 +3,12 @@
     @include border-bottom($border-light)
     grid-column: 1 / -1
 
+<<<<<<< HEAD
+  // & *
+    // border: 1px solid black
+
+=======
+>>>>>>> 565f64fd9d7e8f7a9e8da52689cb7efdca91020e
   &__stories
     @include border-right($border-light)
     grid-column: 2 / span 2
@@ -18,7 +24,10 @@
       width: 80vw
       margin: 0;
       border-right: none
-
+    
+    a 
+      color: $color-font-story
+      
     & > *
       padding: 0 2.5rem 0 0
 
@@ -253,14 +262,8 @@
 
   &__feeds, aside
     margin-top: 2rem
-
     @include respond-large
       margin: 0
-    // @include respond-large
-    //   margin-top: 0
-
-    // .feeds-container:not(:first-child)
-    //   padding: 1.5rem
 
     .feeds-container
       @include respond-large
@@ -284,6 +287,9 @@
       h3
         font-size: 1.8rem
         padding: 1.5rem 0
+
+      &__description
+        color: $color-font-story
 
       .left
         flex-grow: 1
