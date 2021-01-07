@@ -82,7 +82,7 @@ block content
                 span #[strong #{newStory.user.fullName}] in #[strong #{newStory.user.username}]
               a(href=`/stories/${newStory.id}`)
                 h3= newStory.title
-                p= newStory.subtitle
+                p.feeds-story__description= newStory.subtitle
               p #{dateFormatter(newStory.createdAt)} &middot; #{readingTime(newStory.body).text} &#9733
             .right-image
               a(href=`/stories/${newStory.id}`)

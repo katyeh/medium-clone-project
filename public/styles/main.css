@@ -124,6 +124,10 @@ a:visited {
   }
 }
 
+#main__stories a {
+  color: #292929;
+}
+
 #main__stories > * {
   padding: 0 2.5rem 0 0;
 }
@@ -489,6 +493,10 @@ a:visited {
 #main__feeds .feeds-story h3, #main aside .feeds-story h3 {
   font-size: 1.8rem;
   padding: 1.5rem 0;
+}
+
+#main__feeds .feeds-story__description, #main aside .feeds-story__description {
+  color: #292929;
 }
 
 #main__feeds .feeds-story .left, #main aside .feeds-story .left {
