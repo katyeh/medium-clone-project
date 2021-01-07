@@ -2129,6 +2129,7 @@ a:visited {
   width: 25.5em;
   border: none;
   font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  outline: none;
 }
 
 #story__response #story__response_container .story__response_create_box .story__response_create .story__response_create_form form .story_response_form_buttons {
