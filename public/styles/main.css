@@ -877,7 +877,7 @@ a:visited {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 150vh;
+  height: 100vh;
   background: rgba(255, 255, 255, 0.98);
 }
 
@@ -1447,7 +1447,7 @@ a:visited {
   border-radius: 1.5rem;
   width: 7rem;
   height: 4rem;
-  margin: 2em;
+  margin: 1em;
   padding: 1.5rem;
   background: black;
 }
